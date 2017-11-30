@@ -1,15 +1,15 @@
-const nodeExternals = require('webpack-node-externals');
 const path = require('path');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
     index: './index.js',
   },
-  externals: [nodeExternals()],
   module: {
     rules: [{
       test: /\.js$/,
+      include: [path.resolve(__dirname, './src')],
       loader: 'babel-loader',
     }],
   },
@@ -18,5 +18,7 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
   },
-  target: 'web',
+  plugins: [
+    new LodashModuleReplacementPlugin(),
+  ],
 };

@@ -3,6 +3,7 @@
     "es2015"
   ],
   "plugins": [
+    "lodash",
     "transform-runtime",
     "transform-vue-jsx",
     "transform-es2015-destructuring",

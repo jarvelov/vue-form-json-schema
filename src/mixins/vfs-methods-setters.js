@@ -1,4 +1,4 @@
-import { set } from 'lodash-es';
+import { set } from 'lodash';
 import {
   VFS_EVENT_MODEL_UPDATED,
 } from '../constants';
