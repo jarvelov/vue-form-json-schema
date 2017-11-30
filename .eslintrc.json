@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-unused-vars": ["error", {
+      "vars": "all",
+      "args": "none"
+    }],
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0
+  }
+}

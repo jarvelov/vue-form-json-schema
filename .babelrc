@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-vue-jsx",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread"
+  ]
+}
