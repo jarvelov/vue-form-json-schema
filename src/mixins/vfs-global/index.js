@@ -1,6 +1,7 @@
 import {
-  VFS_EVENT_CHANGE,
-} from '../constants';
+  VFS_EVENT_MODEL_UPDATED,
+  VFS_EXTERNAL_EVENT_CHANGE,
+} from '../../constants';
 
 const vfsGlobalMixin = {
   props: {
@@ -42,8 +43,8 @@ const vfsGlobalMixin = {
   },
   methods: {
     vfsBusEventHandler(event, value) {
-      if (event === VFS_EVENT_CHANGE) {
-        this.$emit('change', value);
+      if (event === VFS_EVENT_MODEL_UPDATED) {
+        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, value);
       }
 
       this.$emit(event, value);

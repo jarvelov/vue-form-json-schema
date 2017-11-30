@@ -1,6 +1,6 @@
 import {
-  VFS_EVENT_CHANGE,
-} from '../constants';
+  VFS_EVENT_MODEL_UPDATED,
+} from '../../constants';
 
 const vfsDataMixin = {
   data() {
@@ -8,7 +8,7 @@ const vfsDataMixin = {
       vfsBus: {},
       vfsComponents: {},
       vfsEvents: [
-        VFS_EVENT_CHANGE,
+        VFS_EVENT_MODEL_UPDATED,
       ],
       vfsModel: {},
       vfsSchema: [],
