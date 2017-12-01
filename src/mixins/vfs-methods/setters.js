@@ -10,7 +10,7 @@ const vfsMethodsSettersMixin = {
         cb(event, value);
       }
 
-      this.vfsEventHandler(event, value);
+      this.vfsBusEventHandler(event, value);
     });
   },
   setVfsSetListeners(events = []) {
