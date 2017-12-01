@@ -16,7 +16,7 @@ const vfsMethodsSettersMixin = {
   setVfsSetListeners(events = []) {
     events.forEach(this.setVfsListener);
   },
-  setVfsFieldModel(key, value) {
+  setVfsFieldModel(value, key) {
     const newModel = Object.assign({}, this.vfsModel);
 
     set(newModel, key || this.vfsFieldModelKey, value);
