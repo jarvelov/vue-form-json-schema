@@ -3,6 +3,10 @@ const props = {
     type: [String, Array, Object],
     default: () => [],
   },
+  model: {
+    type: String,
+    required: true,
+  },
   value: {
     type: null,
   },

@@ -17,6 +17,7 @@ const vfsMethodsGettersMixin = {
       props: {
         ...options,
         ...fieldOptions,
+        model,
         vfsBus: this.vfsBus,
         vfsModel: this.vfsModel,
         vfsFieldModelKey: model,
