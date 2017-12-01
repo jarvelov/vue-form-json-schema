@@ -19,6 +19,8 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   plugins: [
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin({
+      paths: true,
+    }),
   ],
 };
