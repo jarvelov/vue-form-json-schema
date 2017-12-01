@@ -10,6 +10,10 @@ const props = {
     type: Object,
     required: true,
   },
+  vfsModel: {
+    type: Object,
+    required: true,
+  },
   vfsFieldModelKey: {
     type: String,
     required: true,
