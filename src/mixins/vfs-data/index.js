@@ -11,7 +11,8 @@ const vfsDataMixin = {
         VFS_EVENT_MODEL_UPDATED,
       ],
       vfsModel: {},
-      vfsSchema: [],
+      vfsSchema: {},
+      vfsUiSchema: [],
       vfsState: {},
     };
   },

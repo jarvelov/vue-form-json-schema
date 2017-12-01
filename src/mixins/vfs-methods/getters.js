@@ -1,27 +1,57 @@
 import { get } from 'lodash';
 
 const vfsMethodsGettersMixin = {
-  getVfsField(schema) {
+  getVfsField(uiSchema) {
     const {
       children = [],
       component,
       model = '',
-      type,
+      field,
       fieldOptions,
       ...options
-    } = schema;
+    } = uiSchema;
 
     return {
-      Component: component || this.getVfsFieldComponent(type),
+      Component: component || this.getVfsFieldComponent(field),
       children: children.map(this.getVfsField),
       props: {
         ...options,
         ...fieldOptions,
+        vfsBus: this.vfsBus,
         vfsFieldModelKey: model,
-        vfsFieldSchema: schema,
+        vfsFieldSchema: this.getVfsFieldSchema(model),
+        vfsFieldUiSchema: uiSchema,
         value: this.getVfsModel(model),
       },
     };
+  },
+  getVfsFieldSchema(key) {
+    if (key) {
+      return this.getVfsSchema(key);
+    }
+
+    return this.vfsFieldModelKey
+      ? this.getVfsSchema(this.vfsFieldModelKey)
+      : null;
+  },
+  getVfsSchema(key) {
+    if (key) {
+      return get(this.getVfsSchema.properties, key, this.getVfsSchemaFallback(key));
+    }
+
+    return this.vfsSchema;
+  },
+  getVfsSchemaFallback(key) {
+    const keys = key.split('.');
+    const jsonSchemaPath = keys.reduce((path, subPath) => {
+      if (path) {
+        return `${path}.properties.${subPath}`;
+      }
+
+      return `properties.${subPath}`;
+    }, '');
+
+    return get(this.vfsSchema, jsonSchemaPath);
   },
   getVfsFieldComponent(key) {
     return this.vfsComponents[key];
@@ -35,10 +65,10 @@ const vfsMethodsGettersMixin = {
       ? this.getVfsModel(this.vfsFieldModelKey)
       : null;
   },
-  getVfsFieldModelValid(schema) {
+  getVfsFieldModelValid(uiSchema) {
     // TODO: Do validation
 
-    // const validations = this.getVfsFieldModelValidation(schema.model)
+    // const validations = this.getVfsFieldModelValidation(uiSchema.model)
     return true;
   },
   getVfsFieldModelValidation(key) {
@@ -50,16 +80,16 @@ const vfsMethodsGettersMixin = {
     const errors = [];
     return errors;
   },
-  getVfsFieldSchema(key) {
-    return this.getVfsSchema(key);
+  getVfsFieldUiSchema(key) {
+    return this.getVfsUiSchema(key);
   },
-  getVfsFieldSchemaValid(schema) {
+  getVfsFieldUiSchemaValid(uiSchema) {
     return (
-      this.getVfsFieldSchemaValidationErrors(schema).length === 0 &&
-      schema.children.every(this.getVfsFieldSchemaValid)
+      this.getVfsFieldUiSchemaValidationErrors(uiSchema).length === 0 &&
+      uiSchema.children.every(this.getVfsFieldUiSchemaValid)
     );
   },
-  getVfsFieldSchemaValidationErrors({ component, model, type }) {
+  getVfsFieldUiSchemaValidationErrors({ component, model, type }) {
     const errors = [];
 
     if (!component && !this.getVfsFieldComponent(type)) {
@@ -79,15 +109,15 @@ const vfsMethodsGettersMixin = {
 
     return this.vfsModel;
   },
-  getVfsSchema(key) {
+  getVfsUiSchema(key) {
     if (key) {
-      return get(this.vfsSchema, key);
+      return get(this.vfsUiSchema, key);
     }
 
-    return this.vfsSchema;
+    return this.vfsUiSchema;
   },
   getVfsValidationErrors() {
-    return this.vfsSchema.map(this.getVfsFieldModelValidationErrors);
+    return this.vfsUiSchema.map(this.getVfsFieldModelValidationErrors);
   },
 };
 
