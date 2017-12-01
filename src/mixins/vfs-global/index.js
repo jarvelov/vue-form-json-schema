@@ -2,6 +2,7 @@ import {
   VFS_EVENT_MODEL_UPDATED,
   VFS_EXTERNAL_EVENT_CHANGE,
 } from '../../constants';
+import vfsMethodsMixin from '../vfs-methods';
 
 const vfsGlobalMixin = {
   props: {
@@ -34,6 +35,7 @@ const vfsGlobalMixin = {
       return this.vfsSchema.map(this.getVfsField);
     },
   },
+  mixins: [vfsMethodsMixin],
   created() {
     this.vfsComponents = this.fields;
     this.vfsSchema = this.schema;
