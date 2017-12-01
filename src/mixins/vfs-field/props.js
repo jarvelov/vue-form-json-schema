@@ -20,6 +20,9 @@ const props = {
   vfsFieldErrors: {
     type: Array,
   },
+  vfsFieldUiSchema: {
+    type: Object,
+  },
 };
 
 export default props;
