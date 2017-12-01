@@ -11,7 +11,6 @@ const props = {
   },
   vfsFieldSchema: {
     type: Object,
-    required: true,
   },
   vfsFieldErrors: {
     type: Array,
