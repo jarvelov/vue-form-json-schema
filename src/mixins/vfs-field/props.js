@@ -1,6 +1,7 @@
 const props = {
   classNames: {
     type: [String, Array, Object],
+    default: () => [],
   },
   value: {
     type: null,
