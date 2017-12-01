@@ -18,12 +18,12 @@ const vfsMethodsGettersMixin = {
         ...options,
         ...fieldOptions,
         model,
+        value: this.getVfsModel(model),
         vfsBus: this.vfsBus,
         vfsModel: this.vfsModel,
         vfsFieldModelKey: model,
         vfsFieldSchema: this.getVfsFieldSchema(model),
         vfsFieldUiSchema: uiSchema,
-        value: this.getVfsModel(model),
       },
     };
   },
