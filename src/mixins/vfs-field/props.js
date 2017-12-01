@@ -6,6 +6,10 @@ const props = {
   value: {
     type: null,
   },
+  vfsBus: {
+    type: Object,
+    required: true,
+  },
   vfsFieldModelKey: {
     type: String,
     required: true,
