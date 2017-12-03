@@ -12,6 +12,7 @@
   "author": "Tobias Järvelöv",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^6.0.0-rc.1",
     "lodash": "^4.17.4",
     "vue": "^2.5.9"
   },
