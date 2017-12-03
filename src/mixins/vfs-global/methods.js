@@ -8,11 +8,12 @@ import {
 const methods = {
   vfsInitialize() {
     this.vfsBus = new Vue();
+    this.ajv = new Ajv();
+
     this.vfsComponents = Object.assign({}, this.components);
     this.vfsSchema = Object.assign({}, this.schema);
     this.vfsModel = Object.assign({}, this.model);
     this.vfsUiSchema = this.uiSchema.slice(0);
-    this.ajv = new Ajv();
 
     this.vfsCompileSchema(this.vfsSchema);
     this.setVfsSetListeners(this.vfsEvents);
