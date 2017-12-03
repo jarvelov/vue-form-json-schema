@@ -14,6 +14,7 @@ const vfsDataMixin = {
       vfsSchema: {},
       vfsUiSchema: [],
       vfsState: {},
+      vfsValidator: null,
     };
   },
 };
