@@ -4,6 +4,7 @@ const watch = {
   },
   schema(value) {
     this.vfsSchema = Object.assign({}, value);
+    this.vfsCompileSchema(this.vfsSchema);
   },
   uiSchema(value) {
     this.vfsUiSchema = value.slice(0);
