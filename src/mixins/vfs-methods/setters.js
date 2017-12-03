@@ -17,9 +17,15 @@ const vfsMethodsSettersMixin = {
     events.forEach(this.setVfsListener);
   },
   setVfsFieldModel(value, key) {
+    if (!key || !this.vfsFieldModelKey) {
+      throw new Error('Could not determine model key and no key argument was submitted');
+    }
+
+    const path = key || this.vfsFieldModelKey;
+
     const newModel = Object.assign({}, this.vfsModel);
 
-    set(newModel, key || this.vfsFieldModelKey, value);
+    set(newModel, path, value);
 
     this.vfsBus.$emit(VFS_EVENT_MODEL_UPDATED, newModel);
   },
