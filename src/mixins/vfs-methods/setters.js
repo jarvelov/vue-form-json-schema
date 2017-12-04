@@ -5,18 +5,6 @@ import {
 } from '../../constants';
 
 const vfsMethodsSettersMixin = {
-  setVfsListener(event, cb) {
-    this.vfsBus.$on(event, (value) => {
-      if (cb && typeof cb === 'function') {
-        cb(event, value);
-      }
-
-      this.vfsBusEventHandler(event, value);
-    });
-  },
-  setVfsSetListeners(events = []) {
-    events.forEach(event => this.setVfsListener(event));
-  },
   setVfsModel(newModel) {
     this.vfsState.errors = this.getVfsModelValidationErrors();
     this.vfsModel = Object.assign({}, this.vfsModel, newModel);
