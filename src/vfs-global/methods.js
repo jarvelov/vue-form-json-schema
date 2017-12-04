@@ -21,7 +21,7 @@ const methods = {
     this.vfsUiSchema = this.uiSchema.slice(0);
     this.vfsOptions = Object.assign({}, this.options);
 
-    this.addVfsListeners(this.vfsEvents);
+    this.addVfsListeners(this.vfsEvents, this.vfsBusEventHandler);
 
     if (this.vfsOptions.validate && this.vfsOptions.validateOnLoad) {
       this.vfsBus.$emit(VFS_EVENT_MODEL_VALIDATE);

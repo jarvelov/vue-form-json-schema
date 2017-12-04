@@ -1,15 +1,13 @@
 const methods = {
-  addVfsListener(event) {
-    const listener = this.vfsBus.on(event, value =>
-      this.vfsBusEventHandler(event, value));
-
+  addVfsListener(event, callback) {
+    const listener = this.vfsBus.on(event, value => callback(event, value));
     this.vfsListeners.push(listener);
   },
-  addVfsListeners(events = []) {
-    events.forEach(this.addVfsListener);
+  addVfsListeners(events = [], callback) {
+    events.forEach(this.addVfsListener, callback);
   },
   removeVfsListener(event) {
-    this.vfsBus.off(event, this.vfsBusEventHandler);
+    this.vfsBus.off(event);
   },
   removeVfsListeners(events = []) {
     events.forEach(this.removeVfsListener);
