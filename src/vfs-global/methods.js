@@ -6,7 +6,7 @@ import {
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_MODEL_VALIDATE,
   VFS_EXTERNAL_EVENT_CHANGE,
-} from '../../constants';
+} from 'vue-form-json-schema-constants';
 
 const methods = {
   vfsDestroy() {

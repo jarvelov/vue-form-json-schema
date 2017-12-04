@@ -2,7 +2,7 @@ import { set } from 'lodash';
 import {
   VFS_EVENT_FIELD_MODEL_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
-} from '../../constants';
+} from 'vue-form-json-schema-constants';
 
 const vfsMethodsSettersMixin = {
   setVfsModel(newModel) {
