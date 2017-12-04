@@ -1,12 +1,13 @@
 import { set } from 'lodash';
 import {
+  VFS_EVENT_FIELD_MODEL_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
 } from '../../constants';
 
 const vfsMethodsSettersMixin = {
   setVfsListener(event, cb) {
     this.vfsBus.$on(event, (value) => {
-      if (cb) {
+      if (cb && typeof cb === 'function') {
         cb(event, value);
       }
 
@@ -14,20 +15,41 @@ const vfsMethodsSettersMixin = {
     });
   },
   setVfsSetListeners(events = []) {
-    events.forEach(this.setVfsListener);
+    events.forEach(event => this.setVfsListener(event));
+  },
+  setVfsModel(newModel) {
+    this.vfsState.errors = this.getVfsModelValidationErrors();
+    this.vfsModel = Object.assign({}, this.vfsModel, newModel);
+    this.vfsBus.$emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
+  },
+  setVfsUiFieldsActive() {
+    this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
+      ...fields,
+      this.getVfsUiFieldActive(uiSchemaField),
+    ]), []);
+  },
+  setVfsFieldState(value, key) {
+    const model = key || this.vfsFieldModelKey;
+    const newVfsState = Object.assign({}, this.vfsState);
+    set(newVfsState, model, value);
+    this.setVfsState(newVfsState);
+  },
+  setVfsState(state) {
+    this.vfsState = Object.assign({}, this.vfsState, state);
   },
   setVfsFieldModel(value, key) {
-    if (!key && !this.vfsFieldModelKey) {
+    const model = key || this.vfsFieldModelKey;
+    if (!model) {
       throw new Error('Could not determine model key and no key argument was submitted');
     }
 
-    const path = key || this.vfsFieldModelKey;
+    // TODO: Add option to disable validation
+    // if (this.vfsOptions.validate) {}
 
-    const newModel = Object.assign({}, this.vfsModel);
-
-    set(newModel, path, value);
-
-    this.vfsBus.$emit(VFS_EVENT_MODEL_UPDATED, newModel);
+    this.vfsBus.$emit(VFS_EVENT_FIELD_MODEL_UPDATE, {
+      key: model,
+      value,
+    });
   },
 };
 

@@ -12,9 +12,9 @@ const props = {
     required: true,
     default: () => [],
   },
-  schemaVersion: {
-    type: Number,
-    default: 7,
+  options: {
+    type: Object,
+    default: () => {},
   },
   uiSchema: {
     type: Array,

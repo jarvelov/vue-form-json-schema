@@ -38,7 +38,7 @@ const vfsMethodsGettersMixin = {
   },
   getVfsSchema(key) {
     if (key) {
-      return get(this.getVfsSchema.properties, key, this.getVfsSchemaFallback(key));
+      return get(this.getVfsSchema.properties, key) || this.getVfsSchemaFallback(key);
     }
 
     return this.vfsSchema;
@@ -55,6 +55,54 @@ const vfsMethodsGettersMixin = {
 
     return get(this.vfsSchema, jsonSchemaPath);
   },
+  checkValidFieldDependenciesForKey(obj, key) {
+    if (!obj || !obj.properties) {
+      return false;
+    }
+
+    if (obj[key] || obj.properties[key]) {
+      return true;
+    }
+
+    return Object.keys(obj.properties).some((propKey) => {
+      if (this.getVfsFieldModelValid(propKey)) {
+        return this.checkValidFieldDependenciesForKey(
+          obj.properties[propKey].properties,
+          key,
+        );
+      }
+
+      return false;
+    });
+  },
+  getVfsFieldActive(key) {
+    if (this.getVfsSchema(key)) {
+      return true;
+    }
+
+    return Object.keys(this.vfsSchema.dependencies).some(depKey =>
+      this.getVfsFieldModelValid(depKey) &&
+      this.checkValidFieldDependenciesForKey(this.vfsSchema.dependencies[depKey], key));
+  },
+  getVfsUiFieldActive(uiSchemaField) {
+    if (!uiSchemaField.model || this.getVfsFieldActive(uiSchemaField.model)) {
+      return {
+        ...uiSchemaField,
+        children: (uiSchemaField.children)
+          ? uiSchemaField.children.reduce((children, child) => {
+            const newChild = this.getVfsUiFieldActive(child);
+            if (newChild) {
+              children.push(newChild);
+            }
+
+            return children;
+          }, [])
+          : [],
+      };
+    }
+
+    return false;
+  },
   getVfsFieldComponent(key) {
     return this.vfsComponents[key];
   },
@@ -67,20 +115,22 @@ const vfsMethodsGettersMixin = {
       ? this.getVfsModel(this.vfsFieldModelKey)
       : null;
   },
-  getVfsFieldModelValid(uiSchema) {
+  getVfsFieldModelValid(key) {
     // TODO: Do validation
-
-    // const validations = this.getVfsFieldModelValidation(uiSchema.model)
-    return true;
+    const errors = this.getVfsFieldModelValidationErrors(key);
+    return errors.length === 0;
   },
-  getVfsFieldModelValidation(key) {
-    // TODO: Get and test validation
-
-    return [];
+  getVfsFieldModelValidationErrors(key, value) {
+    return this.getVfsModelValidationErrors(key, value);
   },
-  getVfsFieldModelValidationErrors(key) {
-    const errors = [];
-    return errors;
+  getVfsFieldState(key) {
+    if (key) {
+      return this.getVfsState(key);
+    }
+
+    return this.vfsFieldModelKey
+      ? this.getVfsState(this.vfsFieldModelKey)
+      : null;
   },
   getVfsFieldUiSchema(key) {
     return this.getVfsUiSchema(key);
@@ -95,7 +145,7 @@ const vfsMethodsGettersMixin = {
     const errors = [];
 
     if (!component && !this.getVfsFieldComponent(type)) {
-      errors.push(`Unknown component type: ${type}`);
+      errors.push(`Unregistered component type: ${type}`);
     }
 
     if (model && !(String(model) === model)) {
@@ -111,6 +161,25 @@ const vfsMethodsGettersMixin = {
 
     return this.vfsModel;
   },
+  getVfsModelValidationErrors(key, value) {
+    const schema = key ? this.getVfsFieldSchema(key) : this.vfsSchema;
+
+    const data = value || this.getVfsFieldModel(key);
+    const valid = this.ajv.validate(schema, data);
+
+    if (!valid) {
+      return this.ajv.errors;
+    }
+
+    return [];
+  },
+  getVfsState(key) {
+    if (key) {
+      return get(this.vfsState, key);
+    }
+
+    return this.vfsState;
+  },
   getVfsUiSchema(key) {
     if (key) {
       return get(this.vfsUiSchema, key);
@@ -120,6 +189,31 @@ const vfsMethodsGettersMixin = {
   },
   getVfsValidationErrors() {
     return this.vfsUiSchema.map(this.getVfsFieldModelValidationErrors);
+  },
+  vfsHelperObjectLoop(obj, cb) {
+    if (!obj && typeof obj !== 'object') {
+      return null;
+    }
+
+    if (cb(obj)) {
+      return obj;
+    }
+
+    return Object.keys(obj).reduce((result, key) => {
+      const value = obj[key];
+
+      if (value && typeof value === 'object') {
+        if (Array.isArray(value)) {
+          return value.find(subValue => this.vfsHelperObjectLoop(subValue, cb));
+        } else if (value.properties) {
+          return this.vfsHelperObjectLoop(value.properties, cb);
+        }
+
+        return this.vfsHelperObjectLoop(value, cb);
+      }
+
+      return result;
+    }, false);
   },
 };
 
