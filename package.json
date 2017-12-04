@@ -1,7 +1,7 @@
 {
   "name": "vue-form-json-schema",
   "version": "0.0.1",
-  "description": "Vue package for using JSON schema with a form",
+  "description": "Vue package for using forms with JSON schema",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack -p --config webpack.config.prod.js",
