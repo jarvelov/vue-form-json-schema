@@ -9,6 +9,9 @@ import {
 } from '../../constants';
 
 const methods = {
+  vfsDestroy() {
+    this.vfsEvents.forEach(event => this.removeVfsListener(event));
+  },
   vfsInitialize() {
     this.ajv = new Ajv();
 

@@ -11,6 +11,9 @@ const vfsGlobalMixin = {
   created() {
     this.vfsInitialize();
   },
+  beforeDestroy() {
+    this.vfsDestroy();
+  },
   props,
   computed,
   methods,
