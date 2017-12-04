@@ -19,6 +19,7 @@ const vfsDataMixin = {
         VFS_EVENT_MODEL_VALIDATE,
       ],
       vfsFieldsActive: [],
+      vfsListeners: [],
       vfsModel: {},
       vfsSchema: {},
       vfsUiSchema: [],

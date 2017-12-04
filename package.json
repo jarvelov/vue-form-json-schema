@@ -14,7 +14,7 @@
   "dependencies": {
     "ajv": "^6.0.0-rc.1",
     "lodash": "^4.17.4",
-    "vue": "^2.5.9",
+    "minibus": "^3.1.0",
     "vue-form-json-schema-constants": "git+https://github.com/jarvelov/vue-form-json-schema-constants.git"
   },
   "devDependencies": {

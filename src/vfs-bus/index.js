@@ -1,9 +1,9 @@
-import Vue from 'vue';
+import Minibus from 'minibus';
 import methods from './methods';
 
 const vfsBusMixin = {
   created() {
-    this.vfsBus = new Vue();
+    this.vfsBus = Minibus.create();
   },
   methods,
 };
