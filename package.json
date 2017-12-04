@@ -1,7 +1,7 @@
 {
-  "name": "vue-form-schema",
-  "version": "1.0.0",
-  "description": "",
+  "name": "vue-form-json-schema",
+  "version": "0.0.1",
+  "description": "Vue package for using JSON schema with a form",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack -p --config webpack.config.prod.js",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tobias Järvelöv",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "ajv": "^6.0.0-rc.1",
     "lodash": "^4.17.4",
