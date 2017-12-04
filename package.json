@@ -9,7 +9,7 @@
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Tobias Järvelöv",
+  "author": "Tobias Järvelöv <tobias@jarvelov.se>",
   "license": "MIT",
   "dependencies": {
     "ajv": "^6.0.0-rc.1",
