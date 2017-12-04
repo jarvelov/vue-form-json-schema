@@ -12,9 +12,9 @@ const methods = {
   vfsInitialize() {
     this.ajv = new Ajv();
 
+    this.setVfsModel(this.model);
     this.vfsComponents = Object.assign({}, this.components);
     this.vfsSchema = Object.assign({}, this.schema);
-    this.vfsModel = Object.assign({}, this.model);
     this.vfsUiSchema = this.uiSchema.slice(0);
     this.vfsOptions = Object.assign({}, this.options);
 
