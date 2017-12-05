@@ -70,7 +70,7 @@ const methods = {
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
 
-        this.emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
+        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
       },
     };
 
