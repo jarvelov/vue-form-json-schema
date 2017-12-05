@@ -24,7 +24,7 @@ const methods = {
     this.addVfsListeners(this.vfsEvents, this.vfsBusEventHandler);
 
     if (this.vfsOptions.validate && this.vfsOptions.validateOnLoad) {
-      this.vfsBus.$emit(VFS_EVENT_MODEL_VALIDATE);
+      this.vfsBus.emit(VFS_EVENT_MODEL_VALIDATE);
     }
 
     this.setVfsUiFieldsActive();
@@ -45,7 +45,7 @@ const methods = {
         }
       },
       [VFS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
-        this.vfsBus.$emit(VFS_EVENT_FIELD_MODEL_VALIDATE, {
+        this.vfsBus.emit(VFS_EVENT_FIELD_MODEL_VALIDATE, {
           key,
           value,
           cb: (errors) => {
@@ -70,7 +70,7 @@ const methods = {
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
 
-        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
+        this.emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
       },
     };
 

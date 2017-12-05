@@ -8,7 +8,7 @@ const vfsMethodsSettersMixin = {
   setVfsModel(newModel) {
     this.vfsState.errors = this.getVfsModelValidationErrors();
     this.vfsModel = Object.assign({}, this.vfsModel, newModel);
-    this.vfsBus.$emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
+    this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
   },
   setVfsUiFieldsActive() {
     this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
@@ -34,7 +34,7 @@ const vfsMethodsSettersMixin = {
     // TODO: Add option to disable validation
     // if (this.vfsOptions.validate) {}
 
-    this.vfsBus.$emit(VFS_EVENT_FIELD_MODEL_UPDATE, {
+    this.vfsBus.emit(VFS_EVENT_FIELD_MODEL_UPDATE, {
       key: model,
       value,
     });
