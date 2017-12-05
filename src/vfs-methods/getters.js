@@ -18,6 +18,7 @@ const vfsMethodsGettersMixin = {
         ...options,
         ...fieldOptions,
         model,
+        children,
         value: this.getVfsModel(model),
         vfsBus: this.vfsBus,
         vfsModel: this.vfsModel,
