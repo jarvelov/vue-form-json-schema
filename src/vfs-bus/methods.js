@@ -4,7 +4,7 @@ const methods = {
     this.vfsListeners.push(listener);
   },
   addVfsListeners(events = [], callback) {
-    events.forEach(this.addVfsListener, callback);
+    events.forEach(event => this.addVfsListener(event, callback));
   },
   removeVfsListener(event) {
     this.vfsBus.off(event);
