@@ -1,4 +1,8 @@
 const props = {
+  children: {
+    type: Array,
+    default: () => [],
+  },
   classNames: {
     type: [String, Array, Object],
     default: () => [],
