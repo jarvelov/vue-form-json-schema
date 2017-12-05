@@ -1,11 +1,11 @@
 const props = {
   children: {
     type: Array,
-    default: () => [],
+    default: () => ([]),
   },
   classNames: {
     type: [String, Array, Object],
-    default: () => [],
+    default: () => ([]),
   },
   model: {
     type: String,

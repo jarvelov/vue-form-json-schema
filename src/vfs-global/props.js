@@ -1,25 +1,25 @@
 const props = {
   components: {
     type: Object,
-    default: () => {},
+    default: () => ({}),
   },
   model: {
     type: Object,
-    default: () => {},
+    default: () => ({}),
   },
   schema: {
     type: Object,
     required: true,
-    default: () => [],
+    default: () => ([]),
   },
   options: {
     type: Object,
-    default: () => {},
+    default: () => ({}),
   },
   uiSchema: {
     type: Array,
     required: true,
-    default: () => {},
+    default: () => ({}),
   },
 };
 
