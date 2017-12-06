@@ -194,30 +194,8 @@ const vfsMethodsGettersMixin = {
   getVfsValidationErrors() {
     return this.vfsUiSchema.map(this.getVfsFieldModelValidationErrors);
   },
-  vfsHelperObjectLoop(obj, cb) {
-    if (!obj && typeof obj !== 'object') {
-      return null;
-    }
-
-    if (cb(obj)) {
-      return obj;
-    }
-
-    return Object.keys(obj).reduce((result, key) => {
-      const value = obj[key];
-
-      if (value && typeof value === 'object') {
-        if (Array.isArray(value)) {
-          return value.find(subValue => this.vfsHelperObjectLoop(subValue, cb));
-        } else if (value.properties) {
-          return this.vfsHelperObjectLoop(value.properties, cb);
-        }
-
-        return this.vfsHelperObjectLoop(value, cb);
       }
 
-      return result;
-    }, false);
   },
 };
 
