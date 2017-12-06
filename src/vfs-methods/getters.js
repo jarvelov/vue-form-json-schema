@@ -54,9 +54,31 @@ const vfsMethodsGettersMixin = {
 
     return this.vfsSchema;
   },
+  getVfsSchemaPath(path, key) {
+    if (!path) {
+      return `properties.${key}`;
+    }
+
+    const schema = get(this.vfsSchema, path);
+    if (schema.type === 'array') {
+      // TODO: Getting arrays to work we now have to ignore numeric keys
+      // see more info in `getVfsUiFieldActive`
+      if (this.vfsHelperIsNumber(key)) {
+        return path;
       }
 
+      const arrayPath = this.getVfsSchemaPath(`${path}.items`);
+      return `${arrayPath}.${key}`;
+    } else if (schema.type === 'object') {
+      return this.getVfsSchemaPath(`${path}.properties`);
+    }
 
+    if (!key) {
+      return path;
+    }
+
+    return `${path}.${key}`;
+  },
   getVfsSchemaFallback(key) {
     const keys = String(key).split('.');
     const schema = keys.reduce(this.getVfsSchemaPath, '');
