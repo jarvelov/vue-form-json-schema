@@ -54,8 +54,8 @@ const vfsMethodsGettersMixin = {
 
   getVfsSchemaFallback(key) {
     const keys = String(key).split('.');
-    const jsonSchemaPath = keys.reduce(this.getVfsSchemaPath, '');
-    return get(this.vfsSchema, jsonSchemaPath);
+    const schema = keys.reduce(this.getVfsSchemaPath, '');
+    return get(this.vfsSchema, schema);
   },
   checkValidFieldDependenciesForKey(obj, key) {
     if (!obj || !obj.properties) {
