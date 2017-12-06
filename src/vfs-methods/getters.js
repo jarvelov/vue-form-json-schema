@@ -87,6 +87,14 @@ const vfsMethodsGettersMixin = {
     return Object.keys(this.vfsSchema.dependencies).some(depKey =>
       this.getVfsFieldModelValid(depKey) &&
       this.checkValidFieldDependenciesForKey(this.vfsSchema.dependencies[depKey], key));
+  getVfsFieldIsArray(key) {
+    if (!key) {
+      return false;
+    }
+
+    const schema = this.getVfsFieldSchema(key);
+    return schema.type === 'array';
+  },
   },
   getVfsUiFieldActive(uiSchemaField) {
     if (!uiSchemaField.model || this.getVfsFieldActive(uiSchemaField.model)) {
