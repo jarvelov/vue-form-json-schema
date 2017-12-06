@@ -196,6 +196,8 @@ const vfsMethodsGettersMixin = {
   },
       }
 
+  vfsHelperIsNumber(n) {
+    return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
   },
 };
 
