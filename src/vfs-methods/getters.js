@@ -95,16 +95,6 @@ const vfsMethodsGettersMixin = {
     const schema = this.getVfsFieldSchema(key);
     return schema.type === 'array';
   },
-  getVfsUiFieldsActive(fields) {
-    return fields.reduce((newFields, field) => {
-      const newField = this.getVfsUiFieldActive(field);
-      if (newField) {
-        newFields.push(newField);
-      }
-
-      return newFields;
-    }, []);
-  },
   getVfsUiFieldActive(uiSchemaField) {
     if (!uiSchemaField.model || this.getVfsFieldActive(uiSchemaField.model)) {
       const { children = [] } = uiSchemaField;
@@ -136,6 +126,16 @@ const vfsMethodsGettersMixin = {
     }
 
     return false;
+  },
+  getVfsUiFieldsActive(fields) {
+    return fields.reduce((newFields, field) => {
+      const newField = this.getVfsUiFieldActive(field);
+      if (newField) {
+        newFields.push(newField);
+      }
+
+      return newFields;
+    }, []);
   },
   getVfsFieldComponent(key) {
     return this.vfsComponents[key];
@@ -224,8 +224,6 @@ const vfsMethodsGettersMixin = {
   getVfsValidationErrors() {
     return this.vfsUiSchema.map(this.getVfsFieldModelValidationErrors);
   },
-      }
-
   vfsHelperIsNumber(n) {
     return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
   },
