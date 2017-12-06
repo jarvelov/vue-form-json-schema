@@ -12,7 +12,7 @@ const vfsMethodsGettersMixin = {
     } = uiSchema;
 
     const isArray = this.getVfsFieldIsArray(model);
-    const schema = this.getVfsFieldSchema(model);
+    const schema = this.getVfsFieldSchema(model) || {};
     const value = this.getVfsModel(model);
 
     return {
