@@ -95,21 +95,43 @@ const vfsMethodsGettersMixin = {
     const schema = this.getVfsFieldSchema(key);
     return schema.type === 'array';
   },
+  getVfsUiFieldsActive(fields) {
+    return fields.reduce((newFields, field) => {
+      const newField = this.getVfsUiFieldActive(field);
+      if (newField) {
+        newFields.push(newField);
+      }
+
+      return newFields;
+    }, []);
   },
   getVfsUiFieldActive(uiSchemaField) {
     if (!uiSchemaField.model || this.getVfsFieldActive(uiSchemaField.model)) {
+      const { children = [] } = uiSchemaField;
+
+      const isArray = this.getVfsFieldIsArray(uiSchemaField.model);
+      if (isArray) {
+        const vfsFieldModel = this.getVfsFieldModel(uiSchemaField.model);
+        // TODO: This is a bit of a hacky solution to get arrays to work
+        // And it requires the getVfsSchemaPath function to ignore numeric keys
+        const arrayChildren = vfsFieldModel
+          .map((v, i) => (
+            children.map(({ model, ...child }) => ({
+              ...child,
+              model: `${uiSchemaField.model}.${i}.${model}`,
+            }))
+          ))
+          .map(this.getVfsUiFieldsActive);
+
+        return {
+          ...uiSchemaField,
+          children: [...arrayChildren],
+        };
+      }
+
       return {
         ...uiSchemaField,
-        children: (uiSchemaField.children)
-          ? uiSchemaField.children.reduce((children, child) => {
-            const newChild = this.getVfsUiFieldActive(child);
-            if (newChild) {
-              children.push(newChild);
-            }
-
-            return children;
-          }, [])
-          : [],
+        children: this.getVfsUiFieldsActive(children),
       };
     }
 
