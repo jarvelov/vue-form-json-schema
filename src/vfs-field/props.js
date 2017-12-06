@@ -27,7 +27,7 @@ const props = {
     required: true,
   },
   vfsFieldModel: {
-    type: Object,
+    type: null,
   },
   vfsFieldModelKey: {
     type: String,
