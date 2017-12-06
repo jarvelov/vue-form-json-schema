@@ -135,7 +135,7 @@ const vfsMethodsGettersMixin = {
 
       const isArray = this.getVfsFieldIsArray(uiSchemaField.model);
       if (isArray) {
-        const vfsFieldModel = this.getVfsFieldModel(uiSchemaField.model);
+        const vfsFieldModel = this.getVfsFieldModel(uiSchemaField.model) || [];
         // TODO: This is a bit of a hacky solution to get arrays to work
         // And it requires the getVfsSchemaPath function to ignore numeric keys
         const arrayChildren = vfsFieldModel
