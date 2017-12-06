@@ -8,7 +8,7 @@ const watch = {
     this.setVfsUiFieldsActive();
   },
   uiSchema(value) {
-    this.vfsUiSchema = value.slice(0);
+    this.vfsUiSchema = [...value];
     this.setVfsUiFieldsActive();
   },
 };

@@ -18,7 +18,7 @@ const methods = {
     this.setVfsModel(this.model);
     this.vfsComponents = Object.assign({}, this.components);
     this.vfsSchema = Object.assign({}, this.schema);
-    this.vfsUiSchema = this.uiSchema.slice(0);
+    this.vfsUiSchema = [...this.uiSchema];
     this.vfsOptions = Object.assign({}, this.options);
 
     this.addVfsListeners(this.vfsEvents, this.vfsBusEventHandler);
