@@ -56,6 +56,10 @@ const vfsMethodsGettersMixin = {
   },
   getVfsSchemaPath(path, key) {
     if (!path) {
+      if (this.vfsSchema.items) {
+        return this.getVfsSchemaPath('items');
+      }
+
       return `properties.${key}`;
     }
 
