@@ -11,19 +11,22 @@ const vfsMethodsGettersMixin = {
       ...options
     } = uiSchema;
 
+    const schema = this.getVfsFieldSchema(model);
     return {
       Component: component || this.getVfsFieldComponent(field),
       children: children.map(this.getVfsField),
       props: {
         ...options,
         ...fieldOptions,
-        model,
         children,
+        model,
+        schema,
+        uiSchema,
         value: this.getVfsModel(model),
         vfsBus: this.vfsBus,
         vfsModel: this.vfsModel,
         vfsFieldModelKey: model,
-        vfsFieldSchema: this.getVfsFieldSchema(model),
+        vfsFieldSchema: schema,
         vfsFieldUiSchema: uiSchema,
       },
     };
