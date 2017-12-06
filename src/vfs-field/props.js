@@ -13,7 +13,6 @@ const props = {
   },
   schema: {
     type: Object,
-    required: true,
   },
   value: {
     type: null,
