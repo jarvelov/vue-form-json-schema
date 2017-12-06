@@ -11,10 +11,17 @@ const vfsMethodsGettersMixin = {
       ...options
     } = uiSchema;
 
+    const isArray = this.getVfsFieldIsArray(model);
     const schema = this.getVfsFieldSchema(model);
+
     return {
       Component: component || this.getVfsFieldComponent(field),
-      children: children.map(this.getVfsField),
+      children: isArray
+        ? children.reduce((flattenedChildren, child) => ([
+          ...flattenedChildren,
+          ...child.map(this.getVfsField),
+        ]), [])
+        : children.map(this.getVfsField),
       props: {
         ...options,
         ...fieldOptions,
