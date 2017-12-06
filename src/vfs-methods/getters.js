@@ -47,16 +47,14 @@ const vfsMethodsGettersMixin = {
 
     return this.vfsSchema;
   },
-  getVfsSchemaFallback(key) {
-    const keys = key.split('.');
-    const jsonSchemaPath = keys.reduce((path, subPath) => {
-      if (path) {
-        return `${path}.properties.${subPath}`;
       }
 
       return `properties.${subPath}`;
     }, '');
 
+  getVfsSchemaFallback(key) {
+    const keys = String(key).split('.');
+    const jsonSchemaPath = keys.reduce(this.getVfsSchemaPath, '');
     return get(this.vfsSchema, jsonSchemaPath);
   },
   checkValidFieldDependenciesForKey(obj, key) {
