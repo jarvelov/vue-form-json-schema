@@ -49,8 +49,6 @@ const vfsMethodsGettersMixin = {
   },
       }
 
-      return `properties.${subPath}`;
-    }, '');
 
   getVfsSchemaFallback(key) {
     const keys = String(key).split('.');
