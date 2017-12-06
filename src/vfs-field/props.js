@@ -11,6 +11,10 @@ const props = {
     type: String,
     required: true,
   },
+  schema: {
+    type: Object,
+    required: true,
+  },
   value: {
     type: null,
   },
