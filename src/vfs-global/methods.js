@@ -38,7 +38,7 @@ const methods = {
         const errors = this.getVfsFieldModelValidationErrors(key, value);
         const state = this.getVfsFieldState(key);
         const newState = Object.assign({}, state, {
-          errors,
+          vfsFieldErrors: errors,
         });
 
         this.setVfsFieldState(newState, key);
