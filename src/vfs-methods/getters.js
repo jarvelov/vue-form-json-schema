@@ -267,7 +267,12 @@ const vfsMethodsGettersMixin = {
     return this.vfsUiSchema;
   },
   getVfsValidationErrors() {
-    return this.vfsUiSchema.map(this.getVfsFieldModelValidationErrors);
+    const valid = this.ajv.validate(this.getVfsSchema(), this.getVfsModel());
+    if (!valid) {
+      return this.ajv.errors;
+    }
+
+    return [];
   },
   vfsHelperIsNumber(n) {
     return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
