@@ -7,7 +7,7 @@ import {
 
 const vfsMethodsSettersMixin = {
   setVfsModel(newModel) {
-    this.vfsState.errors = this.getVfsModelValidationErrors();
+    // this.vfsState.errors = this.getVfsModelValidationErrors();
     this.vfsModel = Object.assign({}, this.vfsModel, newModel);
     this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
   },
