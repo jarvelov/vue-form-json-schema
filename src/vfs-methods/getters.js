@@ -248,7 +248,10 @@ const vfsMethodsGettersMixin = {
     return this.vfsModel;
   },
   getVfsModelValidationErrors(key, value) {
-    const schema = key ? this.getVfsFieldSchema(key) : this.vfsSchema;
+    const schema = key ? this.getVfsFieldSchema(key) : this.getVfsSchema();
+    if (!schema) {
+      return [];
+    }
 
     const data = typeof value !== 'undefined' ? value : this.getVfsFieldModel(key);
     const valid = this.ajv.validate(schema, data);
