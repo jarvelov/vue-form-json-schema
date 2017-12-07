@@ -13,7 +13,11 @@ const vfsMethodsGettersMixin = {
 
     const isArray = this.getVfsFieldIsArray(model);
     const schema = this.getVfsFieldSchema(model) || {};
-    const value = this.getVfsModel(model) || null;
+    const modelValue = this.getVfsModel(model);
+
+    const value = (typeof modelValue !== 'undefined')
+      ? modelValue
+      : null;
 
     return {
       Component: component || this.getVfsFieldComponent(field),
