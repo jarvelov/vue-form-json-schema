@@ -128,7 +128,8 @@ const vfsMethodsGettersMixin = {
     });
   },
   getVfsFieldActive(key) {
-    if (this.getVfsSchema(key) || this.getVfsFieldModel(key)) {
+
+    if (this.getVfsFieldSchema(key) || this.getVfsFieldModel(key)) {
       return true;
     }
 
