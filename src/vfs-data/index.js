@@ -4,6 +4,7 @@ import {
   VFS_EVENT_MODEL_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_MODEL_VALIDATE,
+  VFS_EVENT_STATE_UPDATED,
 } from 'vue-form-json-schema-constants';
 
 const vfsDataMixin = {
@@ -17,6 +18,7 @@ const vfsDataMixin = {
         VFS_EVENT_MODEL_UPDATE,
         VFS_EVENT_MODEL_UPDATED,
         VFS_EVENT_MODEL_VALIDATE,
+        VFS_EVENT_STATE_UPDATED,
       ],
       vfsFieldsActive: [],
       vfsListeners: [],
