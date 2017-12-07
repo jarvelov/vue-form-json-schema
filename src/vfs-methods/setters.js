@@ -7,10 +7,10 @@ import {
 
 const vfsMethodsSettersMixin = {
   setVfsFieldState(value, key) {
-    const model = key || this.vfsFieldModelKey;
-    const newVfsState = Object.assign({}, this.vfsState);
-    set(newVfsState, model, value);
-    this.setVfsState(newVfsState);
+    this.vfsBus.emit(VFS_EVENT_FIELD_STATE_UPDATE, {
+      key: key || this.vfsFieldModelKey,
+      value,
+    });
   },
   setVfsFieldModel(value, key) {
     return new Promise((resolve, reject) => {
