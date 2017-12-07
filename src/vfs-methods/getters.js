@@ -107,7 +107,7 @@ const vfsMethodsGettersMixin = {
     const schema = keys.reduce(this.getVfsSchemaPath, '');
     return get(this.vfsSchema, schema);
   },
-  checkValidFieldDependenciesForKey(obj, key) {
+  getValidFieldDependenciesForKey(obj, key) {
     if (!obj || !obj.properties) {
       return false;
     }
@@ -118,7 +118,7 @@ const vfsMethodsGettersMixin = {
 
     return Object.keys(obj.properties).some((propKey) => {
       if (this.getVfsFieldModelValid(propKey)) {
-        return this.checkValidFieldDependenciesForKey(
+        return this.getValidFieldDependenciesForKey(
           obj.properties[propKey].properties,
           key,
         );
@@ -135,7 +135,7 @@ const vfsMethodsGettersMixin = {
     if (this.vfsSchema.dependencies) {
       return Object.keys(this.vfsSchema.dependencies).some(depKey =>
         this.getVfsFieldModelValid(depKey) &&
-        this.checkValidFieldDependenciesForKey(this.vfsSchema.dependencies[depKey], key));
+        this.getValidFieldDependenciesForKey(this.vfsSchema.dependencies[depKey], key));
     }
 
     return false;
