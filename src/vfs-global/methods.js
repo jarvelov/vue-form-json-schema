@@ -75,12 +75,16 @@ const methods = {
         set(newVfsState, key, value);
         this.setVfsState(newVfsState);
       },
-      [VFS_EVENT_MODEL_VALIDATE]: () => {
-        const vfsErrors = this.getVfsValidationErrors();
+      [VFS_EVENT_MODEL_VALIDATE]: ({ vfsModel, cb }) => {
+        const vfsErrors = this.getVfsValidationErrors(vfsModel);
         const newState = Object.assign({}, this.getVfsState(), {
           vfsErrors,
         });
         this.setVfsState(newState);
+
+        if (cb && typeof cb === 'function') {
+          cb(vfsErrors);
+        }
       },
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
