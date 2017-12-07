@@ -30,8 +30,8 @@ const vfsMethodsSettersMixin = {
     this.setVfsState(newVfsState);
   },
   setVfsState(state) {
-    const vfsState = Object.assign({}, this.vfsState, state);
-    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, vfsState);
+    this.vfsState = Object.assign({}, this.vfsState, state);
+    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, this.vfsState);
   },
   setVfsFieldModel(value, key) {
     const model = key || this.vfsFieldModelKey;
