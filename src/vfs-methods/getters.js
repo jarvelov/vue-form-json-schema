@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, set } from 'lodash';
 
 const vfsMethodsGettersMixin = {
   getVfsField(uiSchema) {
@@ -280,6 +280,11 @@ const vfsMethodsGettersMixin = {
   },
   vfsHelperIsNumber(n) {
     return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
+  },
+  vfsHelperApplyFieldModel(key, value) {
+    const newVfsModel = Object.assign({}, this.getVfsModel());
+    set(newVfsModel, key, value);
+    return newVfsModel;
   },
 };
 
