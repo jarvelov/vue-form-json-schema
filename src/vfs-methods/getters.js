@@ -182,9 +182,11 @@ const vfsMethodsGettersMixin = {
   },
   getVfsUiFieldsActive(fields) {
     return fields.reduce((newFields, field) => {
-      const newField = this.getVfsUiFieldActive(field);
-      if (newField) {
-        newFields.push(newField);
+      if (field) {
+        const newField = this.getVfsUiFieldActive(field);
+        if (newField) {
+          newFields.push(newField);
+        }
       }
 
       return newFields;
