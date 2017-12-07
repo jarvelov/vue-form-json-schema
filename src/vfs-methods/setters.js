@@ -17,12 +17,6 @@ const vfsMethodsSettersMixin = {
       this.getVfsUiFieldActive(uiSchemaField),
     ]), []);
   },
-  setVfsFieldSubState(value, key) {
-    const state = this.getVfsFieldState();
-    const newVfsFieldState = Object.assign({}, state);
-    set(newVfsFieldState, key, value);
-    this.setVfsFieldState(newVfsFieldState);
-  },
   setVfsFieldState(value, key) {
     const model = key || this.vfsFieldModelKey;
     const newVfsState = Object.assign({}, this.vfsState);
