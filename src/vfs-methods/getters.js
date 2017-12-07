@@ -270,13 +270,9 @@ const vfsMethodsGettersMixin = {
     const errors = this.getVfsValidationErrors();
     return errors.length === 0;
   },
-  getVfsValidationErrors() {
-    const valid = this.ajv.validate(this.getVfsSchema(), this.getVfsModel());
-    if (!valid) {
-      return this.ajv.errors;
-    }
-
-    return [];
+  getVfsValidationErrors(model) {
+    const valid = this.ajv.validate(this.getVfsSchema(), model || this.getVfsModel());
+    return (!valid) ? this.ajv.errors : [];
   },
   vfsHelperIsNumber(n) {
     return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
