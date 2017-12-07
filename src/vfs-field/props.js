@@ -7,9 +7,15 @@ const props = {
     type: [String, Array, Object],
     default: () => ([]),
   },
+  id: {
+    type: [String, Number],
+  },
   model: {
     type: String,
     required: true,
+  },
+  name: {
+    type: [String, Number],
   },
   schema: {
     type: Object,
