@@ -69,13 +69,13 @@ const methods = {
       [VFS_EVENT_MODEL_VALIDATE]: ({ key, value }) => {
 
       },
-      [VFS_EVENT_STATE_UPDATED]: (value) => {
-        this.vfsState = value;
-        this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.vfsState);
-      },
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
         this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
+      },
+      [VFS_EVENT_STATE_UPDATED]: (value) => {
+        this.vfsState = Object.assign({}, this.vfsState, value);
+        this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.vfsState);
       },
     };
 
