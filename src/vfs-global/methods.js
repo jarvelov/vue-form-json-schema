@@ -57,7 +57,7 @@ const methods = {
             //   return cb(errors);
             // }
 
-            const newModel = Object.assign({}, this.vfsModel);
+            const newModel = Object.assign({}, this.getVfsModel());
             set(newModel, key, value);
             this.setVfsModel(newModel);
 
@@ -68,7 +68,7 @@ const methods = {
         });
       },
       [VFS_EVENT_FIELD_STATE_UPDATE]: ({ key, value }) => {
-        const newVfsState = Object.assign({}, this.vfsState);
+        const newVfsState = Object.assign({}, this.getVfsState());
         set(newVfsState, key, value);
         this.setVfsState(newVfsState);
       },
@@ -77,10 +77,10 @@ const methods = {
       },
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
-        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
+        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.getVfsModel());
       },
       [VFS_EVENT_STATE_UPDATED]: () => {
-        this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.vfsState);
+        this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.getVfsState());
       },
     };
 
