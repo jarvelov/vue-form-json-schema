@@ -72,15 +72,17 @@ const vfsMethodsGettersMixin = {
     return this.vfsSchema;
   },
   getVfsSchemaPath(path, key) {
+    const vfsSchema = this.getVfsSchema();
+
     if (!path) {
-      if (this.vfsSchema.items) {
+      if (vfsSchema.items) {
         return this.getVfsSchemaPath('items');
       }
 
       return `properties.${key}`;
     }
 
-    const schema = get(this.vfsSchema, path);
+    const schema = get(vfsSchema, path);
     if (schema) {
       if (schema.type === 'array') {
         if (this.vfsHelperIsNumber(key)) {
@@ -104,7 +106,7 @@ const vfsMethodsGettersMixin = {
   getVfsSchemaFallback(key) {
     const keys = String(key).split('.');
     const schema = keys.reduce(this.getVfsSchemaPath, '');
-    return get(this.vfsSchema, schema);
+    return get(this.getVfsSchema(), schema);
   },
   getValidFieldDependenciesForKey(obj, key) {
     if (!obj || !obj.properties) {
@@ -127,7 +129,6 @@ const vfsMethodsGettersMixin = {
     });
   },
   getVfsFieldActive(key) {
-
     if (this.getVfsFieldSchema(key) || this.getVfsFieldModel(key)) {
       return true;
     }
