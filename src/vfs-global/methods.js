@@ -24,12 +24,15 @@ const methods = {
     this.vfsUiSchema = [...this.uiSchema];
     this.vfsOptions = Object.assign({}, this.options);
 
+    // Register events in vfsEvents to vfsBusEventHandler
     this.addVfsListeners(this.vfsEvents, this.vfsBusEventHandler);
 
+    // Check if validation is enabled and set to run on load
     if (this.vfsOptions.validate && this.vfsOptions.validateOnLoad) {
       this.vfsBus.emit(VFS_EVENT_MODEL_VALIDATE);
     }
 
+    // Check and set active fields (visible)
     this.setVfsUiFieldsActive();
   },
   vfsBusEventHandler(event, payload) {
