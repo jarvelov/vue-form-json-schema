@@ -35,20 +35,23 @@ const methods = {
   vfsBusEventHandler(event, payload) {
     const eventActions = {
       [VFS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
-        if (this.vfsOptions.validate && this.vfsOptions.validateOnChange) {
-          this.vfsBus.emit(VFS_EVENT_MODEL_VALIDATE, (errors) => {
+        const vfsModel = this.vfsHelperApplyFieldModel(key, value);
+
+        this.vfsBus.emit(VFS_EVENT_MODEL_VALIDATE, {
+          vfsModel,
+          cb: (vfsErrors) => {
             const vfsFieldErrors = this.getVfsFieldModelValidationErrors(key, value);
-            const state = this.getVfsFieldState(key);
-            const newState = Object.assign({}, state, {
+            const newState = Object.assign({}, this.getVfsFieldState(key), {
               vfsFieldErrors,
             });
+
             this.setVfsFieldState(newState, key);
 
             if (cb && typeof cb === 'function') {
               cb(vfsFieldErrors);
             }
-          });
-        }
+          },
+        });
       },
       [VFS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
         this.vfsBus.emit(VFS_EVENT_FIELD_MODEL_VALIDATE, {
