@@ -7,7 +7,7 @@ const vfsMethodsGettersMixin = {
       component,
       model = '',
       field,
-      fieldOptions,
+      fieldOptions = {},
       ...options
     } = uiSchema;
 
