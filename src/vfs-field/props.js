@@ -24,6 +24,9 @@ const props = {
     type: Object,
     required: true,
   },
+  vfsFieldErrors: {
+    type: Array,
+  },
   vfsFieldModel: {
     type: null,
   },
@@ -34,8 +37,8 @@ const props = {
   vfsFieldSchema: {
     type: Object,
   },
-  vfsFieldErrors: {
-    type: Array,
+  vfsFieldState: {
+    type: Object,
   },
   vfsFieldUiSchema: {
     type: Object,
@@ -43,9 +46,6 @@ const props = {
   vfsModel: {
     type: Object,
     required: true,
-  },
-  vfsFieldState: {
-    type: Object,
   },
   vfsState: {
     type: Object,
