@@ -28,11 +28,11 @@ const vfsMethodsSettersMixin = {
     });
   },
   setVfsModel(model) {
-    this.vfsModel = Object.assign({}, this.vfsModel, model);
-    this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
+    this.vfsModel = Object.assign({}, this.getVfsModel(), model);
+    this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.getVfsModel());
   },
   setVfsState(state) {
-    this.vfsState = Object.assign({}, this.vfsState, state);
+    this.vfsState = Object.assign({}, this.getVfsState(), state);
     this.vfsBus.emit(VFS_EVENT_STATE_UPDATED);
   },
   setVfsUiFieldsActive() {
