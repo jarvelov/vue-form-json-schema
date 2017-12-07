@@ -202,9 +202,8 @@ const vfsMethodsGettersMixin = {
       ? this.getVfsModel(this.vfsFieldModelKey)
       : null;
   },
-  getVfsFieldModelValid(key) {
-    // TODO: Do validation
-    const errors = this.getVfsFieldModelValidationErrors(key);
+  getVfsFieldModelValid(key, value) {
+    const errors = this.getVfsFieldModelValidationErrors(key, value);
     return errors.length === 0;
   },
   getVfsFieldModelValidationErrors(key, value) {
