@@ -6,26 +6,11 @@ import {
 } from 'vue-form-json-schema-constants';
 
 const vfsMethodsSettersMixin = {
-  setVfsModel(newModel) {
-    // this.vfsState.errors = this.getVfsModelValidationErrors();
-    this.vfsModel = Object.assign({}, this.vfsModel, newModel);
-    this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
-  },
-  setVfsUiFieldsActive() {
-    this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
-      ...fields,
-      this.getVfsUiFieldActive(uiSchemaField),
-    ]), []);
-  },
   setVfsFieldState(value, key) {
     const model = key || this.vfsFieldModelKey;
     const newVfsState = Object.assign({}, this.vfsState);
     set(newVfsState, model, value);
     this.setVfsState(newVfsState);
-  },
-  setVfsState(state) {
-    this.vfsState = Object.assign({}, this.vfsState, state);
-    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, this.vfsState);
   },
   setVfsFieldModel(value, key) {
     const model = key || this.vfsFieldModelKey;
@@ -40,6 +25,20 @@ const vfsMethodsSettersMixin = {
       key: model,
       value,
     });
+  },
+  setVfsModel(newModel) {
+    this.vfsModel = Object.assign({}, this.vfsModel, newModel);
+    this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
+  },
+  setVfsState(state) {
+    const vfsState = Object.assign({}, this.vfsState, state);
+    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, vfsState);
+  },
+  setVfsUiFieldsActive() {
+    this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
+      ...fields,
+      this.getVfsUiFieldActive(uiSchemaField),
+    ]), []);
   },
 };
 
