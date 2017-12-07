@@ -36,9 +36,9 @@ const vfsMethodsSettersMixin = {
     this.vfsBus.emit(VFS_EVENT_STATE_UPDATED);
   },
   setVfsUiFieldsActive() {
-    this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
+    this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, field) => ([
       ...fields,
-      this.getVfsUiFieldActive(uiSchemaField),
+      this.getVfsUiFieldActive(field),
     ]), []);
   },
 };
