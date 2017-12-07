@@ -166,9 +166,7 @@ const vfsMethodsGettersMixin = {
         return {
           ...field,
           model,
-          children: [
-            ...this.getVfsUiFieldArrayChildrenActive(model, children),
-          ],
+          children: this.getVfsUiFieldArrayChildrenActive(model, children),
         };
       }
 
