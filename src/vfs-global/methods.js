@@ -35,16 +35,16 @@ const methods = {
   vfsBusEventHandler(event, payload) {
     const eventActions = {
       [VFS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
-        const errors = this.getVfsFieldModelValidationErrors(key, value);
+        const vfsFieldErrors = this.getVfsFieldModelValidationErrors(key, value);
         const state = this.getVfsFieldState(key);
         const newState = Object.assign({}, state, {
-          vfsFieldErrors: errors,
+          vfsFieldErrors,
         });
 
         this.setVfsFieldState(newState, key);
 
         if (cb && typeof cb === 'function') {
-          cb(errors);
+          cb(vfsFieldErrors);
         }
       },
       [VFS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
