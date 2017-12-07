@@ -61,7 +61,7 @@ const methods = {
             this.setVfsModel(newModel);
 
             if (cb && typeof cb === 'function') {
-              cb();
+              cb(errors);
             }
           },
         });
