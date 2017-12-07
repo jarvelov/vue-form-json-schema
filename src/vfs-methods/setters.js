@@ -1,5 +1,6 @@
 import {
   VFS_EVENT_FIELD_MODEL_UPDATE,
+  VFS_EVENT_FIELD_STATE_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_STATE_UPDATED,
 } from 'vue-form-json-schema-constants';
@@ -31,8 +32,8 @@ const vfsMethodsSettersMixin = {
     this.vfsBus.emit(VFS_EVENT_MODEL_UPDATED, this.vfsModel);
   },
   setVfsState(state) {
-    const vfsState = Object.assign({}, this.vfsState, state);
-    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, vfsState);
+    this.vfsState = Object.assign({}, this.vfsState, state);
+    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED);
   },
   setVfsUiFieldsActive() {
     this.vfsFieldsActive = this.vfsUiSchema.reduce((fields, uiSchemaField) => ([
