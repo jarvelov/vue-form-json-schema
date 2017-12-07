@@ -5,6 +5,7 @@ import {
   VFS_EVENT_FIELD_MODEL_VALIDATE,
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_MODEL_VALIDATE,
+  VFS_EVENT_STATE_UPDATED,
   VFS_EXTERNAL_EVENT_CHANGE,
 } from 'vue-form-json-schema-constants';
 
@@ -67,9 +68,11 @@ const methods = {
       [VFS_EVENT_MODEL_VALIDATE]: ({ key, value }) => {
 
       },
+      [VFS_EVENT_STATE_UPDATED]: (value) => {
+        this.vfsState = value;
+      },
       [VFS_EVENT_MODEL_UPDATED]: () => {
         this.setVfsUiFieldsActive();
-
         this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
       },
     };

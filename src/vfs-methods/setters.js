@@ -2,6 +2,7 @@ import { set } from 'lodash';
 import {
   VFS_EVENT_FIELD_MODEL_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
+  VFS_EVENT_STATE_UPDATED,
 } from 'vue-form-json-schema-constants';
 
 const vfsMethodsSettersMixin = {
@@ -29,7 +30,8 @@ const vfsMethodsSettersMixin = {
     this.setVfsState(newVfsState);
   },
   setVfsState(state) {
-    this.vfsState = Object.assign({}, this.vfsState, state);
+    const vfsState = Object.assign({}, this.vfsState, state);
+    this.vfsBus.emit(VFS_EVENT_STATE_UPDATED, vfsState);
   },
   setVfsFieldModel(value, key) {
     const model = key || this.vfsFieldModelKey;
