@@ -86,7 +86,8 @@ const vfsMethodsGettersMixin = {
     if (schema) {
       if (schema.type === 'array' || schema.items instanceof Array) {
         const arrayPath = this.getVfsSchemaPath(`${path}.items`);
-        return this.getVfsSchemaPath(`${arrayPath}.${key}`);
+        // The same schema is used regardless of item's index in the array
+        return this.getVfsSchemaPath(`${arrayPath}.0`);
       }
 
       if (schema.type === 'object' || schema.properties instanceof Object) {
