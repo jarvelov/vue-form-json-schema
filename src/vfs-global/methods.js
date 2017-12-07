@@ -73,8 +73,7 @@ const methods = {
         this.setVfsUiFieldsActive();
         this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.vfsModel);
       },
-      [VFS_EVENT_STATE_UPDATED]: (value) => {
-        this.vfsState = Object.assign({}, this.vfsState, value);
+      [VFS_EVENT_STATE_UPDATED]: () => {
         this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.vfsState);
       },
     };
