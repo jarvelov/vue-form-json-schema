@@ -3,6 +3,7 @@ import { set } from 'lodash';
 import {
   VFS_EVENT_FIELD_MODEL_UPDATE,
   VFS_EVENT_FIELD_MODEL_VALIDATE,
+  VFS_EVENT_FIELD_STATE_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_MODEL_VALIDATE,
   VFS_EVENT_STATE_UPDATED,
@@ -65,6 +66,11 @@ const methods = {
             }
           },
         });
+      },
+      [VFS_EVENT_FIELD_STATE_UPDATE]: ({ key, value }) => {
+        const newVfsState = Object.assign({}, this.vfsState);
+        set(newVfsState, key, value);
+        this.setVfsState(newVfsState);
       },
       [VFS_EVENT_MODEL_VALIDATE]: ({ key, value }) => {
 
