@@ -4,10 +4,14 @@ const methods = {
   vfsFieldEventHandler(key, cb) {
     return (data) => {
       if (typeof cb === 'function') {
-        this.setVfsFieldModel(cb(data));
-      } else {
-        this.setVfsFieldModel(data);
+        return this.setVfsFieldModel(cb(data));
       }
+
+      if (data instanceof Event && data.target && data.target.value) {
+        return this.setVfsFieldModel(data.target.value);
+      }
+
+      return this.setVfsFieldModel(data);
     };
   },
   vfsFieldFormatEventsReducer(events) {
