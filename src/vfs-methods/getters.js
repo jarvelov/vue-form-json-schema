@@ -83,10 +83,9 @@ const vfsMethodsGettersMixin = {
     const schema = get(this.vfsSchema, path);
     if (schema) {
       if (schema.type === 'array') {
-        // TODO: Getting arrays to work we now have to ignore numeric keys
-        // see more info in `getVfsUiFieldActive`
         if (this.vfsHelperIsNumber(key)) {
-          return path;
+          const arrayIndexPath = this.getVfsSchemaPath(`${path}.items`);
+          return `${arrayIndexPath}.${key}`;
         }
 
         const arrayPath = this.getVfsSchemaPath(`${path}.items`);
