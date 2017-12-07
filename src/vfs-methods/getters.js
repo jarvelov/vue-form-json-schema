@@ -84,15 +84,12 @@ const vfsMethodsGettersMixin = {
 
     const schema = get(vfsSchema, path);
     if (schema) {
-      if (schema.type === 'array') {
-        if (this.vfsHelperIsNumber(key)) {
-          const arrayIndexPath = this.getVfsSchemaPath(`${path}.items`);
-          return `${arrayIndexPath}.${key}`;
-        }
-
+      if (schema.type === 'array' || schema.items instanceof Array) {
         const arrayPath = this.getVfsSchemaPath(`${path}.items`);
-        return `${arrayPath}.${key}`;
-      } else if (schema.type === 'object') {
+        return this.getVfsSchemaPath(`${arrayPath}.${key}`);
+      }
+
+      if (schema.type === 'object' || schema.properties instanceof Object) {
         return this.getVfsSchemaPath(`${path}.properties`);
       }
     }
