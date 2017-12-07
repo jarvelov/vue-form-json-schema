@@ -13,7 +13,8 @@ const vfsMethodsGettersMixin = {
 
     const isArray = this.getVfsFieldIsArray(model);
     const schema = this.getVfsFieldSchema(model) || {};
-    const modelValue = this.getVfsModel(model);
+    const modelValue = this.getVfsFieldModel(model);
+    const state = this.getVfsFieldState(model);
 
     const value = (typeof modelValue !== 'undefined')
       ? modelValue
@@ -35,8 +36,11 @@ const vfsMethodsGettersMixin = {
         schema,
         uiSchema,
         value,
+        state,
         vfsBus: this.vfsBus,
         vfsModel: this.vfsModel,
+        vfsState: this.vfsState,
+        vfsFieldState: state,
         vfsFieldModel: value,
         vfsFieldModelKey: model,
         vfsFieldSchema: schema,
@@ -52,6 +56,22 @@ const vfsMethodsGettersMixin = {
     return this.vfsFieldModelKey
       ? this.getVfsSchema(this.vfsFieldModelKey)
       : null;
+  },
+  getVfsFieldState(key) {
+    if (key) {
+      return this.getVfsState(key);
+    }
+
+    return this.vfsFieldModelKey
+      ? this.getVfsState(this.vfsFieldModelKey)
+      : null;
+  },
+  getVfsState(key) {
+    if (key) {
+      return get(this.getVfsState, key);
+    }
+
+    return this.vfsState;
   },
   getVfsSchema(key) {
     if (key) {

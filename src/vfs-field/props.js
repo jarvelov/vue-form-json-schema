@@ -14,14 +14,13 @@ const props = {
   schema: {
     type: Object,
   },
+  state: {
+    type: Object,
+  },
   value: {
     type: null,
   },
   vfsBus: {
-    type: Object,
-    required: true,
-  },
-  vfsModel: {
     type: Object,
     required: true,
   },
@@ -39,6 +38,16 @@ const props = {
     type: Array,
   },
   vfsFieldUiSchema: {
+    type: Object,
+  },
+  vfsModel: {
+    type: Object,
+    required: true,
+  },
+  vfsFieldState: {
+    type: Object,
+  },
+  vfsState: {
     type: Object,
   },
 };
