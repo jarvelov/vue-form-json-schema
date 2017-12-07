@@ -60,8 +60,7 @@ const methods = {
             //   return cb(errors);
             // }
 
-            const newModel = Object.assign({}, this.getVfsModel());
-            set(newModel, key, value);
+            const newModel = this.vfsHelperApplyFieldModel(key, value);
             this.setVfsModel(newModel);
 
             if (cb && typeof cb === 'function') {
