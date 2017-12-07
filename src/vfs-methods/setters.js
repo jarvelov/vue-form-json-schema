@@ -13,17 +13,18 @@ const vfsMethodsSettersMixin = {
     this.setVfsState(newVfsState);
   },
   setVfsFieldModel(value, key) {
-    const model = key || this.vfsFieldModelKey;
-    if (!model) {
-      throw new Error('Could not determine model key and no key argument was submitted');
-    }
+    return new Promise((resolve, reject) => {
+      this.vfsBus.emit(VFS_EVENT_FIELD_MODEL_UPDATE, {
+        key: key || this.vfsFieldModelKey,
+        value,
+        cb: (errors) => {
+          if (errors) {
+            reject(errors);
+          }
 
-    // TODO: Add option to disable validation
-    // if (this.vfsOptions.validate) {}
-
-    this.vfsBus.emit(VFS_EVENT_FIELD_MODEL_UPDATE, {
-      key: model,
-      value,
+          resolve();
+        },
+      });
     });
   },
   setVfsModel(newModel) {
