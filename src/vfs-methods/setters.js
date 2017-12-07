@@ -18,7 +18,7 @@ const vfsMethodsSettersMixin = {
         key: key || this.vfsFieldModelKey,
         value,
         cb: (errors) => {
-          if (errors) {
+          if (errors && errors.length > 0) {
             reject(errors);
           }
 
