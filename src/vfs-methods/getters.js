@@ -129,7 +129,7 @@ const vfsMethodsGettersMixin = {
     }
 
     const schema = this.getVfsFieldSchema(key);
-    return schema.type === 'array';
+    return schema ? schema.type === 'array' : false;
   },
   getVfsUiFieldActive(uiSchemaField) {
     if (!uiSchemaField.model || this.getVfsFieldActive(uiSchemaField.model)) {
