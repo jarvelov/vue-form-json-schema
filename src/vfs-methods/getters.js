@@ -14,7 +14,7 @@ const vfsMethodsGettersMixin = {
     const isArray = this.getVfsFieldIsArray(model);
     const schema = this.getVfsFieldSchema(model) || {};
     const modelValue = this.getVfsFieldModel(model);
-    const state = this.getVfsFieldState(model);
+    const state = this.getVfsFieldState(model) || {};
 
     const value = (typeof modelValue !== 'undefined')
       ? modelValue
