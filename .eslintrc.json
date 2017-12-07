@@ -2,6 +2,9 @@
   "root": true,
   "extends": "airbnb",
   "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
   "rules": {
     "no-unused-vars": ["error", {
       "vars": "all",
