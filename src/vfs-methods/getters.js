@@ -16,9 +16,9 @@ const vfsMethodsGettersMixin = {
     const modelValue = this.getVfsFieldModel(model);
     const state = this.getVfsFieldState(model) || {};
 
-    const value = (typeof modelValue !== 'undefined')
-      ? modelValue
-      : null;
+
+    const fallbackValue = (typeof modelValue !== 'undefined') ? modelValue : null;
+    const value = fieldOptions.value || fallbackValue;
 
     return {
       Component: component || this.getVfsFieldComponent(field),
