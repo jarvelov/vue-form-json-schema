@@ -59,7 +59,7 @@ const vfsMethodsGettersMixin = {
   },
   getVfsState(key) {
     if (key) {
-      return get(this.getVfsState, key);
+      return get(this.vfsState, key);
     }
 
     return this.vfsState;
