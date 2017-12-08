@@ -157,7 +157,7 @@ const vfsMethodsGettersMixin = {
     return {
       ...child,
       model: this.vfsHelperGetChildArrayModelAtIndex(model, parentModel, index),
-      children: this.vfsHelperChildArrayReducerMapper(children, parentModel, index),
+      children: this.vfsHelperChildArrayReducerMapper(parentModel, children, index),
     };
   },
   vfsHelperChildArrayReducerMapper(model, children = [], index) {
