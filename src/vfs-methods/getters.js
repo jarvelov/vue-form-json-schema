@@ -16,7 +16,6 @@ const vfsMethodsGettersMixin = {
     const modelValue = this.getVfsFieldModel(model);
     const state = this.getVfsFieldState(model) || {};
 
-
     const fallbackValue = (typeof modelValue !== 'undefined') ? modelValue : null;
     const value = fieldOptions.value || fallbackValue;
 
@@ -38,6 +37,7 @@ const vfsMethodsGettersMixin = {
         value,
         state,
         vfsBus: this.vfsBus,
+        vfsFieldOptions: fieldOptions,
         vfsModel: this.vfsModel,
         vfsState: this.vfsState,
         vfsFieldState: state,

@@ -33,6 +33,9 @@ const props = {
   vfsFieldErrors: {
     type: Array,
   },
+  vfsFieldOptions: {
+    type: Object,
+  },
   vfsFieldModel: {
     type: null,
   },
