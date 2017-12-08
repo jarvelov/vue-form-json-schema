@@ -146,6 +146,10 @@ const vfsMethodsGettersMixin = {
     const schema = this.getVfsFieldSchema(key);
     return schema ? schema.type === 'array' : false;
   },
+  vfsHelperGetChildArrayModelAtIndex(parentModel, childModel, index) {
+    const childModelRelative = String(childModel).substr(parentModel.length + 1);
+    return `${parentModel}.${index}.${childModelRelative}`;
+  },
   getVfsUiFieldArrayChildrenActive(model, children) {
     const vfsFieldModel = this.getVfsFieldModel(model) || [];
 
