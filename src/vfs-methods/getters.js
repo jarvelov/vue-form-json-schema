@@ -146,9 +146,13 @@ const vfsMethodsGettersMixin = {
     const schema = this.getVfsFieldSchema(key);
     return schema ? schema.type === 'array' : false;
   },
-  vfsHelperGetChildArrayModelAtIndex(parentModel, childModel, index) {
-    const childModelRelative = String(childModel).substr(parentModel.length + 1);
-    return `${parentModel}.${index}.${childModelRelative}`;
+  vfsHelperGetRelativeModel(model, parentModel) {
+    return model ? String(model).substr(parentModel.length + 1) : model;
+  },
+  vfsHelperGetChildArrayModelAtIndex(model, parentModel, index) {
+    const relativeModel = this.vfsHelperGetRelativeModel(model, parentModel);
+    return relativeModel ? `${parentModel}.${index}.${relativeModel}` : model;
+  },
   },
   getVfsUiFieldArrayChildrenActive(model, children) {
     const vfsFieldModel = this.getVfsFieldModel(model) || [];
