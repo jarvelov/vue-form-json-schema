@@ -150,17 +150,15 @@ const vfsMethodsGettersMixin = {
     const vfsFieldModel = this.getVfsFieldModel(model) || [];
 
     return vfsFieldModel
-      .map((v, i) => (
-        children.map(({ model: childModel, ...child }) => ({
-          ...child,
-          model: `${model}.${i}.${childModel}`,
-        }))
-      ))
+      .map((v, i) => ([
+        ...this.vfsHelperChildArrayReducerMapper(model, children, i),
+      ]))
       .map(this.getVfsUiFieldsActive);
   },
   getVfsUiFieldActive({ children = [], model, ...field }) {
     if (!model || this.getVfsFieldActive(model)) {
       const isArray = this.getVfsFieldIsArray(model);
+
       if (isArray) {
         return {
           ...field,
