@@ -160,6 +160,11 @@ const vfsMethodsGettersMixin = {
       children: this.vfsHelperChildArrayReducerMapper(parentModel, children, index),
     };
   },
+  vfsHelperChildArrayReducerMapper(model, children = [], index) {
+    return children.reduce((allChildren, child) => ([
+      ...allChildren,
+      this.vfsHelperChildArrayMapper(model, child, index),
+    ]), []);
   },
   getVfsUiFieldArrayChildrenActive(model, children) {
     const vfsFieldModel = this.getVfsFieldModel(model) || [];
