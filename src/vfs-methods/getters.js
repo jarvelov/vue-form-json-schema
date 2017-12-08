@@ -153,6 +153,13 @@ const vfsMethodsGettersMixin = {
     const relativeModel = this.vfsHelperGetRelativeModel(model, parentModel);
     return relativeModel ? `${parentModel}.${index}.${relativeModel}` : model;
   },
+  vfsHelperChildArrayMapper(parentModel, { model, children = [], ...child }, index) {
+    return {
+      ...child,
+      model: this.vfsHelperGetChildArrayModelAtIndex(model, parentModel, index),
+      children: this.vfsHelperChildArrayReducerMapper(parentModel, children, index),
+    };
+  },
   },
   getVfsUiFieldArrayChildrenActive(model, children) {
     const vfsFieldModel = this.getVfsFieldModel(model) || [];
