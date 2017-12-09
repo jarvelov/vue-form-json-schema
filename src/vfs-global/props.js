@@ -16,6 +16,10 @@ const props = {
     type: Object,
     default: () => ({}),
   },
+  tag: {
+    type: String,
+    default: 'div',
+  },
   uiSchema: {
     type: Array,
     required: true,
