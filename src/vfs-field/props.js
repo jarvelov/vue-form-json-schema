@@ -1,7 +1,4 @@
 const props = {
-  attributes: {
-    type: Object,
-  },
   children: {
     type: Array,
     default: () => ([]),
