@@ -1,15 +1,15 @@
 import { set } from 'lodash';
 
 const methods = {
-  vfsFieldGetAttributes() {
+  vfsFieldGetAttributes(options) {
     return {
-      attrs: this.attrs,
-      domProps: this.domProps,
-      class: this.class,
-      style: this.style,
-      key: this.key,
-      ref: this.ref,
-      props: this.props,
+      attrs: options.attrs,
+      domProps: options.domProps,
+      class: options.class,
+      style: options.style,
+      key: options.key,
+      ref: options.ref,
+      props: options.props,
     };
   },
   vfsFieldEventHandler(key, cb) {
