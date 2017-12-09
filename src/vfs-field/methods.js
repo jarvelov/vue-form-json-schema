@@ -27,7 +27,7 @@ const methods = {
 
     return Array.isArray(classes)
       ? classes.reduce((classesObj, key) => ({
-        ...classes,
+        ...classesObj,
         [key]: true,
       }), {})
       : classes;
