@@ -1,15 +1,21 @@
 import { merge, set } from 'lodash';
 
 const methods = {
-  vfsFieldGetAttributes(options = {}, defaultOptions = {}) {
+  vfsFieldGetAttributes({
+    class: optionsClass,
+    ...options
+  } = {}, {
+    class: defaultOptionsClass,
+    ...defaultOptions
+  } = {}) {
     if (!options) {
       return {};
     }
 
     const classFormatted = merge(
       {},
-      this.vfsFieldFormatClasses(options.class),
-      this.vfsFieldFormatClasses(defaultOptions.class),
+      this.vfsFieldFormatClasses(optionsClass),
+      this.vfsFieldFormatClasses(defaultOptionsClass),
     );
 
     return merge({}, defaultOptions, options, classFormatted);
