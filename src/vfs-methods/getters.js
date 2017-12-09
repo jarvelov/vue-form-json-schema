@@ -43,6 +43,7 @@ const vfsMethodsGettersMixin = {
         vfsFieldState: state,
         vfsFieldModel: value,
         vfsFieldModelKey: model,
+        vfsFieldModelValue: value,
         vfsFieldSchema: schema,
         vfsFieldUiSchema: uiSchema,
       },

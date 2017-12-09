@@ -46,6 +46,9 @@ const props = {
   vfsFieldUiSchema: {
     type: Object,
   },
+  vfsFieldModelValue: {
+    type: null,
+  },
   vfsModel: {
     type: Object,
     required: true,
