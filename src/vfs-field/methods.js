@@ -2,7 +2,25 @@ import { merge, set } from 'lodash';
 
 const methods = {
   vfsFieldGetAttributes(options, defaultOptions) {
-    return merge({}, defaultOptions, options);
+    const classFormatted = merge(
+      {},
+      this.vfsFieldFormatClasses(options.class),
+      this.vfsFieldFormatClasses(defaultOptions.class),
+    );
+
+    return merge({}, defaultOptions, options, classFormatted);
+  },
+  vfsFieldFormatClasses(classes) {
+    if (!classes) {
+      return {};
+    }
+
+    return Array.isArray(classes)
+      ? classes.reduce((classesObj, key) => ({
+        ...classes,
+        [key]: true,
+      }), {})
+      : classes;
   },
   vfsFieldEventHandler(key, cb) {
     return (data) => {
