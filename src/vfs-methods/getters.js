@@ -20,7 +20,7 @@ const vfsMethodsGettersMixin = {
     const value = fieldOptions.value || fallbackValue;
 
     return {
-      Component: component || this.getVfsFieldComponent(field),
+      component: component || this.getVfsFieldComponent(field),
       children: isArray
         ? children.reduce((flattenedChildren, child) => ([
           ...flattenedChildren,
