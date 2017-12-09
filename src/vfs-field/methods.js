@@ -52,14 +52,14 @@ const methods = {
       set(
         Object.assign({}, formattedEvents),
         this.vfsFieldFormatEventListenerKey(key),
-        this.vfsFieldEventHandler(key, this.events[key]),
+        this.vfsFieldEventHandler(key, events[key]),
       )
     ), {});
   },
   vfsFieldFormatEvents(events) {
-    return Array.isArray(this.events)
-      ? this.vfsFieldFormatEventsReducer(this.events)
-      : this.vfsFieldFormatEventsReducer(Object.keys(this.events));
+    return Array.isArray(events)
+      ? this.vfsFieldFormatEventsReducer(events)
+      : this.vfsFieldFormatEventsReducer(Object.keys(events));
   },
   vfsFieldFormatEventListenerKey(key) {
     const keyPrefix = this.prefixes.find(prefix => key.match(prefix));
