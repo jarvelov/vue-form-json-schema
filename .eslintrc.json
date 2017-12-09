@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": "airbnb",
+  "extends": "airbnb-base",
   "parser": "babel-eslint",
   "env": {
     "browser": true
@@ -9,9 +9,6 @@
     "no-unused-vars": ["error", {
       "vars": "all",
       "args": "none"
-    }],
-    "react/jsx-filename-extension": 0,
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
+    }]
   }
 }
