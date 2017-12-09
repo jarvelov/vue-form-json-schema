@@ -18,7 +18,9 @@ const methods = {
       this.vfsFieldFormatClasses(defaultOptionsClass),
     );
 
-    return merge({}, defaultOptions, options, classFormatted);
+    return merge({}, defaultOptions, options, {
+      class: classFormatted,
+    });
   },
   vfsFieldFormatClasses(classes) {
     if (!classes) {
