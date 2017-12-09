@@ -1,41 +1,8 @@
-import { set } from 'lodash';
+import { merge, set } from 'lodash';
 
 const methods = {
-  vfsFieldGetAttributes(options) {
-    if (!options) {
-      return {};
-    }
-    const attributes = {};
-
-    if (options.attrs) {
-      attributes.attrs = options.attrs;
-    }
-
-    if (options.class) {
-      attributes.class = options.class;
-    }
-
-    if (options.domProps) {
-      attributes.domProps = options.domProps;
-    }
-
-    if (options.key) {
-      attributes.key = options.key;
-    }
-
-    if (options.props) {
-      attributes.props = options.props;
-    }
-
-    if (options.ref) {
-      attributes.ref = options.ref;
-    }
-
-    if (options.style) {
-      attributes.style = options.style;
-    }
-
-    return attributes;
+  vfsFieldGetAttributes(options, defaultOptions) {
+    return merge({}, defaultOptions, options);
   },
   vfsFieldEventHandler(key, cb) {
     return (data) => {
