@@ -1,6 +1,17 @@
 import { set } from 'lodash';
 
 const methods = {
+  vfsFieldGetAttributes() {
+    return {
+      attrs: this.attrs,
+      domProps: this.domProps,
+      class: this.class,
+      style: this.style,
+      key: this.key,
+      ref: this.ref,
+      props: this.props,
+    };
+  },
   vfsFieldEventHandler(key, cb) {
     return (data) => {
       if (typeof cb === 'function') {
