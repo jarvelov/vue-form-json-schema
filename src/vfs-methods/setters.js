@@ -3,7 +3,7 @@ import {
   VFS_EVENT_FIELD_STATE_UPDATE,
   VFS_EVENT_MODEL_UPDATED,
   VFS_EVENT_STATE_UPDATED,
-} from 'vue-form-json-schema-constants';
+} from '../constants';
 
 const vfsMethodsSettersMixin = {
   setVfsFieldState(value, key) {
