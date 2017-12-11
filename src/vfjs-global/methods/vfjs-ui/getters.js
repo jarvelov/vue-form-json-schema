@@ -30,10 +30,15 @@ const vfjsUiGetters = {
     }
 
     const vfjsSchema = this.getVfjsSchema();
-    return Object.keys(vfjsSchema.dependencies).some(depKey => (
-      this.getVfjsFieldModelValid(depKey) &&
-      this.getVfjsUiFieldActiveDeep(vfjsSchema.dependencies[depKey], key)
-    ));
+    return Object.keys(vfjsSchema.dependencies).some((fieldKey) => {
+      const vfjsFieldState = this.getVfjsFieldState(fieldKey);
+      if (!vfjsFieldState || !vfjsFieldState.$dirty) {
+        return false;
+      }
+
+      return this.getVfjsFieldModelValid(fieldKey) &&
+        this.getVfjsUiFieldActiveDeep(vfjsSchema.dependencies[fieldKey], key);
+    });
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
