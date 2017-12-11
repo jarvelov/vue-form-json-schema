@@ -11,6 +11,9 @@ const watch = {
     this.vfjsUiSchema = [...value];
     this.setVfjsUiFieldsActive();
   },
+  state(value) {
+    this.setVfjsUiFieldsActive();
+  },
 };
 
 export default watch;
