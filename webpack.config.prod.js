@@ -58,6 +58,19 @@ module.exports = [
       lodash: 'lodash',
       vue: 'vue',
     },
+    module: {
+      rules: [{
+        test: /\.js$/,
+        include: [path.resolve(__dirname, './src')],
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          presets: [
+            ['es2015', { modules: false }],
+          ],
+        },
+      }],
+    },
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'vue-form-json-schema.esm.js',
