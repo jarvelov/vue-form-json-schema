@@ -7,3 +7,5 @@ export {
   vfsGlobalMixin,
   vfsViewer,
 };
+
+export default vfsViewer;
