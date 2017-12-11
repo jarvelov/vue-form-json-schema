@@ -30,7 +30,8 @@ const vfjsUiGetters = {
     }
 
     const vfjsSchema = this.getVfjsSchema();
-    return this.getVfjsUiFieldActiveDeep(vfjsSchema.dependencies, key);
+    return Object.keys(vfjsSchema.dependencies).some(depKey =>
+      this.getVfjsUiFieldActiveDeep(vfjsSchema.dependencies[depKey], key));
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
