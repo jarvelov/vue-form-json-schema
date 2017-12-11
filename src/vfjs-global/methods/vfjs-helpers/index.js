@@ -1,24 +1,23 @@
-import Vue from 'vue';
 import { set } from 'lodash';
 import vfjsFieldMixin from '../../../vfjs-field';
 
 const vfjsHelpers = {
-  vfjsHelperCreateField(uiSchema) {
+  vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
       children = [],
       component,
-      model = '',
+      model: vfjsFieldModelKey = '',
       fieldOptions = {},
-      ...options
-    } = uiSchema;
+    } = vfjsFieldUiSchema;
 
-    const isArray = this.vfjsHelperFieldIsArray(model);
-    const schema = this.getVfjsFieldSchema(model) || {};
-    const modelValue = this.getVfjsFieldModel(model);
-    const state = this.getVfjsFieldState(model) || {};
+    const isArray = this.vfjsHelperFieldIsArray(vfjsFieldModelKey);
 
-    const fallbackValue = (typeof modelValue !== 'undefined') ? modelValue : null;
-    const value = fieldOptions.value || fallbackValue;
+    const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
+    const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
+    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey) || {};
+    const vfjsFieldModelValue = this.getVfjsFieldModel(vfjsFieldModelKey);
+    const vfjsState = this.getVfjsState();
+    const vfjsModel = this.getVfjsModel();
 
     return {
       component: this.vfjsHelperCreateComponentWrapper(component, fieldOptions),
@@ -29,24 +28,24 @@ const vfjsHelpers = {
         ]), [])
         : children.map(this.vfjsHelperCreateField),
       props: {
-        ...options,
         ...fieldOptions,
         children,
-        model,
-        schema,
-        state,
-        uiSchema,
-        value,
+        value: vfjsFieldModelValue,
+        model: vfjsFieldModel,
+        modelKey: vfjsFieldModelKey,
+        schema: vfjsFieldSchema,
+        state: vfjsFieldState,
+        uiSchema: vfjsFieldUiSchema,
         vfjsBus: this.vfjsBus,
         vfjsFieldOptions: fieldOptions,
-        vfjsModel: this.getVfjsModel(),
-        vfjsState: this.getVfjsState(),
-        vfjsFieldState: state,
-        vfjsFieldModel: value,
-        vfjsFieldModelKey: model,
-        vfjsFieldModelValue: value,
-        vfjsFieldSchema: schema,
-        vfjsFieldUiSchema: uiSchema,
+        vfjsFieldModel,
+        vfjsFieldModelKey,
+        vfjsFieldModelValue,
+        vfjsFieldSchema,
+        vfjsFieldState,
+        vfjsFieldUiSchema,
+        vfjsModel,
+        vfjsState,
       },
     };
   },
