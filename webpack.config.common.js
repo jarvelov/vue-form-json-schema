@@ -13,10 +13,10 @@ module.exports = {
       loader: 'babel-loader',
     }],
   },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
+  externals: {
+    ajv: 'ajv',
+    // lodash: 'lodash',
+    vue: 'vue',
   },
   plugins: [
     new LodashModuleReplacementPlugin({

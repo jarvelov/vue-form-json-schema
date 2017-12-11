@@ -1,7 +1,7 @@
 import getters from './getters';
 
-const vfsSchema = {
+const vfjsSchema = {
   ...getters,
 };
 
-export default vfsSchema;
+export default vfjsSchema;

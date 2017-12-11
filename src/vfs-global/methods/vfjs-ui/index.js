@@ -1,9 +1,9 @@
 import getters from './getters';
 import setters from './setters';
 
-const vfsState = {
+const vfjsUi = {
   ...getters,
   ...setters,
 };
 
-export default vfsState;
+export default vfjsUi;

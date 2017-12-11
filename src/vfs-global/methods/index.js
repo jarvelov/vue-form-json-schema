@@ -1,19 +1,19 @@
-import vfsBus from './vfs-bus';
-import vfsModel from './vfs-model';
-import vfsState from './vfs-state';
-import vfsLifecycle from './vfs-lifecycle';
-import vfsSchema from './vfs-schema';
-import vfsUi from './vfs-ui';
-import vfsValidation from './vfs-validation';
+import vfjsBus from './vfjs-bus';
+import vfjsModel from './vfjs-model';
+import vfjsState from './vfjs-state';
+import vfjsLifecycle from './vfjs-lifecycle';
+import vfjsSchema from './vfjs-schema';
+import vfjsUi from './vfjs-ui';
+import vfjsValidation from './vfjs-validation';
 
-const vfsMethods = {
-  ...vfsBus,
-  ...vfsLifecycle,
-  ...vfsModel,
-  ...vfsSchema,
-  ...vfsState,
-  ...vfsUi,
-  ...vfsValidation,
+const vfjsMethods = {
+  ...vfjsBus,
+  ...vfjsLifecycle,
+  ...vfjsModel,
+  ...vfjsSchema,
+  ...vfjsState,
+  ...vfjsUi,
+  ...vfjsValidation,
 };
 
-export default vfsMethods;
+export default vfjsMethods;
