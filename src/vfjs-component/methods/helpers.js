@@ -31,7 +31,7 @@ const helpers = {
           return this.setVfjsFieldModel(data.target.value);
         }
 
-        return this.setVfjsFieldModel(null);
+        return this.setVfjsFieldModel(undefined);
       }
 
       return this.setVfjsFieldModel(data);
