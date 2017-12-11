@@ -5,7 +5,7 @@ const computed = {
     return {
       ...this.getVfjsFieldAttributes(
         this.vfjsFieldOptions,
-        merge({}, this.defaultOptions, {
+        merge({}, this.vfjsDefaultOptions, {
           props: this.$options.propsData,
         }),
       ),
