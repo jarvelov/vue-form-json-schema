@@ -19,7 +19,7 @@ const vfjsHelpers = {
     const vfjsModel = this.getVfjsModel();
 
     return {
-      component: this.vfjsHelperCreateComponentWrapper(component, fieldOptions),
+      component: this.vfjsHelperCreateComponentWrapper(component, vfjsFieldModelKey, fieldOptions),
       children: isArray
         ? children.reduce((flattenedChildren, child) => ([
           ...flattenedChildren,
@@ -47,15 +47,20 @@ const vfjsHelpers = {
       },
     };
   },
-  vfjsHelperCreateComponentWrapper(component, fieldOptions) {
+  vfjsHelperCreateComponentWrapper(component, key, fieldOptions) {
     if (typeof component === 'string' && component in this.vfjsComponents) {
       return this.vfjsHelperCreateComponentWrapper(
         this.vfjsComponents[component],
+        key,
         fieldOptions,
       );
     }
 
-    return {
+    if (key && key in this.vfjsComponentsCreated) {
+      return this.vfjsComponentsCreated[key];
+    }
+
+    const vfjsComponent = {
       name: 'vue-form-json-schema-field-wrapper',
       mixins: [vfjsComponentMixin],
       render() {
@@ -64,6 +69,12 @@ const vfjsHelpers = {
         }, this.$slots.default);
       },
     };
+
+    if (key) {
+      this.vfjsComponentsCreated[key] = vfjsComponent;
+    }
+
+    return vfjsComponent;
   },
   vfjsHelperApplyFieldModel(key, value) {
     const newVfjsModel = Object.assign({}, this.getVfjsModel());
