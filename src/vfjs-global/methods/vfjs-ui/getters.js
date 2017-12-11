@@ -25,7 +25,7 @@ const vfjsUiGetters = {
   },
   // TODO: When getVfjsUiFieldActive is renamed, let getVfjsFieldActive take that name
   getVfjsFieldActive(key) {
-    if (this.getVfjsFieldSchema(key) || this.getVfjsFieldModel(key)) {
+    if (this.getVfjsFieldSchema(key)) {
       return true;
     }
 
