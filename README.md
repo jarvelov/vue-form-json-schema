@@ -10,21 +10,74 @@ For form and internal validation
 
 ## Usage
 
-There are three ways this package is distributed. Use whatever suits your requirements.
+There are two ways this package is distributed. Use whatever suits your requirements.
 
-### Browser
+### UMD (`pkg.main`)
 
-If directly in a browser using a `<script>` tag
+This is the way to go if you want to use the package with AMD/RequireJS or directly in the browser.
 
-### UMD
+### Module (`pkg.module`)
 
-This is the way to go if you want to use the package
+> If you use `webpack` or `rollup` this version will be used automatically.
 
-### Module
+#### Option 1
+
+Import everything and use globally
 
 ```js
+// Register and use globally
 import VueFormJsonSchema from 'vue-form-json-schema';
-import * as components from 'vue-form-json-schema';
+import VueFormJsonSchemaCoreComponents from 'vue-form-json-schema-core-components';
+
+Vue.component('vue-form-json-schema', VueFormJsonSchema);
+Vue.use(VueFormJsonSchemaCoreComponents);
+```
+
+```html
+<template>
+    <vue-form-json-schema
+      :model="model"
+      :schema="schema"
+      :ui-schema="uiSchema"
+      :on-change="onChange"
+    >
+  </vue-form-json-schema>
+</template>
+```
+
+#### Option 2
+
+Import and use locally
+
+```html
+<script>
+// Import vue-form-json-schema
+import VueFormJsonSchema from 'vue-form-json-schema';
+
+// Import all core componets
+import { VueFormJsonSchemaCoreComponents } from 'vue-form-json-schema-core-components';
+
+// Or: Import only some core componets
+// import { vfjsSelect, vfjsTextarea } from 'vue-form-json-schema-core-components';
+// const components = { vfjsSelect, vfjsTextarea };
+
+// Include custom components
+import MyCustomComponent from './my-custom-component';
+const components = Object.assign({}, VueFormJsonSchemaCoreComponents, {
+  MyCustomComponent
+});
+
+</script>
+<template>
+    <vue-form-json-schema
+      :components="componets"
+      :model="model"
+      :schema="schema"
+      :ui-schema="uiSchema"
+      :on-change="onChange"
+    >
+  </vue-form-json-schema>
+</template>
 ```
 
 ### Source
@@ -47,6 +100,12 @@ And then add to `.babelrc`
 "plugins": [
   "transform-object-rest-spread"
 ]
+```
+
+Now you can simply import the source directly into your project!
+
+```js
+import VueFormJsonSchema from 'vue-form-json-schema/src'
 ```
 
 ### TODO
