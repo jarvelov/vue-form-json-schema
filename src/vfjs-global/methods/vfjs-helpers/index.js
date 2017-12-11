@@ -21,7 +21,7 @@ const vfjsHelpers = {
     const value = fieldOptions.value || fallbackValue;
 
     return {
-      component: this.vfjsHelperCreateComponentWrapper(component),
+      component: this.vfjsHelperCreateComponentWrapper(component, fieldOptions),
       children: isArray
         ? children.reduce((flattenedChildren, child) => ([
           ...flattenedChildren,
@@ -50,13 +50,13 @@ const vfjsHelpers = {
       },
     };
   },
-  vfjsHelperCreateComponentWrapper(component) {
+  vfjsHelperCreateComponentWrapper(component, fieldOptions) {
     return {
       name: 'vue-form-json-schema-field-wrapper',
       mixins: [vfjsFieldMixin],
       computed: {
         attributes() {
-          return this.vfjsFieldGetAttributes(this.vfjsFieldOptions);
+          return this.vfjsFieldGetAttributes(fieldOptions);
         },
       },
       render() {
