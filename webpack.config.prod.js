@@ -49,7 +49,6 @@ module.exports = [
       filename: 'vue-form-json-schema.common.js',
       libraryTarget: 'commonjs2',
       library: 'VueFormJsonSchema',
-      umdNamedDefine: true,
     },
   }),
   merge(common, production, {
@@ -64,7 +63,6 @@ module.exports = [
       filename: 'vue-form-json-schema.esm.js',
       libraryTarget: 'commonjs2',
       library: 'VueFormJsonSchema',
-      umdNamedDefine: true,
     },
   }),
 ];
