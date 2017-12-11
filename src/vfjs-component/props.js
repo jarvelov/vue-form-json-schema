@@ -4,7 +4,7 @@ const props = {
     default: () => ([]),
   },
   model: {
-    type: null
+    type: null,
   },
   modelKey: {
     type: String,
