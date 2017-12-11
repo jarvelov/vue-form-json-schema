@@ -6,7 +6,9 @@ const computed = {
     return this.vfjsSchema.every(this.isVfjsFieldModelValid);
   },
   vfjsFields() {
-    return this.vfjsFieldsActive.map(this.vfjsHelperCreateField);
+    return this.vfjsFieldsActive
+      .filter(field => field)
+      .map(this.vfjsHelperCreateField);
   },
 };
 
