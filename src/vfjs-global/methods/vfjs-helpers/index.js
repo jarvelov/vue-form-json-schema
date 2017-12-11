@@ -56,10 +56,7 @@ const vfjsHelpers = {
       mixins: [vfjsFieldMixin],
       computed: {
         attributes() {
-          return this.vfjsFieldGetAttributes(
-            this.vfjsFieldOptions,
-            this.defaultAttributes,
-          );
+          return this.vfjsFieldGetAttributes(this.vfjsFieldOptions);
         },
       },
       render() {
