@@ -1,76 +1,65 @@
 # Vue Form JSON Schema
 
-### Dependencies
 
-#### Ajv
-For form and internal validation
+## Quick start
 
-#### Lodash
-`get`, `set` and `merge` are used, since reinventing the wheel isn't my thing. Bundle size is very important though and considered though so
+> For browser/UMD instructions check the Usage section below
+
+Install it
+
+`npm install vue-form-json-schema`
+
+Import it
+
+```js
+import VueFormJsonSchema from 'vue-form-json-schema';
+Vue.component('vue-form-json-schema', VueFormJsonSchema);
+```
+
+## Demo
+
+jsfiddle/gitbook
 
 ## Usage
 
-There are two ways this package is distributed. Use whatever suits your requirements.
+Check out [more examples](#examples)
 
-### UMD (`pkg.main`)
-
-This is the way to go if you want to use the package with AMD/RequireJS or directly in the browser.
-
-### Module (`pkg.module`)
-
-> If you use `webpack` or `rollup` this version will be used automatically.
-
-#### Option 1
-
-Import everything and use globally
+Basic example with one field
 
 ```js
-// Register and use globally
-import VueFormJsonSchema from 'vue-form-json-schema';
-import VueFormJsonSchemaCoreComponents from 'vue-form-json-schema-core-components';
-
-Vue.component('vue-form-json-schema', VueFormJsonSchema);
-Vue.use(VueFormJsonSchemaCoreComponents);
-```
-
-```html
-<template>
-    <vue-form-json-schema
-      :model="model"
-      :schema="schema"
-      :ui-schema="uiSchema"
-      :on-change="onChange"
-    >
-  </vue-form-json-schema>
-</template>
-```
-
-#### Option 2
-
-Import and use locally
-
-```html
 <script>
-// Import vue-form-json-schema
-import VueFormJsonSchema from 'vue-form-json-schema';
-
-// Import all core components
-import { VueFormJsonSchemaCoreComponents } from 'vue-form-json-schema-core-components';
-
-// Or: Import only some core components
-// import { vfjsSelect, vfjsTextarea } from 'vue-form-json-schema-core-components';
-// const components = { vfjsSelect, vfjsTextarea };
-
-// Include custom components
-import MyCustomComponent from './my-custom-component';
-const components = Object.assign({}, VueFormJsonSchemaCoreComponents, {
-  MyCustomComponent
-});
-
+  export default {
+    components: {
+      'vue-form-json-schema': VueFormJsonSchema
+    },
+    data () {
+      return {
+        model: {},
+        schema: {
+          type: 'object',
+          properties: {
+            username: {
+              type: 'string',
+              minLenght: 3
+            }
+          }
+        }
+        uiSchema: {
+          component: 'my-input-component',
+          model: 'username',
+        },
+      }
+    },
+    methods: {
+      onChange(value) {
+        this.model = value;
+      }
+    }
+    ...
+  }
 </script>
 <template>
     <vue-form-json-schema
-      :components="components"
       :model="model"
       :schema="schema"
       :ui-schema="uiSchema"
@@ -80,33 +69,18 @@ const components = Object.assign({}, VueFormJsonSchemaCoreComponents, {
 </template>
 ```
 
-### Source
+### Dependencies
 
-This package is built with ES2015 (ES6) and as such uses:
+#### Ajv
+For form validation using [JSON Schema](http://json-schema.org/) and internal validation
 
-  * Promises
-  * Arrow functions,
-  * `const` & `let`
-  * ...and other ES2015 goodies.
+#### Lodash
+`get`, `set` and `merge` are used throughout the package.
+Bundle size is very important though and is always considered and so we heavily strip down lodash to only include the absolute necessities
 
-The [Stage 3 proposal rest/spread](https://github.com/tc39/proposal-object-rest-spread) syntax is also used and as such you will need to `babel`, before the code can be used in a browser environment.
-For babel you need the following plugins:
+#### Vue
 
-`npm install --save-dev babel-plugin-transform-object-rest-spread`
-
-And then add to `.babelrc`
-
-```json
-"plugins": [
-  "transform-object-rest-spread"
-]
-```
-
-Now you can simply import the source directly into your project!
-
-```js
-import VueFormJsonSchema from 'vue-form-json-schema/src'
-```
+Tested with v2.5.9 but will probably work on any version >= v2.4.0
 
 ### TODO
 
