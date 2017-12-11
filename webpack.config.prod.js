@@ -17,16 +17,52 @@ module.exports = [
     entry: path.resolve(__dirname, './src/plugin.js'),
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: '[name].js',
+      filename: 'vue-form-json-schema.umd.full.js',
       libraryTarget: 'window',
       library: 'VueFormJsonSchema',
     },
   }),
   merge(common, production, {
+    entry: path.resolve(__dirname, './src/index.js'),
+    externals: {
+      ajv: 'ajv',
+      lodash: 'lodash',
+      vue: 'vue',
+    },
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: '[name].min.js',
+      filename: 'vue-form-json-schema.umd.js',
       libraryTarget: 'umd',
+      library: 'VueFormJsonSchema',
+      umdNamedDefine: true,
+    },
+  }),
+  merge(common, production, {
+    entry: path.resolve(__dirname, './src/index.js'),
+    externals: {
+      ajv: 'ajv',
+      lodash: 'lodash',
+      vue: 'vue',
+    },
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'vue-form-json-schema.common.js',
+      libraryTarget: 'commonjs2',
+      library: 'VueFormJsonSchema',
+      umdNamedDefine: true,
+    },
+  }),
+  merge(common, production, {
+    entry: path.resolve(__dirname, './src/index.js'),
+    externals: {
+      ajv: 'ajv',
+      lodash: 'lodash',
+      vue: 'vue',
+    },
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'vue-form-json-schema.esm.js',
+      libraryTarget: 'commonjs2',
       library: 'VueFormJsonSchema',
       umdNamedDefine: true,
     },
