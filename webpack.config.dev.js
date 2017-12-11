@@ -3,10 +3,15 @@ const merge = require('webpack-merge');
 const webpackBase = require('./webpack.config.common');
 
 module.exports = merge(webpackBase, {
-  devtool: 'inline-source-map',
+  entry: path.resolve(__dirname, './src/index.js'),
+  externals: {
+    ajv: 'ajv',
+    lodash: 'lodash',
+    vue: 'vue',
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].js',
+    filename: 'vue-form-json-schema.esm.js',
     libraryTarget: 'commonjs2',
   },
 });
