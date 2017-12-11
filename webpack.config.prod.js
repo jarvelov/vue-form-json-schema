@@ -18,7 +18,7 @@ module.exports = [
     entry: path.resolve(__dirname, './src/plugin.js'),
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: 'vue-form-json-schema.umd.bundle.js',
+      filename: 'vue-form-json-schema.browser.bundle.js',
       libraryTarget: 'window',
       library: 'VueFormJsonSchema',
     },
