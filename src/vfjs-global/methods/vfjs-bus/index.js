@@ -9,6 +9,7 @@ import {
   VFJS_EVENT_STATE_UPDATED,
   VFJS_EXTERNAL_EVENT_CHANGE,
   VFJS_EXTERNAL_EVENT_STATE_CHANGE,
+  VFJS_EXTERNAL_EVENT_VALIDATED,
 } from '../../../constants';
 
 const vfjsBus = {
@@ -80,6 +81,8 @@ const vfjsBus = {
           vfjsErrors,
         });
         this.setVfjsState(newState);
+
+        this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, this.getVfjsState());
 
         if (cb && typeof cb === 'function') {
           cb(vfjsErrors);
