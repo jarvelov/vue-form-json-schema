@@ -20,40 +20,40 @@ const props = {
   value: {
     type: null,
   },
-  vfsBus: {
+  vfjsBus: {
     type: Object,
     required: true,
   },
-  vfsFieldErrors: {
+  vfjsFieldErrors: {
     type: Array,
   },
-  vfsFieldOptions: {
+  vfjsFieldOptions: {
     type: Object,
   },
-  vfsFieldModel: {
+  vfjsFieldModel: {
     type: null,
   },
-  vfsFieldModelKey: {
+  vfjsFieldModelKey: {
     type: String,
     required: true,
   },
-  vfsFieldSchema: {
+  vfjsFieldSchema: {
     type: Object,
   },
-  vfsFieldState: {
+  vfjsFieldState: {
     type: Object,
   },
-  vfsFieldUiSchema: {
+  vfjsFieldUiSchema: {
     type: Object,
   },
-  vfsFieldModelValue: {
+  vfjsFieldModelValue: {
     type: null,
   },
-  vfsModel: {
+  vfjsModel: {
     type: Object,
     required: true,
   },
-  vfsState: {
+  vfjsState: {
     type: Object,
   },
 };

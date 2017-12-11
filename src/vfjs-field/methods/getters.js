@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 const getters = {
-  vfsFieldGetAttributes({
+  vfjsFieldGetAttributes({
     class: optionsClass,
     ...options
   } = {}, {
@@ -14,8 +14,8 @@ const getters = {
 
     const classFormatted = merge(
       {},
-      this.vfsFieldHelperFormatClasses(optionsClass),
-      this.vfsFieldHelperFormatClasses(defaultOptionsClass),
+      this.vfjsFieldHelperFormatClasses(optionsClass),
+      this.vfjsFieldHelperFormatClasses(defaultOptionsClass),
     );
 
     return merge({}, defaultOptions, options, {

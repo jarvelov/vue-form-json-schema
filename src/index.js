@@ -1,11 +1,11 @@
-import vfsFieldMixin from './vfs-field';
-import vfsGlobalMixin from './vfs-global';
-import vfsViewer from './vfs-viewer';
+import vfjsFieldMixin from './vfjs-field';
+import vfjsGlobalMixin from './vfjs-global';
+import vfjsViewer from './vfjs-viewer';
 
 export {
-  vfsFieldMixin,
-  vfsGlobalMixin,
-  vfsViewer,
+  vfjsFieldMixin,
+  vfjsGlobalMixin,
+  vfjsViewer,
 };
 
-export default vfsViewer;
+export default vfjsViewer;

@@ -4,12 +4,12 @@ import methods from './methods';
 import props from './props';
 import watch from './watch';
 
-const vfsGlobalMixin = {
+const vfjsGlobalMixin = {
   created() {
-    this.vfsInitialize();
+    this.vfjsInitialize();
   },
   beforeDestroy() {
-    this.vfsDestroy();
+    this.vfjsDestroy();
   },
   computed,
   data,
@@ -18,4 +18,4 @@ const vfsGlobalMixin = {
   watch,
 };
 
-export default vfsGlobalMixin;
+export default vfjsGlobalMixin;

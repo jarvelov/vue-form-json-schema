@@ -1,11 +1,11 @@
-import vfsGlobalMixin from '../vfs-global';
+import vfjsGlobalMixin from '../vfjs-global';
 
 const VueFormJsonSchemaViewer = {
-  name: 'VueFormJsonSchemaViewer',
-  mixins: [vfsGlobalMixin],
+  name: 'vue-form-json-schema-viewer',
+  mixins: [vfjsGlobalMixin],
   computed: {
     fields() {
-      return this.createFields(this.vfsFields);
+      return this.createFields(this.VFJSFields);
     },
   },
   methods: {

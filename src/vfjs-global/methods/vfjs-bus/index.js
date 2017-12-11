@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import { set } from 'lodash';
 import {
-  VFS_EVENT_FIELD_MODEL_UPDATE,
-  VFS_EVENT_FIELD_MODEL_VALIDATE,
-  VFS_EVENT_FIELD_STATE_UPDATE,
-  VFS_EVENT_MODEL_UPDATED,
-  VFS_EVENT_MODEL_VALIDATE,
-  VFS_EVENT_STATE_UPDATED,
-  VFS_EXTERNAL_EVENT_CHANGE,
-  VFS_EXTERNAL_EVENT_STATE_CHANGE,
+  VFJS_EVENT_FIELD_MODEL_UPDATE,
+  VFJS_EVENT_FIELD_MODEL_VALIDATE,
+  VFJS_EVENT_FIELD_STATE_UPDATE,
+  VFJS_EVENT_MODEL_UPDATED,
+  VFJS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_STATE_UPDATED,
+  VFJS_EXTERNAL_EVENT_CHANGE,
+  VFJS_EXTERNAL_EVENT_STATE_CHANGE,
 } from '../../../constants';
 
 const vfjsBus = {
@@ -31,10 +31,10 @@ const vfjsBus = {
   },
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
-      [VFS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
+      [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
         const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
-        this.vfjsBus.$emit(VFS_EVENT_MODEL_VALIDATE, {
+        this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel,
           cb: (vfjsErrors) => {
             const vfjsFieldErrors = this.getVfjsFieldModelValidationErrors(key, value);
@@ -50,8 +50,8 @@ const vfjsBus = {
           },
         });
       },
-      [VFS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
-        this.vfjsBus.$emit(VFS_EVENT_FIELD_MODEL_VALIDATE, {
+      [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
+        this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
           key,
           value,
           cb: (errors) => {
@@ -69,12 +69,12 @@ const vfjsBus = {
           },
         });
       },
-      [VFS_EVENT_FIELD_STATE_UPDATE]: ({ key, value }) => {
+      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value }) => {
         const newVfjsState = Object.assign({}, this.getVfjsState());
         set(newVfjsState, key, value);
         this.setVfjsState(newVfjsState);
       },
-      [VFS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
+      [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
         const newState = Object.assign({}, this.getVfjsState(), {
           vfjsErrors,
@@ -85,12 +85,12 @@ const vfjsBus = {
           cb(vfjsErrors);
         }
       },
-      [VFS_EVENT_MODEL_UPDATED]: () => {
+      [VFJS_EVENT_MODEL_UPDATED]: () => {
         this.setVfjsUiFieldsActive();
-        this.$emit(VFS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
+        this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
       },
-      [VFS_EVENT_STATE_UPDATED]: () => {
-        this.$emit(VFS_EXTERNAL_EVENT_STATE_CHANGE, this.getVfjsState());
+      [VFJS_EVENT_STATE_UPDATED]: () => {
+        this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, this.getVfjsState());
       },
     };
 

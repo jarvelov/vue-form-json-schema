@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import getters from './getters';
 import {
-  VFS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_MODEL_VALIDATE,
 } from '../../../constants';
 
 const vfjsValidation = {
@@ -10,7 +10,7 @@ const vfjsValidation = {
 
     // Check if validation is enabled and set to run on load
     if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
-      this.vfjsBus.$emit(VFS_EVENT_MODEL_VALIDATE);
+      this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE);
     }
   },
   ...getters,
