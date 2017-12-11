@@ -20,7 +20,7 @@ const vfjsLifecycle = {
 
     // Set up options
     this.vfjsOptions = Object.assign({}, {
-      allowInvalidModel: false,
+      allowInvalidModel: true,
       validate: true,
       validateOnLoad: true,
       validateOnChange: true,
