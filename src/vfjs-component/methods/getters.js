@@ -32,11 +32,15 @@ const getters = {
       this.vfjsFieldFormatEvents(defaultNativeOn),
     );
 
-    return merge({}, defaultOptions, options, {
+    const computedOptions = {
       class: classFormatted,
       on: onFormatted,
       nativeOn: nativeOnFormatted,
-    });
+    };
+
+    const fieldOptionsAsProps = { props: options };
+
+    return merge({}, defaultOptions, fieldOptionsAsProps, options, computedOptions);
   },
 };
 
