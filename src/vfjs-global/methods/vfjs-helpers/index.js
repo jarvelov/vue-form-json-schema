@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { set } from 'lodash';
+import vfjsFieldMixin from '../../../vfjs-field';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(uiSchema) {
@@ -7,7 +8,6 @@ const vfjsHelpers = {
       children = [],
       component,
       model = '',
-      field,
       fieldOptions = {},
       ...options
     } = uiSchema;
@@ -21,7 +21,7 @@ const vfjsHelpers = {
     const value = fieldOptions.value || fallbackValue;
 
     return {
-      component: component || this.vfjsComponents[field] || Vue.component(field),
+      component: this.vfjsHelperCreateComponentWrapper(component),
       children: isArray
         ? children.reduce((flattenedChildren, child) => ([
           ...flattenedChildren,
@@ -47,6 +47,25 @@ const vfjsHelpers = {
         vfjsFieldModelValue: value,
         vfjsFieldSchema: schema,
         vfjsFieldUiSchema: uiSchema,
+      },
+    };
+  },
+  vfjsHelperCreateComponentWrapper(component) {
+    return {
+      name: 'vue-form-json-schema-field-wrapper',
+      mixins: [vfjsFieldMixin],
+      computed: {
+        attributes() {
+          return this.vfjsFieldGetAttributes(
+            this.vfjsFieldOptions,
+            this.defaultAttributes,
+          );
+        },
+      },
+      render() {
+        return this.$createElement(component, {
+          ...this.attributes,
+        }, this.$slots.default);
       },
     };
   },
