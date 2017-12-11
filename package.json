@@ -2,7 +2,7 @@
   "name": "vue-form-json-schema",
   "version": "1.2.2",
   "description": "Vue package for using forms with JSON schema",
-  "main": "dist/vue-form-json-schema.umd.bundle.js",
+  "main": "dist/vue-form-json-schema.umd.js",
   "module": "dist/vue-form-json-schema.esm.js",
   "scripts": {
     "build": "webpack -p --config webpack.config.prod.js",

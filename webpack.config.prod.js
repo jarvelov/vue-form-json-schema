@@ -5,7 +5,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const babelPluginTransformObjectRestSpread = require('babel-plugin-transform-object-rest-spread');
 
 const production = {
+  entry: path.resolve(__dirname, './src/index.js'),
   devtool: 'source-map',
+  externals: {
+    ajv: 'ajv',
+    lodash: 'lodash',
+    vue: 'vue',
+  },
   plugins: [
     new UglifyJSPlugin({
       sourceMap: true,
@@ -13,26 +19,8 @@ const production = {
   ],
 };
 
-const externals = {
-  ajv: 'ajv',
-  lodash: 'lodash',
-  vue: 'vue',
-};
-
 module.exports = [
   merge(common, production, {
-    entry: path.resolve(__dirname, './src/plugin.js'),
-    output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: 'vue-form-json-schema.umd.bundle.js',
-      libraryTarget: 'umd',
-      library: 'VueFormJsonSchema',
-      umdNamedDefine: true,
-    },
-  }),
-  merge(common, production, {
-    entry: path.resolve(__dirname, './src/index.js'),
-    externals,
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'vue-form-json-schema.umd.js',
@@ -42,8 +30,6 @@ module.exports = [
     },
   }),
   merge(common, production, {
-    entry: path.resolve(__dirname, './src/index.js'),
-    externals,
     module: {
       rules: [{
         test: /\.js$/,
