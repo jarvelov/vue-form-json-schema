@@ -1,18 +1,18 @@
 import {
-  Vfjs_EVENT_FIELD_MODEL_UPDATE,
-  Vfjs_EVENT_FIELD_STATE_UPDATE,
+  VFJS_EVENT_FIELD_MODEL_UPDATE,
+  VFJS_EVENT_FIELD_STATE_UPDATE,
 } from '../../constants';
 
 const setters = {
   setVfjsFieldState(value, key) {
-    this.vfjsBus.$emit(Vfjs_EVENT_FIELD_STATE_UPDATE, {
+    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
       key: key || this.vfjsFieldModelKey,
       value,
     });
   },
   setVfjsFieldModel(value, key) {
     return new Promise((resolve, reject) => {
-      this.vfjsBus.$emit(Vfjs_EVENT_FIELD_MODEL_UPDATE, {
+      this.vfjsBus.$emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
         key: key || this.vfjsFieldModelKey,
         value,
         cb: (errors) => {
