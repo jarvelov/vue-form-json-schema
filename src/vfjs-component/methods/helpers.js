@@ -26,8 +26,12 @@ const helpers = {
         return this.setVfjsFieldModel(cb(data));
       }
 
-      if (data instanceof Event && data.target && data.target.value) {
-        return this.setVfjsFieldModel(data.target.value);
+      if (data instanceof Event) {
+        if (data.target && data.target.value) {
+          return this.setVfjsFieldModel(data.target.value);
+        }
+
+        return this.setVfjsFieldModel(null);
       }
 
       return this.setVfjsFieldModel(data);
