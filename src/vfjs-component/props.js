@@ -4,8 +4,7 @@ const props = {
     default: () => ([]),
   },
   model: {
-    type: Object,
-    required: true,
+    type: null
   },
   modelKey: {
     type: String,
@@ -38,7 +37,7 @@ const props = {
     type: Array,
   },
   vfjsFieldModel: {
-    type: Object,
+    type: null,
   },
   vfjsFieldModelKey: {
     type: String,
