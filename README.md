@@ -39,13 +39,12 @@ This package is built with ES2015 (ES6) and as such uses:
 The [Stage 3 proposal rest/spread](https://github.com/tc39/proposal-object-rest-spread) syntax is also used and as such you will need to `babel`, before the code can be used in a browser environment.
 For babel you need the following plugins:
 
-`npm install --save-dev babel-plugin-transform-es2015-destructuring babel-plugin-transform-object-rest-spread`
+`npm install --save-dev babel-plugin-transform-object-rest-spread`
 
 And then add to `.babelrc`
 
 ```json
 "plugins": [
-  "transform-es2015-destructuring",
   "transform-object-rest-spread"
 ]
 ```
