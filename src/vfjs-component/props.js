@@ -19,6 +19,10 @@ const props = {
     type: Object,
     required: true,
   },
+  tag: {
+    type: String,
+    default: 'div',
+  },
   value: {
     type: null,
   },
@@ -33,15 +37,18 @@ const props = {
   vfjsFieldErrors: {
     type: Array,
   },
-  vfjsFieldOptions: {
-    type: Object,
-    required: true,
-  },
   vfjsFieldModel: {
     type: Object,
   },
   vfjsFieldModelKey: {
     type: String,
+    required: true,
+  },
+  vfjsFieldModelValue: {
+    type: null,
+  },
+  vfjsFieldOptions: {
+    type: Object,
     required: true,
   },
   vfjsFieldSchema: {
@@ -52,12 +59,13 @@ const props = {
     type: Object,
     required: true,
   },
+  vfjsFieldTag: {
+    type: String,
+    default: 'div',
+  },
   vfjsFieldUiSchema: {
     type: Object,
     required: true,
-  },
-  vfjsFieldModelValue: {
-    type: null,
   },
   vfjsModel: {
     type: Object,
