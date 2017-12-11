@@ -22,9 +22,21 @@ This is the way to go if you want to use the package
 
 ### Module
 
-Module is built with ES2015 (ES6) and as such uses `arrow functions`, `const`/`let` and other ES2015 goodies.
-The [Stage 3 proposal rest/spread](https://github.com/tc39/proposal-object-rest-spread) syntax is also used and as such you will need to use a transpiler, such as `babel`, before it can be used in a browser environment.
+```js
+import VueFormJsonSchema from 'vue-form-json-schema';
+import * as components from 'vue-form-json-schema';
+```
 
+### Source
+
+This package is built with ES2015 (ES6) and as such uses:
+
+  * Promises
+  * Arrow functions,
+  * `const` & `let`
+  * ...and other ES2015 goodies.
+
+The [Stage 3 proposal rest/spread](https://github.com/tc39/proposal-object-rest-spread) syntax is also used and as such you will need to `babel`, before the code can be used in a browser environment.
 For babel you need the following plugins:
 
 `npm install --save-dev babel-plugin-transform-es2015-destructuring babel-plugin-transform-object-rest-spread`
@@ -36,11 +48,6 @@ And then add to `.babelrc`
   "transform-es2015-destructuring",
   "transform-object-rest-spread"
 ]
-```
-
-```js
-import VueFormJsonSchema from 'vue-form-json-schema';
-import * as components from 'vue-form-json-schema';
 ```
 
 ### TODO
