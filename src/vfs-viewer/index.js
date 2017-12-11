@@ -1,7 +1,7 @@
 import vfsGlobalMixin from '../vfs-global';
 
-const VueFormSchemaViewer = {
-  name: 'VueFormSchemaViewer',
+const VueFormJsonSchemaViewer = {
+  name: 'VueFormJsonSchemaViewer',
   mixins: [vfsGlobalMixin],
   computed: {
     fields() {
@@ -25,4 +25,4 @@ const VueFormSchemaViewer = {
   },
 };
 
-export default VueFormSchemaViewer;
+export default VueFormJsonSchemaViewer;
