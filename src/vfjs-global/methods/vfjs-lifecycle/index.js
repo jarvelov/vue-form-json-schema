@@ -11,10 +11,14 @@ const vfjsLifecycle = {
 
     // Set the available components
     this.vfjsComponents = Object.assign({}, this.components);
+    // vfjsComponentsCreated holds the rendered components so we can reuse them
+    // without having to create a new component every time something changes
     this.vfjsComponentsCreated = {};
 
     this.vfjsSchema = Object.assign({}, this.schema);
     this.vfjsUiSchema = [...this.uiSchema];
+
+    // Set up options
     this.vfjsOptions = Object.assign({}, {
       allowInvalidModel: false,
       validate: true,
