@@ -13,6 +13,12 @@ const helpers = {
       return {};
     }
 
+    if (typeof classes === 'string') {
+      return {
+        [classes]: true,
+      };
+    }
+
     return Array.isArray(classes)
       ? classes.reduce((classesObj, key) => ({
         ...classesObj,
