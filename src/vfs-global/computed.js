@@ -6,7 +6,7 @@ const computed = {
     return this.vfsSchema.every(this.isVfsFieldModelValid);
   },
   vfsFields() {
-    return this.vfsFieldsActive.map(this.getVfsField);
+    return this.vfsFieldsActive.map(this.vfsHelperCreateField);
   },
 };
 
