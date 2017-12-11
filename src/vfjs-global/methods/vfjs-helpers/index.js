@@ -55,8 +55,16 @@ const vfjsHelpers = {
       name: 'vue-form-json-schema-field-wrapper',
       mixins: [vfjsFieldMixin],
       computed: {
+        defaultOptions() {
+          return {
+            props: this.$options.propsData,
+          };
+        },
         attributes() {
-          return this.vfjsFieldGetAttributes(fieldOptions);
+          return this.vfjsFieldGetAttributes(
+            fieldOptions,
+            this.defaultOptions,
+          );
         },
       },
       render() {
