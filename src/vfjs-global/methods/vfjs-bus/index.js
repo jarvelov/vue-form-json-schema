@@ -56,13 +56,10 @@ const vfjsBus = {
           key,
           value,
           cb: (errors) => {
-            // TODO: Allow to skip updating value if not valid
-            // if (!this.vfjsOptions.allowInvalid) {
-            //   return cb(errors);
-            // }
-
-            const newModel = this.vfjsHelperApplyFieldModel(key, value);
-            this.setVfjsModel(newModel);
+            if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
+              const newModel = this.vfjsHelperApplyFieldModel(key, value);
+              this.setVfjsModel(newModel);
+            }
 
             if (cb && typeof cb === 'function') {
               cb(errors);
