@@ -24,6 +24,16 @@ module.exports = [
     },
   }),
   merge(common, production, {
+    entry: path.resolve(__dirname, './src/plugin.js'),
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'vue-form-json-schema.umd.bundle.js',
+      libraryTarget: 'umd',
+      library: 'VueFormJsonSchema',
+      umdNamedDefine: true,
+    },
+  }),
+  merge(common, production, {
     entry: path.resolve(__dirname, './src/index.js'),
     externals: {
       ajv: 'ajv',
