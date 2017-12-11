@@ -5,7 +5,7 @@ const VueFormJsonSchemaViewer = {
   mixins: [vfjsGlobalMixin],
   computed: {
     fields() {
-      return this.createFields(this.vfFields);
+      return this.createFields(this.vfjsFields);
     },
   },
   methods: {
