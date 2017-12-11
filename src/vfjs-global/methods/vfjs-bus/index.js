@@ -79,7 +79,8 @@ const vfjsBus = {
         });
         this.setVfjsState(newState);
 
-        this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, this.getVfjsState());
+        const vfjsState = this.getVfjsState();
+        this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
 
         if (cb && typeof cb === 'function') {
           cb(vfjsErrors);
