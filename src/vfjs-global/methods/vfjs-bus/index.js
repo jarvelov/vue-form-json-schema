@@ -71,6 +71,8 @@ const vfjsBus = {
         const newVfjsState = Object.assign({}, this.getVfjsState());
         set(newVfjsState, key, value);
         this.setVfjsState(newVfjsState);
+
+        this.setVfjsUiFieldsActive();
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
