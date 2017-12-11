@@ -1,6 +1,6 @@
 const computed = {
   vfjsAttributes() {
-    return this.vfjsGetFieldAttributes(
+    return this.getVfjsFieldAttributes(
       this.vfjsFieldOptions,
       this.defaultOptions,
       {

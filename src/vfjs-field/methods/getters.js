@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 const getters = {
-  vfjsFieldGetAttributes({
+  getVfjsFieldAttributes({
     class: optionsClass,
     on: optionsOn,
     nativeOn: optionsNativeOn,
