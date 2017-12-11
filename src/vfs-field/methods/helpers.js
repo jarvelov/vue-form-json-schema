@@ -1,28 +1,12 @@
-import { merge, set } from 'lodash';
+import { set } from 'lodash';
 
-const methods = {
-  vfsFieldGetAttributes({
-    class: optionsClass,
-    ...options
-  } = {}, {
-    class: defaultOptionsClass,
-    ...defaultOptions
-  } = {}) {
-    if (!options) {
-      return {};
-    }
-
-    const classFormatted = merge(
-      {},
-      this.vfsFieldFormatClasses(optionsClass),
-      this.vfsFieldFormatClasses(defaultOptionsClass),
-    );
-
-    return merge({}, defaultOptions, options, {
-      class: classFormatted,
-    });
+const helpers = {
+  vfsFieldFormatEvents(events) {
+    return Array.isArray(events)
+      ? this.vfsFieldFormatEventsReducer(events)
+      : this.vfsFieldFormatEventsReducer(Object.keys(events));
   },
-  vfsFieldFormatClasses(classes) {
+  vfsFieldHelperFormatClasses(classes) {
     if (!classes) {
       return {};
     }
@@ -34,7 +18,7 @@ const methods = {
       }), {})
       : classes;
   },
-  vfsFieldEventHandler(key, cb) {
+  vfsFieldHelperEventHandler(key, cb) {
     return (data) => {
       if (typeof cb === 'function') {
         return this.setVfsFieldModel(cb(data));
@@ -51,17 +35,12 @@ const methods = {
     return events.reduce((formattedEvents, key) => (
       set(
         Object.assign({}, formattedEvents),
-        this.vfsFieldFormatEventListenerKey(key),
-        this.vfsFieldEventHandler(key, events[key]),
+        this.vfsFieldHelperFormatEventListenerKey(key),
+        this.vfsFieldHelperEventHandler(key, events[key]),
       )
     ), {});
   },
-  vfsFieldFormatEvents(events) {
-    return Array.isArray(events)
-      ? this.vfsFieldFormatEventsReducer(events)
-      : this.vfsFieldFormatEventsReducer(Object.keys(events));
-  },
-  vfsFieldFormatEventListenerKey(key) {
+  vfsFieldHelperFormatEventListenerKey(key) {
     const keyPrefix = this.prefixes.find(prefix => key.match(prefix));
     if (!keyPrefix) {
       return key;
@@ -75,4 +54,4 @@ const methods = {
   },
 };
 
-export default methods;
+export default helpers;
