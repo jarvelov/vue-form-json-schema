@@ -1,5 +1,5 @@
 import { set } from 'lodash';
-import vfjsFieldMixin from '../../../vfjs-field';
+import vfjsComponentMixin from '../../../vfjs-component';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -59,7 +59,7 @@ const vfjsHelpers = {
 
     return {
       name: 'vue-form-json-schema-field-wrapper',
-      mixins: [vfjsFieldMixin],
+      mixins: [vfjsComponentMixin],
       render() {
         return this.$createElement(component, {
           ...this.vfjsAttributes,
