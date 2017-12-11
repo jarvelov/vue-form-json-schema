@@ -5,6 +5,12 @@ import props from './props';
 import watch from './watch';
 
 const vfjsGlobalMixin = {
+  created() {
+    this.vfjsInitialize();
+  },
+  beforeDestroy() {
+    this.vfjsDestroy();
+  },
   computed,
   data,
   props,

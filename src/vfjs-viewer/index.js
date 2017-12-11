@@ -20,12 +20,6 @@ const VueFormJsonSchemaViewer = {
       return fields.map(this.createField).filter(field => field);
     },
   },
-  created() {
-    this.vfjsInitialize();
-  },
-  beforeDestroy() {
-    this.vfjsDestroy();
-  },
   render() {
     return this.$createElement(this.tag, this.fields);
   },
