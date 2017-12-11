@@ -5,14 +5,14 @@ import {
 
 const setters = {
   setVfjsFieldState(value, key) {
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
+    this.vfjsBus.$emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
       key: key || this.vfjsFieldModelKey,
       value,
     });
   },
   setVfjsFieldModel(value, key) {
     return new Promise((resolve, reject) => {
-      this.vfjsBus.$emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
+      this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
         key: key || this.vfjsFieldModelKey,
         value,
         cb: (errors) => {
