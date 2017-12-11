@@ -60,22 +60,9 @@ const vfjsHelpers = {
     return {
       name: 'vue-form-json-schema-field-wrapper',
       mixins: [vfjsFieldMixin],
-      computed: {
-        defaultOptions() {
-          return {
-            props: this.$options.propsData,
-          };
-        },
-        attributes() {
-          return this.vfjsFieldGetAttributes(
-            fieldOptions,
-            this.defaultOptions,
-          );
-        },
-      },
       render() {
         return this.$createElement(component, {
-          ...this.attributes,
+          ...this.vfjsAttributes,
         }, this.$slots.default);
       },
     };
