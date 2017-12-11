@@ -1,12 +1,15 @@
+import { merge } from 'lodash';
+
 const computed = {
   vfjsAttributes() {
-    return this.getVfjsFieldAttributes(
-      this.vfjsFieldOptions,
-      this.defaultOptions,
-      {
-        props: this.$options.propsData,
-      },
-    );
+    return {
+      ...this.getVfjsFieldAttributes(
+        this.vfjsFieldOptions,
+        merge({}, this.defaultOptions, {
+          props: this.$options.propsData,
+        }),
+      ),
+    };
   },
 };
 
