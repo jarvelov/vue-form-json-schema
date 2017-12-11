@@ -51,6 +51,13 @@ const vfjsHelpers = {
     };
   },
   vfjsHelperCreateComponentWrapper(component, fieldOptions) {
+    if (typeof component === 'string' && component in this.vfjsComponents) {
+      return this.vfjsHelperCreateComponentWrapper(
+        this.vfjsComponents[component],
+        fieldOptions,
+      );
+    }
+
     return {
       name: 'vue-form-json-schema-field-wrapper',
       mixins: [vfjsFieldMixin],
