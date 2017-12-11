@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { set } from 'lodash';
+import { isEqual, set } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
@@ -33,17 +33,19 @@ const vfjsBus = {
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
+        const vfjsFieldModel = this.getVfjsFieldModel(key);
         const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
         this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel,
           cb: (vfjsErrors) => {
             const vfjsFieldErrors = this.getVfjsFieldModelValidationErrors(key, value);
-            const newState = Object.assign({}, this.getVfjsFieldState(key), {
+            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
+              $dirty: !isEqual(vfjsFieldModel, value),
               vfjsFieldErrors,
             });
 
-            this.setVfjsFieldState(newState, key);
+            this.setVfjsFieldState(newFieldState, key);
 
             if (cb && typeof cb === 'function') {
               cb(vfjsFieldErrors);
