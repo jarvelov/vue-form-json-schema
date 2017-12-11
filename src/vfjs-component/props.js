@@ -44,9 +44,6 @@ const props = {
     type: String,
     required: true,
   },
-  vfjsFieldModelValue: {
-    type: null,
-  },
   vfjsFieldOptions: {
     type: Object,
     required: true,
