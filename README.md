@@ -54,10 +54,10 @@ Import and use locally
 // Import vue-form-json-schema
 import VueFormJsonSchema from 'vue-form-json-schema';
 
-// Import all core componets
+// Import all core components
 import { VueFormJsonSchemaCoreComponents } from 'vue-form-json-schema-core-components';
 
-// Or: Import only some core componets
+// Or: Import only some core components
 // import { vfjsSelect, vfjsTextarea } from 'vue-form-json-schema-core-components';
 // const components = { vfjsSelect, vfjsTextarea };
 
@@ -70,7 +70,7 @@ const components = Object.assign({}, VueFormJsonSchemaCoreComponents, {
 </script>
 <template>
     <vue-form-json-schema
-      :components="componets"
+      :components="components"
       :model="model"
       :schema="schema"
       :ui-schema="uiSchema"
