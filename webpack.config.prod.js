@@ -13,16 +13,13 @@ const production = {
   ],
 };
 
+const externals = {
+  ajv: 'ajv',
+  lodash: 'lodash',
+  vue: 'vue',
+};
+
 module.exports = [
-  merge(common, production, {
-    entry: path.resolve(__dirname, './src/plugin.js'),
-    output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: 'vue-form-json-schema.browser.bundle.js',
-      libraryTarget: 'window',
-      library: 'VueFormJsonSchema',
-    },
-  }),
   merge(common, production, {
     entry: path.resolve(__dirname, './src/plugin.js'),
     output: {
@@ -35,11 +32,7 @@ module.exports = [
   }),
   merge(common, production, {
     entry: path.resolve(__dirname, './src/index.js'),
-    externals: {
-      ajv: 'ajv',
-      lodash: 'lodash',
-      vue: 'vue',
-    },
+    externals,
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'vue-form-json-schema.umd.js',
@@ -50,25 +43,7 @@ module.exports = [
   }),
   merge(common, production, {
     entry: path.resolve(__dirname, './src/index.js'),
-    externals: {
-      ajv: 'ajv',
-      lodash: 'lodash',
-      vue: 'vue',
-    },
-    output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: 'vue-form-json-schema.common.js',
-      libraryTarget: 'commonjs2',
-      library: 'VueFormJsonSchema',
-    },
-  }),
-  merge(common, production, {
-    entry: path.resolve(__dirname, './src/index.js'),
-    externals: {
-      ajv: 'ajv',
-      lodash: 'lodash',
-      vue: 'vue',
-    },
+    externals,
     module: {
       rules: [{
         test: /\.js$/,
