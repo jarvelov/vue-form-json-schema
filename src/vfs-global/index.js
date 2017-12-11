@@ -1,21 +1,19 @@
-import vfsBusMixin from '../vfs-bus';
-import vfsDataMixin from '../vfs-data';
-import vfsMethodsMixin from '../vfs-methods';
 import computed from './computed';
+import data from './data';
 import methods from './methods';
 import props from './props';
 import watch from './watch';
 
 const vfsGlobalMixin = {
-  mixins: [vfsBusMixin, vfsDataMixin, vfsMethodsMixin],
   created() {
     this.vfsInitialize();
   },
   beforeDestroy() {
     this.vfsDestroy();
   },
-  props,
   computed,
+  data,
+  props,
   methods,
   watch,
 };
