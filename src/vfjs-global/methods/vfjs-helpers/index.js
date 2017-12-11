@@ -14,8 +14,7 @@ const vfjsHelpers = {
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
-    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey) || {};
-    const vfjsFieldModelValue = this.getVfjsFieldModel(vfjsFieldModelKey);
+    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsState = this.getVfjsState();
     const vfjsModel = this.getVfjsModel();
 
@@ -30,7 +29,7 @@ const vfjsHelpers = {
       props: {
         ...fieldOptions,
         children,
-        value: vfjsFieldModelValue,
+        value: vfjsFieldModel,
         model: vfjsFieldModel,
         modelKey: vfjsFieldModelKey,
         schema: vfjsFieldSchema,
@@ -40,7 +39,6 @@ const vfjsHelpers = {
         vfjsFieldOptions: fieldOptions,
         vfjsFieldModel,
         vfjsFieldModelKey,
-        vfjsFieldModelValue,
         vfjsFieldSchema,
         vfjsFieldState,
         vfjsFieldUiSchema,
