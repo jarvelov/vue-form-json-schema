@@ -4,17 +4,27 @@ const props = {
     default: () => ([]),
   },
   model: {
+    type: Object,
+    required: true,
+  },
+  modelKey: {
     type: String,
     required: true,
   },
   schema: {
     type: Object,
+    required: true,
   },
   state: {
     type: Object,
+    required: true,
   },
   value: {
     type: null,
+  },
+  uiSchema: {
+    type: Object,
+    required: true,
   },
   vfjsBus: {
     type: Object,
@@ -25,9 +35,10 @@ const props = {
   },
   vfjsFieldOptions: {
     type: Object,
+    required: true,
   },
   vfjsFieldModel: {
-    type: null,
+    type: Object,
   },
   vfjsFieldModelKey: {
     type: String,
@@ -35,12 +46,15 @@ const props = {
   },
   vfjsFieldSchema: {
     type: Object,
+    required: true,
   },
   vfjsFieldState: {
     type: Object,
+    required: true,
   },
   vfjsFieldUiSchema: {
     type: Object,
+    required: true,
   },
   vfjsFieldModelValue: {
     type: null,
@@ -51,6 +65,7 @@ const props = {
   },
   vfjsState: {
     type: Object,
+    required: true,
   },
 };
 
