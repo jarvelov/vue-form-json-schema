@@ -1,7 +1,9 @@
-import { set } from 'lodash';
-
 const helpers = {
   vfjsFieldFormatEvents(events) {
+    if (!events) {
+      return {};
+    }
+
     return Array.isArray(events)
       ? this.vfjsFieldFormatEventsReducer(events)
       : this.vfjsFieldFormatEventsReducer(Object.keys(events));
@@ -32,25 +34,10 @@ const helpers = {
     };
   },
   vfjsFieldFormatEventsReducer(events) {
-    return events.reduce((formattedEvents, key) => (
-      set(
-        Object.assign({}, formattedEvents),
-        this.vfjsFieldHelperFormatEventListenerKey(key),
-        this.vfjsFieldHelperEventHandler(key, events[key]),
-      )
-    ), {});
-  },
-  vfjsFieldHelperFormatEventListenerKey(key) {
-    const keyPrefix = this.prefixes.find(prefix => key.match(prefix));
-    if (!keyPrefix) {
-      return key;
-    }
-
-    const strippedPrefixKey = String(key)
-      .replace(keyPrefix, '')
-      .toLowerCase();
-
-    return `${keyPrefix}.${strippedPrefixKey}`;
+    return events.reduce((formattedEvents, key) => ({
+      ...formattedEvents,
+      [key]: this.vfjsFieldHelperEventHandler(key, events[key]),
+    }), {});
   },
 };
 
