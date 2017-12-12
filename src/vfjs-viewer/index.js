@@ -22,15 +22,8 @@ const VueFormJsonSchemaViewer = {
     },
   },
   methods: {
-    createField({ component, children, props }) {
-      return component
-        ? this.$createElement(component, {
-          props,
-        }, this.createFields(children))
-        : false;
-    },
     createFields(fields) {
-      return fields.map(this.createField).filter(field => field);
+      return fields.map(this.vfjsHelperCreateComponentWrapper).filter(field => field);
     },
   },
   render() {
