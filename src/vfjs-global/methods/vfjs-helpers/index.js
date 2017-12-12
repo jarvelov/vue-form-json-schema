@@ -3,12 +3,13 @@ import { set } from 'lodash';
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
-      id: vfjsFieldUuid,
+      id: vfjsFieldId,
+      uuid: vfjsFieldUuid,
       required: vfjsFieldRequired,
       children = [],
       component,
       model: vfjsFieldModelKey = '',
-      fieldOptions = {},
+      fieldOptions: vfjsFieldOptions = {},
     } = vfjsFieldUiSchema;
 
     const isArray = this.vfjsHelperFieldIsArray(vfjsFieldModelKey);
@@ -27,9 +28,10 @@ const vfjsHelpers = {
     const vfjsModel = this.getVfjsModel();
 
     const props = {
-      ...fieldOptions,
+      ...vfjsFieldOptions,
       children,
-      id: vfjsFieldUuid,
+      id: vfjsFieldId,
+      uuid: vfjsFieldUuid,
       model: vfjsFieldModel,
       modelKey: vfjsFieldModelKey,
       required: vfjsFieldRequired,
@@ -38,9 +40,10 @@ const vfjsHelpers = {
       uiSchema: vfjsFieldUiSchema,
       value: vfjsFieldModel,
       vfjsBus: this.vfjsBus,
-      vfjsFieldOptions: fieldOptions,
+      vfjsFieldId,
       vfjsFieldModel,
       vfjsFieldModelKey,
+      vfjsFieldOptions,
       vfjsFieldRequired,
       vfjsFieldSchema,
       vfjsFieldState,
@@ -107,9 +110,13 @@ const vfjsHelpers = {
     return newVfjsModel;
   },
   vfjsHelpersGenerateFieldUuid({ children = [], ...field }) {
+    const uuid = this.vfjsHelperGenerateUuid();
+    const id = String(uuid).substr(0, 8);
+
     return ({
       ...field,
-      id: this.vfjsHelperGenerateUuid(),
+      id,
+      uuid,
       children: children.map(this.vfjsHelpersGenerateFieldUuid),
     });
   },
