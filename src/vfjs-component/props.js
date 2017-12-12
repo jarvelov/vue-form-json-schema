@@ -14,16 +14,16 @@ const props = {
     type: String,
     required: true,
   },
+  required: {
+    type: Boolean,
+    required: true,
+  },
   schema: {
     type: Object,
     required: true,
   },
   state: {
     type: Object,
-    required: true,
-  },
-  required: {
-    type: Boolean,
     required: true,
   },
   tag: {
@@ -55,16 +55,16 @@ const props = {
     type: Object,
     required: true,
   },
+  vfjsFieldRequired: {
+    type: Boolean,
+    required: true,
+  },
   vfjsFieldSchema: {
     type: Object,
     required: true,
   },
   vfjsFieldState: {
     type: Object,
-    required: true,
-  },
-  vfjsFieldRequired: {
-    type: Boolean,
     required: true,
   },
   vfjsFieldTag: {
