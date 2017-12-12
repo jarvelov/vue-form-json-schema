@@ -55,8 +55,20 @@ const vfjsHelpers = {
       vfjsState,
     };
 
+    // const fieldComponent = this.vfjsHelperCreateComponent({
+    //   component,
+    //   children: fieldChildren,
+    //   props,
+    // });
+
+    // FIXME: Fix the vfjsHelperCreateComponent to enable wrapping of components without the mixin
+
+    const fieldComponent = (typeof component === 'string' && component in this.vfjsComponents)
+      ? this.vfjsComponents[component]
+      : component;
+
     return {
-      component,
+      component: fieldComponent,
       children: fieldChildren,
       props,
     };
@@ -75,7 +87,7 @@ const vfjsHelpers = {
     if (typeof component === 'string' && component in this.vfjsComponents) {
       return this.vfjsHelperCreateComponent({
         component: this.vfjsComponents[component],
-        children,
+        children: this.vfjsHelperCreateComponents(children),
         props,
         noWrapper: true,
       });
