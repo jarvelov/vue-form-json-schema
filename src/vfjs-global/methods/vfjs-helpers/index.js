@@ -102,6 +102,13 @@ const vfjsHelpers = {
     set(newVfjsModel, key, value);
     return newVfjsModel;
   },
+  vfjsHelpersGenerateFieldUuid({ children = [], ...field }) {
+    return ({
+      ...field,
+      id: this.vfjsHelperGenerateUuid(),
+      children: children.map(this.vfjsHelpersGenerateFieldUuid),
+    });
+  },
   vfjsHelperChildArrayMapper({ model, children = [], ...child }, parentModel, index) {
     return {
       ...child,
