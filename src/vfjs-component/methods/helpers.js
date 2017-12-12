@@ -6,6 +6,15 @@ const helpers = {
   vfjsFieldHelperRemoveListener(el, event) {
     el.removeEventListener(event, this.vfjsFieldHelperStateEventHandler);
   },
+  vfjsFieldHelperStateEventHandler(event) {
+    if (event) {
+      if (event.type === 'blur') {
+        this.setVfjsFieldState({
+          $touched: true,
+        });
+      }
+    }
+  },
     if (!events) {
       return {};
     }
