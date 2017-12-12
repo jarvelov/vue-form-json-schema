@@ -23,13 +23,13 @@ const getters = {
     );
 
     const onFormatted = merge(
-      this.vfjsFieldFormatEvents(optionsOn),
-      this.vfjsFieldFormatEvents(defaultOn),
+      this.vfjsFieldHelperFormatEvents(optionsOn),
+      this.vfjsFieldHelperFormatEvents(defaultOn),
     );
 
     const nativeOnFormatted = merge(
-      this.vfjsFieldFormatEvents(optionsNativeOn),
-      this.vfjsFieldFormatEvents(defaultNativeOn),
+      this.vfjsFieldHelperFormatEvents(optionsNativeOn),
+      this.vfjsFieldHelperFormatEvents(defaultNativeOn),
     );
 
     const computedOptions = {

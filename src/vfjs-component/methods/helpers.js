@@ -1,5 +1,4 @@
 const helpers = {
-  vfjsFieldFormatEvents(events) {
   vfjsFieldHelperAddListener(el, event) {
     el.addEventListener(event, this.vfjsFieldHelperStateEventHandler);
   },
@@ -15,13 +14,14 @@ const helpers = {
       }
     }
   },
+  vfjsFieldHelperFormatEvents(events) {
     if (!events) {
       return {};
     }
 
     return Array.isArray(events)
-      ? this.vfjsFieldFormatEventsReducer(events)
-      : this.vfjsFieldFormatEventsReducer(Object.keys(events));
+      ? this.vfjsFieldHelperFormatEventsReducer(events)
+      : this.vfjsFieldHelperFormatEventsReducer(Object.keys(events));
   },
   vfjsFieldHelperFormatClasses(classes) {
     if (!classes) {
@@ -58,7 +58,7 @@ const helpers = {
       return this.setVfjsFieldModel(data);
     };
   },
-  vfjsFieldFormatEventsReducer(events) {
+  vfjsFieldHelperFormatEventsReducer(events) {
     return events.reduce((formattedEvents, key) => ({
       ...formattedEvents,
       [key]: this.vfjsFieldHelperEventHandler(key, events[key]),
