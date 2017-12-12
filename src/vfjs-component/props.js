@@ -3,6 +3,10 @@ const props = {
     type: Array,
     default: () => ([]),
   },
+  id: {
+    type: String,
+    required: true,
+  },
   model: {
     type: null,
   },
@@ -61,6 +65,10 @@ const props = {
   },
   vfjsFieldUiSchema: {
     type: Object,
+    required: true,
+  },
+  vfjsFieldUuid: {
+    type: String,
     required: true,
   },
   vfjsModel: {
