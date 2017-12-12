@@ -4,6 +4,7 @@ import vfjsComponentMixin from '../../../vfjs-component';
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
+      id: vfjsFieldUuid,
       children = [],
       component,
       model: vfjsFieldModelKey = '',
@@ -19,7 +20,7 @@ const vfjsHelpers = {
     const vfjsModel = this.getVfjsModel();
 
     return {
-      component: this.vfjsHelperCreateComponentWrapper(component, vfjsFieldModelKey, fieldOptions),
+      component: this.vfjsHelperCreateComponentWrapper(component, vfjsFieldUuid, fieldOptions),
       children: isArray
         ? children.reduce((flattenedChildren, child) => ([
           ...flattenedChildren,
@@ -47,17 +48,17 @@ const vfjsHelpers = {
       },
     };
   },
-  vfjsHelperCreateComponentWrapper(component, key, fieldOptions) {
+  vfjsHelperCreateComponentWrapper(component, id, fieldOptions) {
     if (typeof component === 'string' && component in this.vfjsComponents) {
       return this.vfjsHelperCreateComponentWrapper(
         this.vfjsComponents[component],
-        key,
+        id,
         fieldOptions,
       );
     }
 
-    if (key && key in this.vfjsComponentsCreated) {
-      return this.vfjsComponentsCreated[key];
+    if (id && id in this.vfjsComponentsCreated) {
+      return this.vfjsComponentsCreated[id];
     }
 
     const vfjsComponent = {
@@ -70,8 +71,8 @@ const vfjsHelpers = {
       },
     };
 
-    if (key) {
-      this.vfjsComponentsCreated[key] = vfjsComponent;
+    if (id && !(id in this.vfjsComponentsCreated)) {
+      this.vfjsComponentsCreated[id] = vfjsComponent;
     }
 
     return vfjsComponent;
