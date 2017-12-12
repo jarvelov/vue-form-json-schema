@@ -22,6 +22,10 @@ const props = {
     type: Object,
     required: true,
   },
+  required: {
+    type: Boolean,
+    required: true,
+  },
   tag: {
     type: String,
     default: 'div',
@@ -57,6 +61,10 @@ const props = {
   },
   vfjsFieldState: {
     type: Object,
+    required: true,
+  },
+  vfjsFieldRequired: {
+    type: Boolean,
     required: true,
   },
   vfjsFieldTag: {
