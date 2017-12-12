@@ -1,5 +1,4 @@
 import { set } from 'lodash';
-import vfjsComponentMixin from '../../../vfjs-component';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -14,70 +13,69 @@ const vfjsHelpers = {
 
     const isArray = this.vfjsHelperFieldIsArray(vfjsFieldModelKey);
 
+    const fieldChildren = isArray
+      ? children.reduce((flattenedChildren, child) => ([
+        ...flattenedChildren,
+        ...child.map(this.vfjsHelperCreateField),
+      ]), [])
+      : children.map(this.vfjsHelperCreateField);
+
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsState = this.getVfjsState();
     const vfjsModel = this.getVfjsModel();
 
+    const props = {
+      ...fieldOptions,
+      children,
+      id: vfjsFieldUuid,
+      model: vfjsFieldModel,
+      modelKey: vfjsFieldModelKey,
+      required: vfjsFieldRequired,
+      schema: vfjsFieldSchema,
+      state: vfjsFieldState,
+      uiSchema: vfjsFieldUiSchema,
+      value: vfjsFieldModel,
+      vfjsBus: this.vfjsBus,
+      vfjsFieldOptions: fieldOptions,
+      vfjsFieldModel,
+      vfjsFieldModelKey,
+      vfjsFieldRequired,
+      vfjsFieldSchema,
+      vfjsFieldState,
+      vfjsFieldUiSchema,
+      vfjsFieldUuid,
+      vfjsModel,
+      vfjsState,
+    };
+
     return {
-      component: this.vfjsHelperCreateComponentWrapper(component, vfjsFieldUuid, fieldOptions),
-      children: isArray
-        ? children.reduce((flattenedChildren, child) => ([
-          ...flattenedChildren,
-          ...child.map(this.vfjsHelperCreateField),
-        ]), [])
-        : children.map(this.vfjsHelperCreateField),
-      props: {
-        ...fieldOptions,
-        children,
-        id: vfjsFieldUuid,
-        model: vfjsFieldModel,
-        modelKey: vfjsFieldModelKey,
-        required: vfjsFieldRequired,
-        schema: vfjsFieldSchema,
-        state: vfjsFieldState,
-        uiSchema: vfjsFieldUiSchema,
-        value: vfjsFieldModel,
-        vfjsBus: this.vfjsBus,
-        vfjsFieldOptions: fieldOptions,
-        vfjsFieldModel,
-        vfjsFieldModelKey,
-        vfjsFieldRequired,
-        vfjsFieldSchema,
-        vfjsFieldState,
-        vfjsFieldUiSchema,
-        vfjsFieldUuid,
-        vfjsModel,
-        vfjsState,
-      },
+      component,
+      children: fieldChildren,
+      props,
     };
   },
-  vfjsHelperCreateComponentWrapper(component, id, fieldOptions) {
+  vfjsHelperCreateComponentWrapper({ component, children, props }) {
     if (typeof component === 'string' && component in this.vfjsComponents) {
-      return this.vfjsHelperCreateComponentWrapper(
-        this.vfjsComponents[component],
-        id,
-        fieldOptions,
-      );
+      return this.vfjsHelperCreateComponentWrapper({
+        component: this.vfjsComponents[component],
+        children,
+        props,
+      });
     }
 
-    if (id && id in this.vfjsComponentsCreated) {
-      return this.vfjsComponentsCreated[id];
+
+    if (props.id && props.id in this.vfjsComponentsCreated) {
+      return this.vfjsComponentsCreated[props.id];
     }
 
-    const vfjsComponent = {
-      name: 'vue-form-json-schema-field-wrapper',
-      mixins: [vfjsComponentMixin],
-      render() {
-        return this.$createElement(component, {
-          ...this.vfjsAttributes,
-        }, this.$slots.default);
-      },
-    };
+    const vfjsComponent = this.$createElement(component, {
+      ...{ props },
+    }, this.createFields(children));
 
-    if (id && !(id in this.vfjsComponentsCreated)) {
-      this.vfjsComponentsCreated[id] = vfjsComponent;
+    if (props.id && !(props.id in this.vfjsComponentsCreated)) {
+      this.vfjsComponentsCreated[props.id] = vfjsComponent;
     }
 
     return vfjsComponent;
