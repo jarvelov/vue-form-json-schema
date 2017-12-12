@@ -56,9 +56,9 @@ const vfjsHelpers = {
       props,
     };
   },
-  vfjsHelperCreateComponentWrapper({ component, children, props }) {
+  vfjsHelperCreateComponent({ component, children, props }) {
     if (typeof component === 'string' && component in this.vfjsComponents) {
-      return this.vfjsHelperCreateComponentWrapper({
+      return this.vfjsHelperCreateComponent({
         component: this.vfjsComponents[component],
         children,
         props,
