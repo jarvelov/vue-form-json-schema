@@ -1,4 +1,5 @@
 import { set } from 'lodash';
+import { sha256 } from 'js-sha256';
 import vfjsComponentMixin from '../../../vfjs-component';
 
 const vfjsHelpers = {
@@ -132,16 +133,27 @@ const vfjsHelpers = {
     set(newVfjsModel, key, value);
     return newVfjsModel;
   },
-  vfjsHelpersGenerateFieldUuid({ children = [], ...field }) {
-    const uuid = this.vfjsHelperGenerateUuid();
-    const id = String(uuid).substr(0, 8);
+  // The level param helps us to differentiate further between fields.
+  // As the same field configuration may be present throughout the ui schema
+  // and thus have the same hash.
+  //
+  // We mediate this by providing the depth level as a second param
+  // which will make the hash unique for every field
+  vfjsHelpersGenerateFieldUuid(field, level = 0) {
+    if (!field) {
+      return false;
+    }
 
-    return ({
+    const { children = [], ...fieldWithoutChildren } = field;
+    const id = sha256(JSON.stringify({ fieldWithoutChildren, level }));
+
+    return {
       ...field,
       id,
-      uuid,
-      children: children.map(this.vfjsHelpersGenerateFieldUuid),
-    });
+      uuid: id,
+      children: children.map((child, i) =>
+        this.vfjsHelpersGenerateFieldUuid(child, (i + 1) * (level + 1))),
+    };
   },
   vfjsHelperChildArrayMapper({ model, children = [], ...child }, parentModel, index) {
     return {
