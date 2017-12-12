@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
-  getVfjsUiFieldActiveDeep(obj, key) {
+  getVfjsUiFieldDeep(obj, key) {
     if (!obj || !obj.properties) {
       return false;
     }
@@ -14,7 +14,7 @@ const vfjsUiGetters = {
     // Investigate ways that it can be improved
     return Object.keys(obj.properties).some((propKey) => {
       if (this.getVfjsFieldModelValid(propKey)) {
-        return this.getVfjsUiFieldActiveDeep(
+        return this.getVfjsUiFieldDeep(
           obj.properties[propKey].properties,
           key,
         );
@@ -23,9 +23,9 @@ const vfjsUiGetters = {
       return false;
     });
   },
-  // TODO: When getVfjsUiFieldActive is renamed, let getVfjsFieldActive take that name
-  getVfjsFieldActive(key) {
-    if (this.getVfjsFieldSchema(key)) {
+  // TODO: When getVfjsUiField is renamed, let getVfjsUiFieldActive take that name
+  getVfjsUiFieldActive(key) {
+    if (!key || this.getVfjsFieldSchema(key)) {
       return true;
     }
 
@@ -39,7 +39,7 @@ const vfjsUiGetters = {
       return (
         typeof this.getVfjsFieldModel(fieldKey) !== 'undefined' &&
         this.getVfjsFieldModelValid(fieldKey) &&
-        this.getVfjsUiFieldActiveDeep(dependencies[fieldKey], key)
+        this.getVfjsUiFieldDeep(dependencies[fieldKey], key)
       );
     });
   },
@@ -50,15 +50,16 @@ const vfjsUiGetters = {
       .map((v, i) => this.vfjsHelperChildArrayReducerMapper(model, children, i))
       .map(this.getVfjsUiFieldsActive);
   },
-  // TODO: Rename getVfjsUiFieldActive to something else
-  getVfjsUiFieldActive({ children = [], model, ...field }) {
-    if (!model || this.getVfjsFieldActive(model)) {
+  getVfjsUiField({ children = [], model, ...field }) {
+    if (this.getVfjsUiFieldActive(model)) {
       const isArray = this.vfjsHelperFieldIsArray(model);
+      const required = this.vfjsHelperFieldIsRequired(model);
 
       if (isArray) {
         return {
           ...field,
           model,
+          required,
           children: this.getVfjsUiFieldArrayChildrenActive(model, children),
         };
       }
@@ -66,6 +67,7 @@ const vfjsUiGetters = {
       return {
         ...field,
         model,
+        required,
         children: this.getVfjsUiFieldsActive(children),
       };
     }
@@ -75,7 +77,7 @@ const vfjsUiGetters = {
   getVfjsUiFieldsActive(fields) {
     return fields.reduce((newFields, field) => {
       if (field) {
-        const newField = this.getVfjsUiFieldActive(field);
+        const newField = this.getVfjsUiField(field);
         if (newField) {
           newFields.push(newField);
         }
