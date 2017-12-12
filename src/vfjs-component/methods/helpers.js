@@ -1,5 +1,11 @@
 const helpers = {
   vfjsFieldFormatEvents(events) {
+  vfjsFieldHelperAddListener(el, event) {
+    el.addEventListener(event, this.vfjsFieldHelperStateEventHandler);
+  },
+  vfjsFieldHelperRemoveListener(el, event) {
+    el.removeEventListener(event, this.vfjsFieldHelperStateEventHandler);
+  },
     if (!events) {
       return {};
     }
