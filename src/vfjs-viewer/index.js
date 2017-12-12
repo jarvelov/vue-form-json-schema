@@ -7,6 +7,19 @@ const VueFormJsonSchemaViewer = {
     fields() {
       return this.createFields(this.vfjsFields);
     },
+    validated() {
+      return this.getVfjsValid();
+    },
+    vfjsAttributes() {
+      return {
+        class: this.vfjsAttributesClass,
+      };
+    },
+    vfjsAttributesClass() {
+      return (this.options.validationClass && this.validated)
+        ? this.options.validationClass
+        : '';
+    },
   },
   methods: {
     createField({ component, children, props }) {
@@ -21,7 +34,9 @@ const VueFormJsonSchemaViewer = {
     },
   },
   render() {
-    return this.$createElement(this.tag, this.fields);
+    return this.$createElement(this.tag, {
+      ...this.vfjsAttributes,
+    }, this.fields);
   },
 };
 
