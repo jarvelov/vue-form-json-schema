@@ -30,6 +30,10 @@ const props = {
     type: String,
     default: 'div',
   },
+  uuid: {
+    type: String,
+    required: true,
+  },
   value: {
     type: null,
   },
@@ -43,6 +47,10 @@ const props = {
   },
   vfjsFieldErrors: {
     type: Array,
+  },
+  vfjsFieldId: {
+    type: String,
+    required: true,
   },
   vfjsFieldModel: {
     type: null,
