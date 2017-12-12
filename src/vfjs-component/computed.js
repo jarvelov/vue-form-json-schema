@@ -9,6 +9,7 @@ const computed = {
           attrs: {
             id: this.vfjsFieldUuid,
             key: this.vfjsFieldUuid,
+            required: this.vfjsFieldRequired,
           },
           props: this.$options.propsData,
         }),
