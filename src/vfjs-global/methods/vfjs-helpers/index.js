@@ -1,4 +1,5 @@
 import { set } from 'lodash';
+import vfjsComponentMixin from '../../../vfjs-component';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -59,26 +60,45 @@ const vfjsHelpers = {
       props,
     };
   },
-  vfjsHelperCreateComponent({ component, children, props }) {
   vfjsHelperCreateComponents(fields) {
     return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
   },
+  vfjsHelperCreateComponent({
+    component,
+    children,
+    props,
+    noWrapper = false,
+  }) {
+    // FIXME: Global compoents will be wrapped regardless of if they need it or not
+
     if (typeof component === 'string' && component in this.vfjsComponents) {
       return this.vfjsHelperCreateComponent({
         component: this.vfjsComponents[component],
         children,
         props,
+        noWrapper: true,
       });
     }
-
 
     if (props.id && props.id in this.vfjsComponentsCreated) {
       return this.vfjsComponentsCreated[props.id];
     }
 
-    const vfjsComponent = this.$createElement(component, {
-      ...{ props },
-    }, this.createFields(children));
+    const vfjsComponent = (noWrapper)
+      ? this.$createElement(component, {
+        ...{ props },
+      }, this.vfjsHelperCreateComponents(children))
+      : this.$createElement({
+        name: `vue-form-json-schema-field-wrapper-${props.id}`,
+        mixins: [vfjsComponentMixin],
+        render() {
+          return this.$createElement(component, {
+            ...this.vfjsAttributes,
+          }, this.$slots.default);
+        },
+      }, {
+        ...{ props },
+      }, this.vfjsHelperCreateComponents(children));
 
     if (props.id && !(props.id in this.vfjsComponentsCreated)) {
       this.vfjsComponentsCreated[props.id] = vfjsComponent;
