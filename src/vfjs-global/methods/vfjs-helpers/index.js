@@ -60,6 +60,9 @@ const vfjsHelpers = {
     };
   },
   vfjsHelperCreateComponent({ component, children, props }) {
+  vfjsHelperCreateComponents(fields) {
+    return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
+  },
     if (typeof component === 'string' && component in this.vfjsComponents) {
       return this.vfjsHelperCreateComponent({
         component: this.vfjsComponents[component],
