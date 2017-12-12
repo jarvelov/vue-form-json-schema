@@ -16,7 +16,7 @@ const vfjsLifecycle = {
     this.vfjsComponentsCreated = {};
 
     this.vfjsSchema = Object.assign({}, this.schema);
-    this.vfjsUiSchema = [...this.uiSchema];
+    this.setVfjsUiSchema(this.uiSchema);
 
     // Set up options
     this.vfjsOptions = Object.assign({}, {
