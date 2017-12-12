@@ -8,9 +8,9 @@ const computed = {
         merge({}, this.vfjsDefaultOptions, {
           attrs: {
             id: this.vfjsFieldId,
-            key: this.vfjsFieldId,
             required: this.vfjsFieldRequired,
           },
+          key: this.vfjsFieldId,
           props: this.$options.propsData,
         }),
       ),
