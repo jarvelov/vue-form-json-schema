@@ -5,7 +5,7 @@ const VueFormJsonSchemaViewer = {
   mixins: [vfjsGlobalMixin],
   computed: {
     fields() {
-      return this.createFields(this.vfjsFields);
+      return this.vfjsHelperCreateComponents(this.vfjsFields);
     },
     validated() {
       return this.getVfjsValid();
@@ -19,11 +19,6 @@ const VueFormJsonSchemaViewer = {
       return (this.options.validationClass && this.validated)
         ? this.options.validationClass
         : '';
-    },
-  },
-  methods: {
-    createFields(fields) {
-      return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
     },
   },
   render() {
