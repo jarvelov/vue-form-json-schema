@@ -7,8 +7,8 @@ const computed = {
         this.vfjsFieldOptions,
         merge({}, this.vfjsDefaultOptions, {
           attrs: {
-            id: this.vfjsFieldUuid,
-            key: this.vfjsFieldUuid,
+            id: this.vfjsFieldId,
+            key: this.vfjsFieldId,
             required: this.vfjsFieldRequired,
           },
           props: this.$options.propsData,
