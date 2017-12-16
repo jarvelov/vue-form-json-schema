@@ -82,7 +82,7 @@ const vfjsHelpers = {
 
     const vfjsComponent = (noWrapper)
       ? this.$createElement(component, {
-        ...{ props },
+        props,
       }, this.vfjsHelperCreateComponents(children))
       : this.$createElement({
         name: `vue-form-json-schema-field-wrapper-${props.id}`,
