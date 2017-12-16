@@ -128,20 +128,20 @@ const vfjsHelpers = {
   //
   // We mediate this by providing the depth level as a second param
   // which will make the hash unique for every field
-  vfjsHelpersGenerateFieldUuid(field, level = 0) {
+  vfjsHelperGenerateField(field, level = 0) {
     if (!field) {
       return false;
     }
 
     const { children = [], ...fieldWithoutChildren } = field;
-    const id = sha256(JSON.stringify({ fieldWithoutChildren, level }));
+    const objString = JSON.stringify({ fieldWithoutChildren, level });
+    const id = sha256(objString);
 
     return {
       ...field,
       id,
-      uuid: id,
       children: children.map((child, i) =>
-        this.vfjsHelpersGenerateFieldUuid(child, (i + 1) * (level + 1))),
+        this.vfjsHelperGenerateField(child, (i + 1) * (level + 1))),
     };
   },
   vfjsHelperChildArrayMapper({ model, children = [], ...child }, parentModel, index) {

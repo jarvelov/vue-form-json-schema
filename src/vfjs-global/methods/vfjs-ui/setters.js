@@ -2,7 +2,7 @@ const vfjsUiSetters = {
   setVfjsUiSchema(uiSchema) {
     this.vfjsUiSchema = [...uiSchema].reduce((fields, field) => ([
       ...fields,
-      this.vfjsHelpersGenerateFieldUuid(field),
+      this.vfjsHelperGenerateField(field),
     ]), []);
   },
   setVfjsUiFieldsActive() {
