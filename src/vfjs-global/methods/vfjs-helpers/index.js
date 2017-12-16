@@ -53,47 +53,32 @@ const vfjsHelpers = {
       vfjsState,
     };
 
-    // const fieldComponent = this.vfjsHelperCreateComponent({
-    //   component,
-    //   children: fieldChildren,
-    //   props,
-    // });
-
-    // FIXME: Fix the vfjsHelperCreateComponent to enable wrapping of components without the mixin
-
-    const fieldComponent = (typeof component === 'string' && component in this.vfjsComponents)
-      ? this.vfjsComponents[component]
-      : component;
-
-    return {
-      component: fieldComponent,
+    return this.vfjsHelperCreateComponent({
+      component,
       children: fieldChildren,
       props,
-    };
+    });
   },
-  vfjsHelperCreateComponents(fields) {
+  vfjsHelperCreateComponents(fields = []) {
     return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
   },
   vfjsHelperCreateComponent({
     component,
     children,
     props,
-    noWrapper = false,
   }) {
-    // FIXME: Global compoents will be wrapped regardless of if they need it or not
-
-    if (typeof component === 'string' && component in this.vfjsComponents) {
-      return this.vfjsHelperCreateComponent({
-        component: this.vfjsComponents[component],
-        children: this.vfjsHelperCreateComponents(children),
-        props,
-        noWrapper: true,
-      });
-    }
-
+    // Return early if we have a rendered version in the cache
     if (props.id && props.id in this.vfjsComponentsCreated) {
       return this.vfjsComponentsCreated[props.id];
     }
+
+    // If the component is a local component
+    // we don't want an additional wrapper around that
+
+    // FIXME: If the component is globally we will unnecessarily wrap it!
+    const noWrapper = (
+      (typeof component === 'string' && component in this.vfjsComponents)
+    );
 
     const vfjsComponent = (noWrapper)
       ? this.$createElement(component, {
@@ -108,7 +93,7 @@ const vfjsHelpers = {
           }, this.$slots.default);
         },
       }, {
-        ...{ props },
+        props,
       }, this.vfjsHelperCreateComponents(children));
 
     if (props.id && !(props.id in this.vfjsComponentsCreated)) {
