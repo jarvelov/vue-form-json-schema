@@ -33,7 +33,6 @@ const vfjsHelpers = {
       ...vfjsFieldOptions,
       children,
       id: vfjsFieldId,
-      uuid: vfjsFieldUuid,
       model: vfjsFieldModel,
       modelKey: vfjsFieldModelKey,
       required: vfjsFieldRequired,
@@ -50,7 +49,6 @@ const vfjsHelpers = {
       vfjsFieldSchema,
       vfjsFieldState,
       vfjsFieldUiSchema,
-      vfjsFieldUuid,
       vfjsModel,
       vfjsState,
     };
@@ -118,27 +116,6 @@ const vfjsHelpers = {
     }
 
     return vfjsComponent;
-  },
-  vfjsHelperGenerateUuid() {
-    let date = Date.now();
-
-    if (
-      typeof window.performance !== 'undefined' &&
-      typeof window.performance.now === 'function'
-    ) {
-      date += window.performance.now(); // use high-precision timer if available
-    }
-
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
-      const random = ((date + Math.random()) * 16) % 16 | 0; // eslint-disable-line no-bitwise
-      date = Math.floor(date / 16);
-
-      return (
-        char === 'x'
-          ? random
-          : (random & (0x3 | 0x8)) // eslint-disable-line no-bitwise
-      ).toString(16);
-    });
   },
   vfjsHelperApplyFieldModel(key, value) {
     const newVfjsModel = Object.assign({}, this.getVfjsModel());
