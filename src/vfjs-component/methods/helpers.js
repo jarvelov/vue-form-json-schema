@@ -19,9 +19,11 @@ const helpers = {
       return {};
     }
 
-    return Array.isArray(events)
-      ? this.vfjsFieldHelperFormatEventsReducer(events)
-      : this.vfjsFieldHelperFormatEventsReducer(Object.keys(events));
+    const eventsObj = Array.isArray(events)
+      ? events.reduce((obj, event) => ({ ...obj, [event]: true }), {})
+      : events;
+
+    return this.vfjsFieldHelperFormatEventsReducer(eventsObj);
   },
   vfjsFieldHelperFormatClasses(classes) {
     if (!classes) {
@@ -58,8 +60,8 @@ const helpers = {
       return this.setVfjsFieldModel(data);
     };
   },
-  vfjsFieldHelperFormatEventsReducer(events) {
-    return events.reduce((formattedEvents, key) => ({
+  vfjsFieldHelperFormatEventsReducer(events = {}) {
+    return Object.keys(events).reduce((formattedEvents, key) => ({
       ...formattedEvents,
       [key]: this.vfjsFieldHelperEventHandler(key, events[key]),
     }), {});
