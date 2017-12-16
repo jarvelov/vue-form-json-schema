@@ -34,7 +34,7 @@ const vfjsValidationGetters = {
     const data = typeof value !== 'undefined' ? value : this.getVfjsFieldModel(key);
     const valid = this.ajv.validate(schema, data);
 
-    return (data && !valid) ? this.ajv.errors : [];
+    return !valid ? this.ajv.errors : [];
   },
   getVfjsValid() {
     const errors = this.getVfjsValidationErrors();
