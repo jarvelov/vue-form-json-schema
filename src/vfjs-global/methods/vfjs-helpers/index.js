@@ -80,6 +80,10 @@ const vfjsHelpers = {
       (typeof component === 'string' && component in this.vfjsComponents)
     );
 
+    // Create the component VNODE directly if noWrapper is true
+    //
+    // Otherwise wrap the component inside a component which
+    // has access to the vfjsComponentMixin
     const vfjsComponent = (noWrapper)
       ? this.$createElement(component, {
         props,
@@ -96,6 +100,8 @@ const vfjsHelpers = {
         props,
       }, this.vfjsHelperCreateComponents(children));
 
+    // Save the VNODE to an vfjsComponentsCreated using the field's ID as the key
+    // so it can be re-used next time a render occurs and the field hasn't been updated
     if (props.id && !(props.id in this.vfjsComponentsCreated)) {
       this.vfjsComponentsCreated[props.id] = vfjsComponent;
     }
