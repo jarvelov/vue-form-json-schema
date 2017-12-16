@@ -24,9 +24,10 @@ const data = () => ({
   vfjsListeners: [],
   vfjsModel: {},
   vfjsSchema: {},
-  vfjsUiSchema: [],
   vfjsState: {},
+  vfjsUiSchema: [],
   vfjsValidator: null,
+  vfjsVnodes: {},
 });
 
 export default data;

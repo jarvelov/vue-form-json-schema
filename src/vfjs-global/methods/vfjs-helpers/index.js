@@ -68,8 +68,8 @@ const vfjsHelpers = {
     props,
   }) {
     // Return early if we have a rendered version in the cache
-    if (props.id && props.id in this.vfjsComponentsCreated) {
-      return this.vfjsComponentsCreated[props.id];
+    if (props.id && props.id in this.vfjsVnodes) {
+      return this.vfjsVnodes[props.id];
     }
 
     // If the component is a local component
@@ -100,10 +100,10 @@ const vfjsHelpers = {
         props,
       }, this.vfjsHelperCreateComponents(children));
 
-    // Save the VNODE to an vfjsComponentsCreated using the field's ID as the key
+    // Save the VNODE to an vfjsVnodes using the field's ID as the key
     // so it can be re-used next time a render occurs and the field hasn't been updated
-    if (props.id && !(props.id in this.vfjsComponentsCreated)) {
-      this.vfjsComponentsCreated[props.id] = vfjsComponent;
+    if (props.id && !(props.id in this.vfjsVnodes)) {
+      this.vfjsVnodes[props.id] = vfjsComponent;
     }
 
     return vfjsComponent;
