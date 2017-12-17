@@ -1,5 +1,6 @@
 {
   "title": "vue-form-json-schema",
+  "root": "./docs",
   "gitbook": ">3.0.0",
   "plugins": ["edit-link", "github"],
   "pluginsConfig": {
