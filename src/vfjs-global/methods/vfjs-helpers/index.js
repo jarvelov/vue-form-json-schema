@@ -186,9 +186,6 @@ const vfjsHelpers = {
     const schema = this.getVfjsFieldSchema(key);
     return schema ? schema.type === 'array' : false;
   },
-  vfjsHelperIsNumber(n) {
-    return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
-  },
 };
 
 export default vfjsHelpers;
