@@ -1,10 +1,9 @@
 * [Installation](installation.md)
 * [Getting started](getting-started.md)
-* [Usage](usage.md)
 * API reference
   * [vue-form-json-schema](api/vue-form-json-schema.md)
   * [options](api/options.md)
-  * uiSchema
+  * [uiSchema](api/ui-schema.md)
     * [component](api/ui-schema/component.md)
     * [children](api/ui-schema/children.md)
     * fieldOptions
