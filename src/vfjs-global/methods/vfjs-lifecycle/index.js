@@ -11,10 +11,12 @@ const vfjsLifecycle = {
 
     // Set the available components
     this.vfjsComponents = Object.assign({}, this.components);
+
     // vfjsVnodes holds the rendered components so we can reuse them
     // without having to create a new component every time something changes
     this.vfjsVnodes = {};
 
+    // Set the JSON schema
     this.vfjsSchema = Object.assign({}, this.schema);
     this.setVfjsUiSchema(this.uiSchema);
 
