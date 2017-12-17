@@ -25,35 +25,45 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
 [Nested elements demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd])
 
+See more demos below
+
 ## Usage
 
-Check out [more examples](#examples)
-
-Basic example with one field
+### Basic example with one field
 
 ```js
 <script>
+  import VueFormJsonSchema from 'vue-form-json-schema';
+
   export default {
     components: {
       'vue-form-json-schema': VueFormJsonSchema
     },
-    data () {
+    data() {
       return {
         model: {},
+        state: {},
+        valid: false,
         schema: {
           type: 'object',
           properties: {
-            username: {
+            firstName: {
               type: 'string',
-              minLenght: 3
-            }
-          }
-        }
-        uiSchema: {
-          component: 'my-input-component',
-          model: 'username',
+            },
+          },
         },
-      }
+        uiSchema: [{
+          component: 'input',
+          model: 'firstName',
+          fieldOptions: {
+            class: ['form-control'],
+            on: ['input'],
+            attrs: {
+              placeholder: 'Please enter your first name',
+            },
+          },
+        }],
+      };
     },
     methods: {
       onChange(value) {
@@ -63,6 +73,7 @@ Basic example with one field
     ...
   }
 </script>
+
 <template>
     <vue-form-json-schema
       :model="model"
