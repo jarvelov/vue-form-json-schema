@@ -22,7 +22,8 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 
 ## Demo
 
-jsfiddle/gitbook
+[Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
+[Nested elements demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd])
 
 ## Usage
 
