@@ -6,7 +6,7 @@
   * [uiSchema](api/ui-schema.md)
     * [component](api/ui-schema/component.md)
     * [children](api/ui-schema/children.md)
-    * fieldOptions
+    * [fieldOptions](api/ui-schema/field-options.md)
       * [attrs](api/ui-schema/field-options/attrs.md)
       * [class](api/ui-schema/field-options/class.md)
       * [domProps](api/ui-schema/field-options/dom-props.md)
