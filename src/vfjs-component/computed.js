@@ -7,7 +7,6 @@ const computed = {
         this.vfjsFieldOptions,
         merge({}, this.vfjsDefaultOptions, {
           attrs: {
-            id: this.vfjsFieldId,
             required: this.vfjsFieldRequired,
           },
           key: this.vfjsFieldId,
