@@ -33,12 +33,7 @@ See more demos below
 
 ```js
 <script>
-  import VueFormJsonSchema from 'vue-form-json-schema';
-
   export default {
-    components: {
-      'vue-form-json-schema': VueFormJsonSchema
-    },
     data() {
       return {
         model: {},
