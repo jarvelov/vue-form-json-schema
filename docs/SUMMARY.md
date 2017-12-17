@@ -1,16 +1,17 @@
-# vue-form-json-schema
-
 * [Installation](installation.md)
 * [Getting started](getting-started.md)
 * [Usage](usage.md)
 * API reference
-  * [component](api/component.md)
-  * [children](api/children.md)
-  * fieldOptions
-    * [attrs](api/field-options/attrs.md)
-    * [class](api/field-options/class.md)
-    * [domProps](api/field-options/dom-props.md)
-    * [nativeOn](api/field-options/native-on.md)
-    * [on](api/field-options/on.md)
-    * [props](api/field-options/props.md)
-    * [style](api/field-options/style.md)
+  * [vue-form-json-schema](api/vue-form-json-schema.md)
+  * [options](api/options.md)
+  * uiSchema
+    * [component](api/ui-schema/component.md)
+    * [children](api/ui-schema/children.md)
+    * fieldOptions
+      * [attrs](api/ui-schema/field-options/attrs.md)
+      * [class](api/ui-schema/field-options/class.md)
+      * [domProps](api/ui-schema/field-options/dom-props.md)
+      * [nativeOn](api/ui-schema/field-options/native-on.md)
+      * [on](api/ui-schema/field-options/on.md)
+      * [props](api/ui-schema/field-options/props.md)
+      * [style](api/ui-schema/field-options/style.md)

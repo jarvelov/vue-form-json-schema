@@ -1,6 +1,6 @@
 # children
 
-An array of [components](component.md)
+An array of [components](./component.md)
 
 ```js
 {
