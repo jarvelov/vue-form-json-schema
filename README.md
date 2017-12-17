@@ -88,15 +88,10 @@ Tested with v2.5.9 but will probably work on any version >= v2.4.0
 
 ### TODO
 
-* Write this README
 * Write tests
+* ~~Write this README~~
 * Use Ajv internally to validate:
   * `vfs-global` prop `ui-schema`
-  * `vfs-field` prop `ui-schema`
-* Write docs
-  * Write page for
-    * `vfs-viewer` component
-    * `vfs-global` mixin
-    * `vfs-field` mixin
-    * [vfs core-fields](https://github.com/jarvelov/vue-form-json-schema-core-fields)
-  * Publish with Gitbook
+  * `vfs-component` prop `ui-schema`
+* ~~Write docs~~
+* ~~Publish with Gitbook~~
