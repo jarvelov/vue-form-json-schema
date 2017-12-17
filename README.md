@@ -3,7 +3,7 @@
 
 ## Quick start
 
-> For browser/UMD instructions check the [Documentation](#Documentation)
+> For browser/UMD instructions check the [Documentation](#documentation)
 
 Install it
 
@@ -25,7 +25,7 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
 [Nested elements demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd])
 
-See more demos below
+See more demos in the Documentation[#documentation]
 
 ## Usage
 
