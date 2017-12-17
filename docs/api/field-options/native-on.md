@@ -23,7 +23,7 @@ An `Object` can be used if the value should be manipulated or used elsewhere bef
 ```js
 // Option 2: Object
 fieldOptions: {
-  class: {
+  nativeOn: {
     'input': event => String(event.target.value).toLowerCase();
   }
 }
