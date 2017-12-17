@@ -86,7 +86,7 @@ const vfjsHelpers = {
     const vfjsComponent = (noWrapper)
       ? this.$createElement(component, {
         props,
-      }, this.vfjsHelperCreateComponents(children))
+      }, children)
       : this.$createElement({
         name: `vue-form-json-schema-field-wrapper-${props.id}`,
         mixins: [vfjsComponentMixin],
@@ -97,7 +97,7 @@ const vfjsHelpers = {
         },
       }, {
         props,
-      }, this.vfjsHelperCreateComponents(children));
+      }, children);
 
     // Save the VNODE to an vfjsVnodes using the field's ID as the key
     // so it can be re-used next time a render occurs and the field hasn't been updated
