@@ -6,7 +6,6 @@ const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
       id: vfjsFieldId,
-      uuid: vfjsFieldUuid,
       required: vfjsFieldRequired,
       children = [],
       component,
