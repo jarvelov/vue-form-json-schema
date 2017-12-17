@@ -1,13 +1,5 @@
 ### Module (`pkg.module`)
 
-#### Installation
-
-`npm install vue-form-json-schema`
-
-Also include the core components if you don't want to include your own:
-
-`npm install vue-form-json-core-components`
-
 > If you use `webpack` or `rollup` this version will be used automatically.
 
 #### Option 1
@@ -81,9 +73,3 @@ export default {
   </vue-form-json-schema>
 </template>
 ```
-
-There are two ways this package is distributed. Use whatever suits your requirements.
-
-### UMD (`pkg.main`)
-
-This is the way to go if you want to use the package with AMD/RequireJS or directly in the browser.
