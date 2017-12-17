@@ -34,6 +34,8 @@ See more demos in the Documentation[#documentation]
 
 ### Basic example with one field
 
+[See demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
+
 ```js
 <script>
   export default {
