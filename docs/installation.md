@@ -1,5 +1,7 @@
 # Installation
 
+> `vue-form-json-schema` as distributed as both an UMD and an ES module version. If you use CommonJS/AMD or are stuck on an older version of Webpack you should use the UMD build.
+
 ## Requirements
 
 `Vue.js >= 2.4.0`
