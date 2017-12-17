@@ -14,6 +14,7 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 
 ```html
 <script>
+// Component.js
 export default {
   data () {
     return {
