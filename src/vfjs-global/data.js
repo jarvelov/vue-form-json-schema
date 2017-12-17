@@ -23,6 +23,7 @@ const data = () => ({
   vfjsFieldsActive: [],
   vfjsListeners: [],
   vfjsModel: {},
+  vfjsOptions: {},
   vfjsSchema: {},
   vfjsState: {},
   vfjsUiSchema: [],
