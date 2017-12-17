@@ -184,7 +184,7 @@ const vfjsHelpers = {
     }
 
     const schema = this.getVfjsFieldSchema(key);
-    return schema ? schema.type === 'array' : false;
+    return schema ? Array.isArray(schema.items) : false;
   },
 };
 
