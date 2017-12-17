@@ -3,7 +3,7 @@
 
 ## Quick start
 
-> For browser/UMD instructions check the Usage section below
+> For browser/UMD instructions check the [Documentation](#Documentation)
 
 Install it
 
