@@ -118,7 +118,7 @@ const vfjsHelpers = {
         props,
       }, children);
 
-    // Save the VNODE to an vfjsVnodes using the field's ID as the key
+    // Save the VNODE to vfjsVnodes using the field's ID as the key
     // so it can be re-used next time a render occurs and the field hasn't been updated
     if (props.id && !(props.id in this.vfjsVnodes)) {
       this.vfjsVnodes[props.id] = vfjsComponent;
