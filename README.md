@@ -39,6 +39,9 @@ Using Bootstrap classes to show how layout can be different for devices with dif
 In this example two input fields will be wrapped inside a div with `col-12 col-sm-6` classes.
 Try resizing your browser window too see it in action.
 
+### [Dependencies and animation demo]()
+
+Sometimes a field should only be shown if a condition is met. Using JSON Schema's dependencies  Also showcases use of <transition> to provide animation.
 
 See more demos in the [Documentation](#documentation)
 
