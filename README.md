@@ -29,8 +29,16 @@ Check out the demos or see a minimal example in the [usage instructions](#usage)
 
 ## Demo
 
-* [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
-* [Nested elements demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd])
+### [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
+
+The least amount of configuration to render an `input` element.
+
+### [Nested UI demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd])
+
+Using Bootstrap classes to show how layout can be different for devices with different screensizes.
+In this example two input fields will be wrapped inside a div with `col-12 col-sm-6` classes.
+Try resizing your browser window too see it in action.
+
 
 See more demos in the [Documentation](#documentation)
 
