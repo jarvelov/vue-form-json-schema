@@ -6,10 +6,7 @@ const vfjsUiSetters = {
     ]), []);
   },
   setVfjsUiFieldsActive() {
-    this.vfjsFieldsActive = this.vfjsUiSchema.reduce((fields, field) => ([
-      ...fields,
-      this.getVfjsUiField(field),
-    ]), []);
+    this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
   },
 };
 
