@@ -74,7 +74,7 @@ const vfjsHelpers = {
     // If the component is a local component
     // we don't want an additional wrapper around that
 
-    // FIXME: If the component is globally we will unnecessarily wrap it!
+    // FIXME: If the component is globally registered we will unnecessarily wrap it!
     const noWrapper = (
       (typeof component === 'string' && component in this.vfjsComponents)
     );
