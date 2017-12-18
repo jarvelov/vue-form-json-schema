@@ -27,6 +27,8 @@ Check out the demos or see a minimal example in the [usage instructions](#usage)
 
 ## Demo
 
+> Note that all demos use Bootstrap styling, but no styling is included in this package and it is up to you what styles should be used.
+
 ### [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
 
 The least amount of configuration to render an `input` element.
