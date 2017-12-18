@@ -58,6 +58,30 @@ const vfjsHelpers = {
       props,
     });
   },
+  vfjsHelperHashString(string, binary = 62) {
+    let integer = 0;
+
+    for (let i = 0; i < string.length; i++) {
+      const char = string.charCodeAt(i);
+      // hash = (char + (hash << 6) + (hash << 16)) - hash; // eslint-disable-line no-bitwise
+      integer = (integer * 33) ^ char; // eslint-disable-line no-bitwise
+    }
+
+    // Convert int to unsigned to return a positive number
+    integer >>>= 0; // eslint-disable-line no-bitwise
+
+    const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const array = [];
+
+    // Create an alphanumeric hash of unsigned int
+    while (integer >= binary) {
+      const char = integer % binary;
+      array.push(chars[char]);
+      integer = Math.floor(integer / binary);
+    }
+
+    return array.join('');
+  },
   vfjsHelperCreateComponents(fields = []) {
     return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
   },
@@ -125,7 +149,7 @@ const vfjsHelpers = {
 
     const { children = [], ...fieldWithoutChildren } = field;
     const objString = JSON.stringify({ fieldWithoutChildren, level });
-    const id = sha256(objString);
+    const id = this.vfjsHelperHashString(objString);
 
     return {
       ...field,
