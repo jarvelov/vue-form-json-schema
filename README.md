@@ -37,11 +37,22 @@ See more demos in the Documentation[#documentation]
 [See demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
 
 ```js
+<template>
+    <vue-form-json-schema
+      :model="model"
+      :schema="schema"
+      :ui-schema="uiSchema"
+      :on-change="onChange"
+    >
+  </vue-form-json-schema>
+</template>
+
 <script>
   export default {
     data() {
       return {
         model: {},
+        // A valid JSON Schema object
         schema: {
           type: 'object',
           properties: {
@@ -50,6 +61,7 @@ See more demos in the Documentation[#documentation]
             },
           },
         },
+        // Array of HTML elements or Vue components
         uiSchema: [{
           component: 'input',
           model: 'firstName',
@@ -67,20 +79,10 @@ See more demos in the Documentation[#documentation]
       onChange(value) {
         this.model = value;
       }
-    }
+    },
     ...
   }
 </script>
-
-<template>
-    <vue-form-json-schema
-      :model="model"
-      :schema="schema"
-      :ui-schema="uiSchema"
-      :on-change="onChange"
-    >
-  </vue-form-json-schema>
-</template>
 ```
 
 ### Dependencies
