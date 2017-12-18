@@ -101,6 +101,7 @@ Tested with v2.5.9 but will probably work on any version >= v2.4.0
 ### TODO
 
 * Write tests
+* Add i18n support
 * ~~Write this README~~
 * Use Ajv internally to validate:
   * `vfs-global` prop `ui-schema`
