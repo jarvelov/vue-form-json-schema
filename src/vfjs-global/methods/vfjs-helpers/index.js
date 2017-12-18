@@ -81,9 +81,6 @@ const vfjsHelpers = {
 
     return array.join('');
   },
-  vfjsHelperCreateComponents(fields = []) {
-    return fields.map(this.vfjsHelperCreateComponent).filter(field => field);
-  },
   vfjsHelperCreateComponent({
     component,
     children,
