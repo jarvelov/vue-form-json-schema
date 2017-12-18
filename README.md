@@ -42,6 +42,13 @@ Try resizing your browser window too see it in action.
 
 See more demos in the [Documentation](#documentation)
 
+## Features
+
+* Supports any HTML element or Vue component
+* Small (`36K` uncompressed, `8.5K` gzipped)
+* Standardized [JSON schema](json-schema.org) for annotation and validation (by [Ajv](https://github.com/epoberezkin/ajv))
+* Layout is independent from data structure
+
 ## Documentation
 
 [Gitbook](https://jarvelov.gitbooks.io/vue-form-json-schema)
