@@ -25,7 +25,7 @@ import VueFormJsonSchema from 'vue-form-json-schema';
 Vue.component('vue-form-json-schema', VueFormJsonSchema);
 ```
 
-See a minimal example in the [usage instructions](#usage)
+Check out the demos or see a minimal example in the [usage instructions](#usage) to get started.
 
 ## Demo
 
