@@ -6,7 +6,7 @@ A [JSON schema](json-schema.org) based form generator without any fields! Use an
 
 There are no prebuilt components for you to puzzle your form together with. Instead **any Vue component or HTML element** which can emit an event can be used with this form generator.
 
-> Note that essentially all Vue components that uses `v-model` emits an `input` event.
+> Note that essentially all Vue components that uses `v-model` emits an `input` (or similar) event. [See Vue's guide for more info](https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events)
 
 ## Installation
 
