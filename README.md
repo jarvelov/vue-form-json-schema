@@ -42,8 +42,6 @@ See more demos in the Documentation[#documentation]
     data() {
       return {
         model: {},
-        state: {},
-        valid: false,
         schema: {
           type: 'object',
           properties: {
