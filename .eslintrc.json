@@ -9,6 +9,9 @@
     "no-unused-vars": ["error", {
       "vars": "all",
       "args": "none"
+    }],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
     }]
   }
 }
