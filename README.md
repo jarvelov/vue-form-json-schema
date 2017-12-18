@@ -4,20 +4,20 @@ A [JSON schema](json-schema.org) based form generator without any fields!
 
 `vue-form-json-schema` tries to not make any assumptions about how your form is structured and doesn't give you any prebuilt components for you to puzzle your form together with. Instead you can use any Vue component or HTML element in your form.
 
-## Quick start
+## Installation
 
 > For browser/UMD instructions check the [Documentation](#documentation)
 
-Install it
-
 `npm install vue-form-json-schema`
 
-Import it
-
 ```js
+import Vue from 'vue';
 import VueFormJsonSchema from 'vue-form-json-schema';
+
 Vue.component('vue-form-json-schema', VueFormJsonSchema);
 ```
+
+[Usage instructions](#usage)
 
 ## Documentation
 
