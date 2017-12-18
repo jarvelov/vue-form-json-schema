@@ -1,8 +1,8 @@
 const vfjsUiSetters = {
   setVfjsUiSchema(uiSchema) {
-    this.vfjsUiSchema = [...uiSchema].reduce((fields, field) => ([
+    this.vfjsUiSchema = uiSchema.reduce((fields, field, index) => ([
       ...fields,
-      this.vfjsHelperGenerateField(field),
+      this.vfjsHelperGenerateField(field, index),
     ]), []);
   },
   setVfjsUiFieldsActive() {
