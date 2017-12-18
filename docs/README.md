@@ -2,6 +2,6 @@
 
 A [JSON schema](json-schema.org) based form generator without any fields!
 
-`vue-form-json-schema` tries to not make any assumptions about how your form is structured. It doesn't give you **any prebuilt components** for you to puzzle your form together with. Instead you can use any Vue component or HTML element in your form.
+`vue-form-json-schema` tries to not make any assumptions about how your form is structured.
 
-Any element or component which can emit an event can be used with this form generator.
+There are no prebuilt components for you to puzzle your form together with. Instead **any Vue component or HTML element** which can emit an event can be used with this form generator.
