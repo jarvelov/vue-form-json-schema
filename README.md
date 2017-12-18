@@ -94,10 +94,6 @@ For form validation using [JSON Schema](http://json-schema.org/) and internal va
 `get`, `set` and `merge` are used throughout the package.
 Bundle size is very important though and is always considered and so we heavily strip down lodash to only include the absolute necessities
 
-#### [js-sha256](https://github.com/emn178/js-sha256)
-
-Used to generate unique hashes of a field so we can know when it needs to re-render
-
 #### Vue
 
 Tested with v2.5.9 but will probably work on any version >= v2.4.0
