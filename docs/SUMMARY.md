@@ -2,6 +2,7 @@
 * [Getting started](getting-started.md)
 * [component](api/vue-form-json-schema.md)
   * [options](api/options.md)
+  * [schema](api/schema.md)
   * [uiSchema](api/ui-schema.md)
     * [component](api/ui-schema/component.md)
     * [children](api/ui-schema/children.md)
