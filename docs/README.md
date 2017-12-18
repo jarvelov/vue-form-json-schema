@@ -41,7 +41,7 @@ Try resizing your browser window too see it in action.
 
 ### [Dependencies and animation demo]()
 
-Sometimes a field should only be shown if a condition is met. Using JSON Schema's dependencies  Also showcases use of <transition> to provide animation.
+Sometimes a field should only be shown if a condition is met. Using JSON Schema's dependencies  Also showcases use of `<transition>` to provide animation.
 
 See more demos in the [Documentation](#documentation)
 
