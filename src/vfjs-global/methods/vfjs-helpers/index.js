@@ -62,7 +62,6 @@ const vfjsHelpers = {
 
     for (let i = 0; i < string.length; i++) {
       const char = string.charCodeAt(i);
-      // hash = (char + (hash << 6) + (hash << 16)) - hash; // eslint-disable-line no-bitwise
       integer = (integer * 33) ^ char; // eslint-disable-line no-bitwise
     }
 
