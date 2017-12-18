@@ -1,8 +1,7 @@
 # on
 
-Register events listeners for [Custom Events](https://vuejs.org/v2/guide/components.html#Custom-Events) emitted using [`$emit`](https://vuejs.org/v2/api/#vm-emit)
-
-The `on` property accepts either an `Array` or an `Object`.
+Register events listeners for [Custom Events](https://vuejs.org/v2/guide/components.html#Custom-Events) emitted using [`$emit`](https://vuejs.org/v2/api/#vm-emit).
+Accepts either an `Array` or an `Object`.
 
 ## Array
 
