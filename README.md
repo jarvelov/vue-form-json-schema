@@ -85,8 +85,7 @@ See more demos in the [Documentation](#documentation)
         this.model = value;
       }
     },
-    ...
-  }
+  };
 </script>
 ```
 
