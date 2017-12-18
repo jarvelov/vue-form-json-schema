@@ -51,7 +51,11 @@ const vfjsHelpers = {
       vfjsState,
     };
 
+    const childString = JSON.stringify(children);
+    const childId = this.vfjsHelperHashString(childString);
+
     return this.vfjsHelperCreateComponent({
+      id: `${vfjsFieldId}-${childId}`,
       component,
       children: fieldChildren,
       props,
