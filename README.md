@@ -8,7 +8,11 @@ A [JSON schema](json-schema.org) based form generator without any fields!
 
 > For browser/UMD instructions check the [Documentation](#documentation)
 
+Install from npm
+
 `npm install vue-form-json-schema`
+
+Import to your app
 
 ```js
 import Vue from 'vue';
@@ -17,7 +21,7 @@ import VueFormJsonSchema from 'vue-form-json-schema';
 Vue.component('vue-form-json-schema', VueFormJsonSchema);
 ```
 
-[Usage instructions](#usage)
+See a minimal example in the [usage instructions](#usage)
 
 ## Documentation
 
