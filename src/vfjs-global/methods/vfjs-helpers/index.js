@@ -81,13 +81,14 @@ const vfjsHelpers = {
     return array.join('');
   },
   vfjsHelperCreateComponent({
+    id,
     component,
     children,
     props,
   }) {
     // Return early if we have a rendered version in the cache
-    if (props.id && props.id in this.vfjsVnodes) {
-      return this.vfjsVnodes[props.id];
+    if (id && id in this.vfjsVnodes) {
+      return this.vfjsVnodes[id];
     }
 
     // If the component is a local component
@@ -107,7 +108,7 @@ const vfjsHelpers = {
         props,
       }, children)
       : this.$createElement({
-        name: `vue-form-json-schema-field-wrapper-${props.id}`,
+        name: `vue-form-json-schema-field-wrapper-${id}`,
         mixins: [vfjsComponentMixin],
         render() {
           return this.$createElement(component, {
@@ -120,9 +121,7 @@ const vfjsHelpers = {
 
     // Save the VNODE to vfjsVnodes using the field's ID as the key
     // so it can be re-used next time a render occurs and the field hasn't been updated
-    if (props.id && !(props.id in this.vfjsVnodes)) {
-      this.vfjsVnodes[props.id] = vfjsComponent;
-    }
+    this.vfjsVnodes[id] = vfjsComponent;
 
     return vfjsComponent;
   },
