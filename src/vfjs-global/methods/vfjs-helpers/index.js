@@ -1,6 +1,21 @@
 import { set } from 'lodash';
 import vfjsComponentMixin from '../../../vfjs-component';
 
+const wrapper = {
+  name: 'vue-form-json-schema-field-wrapper',
+  mixins: [vfjsComponentMixin],
+  props: {
+    component: {
+      type: [String, Object],
+    },
+  },
+  render() {
+    return this.$createElement(this.component, {
+      ...this.vfjsAttributes,
+    }, this.$slots.default);
+  },
+};
+
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
@@ -108,16 +123,11 @@ const vfjsHelpers = {
       ? this.$createElement(component, {
         props,
       }, children)
-      : this.$createElement({
-        name: `vue-form-json-schema-field-wrapper-${id}`,
-        mixins: [vfjsComponentMixin],
-        render() {
-          return this.$createElement(component, {
-            ...this.vfjsAttributes,
-          }, this.$slots.default);
+      : this.$createElement(wrapper, {
+        props: {
+          ...props,
+          component,
         },
-      }, {
-        props,
       }, children);
 
     // Save the VNODE to vfjsVnodes using the field's ID as the key
