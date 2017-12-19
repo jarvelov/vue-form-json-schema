@@ -1,6 +1,6 @@
 # show
 
-Sometimes a field is only relevant if some condition is met. The `show` property is uses JSON Schema to evaluate if a field should be visibility or not.
+Sometimes a field is only relevant if some condition is met. The `show` property uses JSON Schema to evaluate if a field should be visible or not.
 
 There are 2 options: Full and Single.
 
