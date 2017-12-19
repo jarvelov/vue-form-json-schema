@@ -12,6 +12,10 @@ const vfjsValidation = {
     if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
       this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, { vfjsModel: this.getVfjsModel() });
     }
+
+    Object.keys(this.schemas).forEach((key) => {
+      this.ajv.addSchema(this.schemas[key], key);
+    });
   },
   ...getters,
 };

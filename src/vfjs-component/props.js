@@ -22,6 +22,9 @@ const props = {
     type: Object,
     required: true,
   },
+  schemas: {
+    type: Object,
+  },
   state: {
     type: Object,
     required: true,
@@ -66,6 +69,9 @@ const props = {
   vfjsFieldSchema: {
     type: Object,
     required: true,
+  },
+  vfjsFieldSchemas: {
+    type: Object,
   },
   vfjsFieldState: {
     type: Object,

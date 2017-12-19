@@ -22,6 +22,7 @@ const vfjsHelpers = {
       : children.map(this.vfjsHelperCreateField);
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
+    const vfjsFieldSchemas = this.schemas;
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsState = this.getVfjsState();
@@ -35,6 +36,7 @@ const vfjsHelpers = {
       modelKey: vfjsFieldModelKey,
       required: vfjsFieldRequired,
       schema: vfjsFieldSchema,
+      schemas: vfjsFieldSchemas,
       state: vfjsFieldState,
       uiSchema: vfjsFieldUiSchema,
       value: vfjsFieldModel,
@@ -45,6 +47,7 @@ const vfjsHelpers = {
       vfjsFieldOptions,
       vfjsFieldRequired,
       vfjsFieldSchema,
+      vfjsFieldSchemas,
       vfjsFieldState,
       vfjsFieldUiSchema,
       vfjsModel,
