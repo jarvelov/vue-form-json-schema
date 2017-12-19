@@ -3,11 +3,8 @@ import { get } from 'lodash';
 const vfjsUiGetters = {
   getVfjsUiFieldShow({ model, schema }) {
     const value = this.getVfjsFieldModel(model);
-    if (typeof value === 'undefined') {
-      return false;
-    }
-
     this.ajv.validate(schema, value);
+    // console.log(model, schema, value, this.ajv.errors);
     const errors = (this.ajv.errors) ? this.ajv.errors : [];
 
     return errors.length === 0;
@@ -53,16 +50,23 @@ const vfjsUiGetters = {
       if (field) {
         const newField = this.getVfjsUiField(field);
         if (newField) {
-          const objString = JSON.stringify({
-            newField,
-            index,
-            model: this.getVfjsFieldModel(newField.model),
-          });
-          const id = this.vfjsHelperHashString(objString);
+          // const hashObj = {
+          //   newField,
+          //   index,
+          // };
+          //
+          // const model = this.getVfjsFieldModel(field.model);
+          // if (model) {
+          //   // hashObj.model = model;
+          // }
+
+          // const id = this.vfjsHelperHashString(JSON.stringify(hashObj));
+
+          // console.log(newField);
 
           newFields.push({
             ...newField,
-            id,
+            // id,
           });
         }
       }

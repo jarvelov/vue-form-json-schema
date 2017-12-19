@@ -91,9 +91,9 @@ const vfjsHelpers = {
     props,
   }) {
     // Return early if we have a rendered version in the cache
-    if (id && id in this.vfjsVnodes) {
-      return this.vfjsVnodes[id];
-    }
+    // if (id && id in this.vfjsVnodes) {
+    //   return this.vfjsVnodes[id];
+    // }
 
     // If the component is a local component
     // we don't want an additional wrapper around that
