@@ -9,6 +9,9 @@ const vfjsLifecycle = {
     // Set the model from props
     this.setVfjsModel(this.model);
 
+    // Set up validation
+    this.vfjsValidationInitialize();
+
     // Set the available components
     this.vfjsComponents = Object.assign({}, this.components);
 
@@ -30,9 +33,6 @@ const vfjsLifecycle = {
 
     // Register events in vfjsEvents to vfjsBusEventHandler
     this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);
-
-    // Set up validation
-    this.vfjsValidationInitialize();
 
     // Check and set active fields (visible)
     this.setVfjsUiFieldsActive();
