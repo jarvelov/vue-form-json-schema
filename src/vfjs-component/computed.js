@@ -26,13 +26,14 @@ const computed = {
       if (elements.indexOf(this.component) !== -1) {
         domProps.innerHTML = (
           this.vfjsFieldModel ||
-          (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML)
+          (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML) ||
+          (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value)
         );
 
         attrs.value = (
           this.vfjsFieldModel ||
           (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value) ||
-          domProps.innerHTML
+          (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML)
         );
       }
     }
