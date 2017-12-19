@@ -1,8 +1,10 @@
 # Vue Form JSON Schema
 
-> A [JSON schema](json-schema.org) based form generator without any fields! Use any HTML element or Vue component!
+> A [JSON schema](json-schema.org) based form generator without any fields!
 
-There are no prebuilt components for you to puzzle your form together with. Instead ***any Vue component or HTML element*** which can emit an event can be used with this form generator.
+##### Use any Vue component or HTML element!
+
+There are *no prebuilt components* for you to puzzle your form together with. Instead you can use any component or element which emits and event, custom or native.
 
 > Note that essentially all Vue components that uses `v-model` emits an `input` (or similar) event. [See Vue's guide for more info](https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events)
 
@@ -39,9 +41,9 @@ Using Bootstrap classes to show how layout can be different for devices with dif
 In this example two input fields will be wrapped inside a div with `col-12 col-sm-6` classes.
 Try resizing your browser window too see it in action.
 
-### [Dependencies and animation demo]()
+### [Conditional visibility and Animation demo](https://www.webpackbin.com/bins/-L0hgoQjI7Cq2EibysRr)
 
-Sometimes a field should only be shown if a condition is met. Using JSON Schema's dependencies  Also showcases use of `<transition>` to provide animation.
+Sometimes a field should only be shown if a condition is met. Uses `<transition>` to provide animation.
 
 See more demos in the [Documentation](#documentation)
 
