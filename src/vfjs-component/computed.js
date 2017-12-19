@@ -3,6 +3,7 @@ import { merge } from 'lodash';
 const computed = {
   vfjsAttributes() {
     const attrs = {
+      // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
       required: this.vfjsFieldRequired,
     };
 
