@@ -90,14 +90,8 @@ const vfjsHelpers = {
     children,
     props,
   }) {
-    // Return early if we have a rendered version in the cache
-    // if (id && id in this.vfjsVnodes) {
-    //   return this.vfjsVnodes[id];
-    // }
-
     // If the component is a local component
     // we don't want an additional wrapper around that
-
     // FIXME: If the component is globally registered we will unnecessarily wrap it!
     const noWrapper = (
       (typeof component === 'string' && component in this.vfjsComponents)
@@ -117,10 +111,6 @@ const vfjsHelpers = {
           component,
         },
       }, children);
-
-    // Save the VNODE to vfjsVnodes using the field's ID as the key
-    // so it can be re-used next time a render occurs and the field hasn't been updated
-    this.vfjsVnodes[id] = vfjsComponent;
 
     return vfjsComponent;
   },

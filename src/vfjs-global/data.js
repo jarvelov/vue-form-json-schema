@@ -27,8 +27,7 @@ const data = () => ({
   vfjsSchema: {},
   vfjsState: {},
   vfjsUiSchema: [],
-  vfjsValidator: null,
-  vfjsVnodes: {},
+  vfjsValidator: null
 });
 
 export default data;
