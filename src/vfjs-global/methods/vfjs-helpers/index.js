@@ -1,20 +1,5 @@
 import { set } from 'lodash';
-import vfjsComponentMixin from '../../../vfjs-component';
-
-const wrapper = {
-  name: 'vue-form-json-schema-field-wrapper',
-  mixins: [vfjsComponentMixin],
-  props: {
-    component: {
-      type: [String, Object],
-    },
-  },
-  render() {
-    return this.$createElement(this.component, {
-      ...this.vfjsAttributes,
-    }, this.$slots.default);
-  },
-};
+import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -123,7 +108,7 @@ const vfjsHelpers = {
       ? this.$createElement(component, {
         props,
       }, children)
-      : this.$createElement(wrapper, {
+      : this.$createElement(vfjsComponentWrapper, {
         props: {
           ...props,
           component,
