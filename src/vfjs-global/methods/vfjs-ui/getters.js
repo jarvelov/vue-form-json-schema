@@ -13,15 +13,9 @@ const vfjsUiGetters = {
     return errors.length === 0;
   },
   getVfjsUiFieldActive(field) {
-    if (field.show) {
-      return this.getVfjsUiFieldShow(field.show);
-    }
-
-    if (!field.model || this.getVfjsFieldSchema(field.model)) {
-      return true;
-    }
-
-    return false;
+    return (field.show)
+      ? this.getVfjsUiFieldShow(field.show)
+      : true;
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
