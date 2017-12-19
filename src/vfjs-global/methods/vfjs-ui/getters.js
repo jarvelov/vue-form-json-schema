@@ -50,24 +50,7 @@ const vfjsUiGetters = {
       if (field) {
         const newField = this.getVfjsUiField(field);
         if (newField) {
-          // const hashObj = {
-          //   newField,
-          //   index,
-          // };
-          //
-          // const model = this.getVfjsFieldModel(field.model);
-          // if (model) {
-          //   // hashObj.model = model;
-          // }
-
-          // const id = this.vfjsHelperHashString(JSON.stringify(hashObj));
-
-          // console.log(newField);
-
-          newFields.push({
-            ...newField,
-            // id,
-          });
+          newFields.push(newField);
         }
       }
 
