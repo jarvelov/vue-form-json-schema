@@ -1,47 +1,36 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
-  getVfjsUiFieldDeep(obj, key) {
-    if (!obj || !obj.properties) {
+  getVfjsUiFieldShow({ model, schema }) {
+    const value = this.getVfjsModel(model);
+    if (typeof value === 'undefined') {
       return false;
     }
 
-    if (obj[key] || obj.properties[key]) {
-      return true;
-    }
-
-    // TODO: This could be resource intensive with large schemas
-    // Investigate ways that it can be improved
-    return Object.keys(obj.properties).some((propKey) => {
-      if (this.getVfjsFieldModelValid(propKey)) {
-        return this.getVfjsUiFieldDeep(
-          obj.properties[propKey].properties,
-          key,
-        );
-      }
-
-      return false;
+    this.ajv.validate({
+      type: 'object',
+      properties: {
+        [model]: schema,
+      },
+    }, {
+      [model]: value,
     });
+
+    const errors = (this.ajv.errors) ? this.ajv.errors : [];
+    return errors.length === 0;
   },
-  // TODO: When getVfjsUiField is renamed, let getVfjsUiFieldActive take that name
-  getVfjsUiFieldActive(key) {
-    if (!key || this.getVfjsFieldSchema(key)) {
+  getVfjsUiFieldActive(field) {
+    if (field.show) {
+      return Array.isArray(field.show)
+        ? field.show.some(this.getVfjsUiFieldShow)
+        : this.getVfjsUiFieldShow(field.show);
+    }
+
+    if (!field.model || this.getVfjsFieldSchema(field.model)) {
       return true;
     }
 
-    const { dependencies = {} } = this.getVfjsSchema();
-    return Object.keys(dependencies).some((fieldKey) => {
-      const vfjsFieldState = this.getVfjsFieldState(fieldKey);
-      if ((!vfjsFieldState || !vfjsFieldState.$dirty)) {
-        return false;
-      }
-
-      return (
-        typeof this.getVfjsFieldModel(fieldKey) !== 'undefined' &&
-        this.getVfjsFieldModelValid(fieldKey) &&
-        this.getVfjsUiFieldDeep(dependencies[fieldKey], key)
-      );
-    });
+    return false;
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
@@ -51,7 +40,7 @@ const vfjsUiGetters = {
       .map(this.getVfjsUiFieldsActive);
   },
   getVfjsUiField({ children = [], model, ...field }) {
-    if (this.getVfjsUiFieldActive(model)) {
+    if (this.getVfjsUiFieldActive(field)) {
       const isArray = this.vfjsHelperFieldIsArray(model);
       const required = this.vfjsHelperFieldIsRequired(model);
 
