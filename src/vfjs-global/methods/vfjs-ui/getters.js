@@ -2,14 +2,14 @@ import { get } from 'lodash';
 
 const vfjsUiGetters = {
   getVfjsUiFieldShow({ model, schema }) {
-    const value = this.getVfjsModel(model);
+    const value = this.getVfjsFieldModel(model);
     if (typeof value === 'undefined') {
       return false;
     }
 
     this.ajv.validate(schema, value);
-
     const errors = (this.ajv.errors) ? this.ajv.errors : [];
+
     return errors.length === 0;
   },
   getVfjsUiFieldActive(field) {
