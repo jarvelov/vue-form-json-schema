@@ -21,9 +21,7 @@ const vfjsUiGetters = {
   },
   getVfjsUiFieldActive(field) {
     if (field.show) {
-      return Array.isArray(field.show)
-        ? field.show.some(this.getVfjsUiFieldShow)
-        : this.getVfjsUiFieldShow(field.show);
+      return this.getVfjsUiFieldShow(field.show);
     }
 
     if (!field.model || this.getVfjsFieldSchema(field.model)) {
