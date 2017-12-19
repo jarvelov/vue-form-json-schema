@@ -75,11 +75,17 @@ const vfjsUiGetters = {
     return false;
   },
   getVfjsUiFieldsActive(fields) {
-    return fields.reduce((newFields, field) => {
+    return fields.reduce((newFields, field, index) => {
       if (field) {
         const newField = this.getVfjsUiField(field);
         if (newField) {
-          newFields.push(newField);
+          const objString = JSON.stringify({ newField, index });
+          const id = this.vfjsHelperHashString(objString);
+
+          newFields.push({
+            ...newField,
+            id,
+          });
         }
       }
 
