@@ -53,7 +53,11 @@ const vfjsUiGetters = {
       if (field) {
         const newField = this.getVfjsUiField(field);
         if (newField) {
-          const objString = JSON.stringify({ newField, index });
+          const objString = JSON.stringify({
+            newField,
+            index,
+            model: this.getVfjsFieldModel(newField.model),
+          });
           const id = this.vfjsHelperHashString(objString);
 
           newFields.push({
