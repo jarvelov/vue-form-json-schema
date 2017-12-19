@@ -7,14 +7,7 @@ const vfjsUiGetters = {
       return false;
     }
 
-    this.ajv.validate({
-      type: 'object',
-      properties: {
-        [model]: schema,
-      },
-    }, {
-      [model]: value,
-    });
+    this.ajv.validate(schema, value);
 
     const errors = (this.ajv.errors) ? this.ajv.errors : [];
     return errors.length === 0;
