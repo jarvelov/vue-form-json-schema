@@ -3,6 +3,15 @@ const vfjsLifecycle = {
     this.vfjsEvents.forEach(event => this.removeVfjsListener(event));
   },
   vfjsInitialize() {
+    // Set the JSON schema
+    this.vfjsSchema = Object.assign({}, this.schema);
+
+    // Set the available components
+    this.vfjsComponents = Object.assign({}, this.components);
+
+    // Set up options
+    this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
+
     // Set up the plugin's internal bus
     this.vfjsBusInitialize();
 
@@ -12,15 +21,8 @@ const vfjsLifecycle = {
     // Set up validation
     this.vfjsValidationInitialize();
 
-    // Set the available components
-    this.vfjsComponents = Object.assign({}, this.components);
-
-    // Set the JSON schema
-    this.vfjsSchema = Object.assign({}, this.schema);
+    // Set up ui schema
     this.setVfjsUiSchema(this.uiSchema);
-
-    // Set up options
-    this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
 
     // Register events in vfjsEvents to vfjsBusEventHandler
     this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);
