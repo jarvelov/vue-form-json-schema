@@ -20,12 +20,7 @@ const vfjsLifecycle = {
     this.setVfjsUiSchema(this.uiSchema);
 
     // Set up options
-    this.vfjsOptions = Object.assign({}, {
-      allowInvalidModel: true,
-      validate: true,
-      validateOnLoad: true,
-      validateOnChange: true,
-    }, this.options);
+    this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
 
     // Register events in vfjsEvents to vfjsBusEventHandler
     this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);

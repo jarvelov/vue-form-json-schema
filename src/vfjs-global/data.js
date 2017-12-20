@@ -23,7 +23,15 @@ const data = () => ({
   vfjsFieldsActive: [],
   vfjsListeners: [],
   vfjsModel: {},
-  vfjsOptions: {},
+  vfjsOptions: {
+    allowInvalidModel: true,
+    ajvOptions: {
+      allErrors: true,
+    },
+    validate: true,
+    validateOnLoad: true,
+    validateOnChange: true,
+  },
   vfjsSchema: {},
   vfjsState: {},
   vfjsUiSchema: [],
