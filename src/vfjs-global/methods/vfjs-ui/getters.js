@@ -1,17 +1,23 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
-  getVfjsUiFieldShow({ model, schema }) {
+  getVfjsUiFieldVisible(field) {
+    if (!field.show) {
+      return true;
+    }
+
+    // Get model and schema
+    const { model, schema } = field.show;
+
+    // Get the field's model
+    // It will fall back to the full model if model is undefined
     const value = this.getVfjsFieldModel(model);
+
+    // Validate and check if we got any errors
     this.ajv.validate(schema, value);
-    const errors = (this.ajv.errors) ? this.ajv.errors : [];
+    const errors = (!this.ajv.errors) ? this.ajv.errors : [];
 
     return errors.length === 0;
-  },
-  getVfjsUiFieldActive(field) {
-    return (field.show)
-      ? this.getVfjsUiFieldShow(field.show)
-      : true;
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
@@ -21,7 +27,7 @@ const vfjsUiGetters = {
       .map(this.getVfjsUiFieldsActive);
   },
   getVfjsUiField({ children = [], model, ...field }) {
-    if (this.getVfjsUiFieldActive(field)) {
+    if (this.getVfjsUiFieldVisible(field)) {
       const isArray = this.vfjsHelperFieldIsArray(model);
       const required = this.vfjsHelperFieldIsRequired(model);
 
