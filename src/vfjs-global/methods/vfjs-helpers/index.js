@@ -106,6 +106,7 @@ const vfjsHelpers = {
         props,
       }, children)
       : this.$createElement(vfjsComponentWrapper, {
+        key: id,
         props: {
           ...props,
           component,
