@@ -4,7 +4,6 @@ const vfjsUiGetters = {
   getVfjsUiFieldShow({ model, schema }) {
     const value = this.getVfjsFieldModel(model);
     this.ajv.validate(schema, value);
-    // console.log(model, schema, value, this.ajv.errors);
     const errors = (this.ajv.errors) ? this.ajv.errors : [];
 
     return errors.length === 0;
