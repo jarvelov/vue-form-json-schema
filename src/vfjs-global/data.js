@@ -21,6 +21,7 @@ const data = () => ({
     VFJS_EVENT_STATE_UPDATED,
   ],
   vfjsFieldsActive: [],
+  vfjsFieldsRequired: [],
   vfjsListeners: [],
   vfjsModel: {},
   vfjsOptions: {
