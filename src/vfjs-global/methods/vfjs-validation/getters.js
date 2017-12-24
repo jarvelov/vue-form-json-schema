@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+
 const vfjsValidationGetters = {
   getVfjsFieldUiSchemaValidationErrors({ component, model, type }) {
     const errors = [];
@@ -26,15 +28,25 @@ const vfjsValidationGetters = {
     return this.getVfjsModelValidationErrors(key, value);
   },
   getVfjsModelValidationErrors(key, value) {
-    const schema = key ? this.getVfjsFieldSchema(key) : this.getVfjsSchema();
-    if (!schema) {
-      return [];
+    const schema = this.getVfjsSchema();
+
+    // TODO: Globally get all the errors and reduce them instead of generating them again
+    this.ajv.validate(schema, {
+      [key]: value,
+    });
+
+    if (this.ajv.errors) {
+      return this.ajv.errors.reduce((errors, error) => {
+        const errorKey = get(error, 'params.missingProperty');
+        if (key === errorKey) {
+          errors.push(error);
+        }
+
+        return errors;
+      }, []);
     }
 
-    const data = typeof value !== 'undefined' ? value : this.getVfjsFieldModel(key);
-    const valid = this.ajv.validate(schema, data);
-
-    return !valid ? this.ajv.errors : [];
+    return []; // No errors
   },
   getVfjsValid() {
     const errors = this.getVfjsValidationErrors();
