@@ -72,7 +72,7 @@ const vfjsHelpers = {
     return this.vfjsHelperCreateComponent({
       id: vfjsFieldId,
       component,
-      children: fieldChildren,
+      children: vfjsChildren,
       props,
     });
   },
