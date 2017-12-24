@@ -33,22 +33,14 @@ const vfjsBus = {
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
-        const vfjsFieldModel = this.getVfjsFieldModel(key);
         const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
         this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel,
-          cb: (vfjsErrors) => {
-            const vfjsFieldErrors = this.getVfjsFieldModelValidationErrors(key, value);
-            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
-              $dirty: !isEqual(vfjsFieldModel, value),
-              vfjsFieldErrors,
-            });
-
-            this.setVfjsFieldState(newFieldState, key);
-
+          cb: () => {
+            const errors = this.getVfjsFieldModelValidationErrors(key, value);
             if (cb && typeof cb === 'function') {
-              cb(vfjsFieldErrors);
+              cb(errors);
             }
           },
         });
