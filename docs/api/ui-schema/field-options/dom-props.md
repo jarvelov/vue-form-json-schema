@@ -1,5 +1,7 @@
 # domProps
 
+> Be careful about setting `innerHTML` as that effectively disables a field's ability to render children
+
 ```js
 // DOM properties
 fieldOptions: {
