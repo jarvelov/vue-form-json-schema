@@ -95,7 +95,7 @@ const vfjsHelpers = {
       integer = (integer * 33) ^ char; // eslint-disable-line no-bitwise
     }
 
-    // Convert int to unsigned to return a positive number
+    // Convert int to unsigned to get a positive number
     integer >>>= 0; // eslint-disable-line no-bitwise
 
     const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
