@@ -63,7 +63,7 @@ ajv.validate(schema, data);
 
 ## Single
 
-The Full option can be a bit verbose when you only rely on a single field's model, and thus you set the `model` property on the `show` object to only use the value of that field's model.
+The Full option can be a bit verbose when you only rely on a single field's model, and thus you set the `model` property on the `displayOptions` object to only use the value of that field's model.
 
 ```js
 // Option 2 - single model
@@ -73,7 +73,7 @@ data() {
       component: 'div',
       children: [{
         component: 'div'
-        show: {
+        displayOptions: {
           // Here we set to use only the value of the firstName model
           model: 'firstName'
           schema: {
