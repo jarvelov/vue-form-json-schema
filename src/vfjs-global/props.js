@@ -11,6 +11,9 @@ const props = {
     type: Object,
     required: true,
     default: () => ([]),
+  schemas: {
+    type: Object,
+    default: () => ({}),
   },
   options: {
     type: Object,
