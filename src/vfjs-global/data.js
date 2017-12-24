@@ -21,6 +21,7 @@ const data = () => ({
     VFJS_EVENT_STATE_UPDATED,
   ],
   vfjsFieldsActive: [],
+  vfjsFieldsRequired: [],
   vfjsListeners: [],
   vfjsModel: {},
   vfjsOptions: {
@@ -33,8 +34,6 @@ const data = () => ({
   vfjsSchema: {},
   vfjsState: {},
   vfjsUiSchema: [],
-  vfjsValidator: null,
-  vfjsVnodes: {},
 });
 
 export default data;

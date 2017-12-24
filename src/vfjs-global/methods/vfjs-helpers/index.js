@@ -15,10 +15,12 @@ const vfjsHelpers = {
     } = vfjsFieldUiSchema;
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
-    const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
+    const vfjsFieldSchemas = this.schemas;
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
-    const vfjsState = this.getVfjsState();
+    const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsModel = this.getVfjsModel();
+    const vfjsState = this.getVfjsState();
+
     // Get field errors
     const vfjsFieldErrors = vfjsFieldState.errors || [];
 
