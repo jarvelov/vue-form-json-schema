@@ -113,7 +113,7 @@ const vfjsHelpers = {
   vfjsHelperCreateComponent({
     id,
     component,
-    children,
+    children = [],
     props,
   }) {
     // Return early if we have a rendered version in the cache
