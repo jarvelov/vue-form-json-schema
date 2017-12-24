@@ -14,15 +14,6 @@ const vfjsHelpers = {
       required: vfjsFieldRequired = false,
     } = vfjsFieldUiSchema;
 
-    const isArray = this.vfjsHelperFieldIsArray(vfjsFieldModelKey);
-
-    const fieldChildren = isArray
-      ? children.reduce((flattenedChildren, child) => ([
-        ...flattenedChildren,
-        ...child.map(this.vfjsHelperCreateField),
-      ]), [])
-      : children.map(this.vfjsHelperCreateField);
-
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
@@ -86,6 +77,15 @@ const vfjsHelpers = {
         },
       },
     }));
+  },
+  vfjsHelperGetChildren(children, modelKey) {
+    const isArray = this.vfjsHelperFieldIsArray(modelKey);
+    return isArray
+      ? children.reduce((flattenedChildren, child) => ([
+        ...flattenedChildren,
+        ...child.map(this.vfjsHelperCreateField),
+      ]), [])
+      : children.map(this.vfjsHelperCreateField);
   },
   vfjsHelperHashString(string, binary = 62) {
     let integer = 0;
