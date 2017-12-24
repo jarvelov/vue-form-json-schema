@@ -58,6 +58,15 @@ const vfjsBus = {
           key,
           value,
           cb: (errors) => {
+            const vfjsFieldModel = this.getVfjsFieldModel(key);
+            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
+              $dirty: !isEqual(vfjsFieldModel, value),
+              errors,
+              updatedAt: Date.now(),
+            });
+
+            this.setVfjsFieldState(newFieldState, key);
+
             if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
               const newModel = this.vfjsHelperApplyFieldModel(key, value);
               this.setVfjsModel(newModel);
