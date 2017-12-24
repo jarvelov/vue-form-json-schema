@@ -1,5 +1,5 @@
 import { set } from 'lodash';
-import vfjsComponentMixin from '../../../vfjs-component';
+import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -129,6 +129,13 @@ const vfjsHelpers = {
     this.vfjsVnodes[id] = vfjsComponent;
 
     return vfjsComponent;
+    return this.$createElement(vfjsComponentWrapper, {
+      key: id,
+      props: {
+        ...props,
+        component,
+      },
+    }, children);
   },
   vfjsHelperApplyFieldModel(key, value) {
     const newVfjsModel = Object.assign({}, this.getVfjsModel());
