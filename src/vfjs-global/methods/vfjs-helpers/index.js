@@ -7,6 +7,7 @@ const vfjsHelpers = {
       id: vfjsFieldId,
       children = [],
       component,
+      errorHandler: vfjsFieldErrorHandler,
       errorOptions: vfjsFieldErrorOptions = {},
       fieldOptions: vfjsFieldOptions = {},
       model: vfjsFieldModelKey = '',
@@ -30,9 +31,15 @@ const vfjsHelpers = {
     // Get field errors
     const vfjsFieldErrors = vfjsFieldState.errors || [];
 
+    // If this field is an errorHandler we pass the errors as the children
+    // Otherwise its treated normally
+    const vfjsChildren = (vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler)
+      ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
+      : this.vfjsHelperGetChildren(children, vfjsFieldModelKey);
+
     const props = {
       ...vfjsFieldOptions,
-      children,
+      children: vfjsChildren,
       id: vfjsFieldId,
       errorOptions: vfjsFieldErrorOptions,
       errors: vfjsFieldErrors,
@@ -45,6 +52,7 @@ const vfjsHelpers = {
       uiSchema: vfjsFieldUiSchema,
       value: vfjsFieldModel,
       vfjsBus: this.vfjsBus,
+      vfjsChildren,
       vfjsFieldId,
       vfjsFieldErrorOptions,
       vfjsFieldErrors,
