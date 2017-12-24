@@ -66,6 +66,17 @@ const vfjsHelpers = {
       props,
     });
   },
+  vfjsHelperGetErrors(errors = [], id) {
+    return errors.map((error, index) => this.vfjsHelperCreateField({
+      id: `${id}-error-${index}`,
+      component: 'div',
+      fieldOptions: {
+        domProps: {
+          innerHTML: error.message,
+        },
+      },
+    }));
+  },
   vfjsHelperHashString(string, binary = 62) {
     let integer = 0;
 
