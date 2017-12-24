@@ -6,7 +6,13 @@ import {
 
 const vfjsValidation = {
   vfjsValidationInitialize() {
-    this.ajv = new Ajv();
+    // Set up Ajv
+    this.ajv = new Ajv({
+      ...this.vfjsOptions.ajvOptions,
+      // The `allErrors` option is required for validation to work
+      allErrors: true,
+    });
+
     // Add additional schemas
     Object.keys(this.schemas).forEach((key) => {
       this.ajv.addSchema(this.schemas[key], key);
