@@ -7,6 +7,9 @@ const props = {
     type: String,
     required: true,
   },
+  fieldOptions: {
+    type: Object,
+  },
   model: {
     type: null,
   },

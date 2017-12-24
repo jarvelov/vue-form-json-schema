@@ -31,6 +31,7 @@ const vfjsHelpers = {
       ...vfjsFieldOptions,
       children,
       id: vfjsFieldId,
+      fieldOptions: vfjsFieldOptions,
       model: vfjsFieldModel,
       modelKey: vfjsFieldModelKey,
       required: vfjsFieldRequired,
