@@ -188,22 +188,14 @@ const vfjsHelpers = {
     const parentIndex = String(model).lastIndexOf('.');
     return String(model).substr(0, parentIndex);
   },
-  vfjsHelperSchemaHasRequiredField(schema, fieldKey) {
-    return (schema && schema.required && Array.isArray(schema.required))
-      ? schema.required.indexOf(fieldKey) !== -1
-      : false;
-  },
   vfjsHelperFieldIsRequired(model) {
     if (model) {
       const parentModel = this.vfjsHelperGetParentModel(model);
       if (parentModel) {
-        const relativeModel = this.vfjsHelperGetRelativeModel(model, parentModel);
-        const parentSchema = this.getVfjsFieldSchema(model);
-        return this.vfjsHelperSchemaHasRequiredField(parentSchema, relativeModel);
+        return this.vfjsFieldsRequired.indexOf(parentModel) !== -1;
       }
 
-      const vfjsSchema = this.getVfjsSchema();
-      return this.vfjsHelperSchemaHasRequiredField(vfjsSchema, model);
+      return this.vfjsFieldsRequired.indexOf(model) !== -1;
     }
 
     return false;
