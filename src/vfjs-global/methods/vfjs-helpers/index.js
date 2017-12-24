@@ -5,11 +5,12 @@ const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
       id: vfjsFieldId,
-      required: vfjsFieldRequired,
       children = [],
       component,
-      model: vfjsFieldModelKey = '',
+      errorOptions: vfjsFieldErrorOptions = {},
       fieldOptions: vfjsFieldOptions = {},
+      model: vfjsFieldModelKey = '',
+      required: vfjsFieldRequired = false,
     } = vfjsFieldUiSchema;
 
     const isArray = this.vfjsHelperFieldIsArray(vfjsFieldModelKey);
@@ -31,6 +32,7 @@ const vfjsHelpers = {
       ...vfjsFieldOptions,
       children,
       id: vfjsFieldId,
+      errorOptions: vfjsFieldErrorOptions,
       fieldOptions: vfjsFieldOptions,
       model: vfjsFieldModel,
       modelKey: vfjsFieldModelKey,
@@ -41,6 +43,7 @@ const vfjsHelpers = {
       value: vfjsFieldModel,
       vfjsBus: this.vfjsBus,
       vfjsFieldId,
+      vfjsFieldErrorOptions,
       vfjsFieldModel,
       vfjsFieldModelKey,
       vfjsFieldOptions,

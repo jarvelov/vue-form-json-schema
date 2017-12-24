@@ -7,6 +7,9 @@ const props = {
     type: String,
     required: true,
   },
+  errorOptions: {
+    type: Object,
+  },
   fieldOptions: {
     type: Object,
   },
@@ -43,6 +46,9 @@ const props = {
   vfjsBus: {
     type: Object,
     required: true,
+  },
+  vfjsFieldErrorOptions: {
+    type: Object,
   },
   vfjsFieldErrors: {
     type: Array,
