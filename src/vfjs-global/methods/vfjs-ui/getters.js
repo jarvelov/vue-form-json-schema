@@ -1,47 +1,23 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
-  getVfjsUiFieldDeep(obj, key) {
-    if (!obj || !obj.properties) {
-      return false;
-    }
-
-    if (obj[key] || obj.properties[key]) {
+  getVfjsUiFieldVisible(field) {
+    if (!field.displayOptions) {
       return true;
     }
 
-    // TODO: This could be resource intensive with large schemas
-    // Investigate ways that it can be improved
-    return Object.keys(obj.properties).some((propKey) => {
-      if (this.getVfjsFieldModelValid(propKey)) {
-        return this.getVfjsUiFieldDeep(
-          obj.properties[propKey].properties,
-          key,
-        );
-      }
+    // Get model and schema
+    const { model, schema } = field.displayOptions;
 
-      return false;
-    });
-  },
-  // TODO: When getVfjsUiField is renamed, let getVfjsUiFieldActive take that name
-  getVfjsUiFieldActive(key) {
-    if (!key || this.getVfjsFieldSchema(key)) {
-      return true;
-    }
+    // Get the field's model
+    // It will fall back to the full model if model is undefined
+    const value = this.getVfjsFieldModel(model);
 
-    const { dependencies = {} } = this.getVfjsSchema();
-    return Object.keys(dependencies).some((fieldKey) => {
-      const vfjsFieldState = this.getVfjsFieldState(fieldKey);
-      if ((!vfjsFieldState || !vfjsFieldState.$dirty)) {
-        return false;
-      }
+    // Validate and check if we got any errors
+    this.ajv.validate(schema, value);
+    const errors = this.ajv.errors ? this.ajv.errors : [];
 
-      return (
-        typeof this.getVfjsFieldModel(fieldKey) !== 'undefined' &&
-        this.getVfjsFieldModelValid(fieldKey) &&
-        this.getVfjsUiFieldDeep(dependencies[fieldKey], key)
-      );
-    });
+    return errors.length === 0;
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
@@ -51,7 +27,7 @@ const vfjsUiGetters = {
       .map(this.getVfjsUiFieldsActive);
   },
   getVfjsUiField({ children = [], model, ...field }) {
-    if (this.getVfjsUiFieldActive(model)) {
+    if (this.getVfjsUiFieldVisible(field)) {
       const isArray = this.vfjsHelperFieldIsArray(model);
       const required = this.vfjsHelperFieldIsRequired(model);
 
@@ -75,7 +51,7 @@ const vfjsUiGetters = {
     return false;
   },
   getVfjsUiFieldsActive(fields) {
-    return fields.reduce((newFields, field) => {
+    return fields.reduce((newFields, field, index) => {
       if (field) {
         const newField = this.getVfjsUiField(field);
         if (newField) {
