@@ -25,7 +25,7 @@ const setters = {
     // If there was more than 150ms since last update set delay to 0
     const timestamp = Date.now();
     const diff = this.vfjsFieldState.updatedAt ? (timestamp - this.vfjsFieldState.updatedAt) : 0;
-    const delay = this.vfjsFieldState.updatedAt
+    const delay = diff < 150
       ? Math.min(diff, 150)
       : 0;
 
