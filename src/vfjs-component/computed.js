@@ -1,13 +1,12 @@
 // Elements which supports the 'value' attribute
-// taken from: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
-const elements = [
-  'button',
+const valueElements = [
   'input',
-  'li',
-  'meter',
   'option',
-  'param',
-  'progress',
+  'textarea',
+];
+
+const innerHTMLElements = [
+  'textarea',
 ];
 
 const computed = {
@@ -28,19 +27,31 @@ const computed = {
       required: this.vfjsFieldRequired,
     };
 
-    if (elements.indexOf(this.component) !== -1) {
+    if (valueElements.indexOf(this.component) !== -1) {
       attrs.value = (
         this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value) ||
-        (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML)
+        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value)
       );
     }
 
     return attrs;
   },
+  vfjsComputedFieldDomProps() {
+    const domProps = {};
+
+    if (innerHTMLElements.indexOf(this.component) !== -1) {
+      domProps.innerHTML = (
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML)
+      );
+    }
+
+    return domProps;
+  },
   vfjsComputedFieldOptions() {
     return {
       attrs: this.vfjsComputedFieldAttrs,
+      domProps: this.vfjsComputedFieldDomProps,
       key: this.vfjsFieldId,
       props: this.$options.propsData,
     };
