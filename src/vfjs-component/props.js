@@ -10,6 +10,9 @@ const props = {
   errorOptions: {
     type: Object,
   },
+  errors: {
+    type: Array,
+  },
   fieldOptions: {
     type: Object,
   },

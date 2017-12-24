@@ -27,12 +27,15 @@ const vfjsHelpers = {
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsState = this.getVfjsState();
     const vfjsModel = this.getVfjsModel();
+    // Get field errors
+    const vfjsFieldErrors = vfjsFieldState.errors || [];
 
     const props = {
       ...vfjsFieldOptions,
       children,
       id: vfjsFieldId,
       errorOptions: vfjsFieldErrorOptions,
+      errors: vfjsFieldErrors,
       fieldOptions: vfjsFieldOptions,
       model: vfjsFieldModel,
       modelKey: vfjsFieldModelKey,
@@ -44,6 +47,7 @@ const vfjsHelpers = {
       vfjsBus: this.vfjsBus,
       vfjsFieldId,
       vfjsFieldErrorOptions,
+      vfjsFieldErrors,
       vfjsFieldModel,
       vfjsFieldModelKey,
       vfjsFieldOptions,
