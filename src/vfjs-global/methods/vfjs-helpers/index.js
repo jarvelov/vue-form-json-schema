@@ -116,44 +116,6 @@ const vfjsHelpers = {
     children = [],
     props,
   }) {
-    // Return early if we have a rendered version in the cache
-    if (id && id in this.vfjsVnodes) {
-      return this.vfjsVnodes[id];
-    }
-
-    // If the component is a local component
-    // we don't want an additional wrapper around that
-
-    // FIXME: If the component is globally registered we will unnecessarily wrap it!
-    const noWrapper = (
-      (typeof component === 'string' && component in this.vfjsComponents)
-    );
-
-    // Create the component VNODE directly if noWrapper is true
-    //
-    // Otherwise wrap the component inside a component which
-    // has access to the vfjsComponentMixin
-    const vfjsComponent = (noWrapper)
-      ? this.$createElement(component, {
-        props,
-      }, children)
-      : this.$createElement({
-        name: `vue-form-json-schema-field-wrapper-${id}`,
-        mixins: [vfjsComponentMixin],
-        render() {
-          return this.$createElement(component, {
-            ...this.vfjsAttributes,
-          }, this.$slots.default);
-        },
-      }, {
-        props,
-      }, children);
-
-    // Save the VNODE to vfjsVnodes using the field's ID as the key
-    // so it can be re-used next time a render occurs and the field hasn't been updated
-    this.vfjsVnodes[id] = vfjsComponent;
-
-    return vfjsComponent;
     return this.$createElement(vfjsComponentWrapper, {
       key: id,
       props: {
