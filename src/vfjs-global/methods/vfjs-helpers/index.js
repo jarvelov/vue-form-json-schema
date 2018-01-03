@@ -118,6 +118,13 @@ const vfjsHelpers = {
     children = [],
     props,
   }) {
+    if (!props.vfjsFieldModelKey) {
+      return this.$createElement(component, {
+        key: id,
+        ...props.vfjsFieldOptions,
+      }, children);
+    }
+
     return this.$createElement(vfjsComponentWrapper, {
       key: id,
       props: {
