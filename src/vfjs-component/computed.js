@@ -53,7 +53,6 @@ const computed = {
       attrs: this.vfjsComputedFieldAttrs,
       domProps: this.vfjsComputedFieldDomProps,
       key: this.vfjsFieldId,
-      props: this.$options.propsData,
     };
   },
   vfjsComputedMergedFieldOptions() {

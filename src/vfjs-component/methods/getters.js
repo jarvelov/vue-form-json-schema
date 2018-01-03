@@ -38,9 +38,13 @@ const getters = {
       nativeOn: nativeOnFormatted,
     };
 
+    const defaultProps = Object.assign({}, {
+      props: this.$options.propsData,
+    });
+
     const fieldOptionsAsProps = { props: options };
 
-    return merge({}, defaultOptions, fieldOptionsAsProps, options, computedOptions);
+    return merge({}, defaultProps, defaultOptions, fieldOptionsAsProps, options, computedOptions);
   },
 };
 
