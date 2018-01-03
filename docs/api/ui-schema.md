@@ -1,24 +1,14 @@
 # uiSchema
 
-An array of [components](ui-schema/component.md)
+An array of [fields](ui-schema/field.md).
 
 ```js
   data() {
     return {
       uiSchema: [{
         component: 'div'
-        fieldOptions: {
-          domProps: {
-            innerHTML: 'This is the first component!'
-          }
-        }
       }, {
-        component: 'div',
-        fieldOptions: {
-          domProps: {
-            innerHTML: 'This is the second component!'
-          }
-        }
+        component: MyCustomComponent,
       }]
     }
   }
