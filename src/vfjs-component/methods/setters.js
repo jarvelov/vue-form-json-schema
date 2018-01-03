@@ -17,24 +17,10 @@ const setters = {
     });
   },
   setVfjsFieldModel(value, key) {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-
-    // Save timestamp and make sure that there was at least 150 ms between each update
-    // If there was more than 150ms since last update set delay to 0
-    const timestamp = Date.now();
-    const diff = this.vfjsFieldState.updatedAt ? (timestamp - this.vfjsFieldState.updatedAt) : 0;
-    const delay = diff < 150
-      ? Math.min(diff, 150)
-      : 0;
-
-    this.timeout = setTimeout(() => {
-      this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
-        key: key || this.vfjsFieldModelKey,
-        value,
-      });
-    }, delay);
+    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
+      key: key || this.vfjsFieldModelKey,
+      value,
+    });
   },
 };
 
