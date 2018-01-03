@@ -63,9 +63,8 @@ const vfjsHelpers = {
     };
 
     return this.vfjsHelperCreateComponent({
-      id: vfjsFieldId,
-      component,
       children: vfjsChildren,
+      component,
       props,
     });
   },
@@ -113,20 +112,19 @@ const vfjsHelpers = {
     return array.join('');
   },
   vfjsHelperCreateComponent({
-    id,
-    component,
     children = [],
+    component,
     props,
   }) {
     if (!props.vfjsFieldModelKey) {
       return this.$createElement(component, {
-        key: id,
+        key: props.vfjsFieldId,
         ...props.vfjsFieldOptions,
       }, children);
     }
 
     return this.$createElement(vfjsComponentWrapper, {
-      key: id,
+      key: props.vfjsFieldId,
       props: {
         ...props,
         component,
