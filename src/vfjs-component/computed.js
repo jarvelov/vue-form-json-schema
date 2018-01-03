@@ -5,6 +5,7 @@ const valueElements = [
   'textarea',
 ];
 
+// Elements which has their value within the tags
 const innerHTMLElements = [
   'textarea',
 ];
