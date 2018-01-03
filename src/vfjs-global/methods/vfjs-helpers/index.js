@@ -124,7 +124,7 @@ const vfjsHelpers = {
     }
 
     return this.$createElement(vfjsComponentWrapper, {
-      key: props.vfjsFieldId,
+      key: `${props.vfjsFieldId}-wrapper`,
       props: {
         ...props,
         component,
