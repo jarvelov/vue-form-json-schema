@@ -34,7 +34,7 @@ data() {
 }
 ```
 
-The above is equivalent to
+The above is essentially doing the following validation with [Ajv](https://github.com/epoberezkin/ajv)
 
 ```js
 const schema = {
