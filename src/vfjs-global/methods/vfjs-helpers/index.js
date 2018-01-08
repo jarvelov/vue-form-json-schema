@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { set, cloneDeep } from 'lodash';
 import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
@@ -132,7 +132,7 @@ const vfjsHelpers = {
     }, children);
   },
   vfjsHelperApplyFieldModel(key, value) {
-    const newVfjsModel = Object.assign({}, this.getVfjsModel());
+    const newVfjsModel = cloneDeep(this.getVfjsModel());
     set(newVfjsModel, key, value);
     return newVfjsModel;
   },

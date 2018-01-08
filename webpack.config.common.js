@@ -12,6 +12,8 @@ module.exports = {
   },
   plugins: [
     new LodashModuleReplacementPlugin({
+      cloning: true,
+      caching: true,
       paths: true,
     }),
   ],
