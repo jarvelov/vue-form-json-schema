@@ -2,20 +2,22 @@
 
 > Used on content inserted into child components to indicate which named slot the content belongs to. - [Vue.js guide](https://vuejs.org/v2/api/#slot)
 
-```js
-// MyCustomComponent.vue
+MyCustomComponent.vue
+
+```html
 <template>
-  <slot name="header">
-    <span>This is the default header text</span>
-  </slot>
-  <slot name="footer">
-  <span>This is the default footer text</span>
+  <slot name="main">
+    <span>This is the default main slot text</span>
   </slot>
 </template>
+```
 
-// MyForm.vue
+MyForm.vue
+```html
+
 ...
 
+<script>
 export default {
   data () {
     return {
@@ -25,13 +27,14 @@ export default {
           component: 'div',
           fieldOptions: {
             domProps: {
-              innerHTML: 'This child component will occupy the header slot of the parent'
+              innerHTML: 'This child component will occupy the main slot of the parent'
             }
-            slot: 'header'
+            slot: 'main'
           }
         }]
       }
     }
   }
 }
+</script>
 ```
