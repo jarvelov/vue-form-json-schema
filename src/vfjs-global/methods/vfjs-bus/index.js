@@ -54,7 +54,6 @@ const vfjsBus = {
             const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
               $dirty: !isEqual(vfjsFieldModel, value),
               errors,
-              updatedAt: Date.now(),
             });
 
             this.setVfjsFieldState(newFieldState, key);
