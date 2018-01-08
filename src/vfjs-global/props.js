@@ -20,6 +20,10 @@ const props = {
     type: String,
     default: 'div',
   },
+  showValidationErrors: {
+    type: Boolean,
+    default: false,
+  },
   uiSchema: {
     type: Array,
     required: true,
