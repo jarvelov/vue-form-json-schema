@@ -33,8 +33,13 @@ const vfjsValidation = {
       ? this.ajv.errors.reduce((required, error) => {
         if (error.keyword === 'required') {
           if (error.params && error.params.missingProperty) {
-            if (required.indexOf(error.params.missingProperty) === -1) {
-              required.push(error.params.missingProperty);
+            const key = error.params.missingProperty;
+            const parent = String(error.dataPath).substr(1);
+
+            const propertyPath = parent ? `${parent}.${key}` : key;
+
+            if (required.indexOf(propertyPath) === -1) {
+              required.push(propertyPath);
             }
           }
         }
