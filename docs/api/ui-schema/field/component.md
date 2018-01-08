@@ -38,37 +38,3 @@ data() {
   }
 }
 ```
-
-```html
-<script>
-// Option 4
-import MyCustomComponent from './my-custom-component'
-
-...
-
-data() {
-  return {
-    customComponents: {
-      MyCustomComponent,
-      // other components
-    },
-    uiSchema: [{
-      // or the component's name property, e.g. my-custom-component
-      component: 'MyCustomComponent'
-    }]
-  }
-}
-
-...
-
-</script>
-
-<template>
-  <vue-form-json-schema
-    :components="customComponents"
-    :model="model"
-    :schema="schema"
-    :ui-schema="uiSchema"
-  />
-</template>
-```
