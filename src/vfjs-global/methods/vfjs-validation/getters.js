@@ -18,8 +18,11 @@ const vfjsValidationGetters = {
 
     if (this.ajv.errors) {
       return this.ajv.errors.reduce((errors, error) => {
-        const errorKey = get(error, 'params.missingProperty');
-        if (key === errorKey) {
+        const property = get(error, 'params.missingProperty');
+        const path = error.dataPath ? error.dataPath.substr(1) : '';
+        const propertyPath = path ? `${path}.${property}` : property;
+
+        if (key === propertyPath || key === path) {
           errors.push(error);
         }
 
