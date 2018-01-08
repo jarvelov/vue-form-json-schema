@@ -7,10 +7,17 @@ Accepts either an `Array` or an `Object`.
 
 ```js
 // Option 1: Arrays
-fieldOptions: {
-  nativeOn: [
-    'input'
-  ]
+data () {
+  return {
+    uiSchema: {
+      component: 'input',
+      fieldOptions: {
+        nativeOn: [
+          'input'
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -22,9 +29,16 @@ An `Object` can be used if the value should be manipulated or used elsewhere bef
 
 ```js
 // Option 2: Object
-fieldOptions: {
-  nativeOn: {
-    'input': event => String(event.target.value).toLowerCase();
+data () {
+  return {
+    uiSchema: {
+      component: 'input',
+      fieldOptions: {
+        nativeOn: {
+          'input': event => String(event.target.value).toLowerCase();
+        }
+      }
+    }
   }
 }
 ```

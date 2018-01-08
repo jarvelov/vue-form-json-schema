@@ -11,11 +11,16 @@ Vue.component('my-custom-component', {
 })
 
 ...
-
-component: 'my-custom-component',
-fieldOptions: {
-  props: {
-    message: 'Hello!'
+data () {
+  return {
+    uiSchema: {
+      component: 'my-custom-component',
+      fieldOptions: {
+        props: {
+          message: 'Hello!'
+        }
+      }
+    }
   }
 }
 ```

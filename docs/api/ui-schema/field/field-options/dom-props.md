@@ -4,9 +4,16 @@
 
 ```js
 // DOM properties
-fieldOptions: {
-  domProps: {
-    innerHTML: '<div style="background-color: red">Hello</div>'
+data () {
+  return {
+    uiSchema: {
+      component: 'div',
+      fieldOptions: {
+        domProps: {
+          innerHTML: '<div style="background-color: red">Hello</div>'
+        }
+      }
+    }
   }
 }
 ```

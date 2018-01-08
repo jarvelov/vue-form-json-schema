@@ -4,10 +4,17 @@ Essentially any normal html attributes
 
 ```js
 // Normal HTML attributes
-fieldOptions: {
-  attrs: {
-    id: 'foo',
-    placeholder: 'bar'
+data () {
+  return {
+    uiSchema: {
+      component: 'div',
+      fieldOptions: {
+        attrs: {
+          id: 'foo',
+          placeholder: 'bar'
+        }
+      }
+    }
   }
 }
 ```

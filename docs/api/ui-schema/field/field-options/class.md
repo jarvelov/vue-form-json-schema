@@ -8,11 +8,16 @@ An `Object` must have the classes as keys and the keys' value should be a `Boole
 
 ```js
 // Option 1: Object
-fieldOptions: {
-  class: {
-    'col-12': true, // Class is included
-    'col-md-6': true, // Class is included
-    'col-lg-4': false // Class is NOT included
+data () {
+  uiSchema: {
+    component: 'div',
+    fieldOptions: {
+      class: {
+        'col-12': true, // Class is included
+        'col-md-6': true, // Class is included
+        'col-lg-4': false // Class is NOT included
+      }
+    }
   }
 }
 ```
@@ -23,12 +28,17 @@ An `Array` should be a an array of strings, multidimensional arrays or arrays wi
 
 ```js
 // Option 2: Arrays
-fieldOptions: {
-  // All values in array is included
-  class: [
-    'col-12',
-    'col-md-6'
-  ]
+data () {
+  uiSchema: {
+    component: 'div',
+    fieldOptions: {
+      // All values in array is included
+      class: [
+        'col-12',
+        'col-md-6'
+      ]
+    }
+  }
 }
 ```
 
@@ -36,7 +46,12 @@ fieldOptions: {
 
 ```js
 // Option 3: String
-fieldOptions: {
-  class: 'col-12 col-md-6'
+data () {
+  uiSchema: {
+    component: 'div',
+    fieldOptions: {
+      class: 'col-12 col-md-6'
+    }
+  }
 }
 ```
