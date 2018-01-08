@@ -1,11 +1,12 @@
 import Vue from 'vue';
-import { isEqual, set } from 'lodash';
+import { isEqual } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_MODEL_UPDATED,
   VFJS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,
   VFJS_EXTERNAL_EVENT_CHANGE,
   VFJS_EXTERNAL_EVENT_STATE_CHANGE,
@@ -69,30 +70,46 @@ const vfjsBus = {
           },
         });
       },
-      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value }) => {
-        const newVfjsState = Object.assign({}, this.getVfjsState());
-        set(newVfjsState, key, value);
-        this.setVfjsState(newVfjsState);
-
-        this.setVfjsUiFieldsActive();
+      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
+        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+          key,
+          value,
+          cb: () => {
+            this.setVfjsUiFieldsActive();
+            if (cb && typeof cb === 'function') {
+              cb();
+            }
+          },
+        });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
-        const newState = Object.assign({}, this.getVfjsState(), {
-          vfjsErrors,
+        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+          key: 'vfjsErrors',
+          value: vfjsErrors,
+          cb: () => {
+            const vfjsState = this.getVfjsState();
+            this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
+
+            if (cb && typeof cb === 'function') {
+              cb(vfjsErrors);
+            }
+          },
         });
-        this.setVfjsState(newState);
-
-        const vfjsState = this.getVfjsState();
-        this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
-
-        if (cb && typeof cb === 'function') {
-          cb(vfjsErrors);
-        }
       },
       [VFJS_EVENT_MODEL_UPDATED]: () => {
         this.setVfjsUiFieldsActive();
         this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
+      },
+      [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
+        const newVfjsState = Object.assign({}, this.getVfjsState(), {
+          [key]: value,
+        });
+        this.setVfjsState(newVfjsState);
+
+        if (cb && typeof cb === 'function') {
+          cb();
+        }
       },
       [VFJS_EVENT_STATE_UPDATED]: () => {
         this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, this.getVfjsState());
