@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, set } from 'lodash';
 
 const vfjsValidationGetters = {
   getVfjsFieldModelValid(key, value) {
@@ -12,9 +12,9 @@ const vfjsValidationGetters = {
     const schema = this.getVfjsSchema();
 
     // TODO: Globally get all the errors and reduce them instead of generating them again
-    this.ajv.validate(schema, {
-      [key]: value,
-    });
+    const valueObj = {};
+    set(valueObj, key, value);
+    this.ajv.validate(schema, valueObj);
 
     if (this.ajv.errors) {
       return this.ajv.errors.reduce((errors, error) => {
