@@ -11,14 +11,14 @@ const innerHTMLElements = [
 ];
 
 const computed = {
-  vfjsStateIsDirty() {
-    return this.vfjsFieldState.$dirty;
-  },
-  vfjsStateHasErrors() {
+  vfjsComputedFieldHasErrors() {
     return this.vfjsFieldState.errors && this.vfjsFieldState.errors.length > 0;
   },
+  vfjsComputedShowFieldErrors() {
+    return this.vfjsFieldState.$dirty || this.vfjsState.showValidationErrors;
+  },
   vfjsComputedFieldErrorOptions() {
-    return (this.vfjsStateIsDirty && this.vfjsStateHasErrors)
+    return (this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors)
       ? this.vfjsFieldErrorOptions
       : {};
   },
