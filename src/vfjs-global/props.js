@@ -1,8 +1,4 @@
 const props = {
-  components: {
-    type: Object,
-    default: () => ({}),
-  },
   model: {
     type: Object,
     default: () => ({}),
