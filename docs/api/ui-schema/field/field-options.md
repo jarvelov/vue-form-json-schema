@@ -11,12 +11,12 @@ The following attributes are tested and supported with `vue-form-json-schema`
 * [attrs](field-options/attrs.md)
 * [class](field-options/class.md)
 * [domProps](field-options/dom-props.md)
+* [key](field-options/key.md)
 * [nativeOn](field-options/native-on.md)
 * [on](field-options/on.md)
 * [props](field-options/props.md)
+* [slot](field-options/slot.md)
 * [style](field-options/style.md)
-* slot
-* key
 * ref
 
 ## Example
