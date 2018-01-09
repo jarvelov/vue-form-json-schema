@@ -2,6 +2,7 @@ import {
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_STATE_UPDATE,
 } from '../constants';
 
 const watch = {
@@ -21,7 +22,6 @@ const watch = {
     this.setVfjsUiFieldsActive();
   },
   showValidationErrors(value) {
-    // console.log('model', this.getVfjsModel());
     this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
       vfjsModel: this.getVfjsModel(),
       cb: () => {
@@ -49,7 +49,10 @@ const watch = {
 
         Promise.all(requiredValidations)
           .then(() => {
-            console.log('done!');
+            this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+              key: 'showValidationErrors',
+              value,
+            });
           });
       },
     });
