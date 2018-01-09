@@ -46,15 +46,7 @@ const watch = {
             });
           });
 
-          const requiredValidations = this.vfjsFieldsRequired.map(validateRequired);
-
-          return Promise.all(requiredValidations)
-            .then(() => {
-              this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
-                key: 'showValidationErrors',
-                value,
-              });
-            });
+          this.vfjsFieldsRequired.map(validateRequired);
         },
       });
     }
