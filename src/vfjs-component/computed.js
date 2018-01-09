@@ -34,7 +34,7 @@ const computed = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
     };
 
-    if (requiredElements.indexOf(this.component)) {
+    if (requiredElements.indexOf(this.component) !== -1) {
       attrs.required = this.vfjsFieldRequired;
     }
 
