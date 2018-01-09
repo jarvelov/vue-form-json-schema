@@ -19,7 +19,7 @@ const requiredElements = [
 
 const computed = {
   vfjsComputedFieldHasErrors() {
-    return this.vfjsFieldState.errors && this.vfjsFieldState.errors.length > 0;
+    return this.vfjsFieldState.vfjsFieldErrors && this.vfjsFieldState.vfjsFieldErrors.length > 0;
   },
   vfjsComputedShowFieldErrors() {
     return this.vfjsFieldState.$dirty || this.vfjsState.showValidationErrors;
