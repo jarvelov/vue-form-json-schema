@@ -10,6 +10,13 @@ const innerHTMLElements = [
   'textarea',
 ];
 
+// Elements which supports the 'required' attribute
+const requiredElements = [
+  'input',
+  'select',
+  'textarea',
+];
+
 const computed = {
   vfjsComputedFieldHasErrors() {
     return this.vfjsFieldState.errors && this.vfjsFieldState.errors.length > 0;
@@ -25,8 +32,11 @@ const computed = {
   vfjsComputedFieldAttrs() {
     const attrs = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
-      required: this.vfjsFieldRequired,
     };
+
+    if (requiredElements.indexOf(this.component)) {
+      attrs.required = this.vfjsFieldRequired;
+    }
 
     if (valueElements.indexOf(this.component) !== -1) {
       attrs.value = (
