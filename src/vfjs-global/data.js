@@ -11,7 +11,6 @@ import {
 
 const data = () => ({
   vfjsBus: {},
-  vfjsComponents: {},
   vfjsEvents: [
     VFJS_EVENT_FIELD_MODEL_UPDATE,
     VFJS_EVENT_FIELD_MODEL_VALIDATE,

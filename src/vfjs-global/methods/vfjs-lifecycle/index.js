@@ -6,9 +6,6 @@ const vfjsLifecycle = {
     // Set the JSON schema
     this.vfjsSchema = Object.assign({}, this.schema);
 
-    // Set the available components
-    this.vfjsComponents = Object.assign({}, this.components);
-
     // Set up options
     this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
 
