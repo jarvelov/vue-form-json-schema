@@ -3,6 +3,9 @@ const props = {
     type: Array,
     default: () => ([]),
   },
+  component: {
+    type: [String, Object],
+  },
   id: {
     type: String,
     required: true,
