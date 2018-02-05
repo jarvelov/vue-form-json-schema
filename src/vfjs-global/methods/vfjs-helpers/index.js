@@ -123,11 +123,15 @@ const vfjsHelpers = {
       }, children);
     }
 
+    // If the component matches one of the local components
+    // passed in with the `components` prop
+    const localComponent = this.vfjsComponents[component];
+
     return this.$createElement(vfjsComponentWrapper, {
       key: `${props.vfjsFieldId}-wrapper`,
       props: {
         ...props,
-        component,
+        component: localComponent || component,
       },
     }, children);
   },

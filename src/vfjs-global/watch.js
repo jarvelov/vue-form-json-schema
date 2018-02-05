@@ -6,6 +6,9 @@ import {
 } from '../constants';
 
 const watch = {
+  components(value) {
+    this.vfjsComponents = Object.assign({}, value);
+  },
   model(value) {
     this.vfjsModel = Object.assign({}, value);
     this.setVfjsUiFieldsActive();

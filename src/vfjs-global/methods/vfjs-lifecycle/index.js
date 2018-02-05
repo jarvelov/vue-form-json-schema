@@ -9,6 +9,9 @@ const vfjsLifecycle = {
     // Set up options
     this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
 
+    // Set up the local components
+    this.vfjsComponents = Object.assign({}, this.vfjsComponents);
+
     // Set up the plugin's internal bus
     this.vfjsBusInitialize();
 
