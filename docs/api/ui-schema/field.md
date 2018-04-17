@@ -1,4 +1,4 @@
-A `field` is an `object` and must have a [component](ui-schema/component.md) property.
+A `field` is an `object` and must have a [component](field/component.md) property.
 
 ## Type
 
@@ -6,12 +6,12 @@ A `field` is an `object` and must have a [component](ui-schema/component.md) pro
 
 ## Properties
 
-* [component](ui-schema/component.md) <span style="color: red">*</span>
-* [children](ui-schema/children.md)
-* [displayOptions](ui-schema/display-options.md)
-* [errorHandler](ui-schema/error-handler.md)
-* [errorOptions](ui-schema/error-options.md)
-* [fieldOptions](ui-schema/field-options.md)
+* [component](field/component.md) <span style="color: red">*</span>
+* [children](field/children.md)
+* [displayOptions](field/display-options.md)
+* [errorHandler](field/error-handler.md)
+* [errorOptions](field/error-options.md)
+* [fieldOptions](field/field-options.md)
 
 <span style="color: red">*</span> required
 
