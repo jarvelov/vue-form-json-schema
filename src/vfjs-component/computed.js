@@ -63,7 +63,7 @@ const computed = {
     return {
       attrs: this.vfjsComputedFieldAttrs,
       domProps: this.vfjsComputedFieldDomProps,
-      key: this.vfjsFieldId,
+      key: this.vfjsFieldOptions.key || this.vfjsFieldId,
     };
   },
   vfjsComputedMergedFieldOptions() {
