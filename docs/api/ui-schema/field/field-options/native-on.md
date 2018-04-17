@@ -1,12 +1,28 @@
 # nativeOn
 
 Register events listeners for native [Events](https://developer.mozilla.org/en-US/docs/Web/Events).
-Accepts either an `Array` or an `Object`.
+Accepts a `String`, `Array` or an `Object`.
+
+## String
+
+```js
+// Option 1: String
+data () {
+  return {
+    uiSchema: {
+      component: 'input',
+      fieldOptions: {
+        on: 'input'
+      }
+    }
+  }
+}
+```
 
 ## Array
 
 ```js
-// Option 1: Arrays
+// Option 2: Arrays
 data () {
   return {
     uiSchema: {
@@ -28,7 +44,7 @@ An `Object` can be used if the value should be manipulated or used elsewhere bef
 > Note that the callback must be synchronous
 
 ```js
-// Option 2: Object
+// Option 3: Object
 data () {
   return {
     uiSchema: {
