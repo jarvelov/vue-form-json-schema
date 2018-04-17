@@ -1,16 +1,18 @@
+import { cloneDeep } from 'lodash';
+
 const vfjsLifecycle = {
   vfjsDestroy() {
     this.vfjsEvents.forEach(event => this.removeVfjsListener(event));
   },
   vfjsInitialize() {
     // Set the JSON schema
-    this.vfjsSchema = Object.assign({}, this.schema);
+    this.vfjsSchema = cloneDeep(this.schema);
 
     // Set up options
-    this.vfjsOptions = Object.assign({}, this.vfjsOptions, this.options);
+    this.vfjsOptions = cloneDeep(this.vfjsOptions, this.options);
 
     // Set up the local components
-    this.vfjsComponents = Object.assign({}, this.components);
+    this.vfjsComponents = cloneDeep(this.components);
 
     // Set up the plugin's internal bus
     this.vfjsBusInitialize();
