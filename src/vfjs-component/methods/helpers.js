@@ -19,9 +19,13 @@ const helpers = {
       return {};
     }
 
-    const eventsObj = Array.isArray(events)
-      ? events.reduce((obj, event) => ({ ...obj, [event]: true }), {})
-      : events;
+    let eventsObj = events;
+
+    if (Array.isArray(events)) {
+      eventsObj = events.reduce((obj, event) => ({ ...obj, [event]: true }), {});
+    } else if (typeof events === 'string') {
+      eventsObj = { [events]: true };
+    }
 
     return this.vfjsFieldHelperFormatEventsReducer(eventsObj);
   },
