@@ -1,6 +1,12 @@
 import { merge } from 'lodash';
 
 const getters = {
+  getVfjsAttributes() {
+    return this.getVfjsFieldAttributes(
+      this.vfjsFieldOptions,
+      this.vfjsComputedMergedFieldOptions,
+    );
+  },
   getVfjsFieldAttributes({
     class: optionsClass,
     on: optionsOn,

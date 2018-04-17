@@ -74,14 +74,6 @@ const computed = {
       this.vfjsComputedFieldOptions,
     );
   },
-  vfjsAttributes() {
-    return {
-      ...this.getVfjsFieldAttributes(
-        this.vfjsFieldOptions,
-        this.vfjsComputedMergedFieldOptions,
-      ),
-    };
-  },
 };
 
 export default computed;
