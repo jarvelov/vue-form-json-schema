@@ -9,14 +9,46 @@ If you want to render them differently you can handle the errors in the `vfjsFie
 ## Example
 
 ```js
-uiSchema() {
-  return [{
-    component: 'div',
-    model: 'input1',
-    errorHandler: true,
-    fieldOptions: {
-      class: ['bg-danger']
-    }
-  }]
+data () {
+  return {
+    jsonSchema: {
+      type: 'object',
+      required: ['input1'],
+      properties: {
+        input1: {
+          type: 'string',
+          minLength: 1 // Value has to be at least 1 character
+        }
+      }
+    },
+    uiSchema: [{
+      component: 'input',
+      model: 'input1',
+      fieldOptions: {
+        // Optionally set the attributes on the dom element as well
+        // This can be used to let the browser validate the form
+        //
+        // If you don't want the browser to validate the form
+        // use the `novalidate` attribute on <vue-form-json-schema/>
+        attrs: {
+          // Set required attribute on the dom element
+          required: true
+          // Set minlength attribute
+          minlength: 1
+        },
+        on: ['change']
+      }
+    }, {
+      // This component takes care of the errors from `input1`
+      // If the form is submitted with the input being empty the error handler
+      // will render the errors inside it
+      component: 'div',
+      model: 'input1',
+      errorHandler: true,
+      fieldOptions: {
+        class: ['bg-danger']
+      }
+    }]
+  }
 }
 ```

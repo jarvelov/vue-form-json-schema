@@ -22,13 +22,15 @@ The following attributes are tested and supported with `vue-form-json-schema`
 ## Example
 
 ```js
-uiSchema() {
-  return [{
-    component: 'input',
-    fieldOptions: {
-      class: ['form-control'],
-      on: ['input']
-    }
-  }]
+data () {
+  return {
+    uiSchema: [{
+      component: 'input',
+      fieldOptions: {
+        class: ['form-control'],
+        on: ['input']
+      }
+    }]
+  }
 }
 ```
