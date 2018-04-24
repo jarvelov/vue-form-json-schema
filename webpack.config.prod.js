@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.config.common');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const babelPluginTransformObjectRestSpread = require('babel-plugin-transform-object-rest-spread');
+const babelPluginLodash = require('babel-plugin-lodash');
 
 const production = {
   entry: path.resolve(__dirname, './src/index.js'),
@@ -41,6 +42,7 @@ module.exports = [
             ['es2015', { modules: false }],
           ],
           plugins: [
+            babelPluginLodash,
             babelPluginTransformObjectRestSpread,
           ],
         },
