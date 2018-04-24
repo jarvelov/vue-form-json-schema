@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Minibus from 'minibus';
 import { isEqual } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_UPDATE,
@@ -15,20 +15,20 @@ import {
 
 const vfjsBus = {
   addVfjsListener(event, callback) {
-    const listener = this.vfjsBus.$on(event, value => callback(event, value));
+    const listener = this.vfjsBus.on(event, value => callback(event, value));
     this.vfjsListeners.push(listener);
   },
   addVfjsListeners(events = [], callback) {
     events.forEach(event => this.addVfjsListener(event, callback));
   },
   removeVfjsListener(event) {
-    this.vfjsBus.$off(event);
+    this.vfjsBus.off(event);
   },
   removeVfjsListeners(events = []) {
     events.forEach(this.removeVfjsListener);
   },
   removeVfjsListenersAll() {
-    this.vfjsBus.$off();
+    this.vfjsBus.off();
     this.vfjsListeners = [];
   },
   vfjsBusEventHandler(event, payload) {
@@ -36,7 +36,7 @@ const vfjsBus = {
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
         const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
-        this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel,
           cb: () => {
             const errors = this.getVfjsFieldModelValidationErrors(key, value);
@@ -47,7 +47,7 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
-        this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
           key,
           value,
           cb: (errors) => {
@@ -71,7 +71,7 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
-        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
           key,
           value,
           cb: () => {
@@ -84,7 +84,7 @@ const vfjsBus = {
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
-        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
           key: 'vfjsErrors',
           value: vfjsErrors,
           cb: () => {
@@ -121,7 +121,7 @@ const vfjsBus = {
     }
   },
   vfjsBusInitialize() {
-    this.vfjsBus = new Vue();
+    this.vfjsBus = Minibus.create();
   },
 };
 

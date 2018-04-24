@@ -26,16 +26,16 @@ const watch = {
   },
   showValidationErrors(value) {
     if (value) {
-      this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+      this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
         vfjsModel: this.getVfjsModel(),
         cb: () => {
           const validateRequired = key => new Promise((resolve, reject) => {
-            this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
               key,
               value: this.getVfjsFieldModel(key),
               cb: (vfjsFieldErrors) => {
                 const fieldState = this.getVfjsFieldState(key);
-                this.vfjsBus.$emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
+                this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
                   key,
                   value: {
                     ...fieldState,
@@ -54,7 +54,7 @@ const watch = {
       });
     }
 
-    this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+    this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
       key: 'showValidationErrors',
       value,
     });
