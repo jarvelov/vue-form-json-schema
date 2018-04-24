@@ -5,8 +5,8 @@
   "main": "dist/vue-form-json-schema.umd.js",
   "module": "dist/vue-form-json-schema.esm.js",
   "scripts": {
-    "build": "webpack -p --config webpack.config.prod.js",
-    "dev": "webpack --config webpack.config.dev.js --watch",
+    "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
+    "dev": "NODE_ENV=development webpack --config webpack.config.dev.js --watch",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
