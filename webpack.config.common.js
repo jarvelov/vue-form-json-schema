@@ -1,12 +1,14 @@
 const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
+  externals: [nodeExternals()],
   module: {
     rules: [{
       test: /\.js$/,
-      include: [path.resolve(__dirname, './src')],
+      exclude: /node_modules/,
       loader: 'babel-loader',
     }],
   },
