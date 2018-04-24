@@ -4,7 +4,7 @@
 
 ##### Use any Vue component or HTML element!
 
-There are *no prebuilt components* for you to puzzle your form together with. Instead you can use any component or element which emits and event, custom or native.
+There are *no prebuilt components* for you to puzzle your form together with. Instead you can use any component or element which emits an event, custom or native.
 
 > Note that essentially all Vue components that uses `v-model` emits an `input` (or similar) event. [See Vue's guide for more info](https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events)
 
