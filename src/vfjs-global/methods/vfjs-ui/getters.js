@@ -11,7 +11,7 @@ const vfjsUiGetters = {
 
     // Get the field's model
     // It will fall back to the full model if model is undefined
-    const value = this.getVfjsFieldModel(model);
+    const value = model ? this.getVfjsFieldModel(model) : this.getVfjsModel();
 
     // Validate and check if we got any errors
     this.ajv.validate(schema, value);
