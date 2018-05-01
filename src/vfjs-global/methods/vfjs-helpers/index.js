@@ -206,6 +206,21 @@ const vfjsHelpers = {
     const schema = this.getVfjsFieldSchema(key);
     return schema ? Array.isArray(schema.items) : false;
   },
+  vfjsHelperGetFieldsWithClearOnHide(fields) {
+    return fields.reduce((models, { children = [], displayOptions = {}, model }) => {
+      const fieldModel = model
+        ? {
+          [model]: displayOptions.clearOnHide,
+        }
+        : {};
+
+      return {
+        ...models,
+        ...fieldModel,
+        ...this.vfjsHelperGetFieldsWithClearOnHide(children),
+      };
+    }, {});
+  },
 };
 
 export default vfjsHelpers;

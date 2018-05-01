@@ -1,6 +1,7 @@
 import Minibus from 'minibus';
 import { isEqual } from 'lodash';
 import {
+  VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
@@ -33,6 +34,30 @@ const vfjsBus = {
   },
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
+      [VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN]: () => {
+        const allModels = this.vfjsHelperGetFieldsWithClearOnHide(this.uiSchema);
+        const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(this.vfjsFieldsActive);
+
+        const inactiveModels = Object.keys(allModels).reduce((models, key) => {
+          const inactiveModel =
+            key in activeModels
+              ? {}
+              : {
+                [key]: allModels[key],
+              };
+
+          return {
+            ...models,
+            ...inactiveModel,
+          };
+        }, {});
+
+        Object.keys(inactiveModels).forEach((key) => {
+          if (inactiveModels[key]) {
+            this.vfjsModel[key] = undefined;
+          }
+        });
+      },
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
         const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
@@ -99,6 +124,10 @@ const vfjsBus = {
       },
       [VFJS_EVENT_MODEL_UPDATED]: () => {
         this.setVfjsUiFieldsActive();
+
+        // Clear hidden fields
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN);
+
         this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
       },
       [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
@@ -118,6 +147,7 @@ const vfjsBus = {
 
     if (event && event in eventActions) {
       eventActions[event](payload);
+      // console.log('vfjsBusEventHandler', event);
     }
   },
   vfjsBusInitialize() {
