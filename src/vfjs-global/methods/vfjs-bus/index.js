@@ -1,5 +1,5 @@
 import Minibus from 'minibus';
-import { isEqual } from 'lodash';
+import { isEqual, set } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
@@ -54,7 +54,7 @@ const vfjsBus = {
 
         Object.keys(inactiveModels).forEach((key) => {
           if (inactiveModels[key]) {
-            this.vfjsModel[key] = undefined;
+            set(this.vfjsModel, key, undefined);
           }
         });
       },
