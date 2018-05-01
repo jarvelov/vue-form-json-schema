@@ -53,8 +53,13 @@ const vfjsBus = {
         }, {});
 
         Object.keys(inactiveModels).forEach((key) => {
-          if (inactiveModels[key]) {
-            set(this.vfjsModel, key, undefined);
+          const clearModel = inactiveModels[key];
+          if (clearModel) {
+            if (typeof clearModel === 'string') {
+              set(this.vfjsModel, clearModel, undefined);
+            } else {
+              set(this.vfjsModel, key, undefined);
+            }
           }
         });
       },
