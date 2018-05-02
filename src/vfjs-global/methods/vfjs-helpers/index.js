@@ -73,6 +73,7 @@ const vfjsHelpers = {
       id: `${id}-error-${index}`,
       component: 'div',
       fieldOptions: {
+        class: ['vfjs-error', 'vfjs-default-error-handler'],
         domProps: {
           innerHTML: error.message,
         },
