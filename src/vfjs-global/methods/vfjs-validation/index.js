@@ -13,6 +13,14 @@ const vfjsValidation = {
       allErrors: true,
     });
 
+    // Allow Ajv to be extended by other functions
+    // such as ajv-merge-patch, ajv-async etc.
+    Object.keys(keywords).forEach((key) => {
+      if (typeof keywords[key] === 'function') {
+        keywords[key](this.ajv);
+      }
+    });
+
     // Add custom keywords
     Object.keys(keywords).forEach((key) => {
       this.ajv.addKeyword(key, keywords[key]);
