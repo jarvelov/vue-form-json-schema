@@ -11,6 +11,12 @@ const vfjsValidation = {
       allErrors: true,
     });
 
+    // Add custom keywords
+    const { customKeywords = {} } = this.vfjsOptions.ajvOptions;
+    Object.keys(customKeywords).forEach((key) => {
+      this.ajv.addKeyword(key, customKeywords[key]);
+    });
+
     // Add additional schemas
     Object.keys(this.schemas).forEach((key) => {
       this.ajv.addSchema(this.schemas[key], key);
