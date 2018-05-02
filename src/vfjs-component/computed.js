@@ -1,21 +1,11 @@
 // Elements which supports the 'value' attribute
-const valueElements = [
-  'input',
-  'option',
-  'textarea',
-];
+const valueElements = ['input', 'option', 'textarea'];
 
 // Elements which has their value within the tags
-const innerHTMLElements = [
-  'textarea',
-];
+const innerHTMLElements = ['textarea'];
 
 // Elements which supports the 'required' attribute
-const requiredElements = [
-  'input',
-  'select',
-  'textarea',
-];
+const requiredElements = ['input', 'select', 'textarea'];
 
 const computed = {
   vfjsComputedFieldHasErrors() {
@@ -25,7 +15,7 @@ const computed = {
     return this.vfjsFieldState.$dirty || this.vfjsState.showValidationErrors;
   },
   vfjsComputedFieldErrorOptions() {
-    return (this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors)
+    return this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors
       ? this.vfjsFieldErrorOptions
       : {};
   },
@@ -39,10 +29,8 @@ const computed = {
     }
 
     if (valueElements.indexOf(this.component) !== -1) {
-      attrs.value = (
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value)
-      );
+      attrs.value =
+        this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
     return attrs;
@@ -51,10 +39,9 @@ const computed = {
     const domProps = {};
 
     if (innerHTMLElements.indexOf(this.component) !== -1) {
-      domProps.innerHTML = (
+      domProps.innerHTML =
         this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML)
-      );
+        (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
     }
 
     return domProps;
