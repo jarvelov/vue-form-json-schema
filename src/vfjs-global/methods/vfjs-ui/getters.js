@@ -14,8 +14,9 @@ const vfjsUiGetters = {
     const value = model ? this.getVfjsFieldModel(model) : this.getVfjsModel();
 
     // Validate and check if we got any errors
-    this.ajv.validate(schema, value);
-    const errors = this.ajv.errors ? this.ajv.errors : [];
+    const errors = model
+      ? this.getVfjsValidationErrors(value, schema)
+      : this.getVfjsModelValidationErrors(model, value, schema);
 
     return errors.length === 0;
   },
