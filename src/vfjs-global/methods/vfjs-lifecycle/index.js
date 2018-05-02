@@ -7,10 +7,7 @@ const vfjsLifecycle = {
     this.setVfjsSchema(this.schema);
 
     // Set up options
-    this.vfjsOptions = ({
-      ...this.vfjsOptions,
-      ...this.options,
-    });
+    this.vfjsOptions = this.options;
 
     // Set up the local components
     this.vfjsComponents = this.components;
