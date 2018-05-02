@@ -66,11 +66,11 @@ const vfjsValidationGetters = {
     return this.getVfjsModelValidationErrors(key, value);
   },
   getVfjsModelValidationErrorsLocalized() {
-    const { ajvOptions = {} } = this.vfjsOptions;
-    const { locale, locales } = ajvOptions;
+    const { ajv = {} } = this.vfjsOptions;
+    const { locale } = ajv;
 
-    if (locale && locales && locale in locales) {
-      locales[locale](this.ajv.errors);
+    if (typeof locale === 'function') {
+      locale(this.ajv.errors);
     }
   },
   getVfjsModelValidationErrors(key, value, schema) {
