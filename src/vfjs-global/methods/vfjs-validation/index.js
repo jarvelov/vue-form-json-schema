@@ -4,11 +4,12 @@ import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
 
 const vfjsValidation = {
   vfjsValidationInitialize() {
-    const { ajvOptions = {} } = this.vfjsOptions;
+    const { ajv = {} } = this.vfjsOptions;
+    const { options = {}, keywords = {} } = ajv;
 
     // Set up Ajv
     this.ajv = new Ajv({
-      ...ajvOptions,
+      ...options,
       // The `allErrors` option is required for validation to work
       allErrors: true,
     });
