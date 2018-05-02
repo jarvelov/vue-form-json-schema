@@ -65,13 +65,12 @@ const vfjsValidationGetters = {
   getVfjsFieldModelValidationErrors(key, value) {
     return this.getVfjsModelValidationErrors(key, value);
   },
-  getVfjsModelValidationErrors(key, value) {
-    const schema = this.getVfjsSchema();
 
+  getVfjsModelValidationErrors(key, value, schema) {
     // TODO: Globally get all the errors and reduce them instead of generating them again
     const valueObj = {};
     set(valueObj, key, value);
-    this.ajv.validate(schema, valueObj);
+    this.ajv.validate(schema || this.getVfjsSchema(), valueObj);
 
     if (this.ajv.errors) {
       return this.ajv.errors.reduce((errors, error) => {
@@ -93,9 +92,10 @@ const vfjsValidationGetters = {
     const errors = this.getVfjsValidationErrors();
     return errors.length === 0;
   },
-  getVfjsValidationErrors(model) {
-    const valid = this.ajv.validate(this.getVfjsSchema(), model || this.getVfjsModel());
-    return (!valid) ? this.ajv.errors : [];
+  getVfjsValidationErrors(model, schema) {
+    const valid = this.ajv.validate(schema || this.getVfjsSchema(), model || this.getVfjsModel());
+    this.getVfjsModelValidationErrorsLocalized();
+    return !valid ? this.ajv.errors : [];
   },
 };
 
