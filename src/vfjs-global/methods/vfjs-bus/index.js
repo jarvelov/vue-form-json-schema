@@ -83,8 +83,8 @@ const vfjsBus = {
           cb: (errors) => {
             const vfjsFieldModel = this.getVfjsFieldModel(key);
             const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
-              $dirty: !isEqual(vfjsFieldModel, value),
-              errors,
+              vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
+              vfjsFieldErrors: errors,
             });
 
             this.setVfjsFieldState(newFieldState, key);

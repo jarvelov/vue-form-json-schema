@@ -22,7 +22,7 @@ const vfjsHelpers = {
     const vfjsState = this.getVfjsState();
 
     // Get field errors
-    const vfjsFieldErrors = vfjsFieldState.errors || [];
+    const { vfjsFieldErrors = [] } = vfjsFieldState;
 
     // If this field is an errorHandler we pass the errors as the children
     // Otherwise its treated normally
