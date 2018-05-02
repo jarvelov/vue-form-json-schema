@@ -1,5 +1,3 @@
-import { cloneDeep } from 'lodash';
-
 const vfjsLifecycle = {
   vfjsDestroy() {
     this.vfjsEvents.forEach(event => this.removeVfjsListener(event));
@@ -15,7 +13,7 @@ const vfjsLifecycle = {
     });
 
     // Set up the local components
-    this.vfjsComponents = cloneDeep(this.components);
+    this.vfjsComponents = this.components;
 
     // Set up the plugin's internal bus
     this.vfjsBusInitialize();
