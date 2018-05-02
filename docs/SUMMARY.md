@@ -3,6 +3,7 @@
 * API
   * [vue-form-json-schema](api/vue-form-json-schema.md)
     * [options](api/options.md)
+      * [ajv](api/options/ajv.md)
     * [schema](api/schema.md)
     * [uiSchema](api/ui-schema.md)
       * [field](api/ui-schema/field.md)
