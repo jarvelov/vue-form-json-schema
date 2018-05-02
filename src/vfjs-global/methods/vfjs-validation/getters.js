@@ -65,7 +65,14 @@ const vfjsValidationGetters = {
   getVfjsFieldModelValidationErrors(key, value) {
     return this.getVfjsModelValidationErrors(key, value);
   },
+  getVfjsModelValidationErrorsLocalized() {
+    const { ajvOptions = {} } = this.vfjsOptions;
+    const { locale, locales } = ajvOptions;
 
+    if (locale && locales && locale in locales) {
+      locales[locale](this.ajv.errors);
+    }
+  },
   getVfjsModelValidationErrors(key, value, schema) {
     // TODO: Globally get all the errors and reduce them instead of generating them again
     const valueObj = {};
@@ -73,6 +80,8 @@ const vfjsValidationGetters = {
     this.ajv.validate(schema || this.getVfjsSchema(), valueObj);
 
     if (this.ajv.errors) {
+      this.getVfjsModelValidationErrorsLocalized();
+
       return this.ajv.errors.reduce((errors, error) => {
         const property = get(error, 'params.missingProperty');
         const path = error.dataPath ? error.dataPath.substr(1) : '';
