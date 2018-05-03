@@ -69,7 +69,19 @@ const vfjsBus = {
         this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel,
           cb: () => {
-            const errors = this.getVfjsFieldModelValidationErrors(key, value);
+            const model = {};
+            set(model, key, value);
+
+            const schema = {
+              type: 'object',
+              required: this.vfjsHelperFieldIsRequired(key) ? [key] : [],
+              properties: {
+                [key]: this.getVfjsSchema(key) || {},
+              },
+            };
+
+            const errors = this.getVfjsValidationErrors(model, schema);
+
             if (cb && typeof cb === 'function') {
               cb(errors);
             }
