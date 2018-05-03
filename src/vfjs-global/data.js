@@ -29,7 +29,13 @@ const data = () => ({
   vfjsModel: {},
   vfjsOptions: {
     allowInvalidModel: true,
-    ajv: {},
+    ajv: {
+      keywords: {},
+      locale: null,
+      options: {
+        allErrors: true,
+      },
+    },
     validate: true,
     validateOnLoad: true,
     validateOnChange: true,
