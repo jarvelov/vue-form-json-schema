@@ -126,6 +126,7 @@ const vfjsBus = {
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
+
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
           key: 'vfjsErrors',
           value: vfjsErrors,
@@ -150,7 +151,10 @@ const vfjsBus = {
       [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
         const newVfjsState = Object.assign({}, this.getVfjsState(), {
           [key]: value,
+          vfjsFieldsActive: this.vfjsFieldsActive,
+          vfjsFieldsActiveModels: this.vfjsFieldsActiveModels,
         });
+
         this.setVfjsState(newVfjsState);
 
         if (cb && typeof cb === 'function') {
