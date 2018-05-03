@@ -224,6 +224,13 @@ const vfjsHelpers = {
       };
     }, {});
   },
+  getVfjsFieldsModels(fields) {
+    return fields.reduce((models, { children = [], model }) => ([
+      ...models,
+      ...model ? [model] : [],
+      ...this.getVfjsFieldsModels(children),
+    ]), []);
+  },
 };
 
 export default vfjsHelpers;
