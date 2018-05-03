@@ -63,7 +63,7 @@ const vfjsValidationGetters = {
     return errors.length === 0;
   },
   getVfjsFieldModelValidationErrors(key, value) {
-    return this.getVfjsModelValidationErrors(key, value);
+    return this.getVfjsValidationErrors(value, this.getVfjsSchema(key));
   },
   getVfjsModelValidationErrorsLocalized() {
     const { ajv = {} } = this.vfjsOptions;
@@ -72,30 +72,6 @@ const vfjsValidationGetters = {
     if (typeof locale === 'function') {
       locale(this.ajv.errors);
     }
-  },
-  getVfjsModelValidationErrors(key, value, schema) {
-    // TODO: Globally get all the errors and reduce them instead of generating them again
-    const valueObj = {};
-    set(valueObj, key, value);
-    this.ajv.validate(schema || this.getVfjsSchema(), valueObj);
-
-    if (this.ajv.errors) {
-      this.getVfjsModelValidationErrorsLocalized();
-
-      return this.ajv.errors.reduce((errors, error) => {
-        const property = get(error, 'params.missingProperty');
-        const path = error.dataPath ? error.dataPath.substr(1) : '';
-        const propertyPath = path ? `${path}.${property}` : property;
-
-        if (key === propertyPath || key === path) {
-          errors.push(error);
-        }
-
-        return errors;
-      }, []);
-    }
-
-    return []; // No errors
   },
   getVfjsValid() {
     const errors = this.getVfjsValidationErrors();
