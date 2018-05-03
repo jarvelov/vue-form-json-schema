@@ -6,7 +6,7 @@ const vfjsComponentWrapper = {
   render() {
     return this.$createElement(this.component, {
       ...this.getVfjsAttributes(),
-    }, this.$slots.default);
+    }, this.vfjsComputedFieldChildren);
   },
 };
 

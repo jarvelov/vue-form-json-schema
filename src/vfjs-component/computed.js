@@ -61,6 +61,13 @@ const computed = {
       this.vfjsComputedFieldOptions,
     );
   },
+  vfjsComputedFieldChildren() {
+    if (this.vfjsFieldErrorHandler && !this.vfjsComputedShowFieldErrors) {
+      return [];
+    }
+
+    return this.$slots.default;
+  },
 };
 
 export default computed;
