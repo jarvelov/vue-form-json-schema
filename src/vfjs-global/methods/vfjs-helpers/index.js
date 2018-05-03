@@ -227,7 +227,7 @@ const vfjsHelpers = {
   getVfjsFieldsModels(fields) {
     return fields.reduce((models, { children = [], model }) => ([
       ...models,
-      ...model ? [model] : [],
+      ...model && models.indexOf(model) === -1 ? [model] : [],
       ...this.getVfjsFieldsModels(children),
     ]), []);
   },
