@@ -11,14 +11,20 @@ const vfjsUiGetters = {
 
     // Get the field's model
     // It will fall back to the full model if model is undefined
-    const value = model ? this.getVfjsFieldModel(model) : this.getVfjsModel();
+    const value =
+      typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
 
     // Validate and check if we got any errors
-    const errors = model
-      ? this.getVfjsValidationErrors(value, schema)
-      : this.getVfjsModelValidationErrors(model, value, schema);
+    // const errors = model
+    //   ? this.getVfjsValidationErrors(value, schema)
+    //   : this.getVfjsModelValidationErrors(model, value, schema);
 
-    return errors.length === 0;
+    // TODO: There's something wrong with the evaluation done in getVfjsValidationErrors
+    // Temporarily revert back to old behaviour with validating in this function
+    this.ajv.validate(schema, value);
+    const oldErrors = this.ajv.errors ? this.ajv.errors : [];
+
+    return oldErrors.length === 0;
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
