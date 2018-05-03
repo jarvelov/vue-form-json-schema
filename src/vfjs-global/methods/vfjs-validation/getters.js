@@ -78,7 +78,10 @@ const vfjsValidationGetters = {
     return errors.length === 0;
   },
   getVfjsValidationErrors(model, schema) {
-    const valid = this.ajv.validate(schema || this.getVfjsSchema(), model || this.getVfjsModel());
+    const ajvSchema = schema || this.getVfjsSchema();
+    const ajvModel = model || this.getVfjsModel();
+
+    const valid = this.ajv.validate(ajvSchema, ajvModel);
     this.getVfjsModelValidationErrorsLocalized();
     return !valid ? this.ajv.errors : [];
   },
