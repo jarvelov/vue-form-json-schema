@@ -10,6 +10,9 @@ const props = {
     type: String,
     required: true,
   },
+  errorHandler: {
+    type: Boolean,
+  },
   errorOptions: {
     type: Object,
   },
@@ -55,6 +58,9 @@ const props = {
   vfjsBus: {
     type: Object,
     required: true,
+  },
+  vfjsFieldErrorHandler: {
+    type: Boolean,
   },
   vfjsFieldErrorOptions: {
     type: Object,
