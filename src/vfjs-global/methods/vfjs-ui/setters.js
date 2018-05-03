@@ -9,6 +9,7 @@ const vfjsUiSetters = {
   },
   setVfjsUiFieldsActive() {
     this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
+    this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
   },
 };
 
