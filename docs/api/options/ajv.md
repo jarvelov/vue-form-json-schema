@@ -128,7 +128,7 @@ export default {
                 if (this.blacklist.indexOf(value) >= 0) {
                   // This value is blacklisted
                   self.errors.push({
-                    message: `${error}: ${message}`,
+                    message: 'Value is blacklisted!',
                     keyword: 'uniqueLabel',
                     params: {
                       keyword: 'uniqueLabel',
