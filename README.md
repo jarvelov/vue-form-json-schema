@@ -129,7 +129,8 @@ Tested with v2.5.9 but will probably work on any version >= v2.4.0
 ### TODO
 
 * Write tests
-* Add i18n support
+* ~~Add i18n support~~
+  * Added in 1.15.2 with `options.ajv.locale` setting
 * ~~Write this README~~
 * Use Ajv internally to validate:
   * `vfs-global` prop `ui-schema`
