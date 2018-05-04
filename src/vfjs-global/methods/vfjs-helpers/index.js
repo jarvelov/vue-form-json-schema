@@ -26,9 +26,10 @@ const vfjsHelpers = {
 
     // If this field is an errorHandler we pass the errors as the children
     // Otherwise its treated normally
-    const vfjsChildren = (vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler)
-      ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
-      : this.vfjsHelperGetChildren(children, vfjsFieldModelKey);
+    const vfjsChildren =
+      vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
+        ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
+        : this.vfjsHelperGetChildren(children, vfjsFieldModelKey);
 
     const props = {
       ...vfjsFieldOptions,
@@ -71,24 +72,28 @@ const vfjsHelpers = {
     });
   },
   vfjsHelperGetErrors(errors = [], id) {
-    return errors.map((error, index) => this.vfjsHelperCreateField({
-      id: `${id}-error-${index}`,
-      component: 'div',
-      fieldOptions: {
-        class: ['vfjs-error', 'vfjs-default-error-handler'],
-        domProps: {
-          innerHTML: error.message,
+    return errors.map((error, index) =>
+      this.vfjsHelperCreateField({
+        id: `${id}-error-${index}`,
+        component: 'div',
+        fieldOptions: {
+          class: ['vfjs-error', 'vfjs-default-error-handler'],
+          domProps: {
+            innerHTML: error.message,
+          },
         },
-      },
-    }));
+      }));
   },
   vfjsHelperGetChildren(children, modelKey) {
     const isArray = this.vfjsHelperFieldIsArray(modelKey);
     return isArray
-      ? children.reduce((flattenedChildren, child) => ([
-        ...flattenedChildren,
-        ...child.map(this.vfjsHelperCreateField),
-      ]), [])
+      ? children.reduce(
+        (flattenedChildren, child) => [
+          ...flattenedChildren,
+          ...child.map(this.vfjsHelperCreateField),
+        ],
+        [],
+      )
       : children.map(this.vfjsHelperCreateField);
   },
   vfjsHelperHashString(string, binary = 62) {
@@ -114,29 +119,36 @@ const vfjsHelpers = {
 
     return array.join('');
   },
-  vfjsHelperCreateComponent({
-    children = [],
-    component,
-    props,
-  }) {
+  vfjsHelperCreateComponent({ children = [], component, props }) {
     if (!props.vfjsFieldModelKey) {
-      return this.$createElement(component, {
-        key: props.vfjsFieldId,
-        ...props.vfjsFieldOptions,
-      }, children);
+      return this.$createElement(
+        component,
+        {
+          attrs: {
+            id: props.vfjsFieldId,
+          },
+          key: props.vfjsFieldId,
+          ...props.vfjsFieldOptions,
+        },
+        children,
+      );
     }
 
     // If the component matches one of the local components
     // passed in with the `components` prop
     const localComponent = this.vfjsComponents[component];
 
-    return this.$createElement(vfjsComponentWrapper, {
-      key: `${props.vfjsFieldId}-wrapper`,
-      props: {
-        ...props,
-        component: localComponent || component,
+    return this.$createElement(
+      vfjsComponentWrapper,
+      {
+        key: `${props.vfjsFieldId}-wrapper`,
+        props: {
+          ...props,
+          component: localComponent || component,
+        },
       },
-    }, children);
+      children,
+    );
   },
   vfjsHelperApplyFieldModel(key, value) {
     const newVfjsModel = cloneDeep(this.getVfjsModel());
@@ -173,10 +185,13 @@ const vfjsHelpers = {
     };
   },
   vfjsHelperChildArrayReducerMapper(model, children = [], index) {
-    return children.reduce((allChildren, child) => ([
-      ...allChildren,
-      this.vfjsHelperChildArrayMapper(child, model, index),
-    ]), []);
+    return children.reduce(
+      (allChildren, child) => [
+        ...allChildren,
+        this.vfjsHelperChildArrayMapper(child, model, index),
+      ],
+      [],
+    );
   },
   vfjsHelperGetChildArrayModelAtIndex(model, parentModel, index) {
     const relativeModel = this.vfjsHelperGetRelativeModel(model, parentModel);
@@ -225,11 +240,14 @@ const vfjsHelpers = {
     }, {});
   },
   getVfjsFieldsModels(fields) {
-    return fields.reduce((models, { children = [], model }) => ([
-      ...models,
-      ...model && models.indexOf(model) === -1 ? [model] : [],
-      ...this.getVfjsFieldsModels(children),
-    ]), []);
+    return fields.reduce(
+      (models, { children = [], model }) => [
+        ...models,
+        ...(model && models.indexOf(model) === -1 ? [model] : []),
+        ...this.getVfjsFieldsModels(children),
+      ],
+      [],
+    );
   },
 };
 
