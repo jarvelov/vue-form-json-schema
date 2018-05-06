@@ -124,9 +124,6 @@ const vfjsHelpers = {
       return this.$createElement(
         component,
         {
-          attrs: {
-            id: props.vfjsFieldId,
-          },
           key: props.vfjsFieldId,
           ...props.vfjsFieldOptions,
         },
