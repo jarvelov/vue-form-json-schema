@@ -24,6 +24,7 @@ const props = {
     type: String,
     default: 'div',
   },
+  // TODO: Move into options
   showValidationErrors: {
     type: Boolean,
     default: false,
