@@ -18,6 +18,9 @@ const vfjsLifecycle = {
     // Set up the plugin's internal bus
     this.vfjsBusInitialize();
 
+    // Register events in vfjsEvents to vfjsBusEventHandler
+    this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);
+
     // Set the model from props
     this.setVfjsModel(this.model);
 
@@ -26,9 +29,6 @@ const vfjsLifecycle = {
 
     // Set up ui schema
     this.setVfjsUiSchema(this.uiSchema);
-
-    // Register events in vfjsEvents to vfjsBusEventHandler
-    this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);
 
     // Check and set active fields (visible)
     this.setVfjsUiFieldsActive();
