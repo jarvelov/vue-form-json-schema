@@ -168,7 +168,6 @@ const vfjsBus = {
 
     if (event && event in eventActions) {
       eventActions[event](payload);
-      // console.log('vfjsBusEventHandler', event);
     }
   },
   vfjsBusInitialize() {
