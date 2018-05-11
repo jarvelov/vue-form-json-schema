@@ -151,8 +151,6 @@ const vfjsBus = {
       [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
         const newVfjsState = Object.assign({}, this.getVfjsState(), {
           [key]: value,
-          vfjsFieldsActive: this.vfjsFieldsActive,
-          vfjsFieldsActiveModels: this.vfjsFieldsActiveModels,
         });
 
         this.setVfjsState(newVfjsState);
@@ -162,7 +160,14 @@ const vfjsBus = {
         }
       },
       [VFJS_EVENT_STATE_UPDATED]: () => {
-        this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, this.getVfjsState());
+        const vfjsState = {
+          vfjsErrors: [],
+          vfjsFieldsActive: this.vfjsFieldsActive,
+          vfjsFieldsActiveModels: this.vfjsFieldsActiveModels,
+          ...this.getVfjsState(),
+        };
+
+        this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, vfjsState);
       },
     };
 
