@@ -1,4 +1,5 @@
 import { cloneDeep } from 'lodash';
+import { VFJS_EVENT_STATE_UPDATED } from '../../../constants';
 
 const vfjsUiSetters = {
   setVfjsUiSchema(uiSchema) {
@@ -7,9 +8,14 @@ const vfjsUiSetters = {
       [],
     ));
   },
+  setVfjsUiFieldsActiveModels() {
+    this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
+  },
   setVfjsUiFieldsActive() {
     this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
-    this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
+    this.setVfjsUiFieldsActiveModels();
+
+    this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED);
   },
 };
 
