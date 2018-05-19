@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash';
 import { VFJS_EVENT_STATE_UPDATED } from '../../../constants';
 
 const vfjsUiSetters = {
-  setVfjsUiSchema(uiSchema) {
+  setVfjsUiSchema(uiSchema = []) {
     this.vfjsUiSchema = cloneDeep(uiSchema.reduce(
       (fields, field, index) => [...fields, this.vfjsHelperGenerateField(field, index)],
       [],
