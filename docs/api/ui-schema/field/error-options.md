@@ -5,7 +5,7 @@ Same API as [fieldOptions](fieldOptions.md) but is only applied when the field h
 ## Example
 
 ```js
-data () {
+data() {
   return {
     uiSchema: [{
       component: 'input',

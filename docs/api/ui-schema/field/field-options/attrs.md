@@ -4,7 +4,7 @@ Essentially any normal html attributes
 
 ```js
 // Normal HTML attributes
-data () {
+data() {
   return {
     uiSchema: {
       component: 'div',

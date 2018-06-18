@@ -9,7 +9,7 @@ If you want to render them differently you can handle the errors in the `vfjsFie
 ## Example
 
 ```js
-data () {
+data() {
   return {
     jsonSchema: {
       type: 'object',

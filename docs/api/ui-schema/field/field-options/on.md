@@ -7,7 +7,7 @@ Accepts a `String`, `Array` or an `Object`.
 
 ```js
 // Option 1: String
-data () {
+data() {
   return {
     uiSchema: {
       component: 'input',
@@ -23,7 +23,7 @@ data () {
 
 ```js
 // Option 2: Arrays
-data () {
+data() {
   return {
     uiSchema: {
       component: 'input',
@@ -45,7 +45,7 @@ An `Object` can be used if the value should be manipulated or used elsewhere bef
 
 ```js
 // Option 3: Object
-data () {
+data() {
   return {
     uiSchema: {
       component: 'input',

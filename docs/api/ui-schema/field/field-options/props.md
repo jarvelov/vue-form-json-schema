@@ -11,7 +11,7 @@ Vue.component('my-custom-component', {
 })
 
 ...
-data () {
+data() {
   return {
     uiSchema: {
       component: 'my-custom-component',

@@ -4,7 +4,7 @@
 
 ```js
 // DOM properties
-data () {
+data() {
   return {
     uiSchema: {
       component: 'div',

@@ -19,7 +19,7 @@ MyForm.vue
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       uiSchema: {
         component: 'my-custom-component' // globally registered component

@@ -8,7 +8,7 @@ An `Object` must have the classes as keys and the keys' value should be a `Boole
 
 ```js
 // Option 1: Object
-data () {
+data() {
   uiSchema: {
     component: 'div',
     fieldOptions: {
@@ -28,7 +28,7 @@ An `Array` should be a an array of strings, multidimensional arrays or arrays wi
 
 ```js
 // Option 2: Arrays
-data () {
+data() {
   uiSchema: {
     component: 'div',
     fieldOptions: {
@@ -46,7 +46,7 @@ data () {
 
 ```js
 // Option 3: String
-data () {
+data() {
   uiSchema: {
     component: 'div',
     fieldOptions: {

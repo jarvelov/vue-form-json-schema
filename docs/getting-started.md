@@ -16,7 +16,7 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 <script>
 // Component.js
 export default {
-  data () {
+  data() {
     return {
       model: {},
       schema: {},
@@ -53,7 +53,7 @@ import VueFormJsonSchema from 'vue-form-json-schema';
 
 export default {
   name: 'custom-component',
-  data () {
+  data() {
     return {
       model: {},
       schema: {},
