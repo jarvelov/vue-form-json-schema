@@ -11,7 +11,6 @@ const vfjsModelSetters = {
     });
   },
   setVfjsModel(model, silent = false) {
-    console.log('set model', model);
     this.vfjsModel = Object.assign({}, this.getVfjsModel(), model);
 
     if (!silent) {
