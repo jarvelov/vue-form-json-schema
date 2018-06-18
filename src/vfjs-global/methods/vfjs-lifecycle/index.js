@@ -22,7 +22,7 @@ const vfjsLifecycle = {
     this.addVfjsListeners(this.vfjsEvents, this.vfjsBusEventHandler);
 
     // Set the model from props
-    this.setVfjsModel(this.model);
+    this.setVfjsModel(this.model, true);
 
     // Set up validation
     this.vfjsValidationInitialize();
