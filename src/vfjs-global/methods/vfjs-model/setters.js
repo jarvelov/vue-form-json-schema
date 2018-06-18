@@ -10,9 +10,13 @@ const vfjsModelSetters = {
       value,
     });
   },
-  setVfjsModel(model) {
+  setVfjsModel(model, silent = false) {
+    console.log('set model', model);
     this.vfjsModel = Object.assign({}, this.getVfjsModel(), model);
-    this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
+
+    if (!silent) {
+      this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
+    }
   },
 };
 
