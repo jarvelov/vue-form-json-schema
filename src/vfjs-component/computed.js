@@ -12,7 +12,7 @@ const computed = {
     return this.vfjsFieldState.vfjsFieldErrors && this.vfjsFieldState.vfjsFieldErrors.length > 0;
   },
   vfjsComputedShowFieldErrors() {
-    return this.vfjsFieldState.vfjsFieldDirty || this.vfjsState.showValidationErrors;
+    return this.vfjsFieldState.vfjsFieldDirty;
   },
   vfjsComputedFieldErrorOptions() {
     return this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors
