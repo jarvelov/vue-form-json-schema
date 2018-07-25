@@ -1,5 +1,6 @@
 import Ajv from 'ajv';
 import getters from './getters';
+import setters from './setters';
 import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
 
 const vfjsValidation = {
@@ -54,6 +55,7 @@ const vfjsValidation = {
     }
   },
   ...getters,
+  ...setters,
 };
 
 export default vfjsValidation;
