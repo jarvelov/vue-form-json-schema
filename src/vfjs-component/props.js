@@ -106,6 +106,10 @@ const props = {
     type: Object,
     required: true,
   },
+  vfjsOptions: {
+    type: Object,
+    required: true,
+  },
   vfjsModel: {
     type: Object,
     required: true,

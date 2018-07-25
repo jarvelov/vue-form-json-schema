@@ -61,6 +61,7 @@ const vfjsHelpers = {
       vfjsFieldSchemas,
       vfjsFieldState,
       vfjsFieldUiSchema,
+      vfjsOptions: this.vfjsOptions,
       vfjsModel,
       vfjsState,
     };
