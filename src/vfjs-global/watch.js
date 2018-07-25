@@ -1,3 +1,5 @@
+import { merge } from 'lodash'
+
 const watch = {
   components(value) {
     this.vfjsComponents = Object.assign({}, value);
@@ -18,7 +20,7 @@ const watch = {
     this.setVfjsUiFieldsActive();
   },
   options(value) {
-    this.vfjsOptions = Object.assign({}, value);
+    this.vfjsOptions = merge({}, this.vfjsOptions, value);
 
     if (this.vfjsOptions.showValidationErrors) {
       this.setVfjsValidationErrors();
