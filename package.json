@@ -1,6 +1,6 @@
 {
   "name": "vue-form-json-schema",
-  "version": "1.15.6",
+  "version": "1.15.7",
   "description": "Vue package for using forms with JSON schema",
   "main": "dist/vue-form-json-schema.umd.js",
   "module": "dist/vue-form-json-schema.esm.js",
