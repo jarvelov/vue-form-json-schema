@@ -36,6 +36,7 @@ const data = () => ({
         allErrors: true,
       },
     },
+    showValidationErrors: false,
     validate: true,
     validateOnLoad: true,
     validateOnChange: true,
