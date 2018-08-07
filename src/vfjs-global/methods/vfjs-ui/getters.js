@@ -7,7 +7,7 @@ const vfjsUiGetters = {
     }
 
     // Get model and schema
-    const { model, schema } = field.displayOptions;
+    const { model, schema = {} } = field.displayOptions;
 
     // Get the field's model
     // It will fall back to the full model if model is undefined
