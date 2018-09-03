@@ -29,7 +29,7 @@ const vfjsHelpers = {
     const vfjsChildren =
       vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
         ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
-        : this.vfjsHelperGetChildren(children, vfjsFieldModelKey);
+        : children.map(this.vfjsHelperCreateField);
 
     const props = {
       ...vfjsFieldOptions,
@@ -85,18 +85,6 @@ const vfjsHelpers = {
           },
         },
       }));
-  },
-  vfjsHelperGetChildren(children, modelKey) {
-    const isArray = this.vfjsHelperFieldIsArray(modelKey);
-    return isArray
-      ? children.reduce(
-        (flattenedChildren, child) => [
-          ...flattenedChildren,
-          ...child.map(this.vfjsHelperCreateField),
-        ],
-        [],
-      )
-      : children.map(this.vfjsHelperCreateField);
   },
   vfjsHelperHashString(string, binary = 62) {
     let integer = 0;
