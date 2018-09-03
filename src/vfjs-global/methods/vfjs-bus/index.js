@@ -114,12 +114,7 @@ const vfjsBus = {
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
           key,
           value,
-          cb: () => {
-            this.setVfjsUiFieldsActive();
-            if (cb && typeof cb === 'function') {
-              cb();
-            }
-          },
+          cb,
         });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
