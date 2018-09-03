@@ -49,6 +49,7 @@ const vfjsHelpers = {
       value: vfjsFieldModel,
       vfjsBus: this.vfjsBus,
       vfjsChildren,
+      vfjsChildrenUiSchema: children,
       vfjsFieldId,
       vfjsFieldErrorHandler,
       vfjsFieldErrorOptions,
