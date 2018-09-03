@@ -1,13 +1,17 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 import { VFJS_EVENT_STATE_UPDATED } from '../../../constants';
 
 const vfjsUiSetters = {
   setVfjsUiSchema(uiSchema = []) {
-    this.vfjsUiSchema = cloneDeep(uiSchema.reduce(
+    const newVfjsUiSchema = uiSchema.reduce(
       (fields, field, index) => [...fields, this.vfjsHelperGenerateField(field, index)],
       [],
-    ));
-  },
+    );
+
+    if (!isEqual(newVfjsUiSchema, this.vfjsUiSchema)) {
+      this.vfjsUiSchema = cloneDeep(newVfjsUiSchema);
+      this.setVfjsUiFieldsActive();
+    }
   },
   setVfjsUiFieldsActive() {
     this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
