@@ -13,9 +13,6 @@ const watch = {
   uiSchema(value) {
     this.setVfjsUiSchema(value);
   },
-  state(value) {
-    this.setVfjsUiFieldsActive();
-  },
   options(value) {
     this.vfjsOptions = merge({}, this.vfjsOptions, value);
 
