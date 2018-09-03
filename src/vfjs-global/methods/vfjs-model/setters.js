@@ -1,3 +1,4 @@
+import { isEqual } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_MODEL_UPDATED,
@@ -11,7 +12,9 @@ const vfjsModelSetters = {
     });
   },
   setVfjsModel(model, silent = false) {
-    this.vfjsModel = Object.assign({}, this.getVfjsModel(), model);
+    if (!isEqual(model, this.vfjsModel)) {
+      this.vfjsModel = Object.assign({}, this.getVfjsModel(), model);
+    }
 
     if (!silent) {
       this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
