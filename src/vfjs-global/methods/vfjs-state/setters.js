@@ -1,3 +1,4 @@
+import { isEqual } from 'lodash';
 import {
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,
@@ -11,8 +12,10 @@ const vfjsStateSetters = {
     });
   },
   setVfjsState(state) {
-    this.vfjsState = Object.assign({}, this.getVfjsState(), state);
-    this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED);
+    if (!isEqual(state, this.vfjsState)) {
+      this.vfjsState = Object.assign({}, this.getVfjsState(), state);
+      this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED);
+    }
   },
 };
 
