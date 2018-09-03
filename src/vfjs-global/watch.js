@@ -5,16 +5,13 @@ const watch = {
     this.vfjsComponents = Object.assign({}, value);
   },
   model(value) {
-    this.vfjsModel = Object.assign({}, value);
-    this.setVfjsUiFieldsActive();
+    this.setVfjsModel(value);
   },
   schema(value) {
-    this.vfjsSchema = Object.assign({}, value);
-    this.setVfjsUiFieldsActive();
+    this.setVfjsSchema(value);
   },
   uiSchema(value) {
     this.setVfjsUiSchema(value);
-    this.setVfjsUiFieldsActive();
   },
   state(value) {
     this.setVfjsUiFieldsActive();
