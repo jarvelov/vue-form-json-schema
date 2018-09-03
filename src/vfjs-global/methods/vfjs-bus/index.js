@@ -157,7 +157,7 @@ const vfjsBus = {
           cb();
         }
       },
-      [VFJS_EVENT_STATE_UPDATED]: () => {
+      [VFJS_EVENT_STATE_UPDATED]: (cb) => {
         const vfjsState = {
           vfjsErrors: [],
           vfjsFieldsActive: this.vfjsFieldsActive,
@@ -166,6 +166,10 @@ const vfjsBus = {
         };
 
         this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, vfjsState);
+
+        if (cb && typeof cb === 'function') {
+          cb();
+        }
       },
     };
 
