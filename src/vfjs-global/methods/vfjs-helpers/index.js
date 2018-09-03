@@ -10,10 +10,11 @@ const vfjsHelpers = {
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsFieldChildrenModels = children.map(child => this.getVfjsFieldModel(child.model));
     const objString = JSON.stringify({
+      children,
+      level,
       vfjsFieldUiSchema,
       vfjsFieldModel,
       vfjsFieldChildrenModels,
-      level,
     });
 
     return this.vfjsHelperHashString(objString);
