@@ -2,6 +2,22 @@ import { set, cloneDeep } from 'lodash';
 import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
+  vfjsHelperGetVfjsFieldByHash(hash) {
+    return this.vfjsFields.find(vfjsField => vfjsField.hash === hash);
+  },
+  vfjsHelperGetFieldRuntimeHash(vfjsFieldUiSchema, level = 0) {
+    const { children = [], model: vfjsFieldModelKey = '' } = vfjsFieldUiSchema;
+    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
+    const vfjsFieldChildrenModels = children.map(child => this.getVfjsFieldModel(child.model));
+    const objString = JSON.stringify({
+      vfjsFieldUiSchema,
+      vfjsFieldModel,
+      vfjsFieldChildrenModels,
+      level,
+    });
+
+    return this.vfjsHelperHashString(objString);
+  },
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
       id: vfjsFieldId,
