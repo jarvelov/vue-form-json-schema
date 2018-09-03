@@ -59,6 +59,14 @@ const props = {
     type: Object,
     required: true,
   },
+  vfjsChildren: {
+    type: Array,
+    default: () => ([]),
+  },
+  vfjsChildrenUiSchema: {
+    type: Array,
+    default: () => ([]),
+  },
   vfjsFieldErrorHandler: {
     type: Boolean,
   },
