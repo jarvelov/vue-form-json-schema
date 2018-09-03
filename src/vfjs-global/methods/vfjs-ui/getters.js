@@ -1,6 +1,29 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
+  getVfjsFields(fields = []) {
+    return fields.reduce((reducedFields, field, index) => {
+      const newFields = [...reducedFields];
+
+      const hash = this.vfjsHelperGetFieldRuntimeHash(field);
+      const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
+      if (vfjsField) {
+        // console.log('reuse');
+        newFields.push({
+          ...vfjsField,
+          children: this.getVfjsFields(field.children),
+          hash,
+        });
+      } else {
+        newFields.push({
+          ...this.vfjsHelperCreateField(field),
+          hash,
+        });
+      }
+
+      return newFields;
+    }, []);
+  },
   getVfjsUiFieldVisible(field) {
     if (!field.displayOptions) {
       return true;
