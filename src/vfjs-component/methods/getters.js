@@ -50,7 +50,21 @@ const getters = {
 
     const fieldOptionsAsProps = { props: options };
 
-    return merge({}, defaultProps, defaultOptions, fieldOptionsAsProps, options, computedOptions);
+    const key = {
+      key: this.vfjsFieldId,
+    };
+
+    const allAttributes = merge(
+      {},
+      key,
+      defaultProps,
+      defaultOptions,
+      fieldOptionsAsProps,
+      options,
+      computedOptions,
+    );
+
+    return allAttributes;
   },
 };
 
