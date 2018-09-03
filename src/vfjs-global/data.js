@@ -23,6 +23,7 @@ const data = () => ({
     VFJS_EVENT_STATE_UPDATE,
     VFJS_EVENT_STATE_UPDATED,
   ],
+  vfjsFields: [],
   vfjsFieldsActive: [],
   vfjsFieldsRequired: [],
   vfjsListeners: [],

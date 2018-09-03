@@ -16,6 +16,8 @@ const vfjsUiSetters = {
     this.setVfjsUiFieldsActiveModels();
 
     this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED);
+  setVfjsFields() {
+    this.vfjsFields = this.vfjsFieldsActive.map(this.vfjsHelperCreateField);
   },
 };
 
