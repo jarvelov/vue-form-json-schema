@@ -2,22 +2,19 @@ import { merge } from 'lodash';
 
 const getters = {
   getVfjsAttributes() {
-    return this.getVfjsFieldAttributes(
-      this.vfjsFieldOptions,
-      this.vfjsComputedMergedFieldOptions,
-    );
+    return this.getVfjsFieldAttributes(this.vfjsFieldOptions, this.vfjsComputedMergedFieldOptions);
   },
-  getVfjsFieldAttributes({
-    class: optionsClass,
-    on: optionsOn,
-    nativeOn: optionsNativeOn,
-    ...options
-  } = {}, {
-    class: defaultOptionsClass,
-    on: defaultOn,
-    nativeOn: defaultNativeOn,
-    ...defaultOptions
-  } = {}) {
+  getVfjsFieldAttributes(
+    {
+      class: optionsClass, on: optionsOn, nativeOn: optionsNativeOn, ...options
+    } = {},
+    {
+      class: defaultOptionsClass,
+      on: defaultOn,
+      nativeOn: defaultNativeOn,
+      ...defaultOptions
+    } = {},
+  ) {
     if (!options) {
       return {};
     }
@@ -44,9 +41,12 @@ const getters = {
       nativeOn: nativeOnFormatted,
     };
 
-    const defaultProps = Object.assign({}, {
-      props: this.$options.propsData,
-    });
+    const defaultProps = Object.assign(
+      {},
+      {
+        props: this.$options.propsData,
+      },
+    );
 
     const fieldOptionsAsProps = { props: options };
 
