@@ -8,12 +8,7 @@ const vfjsUiGetters = {
       const hash = this.vfjsHelperGetFieldRuntimeHash(field);
       const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
       if (vfjsField) {
-        // console.log('reuse');
-        newFields.push({
-          ...vfjsField,
-          children: this.getVfjsFields(field.children),
-          hash,
-        });
+        newFields.push(vfjsField);
       } else {
         newFields.push({
           ...this.vfjsHelperCreateField(field),
