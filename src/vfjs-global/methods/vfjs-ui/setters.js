@@ -22,7 +22,7 @@ const vfjsUiSetters = {
     });
   },
   setVfjsFields() {
-    this.vfjsFields = this.vfjsFieldsActive.map(this.vfjsHelperCreateField);
+    this.vfjsFields = this.getVfjsFields(this.vfjsFieldsActive);
   },
 };
 
