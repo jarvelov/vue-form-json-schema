@@ -1,23 +1,24 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
+  getVfjsField(field) {
+    const hash = this.vfjsHelperGetFieldRuntimeHash(field);
+
+    const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
+    if (!vfjsField) {
+      return {
+        ...this.vfjsHelperCreateField(field),
+        hash,
+      };
+    }
+
+    return vfjsField;
+  },
   getVfjsFields(fields = []) {
-    return fields.reduce((reducedFields, field, index) => {
-      const newFields = [...reducedFields];
-
-      const hash = this.vfjsHelperGetFieldRuntimeHash(field);
-      const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
-      if (vfjsField) {
-        newFields.push(vfjsField);
-      } else {
-        newFields.push({
-          ...this.vfjsHelperCreateField(field),
-          hash,
-        });
-      }
-
-      return newFields;
-    }, []);
+    return fields.reduce(
+      (vfjsFields, field, index) => [...vfjsFields, this.getVfjsField(field)],
+      [],
+    );
   },
   getVfjsUiFieldVisible(field) {
     if (!field.displayOptions) {
