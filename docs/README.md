@@ -4,7 +4,7 @@
 
 ##### Use any Vue component or HTML element!
 
-There are *no prebuilt components* for you to puzzle your form together with. Instead you can use any component or element which emits and event, custom or native.
+There are *no prebuilt components* for you to puzzle your form together with. Instead you can use any component or element which emits an event, custom or native.
 
 > Note that essentially all Vue components that uses `v-model` emits an `input` (or similar) event. [See Vue's guide for more info](https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events)
 
@@ -31,17 +31,17 @@ Check out the demos or see a minimal example in the [usage instructions](#usage)
 
 > Note that all demos use Bootstrap styling, but no styling is included in this package and it is up to you what styles should be used.
 
-### [Minimal demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
+### [Minimal demo](https://py6611pr9m.codesandbox.io)
 
 The least amount of configuration to render an `input` element.
 
-### [Nested UI demo](https://www.webpackbin.com/bins/-L0_5kwqJixNYqtpiYxd)
+### [Nested UI demo](https://882w4v374l.codesandbox.io)
 
 Using Bootstrap classes to show how layout can be different for devices with different screen sizes.
 In this example two input fields will be wrapped inside a div with `col-12 col-sm-6` classes.
 Try resizing your browser window too see it in action.
 
-### [Conditional visibility and Animation demo](https://www.webpackbin.com/bins/-L0hgoQjI7Cq2EibysRr)
+### [Conditional visibility and Animation demo](https://k0q8wk946o.codesandbox.io/)
 
 Sometimes a field should only be shown if a condition is met. Uses `<transition>` to provide animation.
 
@@ -62,7 +62,7 @@ See more demos in the [Documentation](#documentation)
 
 ### Basic example with one field
 
-[See demo](https://www.webpackbin.com/bins/-L0_48pIxbUFNG8f87pI)
+[See demo](https://codesandbox.io/s/py6611pr9m)
 
 ```js
 <template>
@@ -129,7 +129,8 @@ Tested with v2.5.9 but will probably work on any version >= v2.4.0
 ### TODO
 
 * Write tests
-* Add i18n support
+* ~~Add i18n support~~
+  * Added in 1.15.2 with `options.ajv.locale` setting
 * ~~Write this README~~
 * Use Ajv internally to validate:
   * `vfs-global` prop `ui-schema`
