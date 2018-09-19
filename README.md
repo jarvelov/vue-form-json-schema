@@ -45,7 +45,9 @@ Try resizing your browser window too see it in action.
 
 Sometimes a field should only be shown if a condition is met. Uses `<transition>` to provide animation.
 
-See more demos in the [Documentation](#documentation)
+### [Vue components demo](https://wnwk5mv5jl.codesandbox.io)
+
+See how to use your own or third party Vue components in `vue-form-json-schema`.
 
 ## Features
 
@@ -56,7 +58,7 @@ See more demos in the [Documentation](#documentation)
 
 ## Documentation
 
-[Gitbook](https://jarvelov.gitbook.io/vue-form-json-schema)
+[Gitbook](https://jarvelov.gitbook.io/vue-form-json-schema/)
 
 ## Usage
 
