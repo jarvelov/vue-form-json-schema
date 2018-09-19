@@ -56,7 +56,7 @@ See more demos in the [Documentation](#documentation)
 
 ## Documentation
 
-[Gitbook](https://jarvelov.gitbooks.io/vue-form-json-schema)
+[Gitbook](https://jarvelov.gitbook.io/vue-form-json-schema)
 
 ## Usage
 
