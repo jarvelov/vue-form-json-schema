@@ -1,7 +1,7 @@
 const props = {
   children: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   component: {
     type: [String, Object],
@@ -26,7 +26,7 @@ const props = {
     type: null,
   },
   modelKey: {
-    type: String,
+    type: [String, Boolean],
     required: true,
   },
   required: {
@@ -61,11 +61,11 @@ const props = {
   },
   vfjsChildren: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   vfjsChildrenUiSchema: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   vfjsFieldErrorHandler: {
     type: Boolean,
@@ -84,7 +84,7 @@ const props = {
     type: null,
   },
   vfjsFieldModelKey: {
-    type: String,
+    type: [String, Boolean],
     required: true,
   },
   vfjsFieldOptions: {
