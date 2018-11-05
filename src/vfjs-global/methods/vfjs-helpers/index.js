@@ -28,14 +28,14 @@ const vfjsHelpers = {
       errorHandler: vfjsFieldErrorHandler,
       errorOptions: vfjsFieldErrorOptions = {},
       fieldOptions: vfjsFieldOptions = {},
-      model: vfjsFieldModelKey = '',
+      model: modelKey = '',
       required: vfjsFieldRequired = false,
     } = vfjsFieldUiSchema;
 
-    const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
+    const vfjsFieldSchema = this.getVfjsFieldSchema(modelKey) || {};
     const vfjsFieldSchemas = this.schemas;
-    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
-    const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
+    const vfjsFieldModel = this.getVfjsFieldModel(modelKey);
+    const vfjsFieldState = this.getVfjsFieldState(modelKey) || {};
     const vfjsModel = this.getVfjsModel();
     const vfjsState = this.getVfjsState();
 
@@ -48,6 +48,8 @@ const vfjsHelpers = {
       vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
         ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
         : children.map(this.vfjsHelperCreateField);
+
+    const vfjsFieldModelKey = modelKey === true ? '' : modelKey;
 
     const props = {
       ...vfjsFieldOptions,
