@@ -11,11 +11,11 @@ const vfjsModelGetters = {
       : null;
   },
   getVfjsModel(key) {
-    if (key) {
-      return get(this.vfjsModel, key);
+    if (!key || key === true) {
+      return this.vfjsModel;
     }
 
-    return this.vfjsModel;
+    return get(this.vfjsModel, key);
   },
 };
 
