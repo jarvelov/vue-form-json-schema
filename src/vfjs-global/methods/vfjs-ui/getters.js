@@ -6,10 +6,7 @@ const vfjsUiGetters = {
 
     const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
     if (!vfjsField) {
-      return {
-        ...this.vfjsHelperCreateField(field),
-        hash,
-      };
+      return this.vfjsHelperCreateField(field);
     }
 
     return vfjsField;
