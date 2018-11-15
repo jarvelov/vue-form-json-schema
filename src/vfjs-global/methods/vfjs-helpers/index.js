@@ -3,7 +3,7 @@ import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
   vfjsHelperGetVfjsFieldByHash(hash) {
-    return this.vfjsFields.find(vfjsField => vfjsField.hash === hash);
+    return this.vfjsFields.find(vfjsField => vfjsField.key === hash);
   },
   vfjsHelperGetFieldRuntimeHash(vfjsFieldUiSchema, level = 0) {
     const { children = [], model: vfjsFieldModelKey = '' } = vfjsFieldUiSchema;
