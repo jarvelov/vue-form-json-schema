@@ -47,11 +47,21 @@ const vfjsBus = {
         }, {});
 
         Object.keys(inactiveModels).forEach((key) => {
-          const clearModel = inactiveModels[key];
-          if (typeof clearModel === 'string') {
-            set(this.vfjsModel, clearModel, undefined);
+          const clearModels = inactiveModels[key];
+          if (Array.isArray(clearModels)) {
+            clearModels.forEach((clearModel) => {
+              const newModel = this.vfjsHelperApplyFieldModel(
+                typeof clearModel === 'string' ? clearModel : key,
+                undefined,
+              );
+              this.setVfjsModel(newModel, true);
+            });
           } else {
-            set(this.vfjsModel, key, undefined);
+            const newModel = this.vfjsHelperApplyFieldModel(
+              typeof clearModels === 'string' ? clearModels : key,
+              undefined,
+            );
+            this.setVfjsModel(newModel, true);
           }
         });
       },
