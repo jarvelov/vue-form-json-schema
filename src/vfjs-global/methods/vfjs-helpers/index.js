@@ -236,15 +236,16 @@ const vfjsHelpers = {
   },
   vfjsHelperGetFieldsWithClearOnHide(fields = []) {
     return fields.reduce((models, { children = [], displayOptions = {}, model }) => {
-      const fieldModel = model
-        ? {
-          [model]: displayOptions.clearOnHide,
+      if (displayOptions.clearOnHide) {
+        if (model) {
+          models[model] = displayOptions.clearOnHide;
+        } else if (!model && typeof displayOptions.clearOnHide === 'string') {
+          models[displayOptions.clearOnHide] = displayOptions.clearOnHide;
         }
-        : {};
+      }
 
       return {
         ...models,
-        ...fieldModel,
         ...this.vfjsHelperGetFieldsWithClearOnHide(children),
       };
     }, {});
