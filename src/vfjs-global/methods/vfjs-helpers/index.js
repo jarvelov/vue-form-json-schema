@@ -7,15 +7,20 @@ const vfjsHelpers = {
   },
   vfjsHelperGetFieldRuntimeHash(vfjsFieldUiSchema, level = 0) {
     const { children = [], model: vfjsFieldModelKey = '' } = vfjsFieldUiSchema;
+
+    const vfjsFieldDisplayOptions = this.getVfjsUiFieldVisible(vfjsFieldUiSchema);
+
     const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
     const vfjsFieldChildrenHashes = children.map((child, i) =>
       this.vfjsHelperGetFieldRuntimeHash(child, (i + 1) * (level + 1)));
+
     const objString = JSON.stringify({
       children,
       level,
-      vfjsFieldUiSchema,
-      vfjsFieldModel,
       vfjsFieldChildrenHashes,
+      vfjsFieldDisplayOptions,
+      vfjsFieldModel,
+      vfjsFieldUiSchema,
     });
 
     return this.vfjsHelperHashString(objString);
