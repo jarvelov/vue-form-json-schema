@@ -39,17 +39,11 @@ const vfjsBus = {
         const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(this.vfjsFieldsActive);
 
         const inactiveModels = Object.keys(allModels).reduce((models, key) => {
-          const inactiveModel =
-            key in activeModels
-              ? {}
-              : {
-                [key]: allModels[key],
-              };
+          if (!(key in activeModels)) {
+            models[key] = allModels[key];
+          }
 
-          return {
-            ...models,
-            ...inactiveModel,
-          };
+          return models;
         }, {});
 
         Object.keys(inactiveModels).forEach((key) => {
