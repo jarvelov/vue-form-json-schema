@@ -1,19 +1,9 @@
 import { get } from 'lodash';
 
 const vfjsUiGetters = {
-  getVfjsField(field) {
-    const hash = this.vfjsHelperGetFieldRuntimeHash(field);
-
-    const vfjsField = this.vfjsHelperGetVfjsFieldByHash(hash);
-    if (!vfjsField) {
-      return this.vfjsHelperCreateField(field);
-    }
-
-    return vfjsField;
-  },
   getVfjsFields(fields = []) {
     return fields.reduce(
-      (vfjsFields, field, index) => [...vfjsFields, this.getVfjsField(field)],
+      (vfjsFields, field) => [...vfjsFields, this.vfjsHelperCreateField(field)],
       [],
     );
   },

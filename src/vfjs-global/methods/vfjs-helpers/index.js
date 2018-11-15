@@ -2,29 +2,6 @@ import { set, cloneDeep } from 'lodash';
 import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
 
 const vfjsHelpers = {
-  vfjsHelperGetVfjsFieldByHash(hash) {
-    return this.vfjsFields.find(vfjsField => vfjsField.key === hash);
-  },
-  vfjsHelperGetFieldRuntimeHash(vfjsFieldUiSchema, level = 0) {
-    const { children = [], model: vfjsFieldModelKey = '' } = vfjsFieldUiSchema;
-
-    const vfjsFieldDisplayOptions = this.getVfjsUiFieldVisible(vfjsFieldUiSchema);
-
-    const vfjsFieldModel = this.getVfjsFieldModel(vfjsFieldModelKey);
-    const vfjsFieldChildrenHashes = children.map((child, i) =>
-      this.vfjsHelperGetFieldRuntimeHash(child, (i + 1) * (level + 1)));
-
-    const objString = JSON.stringify({
-      children,
-      level,
-      vfjsFieldChildrenHashes,
-      vfjsFieldDisplayOptions,
-      vfjsFieldModel,
-      vfjsFieldUiSchema,
-    });
-
-    return this.vfjsHelperHashString(objString);
-  },
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
       id: vfjsFieldId,
