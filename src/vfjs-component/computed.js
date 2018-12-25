@@ -1,3 +1,5 @@
+import { merge } from 'lodash';
+
 // Elements which supports the 'value' attribute
 const valueElements = ['input', 'option', 'textarea'];
 
@@ -54,7 +56,7 @@ const computed = {
     };
   },
   vfjsComputedMergedFieldOptions() {
-    return Object.assign(
+    return merge(
       {},
       this.vfjsDefaultOptions,
       this.vfjsComputedFieldErrorOptions,
