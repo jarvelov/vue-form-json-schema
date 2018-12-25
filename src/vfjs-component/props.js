@@ -61,6 +61,9 @@ const props = {
     type: Object,
     required: true,
   },
+  vfjsFieldValueProp: {
+    type: String,
+  },
   vfjsOptions: {
     type: Object,
     required: true,

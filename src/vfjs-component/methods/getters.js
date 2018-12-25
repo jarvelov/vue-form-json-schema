@@ -54,6 +54,10 @@ const getters = {
       key: this.vfjsFieldId,
     };
 
+    const valueProp = {
+      [this.vfjsFieldValueProp]: this.vfjsFieldModel,
+    };
+
     const allAttributes = merge(
       {},
       key,
@@ -62,6 +66,7 @@ const getters = {
       fieldOptionsAsProps,
       options,
       computedOptions,
+      valueProp,
     );
 
     return allAttributes;

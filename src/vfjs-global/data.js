@@ -41,6 +41,7 @@ const data = () => ({
     validate: true,
     validateOnLoad: true,
     validateOnChange: true,
+    valueProp: 'value',
   },
   vfjsSchema: {},
   vfjsState: {},
