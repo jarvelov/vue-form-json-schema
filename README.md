@@ -10,6 +10,8 @@ There are *no prebuilt components* for you to puzzle your form together with. In
 
 ## Installation
 
+### Upgrading from v1? Check out the [v2 release notes](https://github.com/jarvelov/vue-form-json-schema/releases/tag/v2.0.0) to see if and how migration affects you.
+
 > For browser/UMD instructions check the [Documentation](#documentation)
 
 Install from npm
@@ -49,10 +51,14 @@ Sometimes a field should only be shown if a condition is met. Uses `<transition>
 
 See how to use your own or third party Vue components in `vue-form-json-schema`.
 
+### [Vue async loading of form](https://2p51q8q14y.codesandbox.io)
+
+Loading the form from a backend? Check out this example.
+
 ## Features
 
 * Supports any HTML element or Vue component
-* Small (`36K` uncompressed, `8.5K` gzipped)
+* Small (`32K` uncompressed, `6.5K` gzipped)
 * Standardized [JSON schema](json-schema.org) for annotation and validation (by [Ajv](https://github.com/epoberezkin/ajv))
 * Layout is independent from data structure
 
