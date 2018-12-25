@@ -13,7 +13,7 @@ const vfjsModelSetters = {
   },
   setVfjsModel(model, silent = false) {
     if (!isEqual(model, this.vfjsModel)) {
-      this.vfjsModel = Object.assign({}, this.getVfjsModel(), model);
+      this.vfjsModel = model;
 
       if (!silent) {
         this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
