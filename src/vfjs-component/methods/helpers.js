@@ -6,12 +6,10 @@ const helpers = {
     el.removeEventListener(event, this.vfjsFieldHelperStateEventHandler);
   },
   vfjsFieldHelperStateEventHandler(event) {
-    if (event) {
-      if (event.type === 'blur') {
-        this.setVfjsFieldState({
-          $touched: true,
-        });
-      }
+    if (event && event.type === 'blur') {
+      this.setVfjsFieldState({
+        $touched: true,
+      });
     }
   },
   vfjsFieldHelperFormatEvents(events) {
@@ -65,10 +63,13 @@ const helpers = {
     };
   },
   vfjsFieldHelperFormatEventsReducer(events = {}) {
-    return Object.keys(events).reduce((formattedEvents, key) => ({
-      ...formattedEvents,
-      [key]: this.vfjsFieldHelperEventHandler(key, events[key]),
-    }), {});
+    return Object.keys(events).reduce(
+      (formattedEvents, key) => ({
+        ...formattedEvents,
+        [key]: this.vfjsFieldHelperEventHandler(key, events[key]),
+      }),
+      {},
+    );
   },
 };
 
