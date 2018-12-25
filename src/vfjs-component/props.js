@@ -1,60 +1,4 @@
 const props = {
-  children: {
-    type: Array,
-    default: () => [],
-  },
-  component: {
-    type: [String, Object],
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-  errorHandler: {
-    type: Boolean,
-  },
-  errorOptions: {
-    type: Object,
-  },
-  errors: {
-    type: Array,
-  },
-  fieldOptions: {
-    type: Object,
-  },
-  model: {
-    type: null,
-  },
-  modelKey: {
-    type: [String, Boolean],
-    required: true,
-  },
-  required: {
-    type: Boolean,
-    required: true,
-  },
-  schema: {
-    type: Object,
-    required: true,
-  },
-  schemas: {
-    type: Object,
-  },
-  state: {
-    type: Object,
-    required: true,
-  },
-  tag: {
-    type: String,
-    default: 'div',
-  },
-  value: {
-    type: null,
-  },
-  uiSchema: {
-    type: Object,
-    required: true,
-  },
   vfjsBus: {
     type: Object,
     required: true,
@@ -66,6 +10,9 @@ const props = {
   vfjsChildrenUiSchema: {
     type: Array,
     default: () => [],
+  },
+  vfjsComponent: {
+    type: [String, Object],
   },
   vfjsFieldErrorHandler: {
     type: Boolean,

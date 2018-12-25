@@ -5,7 +5,7 @@ const vfjsComponentWrapper = {
   mixins: [vfjsComponentMixin],
   render() {
     return this.$createElement(
-      this.component,
+      this.vfjsComponent,
       {
         ...this.getVfjsAttributes(),
       },
