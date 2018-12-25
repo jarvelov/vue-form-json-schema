@@ -38,12 +38,27 @@ const helpers = {
       };
     }
 
-    return Array.isArray(classes)
-      ? classes.reduce((classesObj, key) => ({
-        ...classesObj,
-        [key]: true,
-      }), {})
-      : classes;
+    if (Array.isArray(classes)) {
+      return classes.reduce(
+        (classesObj, key) => ({
+          ...classesObj,
+          [key]: true,
+        }),
+        {},
+      );
+    }
+
+    if (typeof classes === 'string') {
+      if (classes.indexOf(',') !== -1) {
+        return classes.split(',');
+      }
+
+      if (classes.indexOf(' ') !== -1) {
+        return classes.split(' ');
+      }
+    }
+
+    return classes;
   },
   vfjsFieldHelperEventHandler(key, cb) {
     return (data) => {
