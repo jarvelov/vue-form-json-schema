@@ -1,8 +1,8 @@
-import vfjsComponentMixin from '../vfjs-component';
+import vfjsFieldMixin from '../vfjs-field-mixin';
 
-const vfjsComponentWrapper = {
-  name: 'vue-form-json-schema-field-wrapper',
-  mixins: [vfjsComponentMixin],
+const VueFormJsonSchemaFieldComponent = {
+  name: 'vue-form-json-schema-field-component',
+  mixins: [vfjsFieldMixin],
   render() {
     return this.$createElement(
       this.vfjsComponent,
@@ -14,4 +14,4 @@ const vfjsComponentWrapper = {
   },
 };
 
-export default vfjsComponentWrapper;
+export default VueFormJsonSchemaFieldComponent;

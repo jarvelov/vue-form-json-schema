@@ -1,5 +1,5 @@
 import { set, cloneDeep } from 'lodash';
-import vfjsComponentWrapper from '../../../vfjs-component-wrapper';
+import vfjsFieldComponent from '../../../vfjs-field-component';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -114,7 +114,7 @@ const vfjsHelpers = {
     }
 
     return this.$createElement(
-      vfjsComponentWrapper,
+      vfjsFieldComponent,
       {
         key: `${props.vfjsFieldId}-wrapper`,
         props: {

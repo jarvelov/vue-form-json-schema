@@ -1,4 +1,4 @@
-import vfjsGlobalMixin from '../vfjs-global';
+import vfjsGlobalMixin from '../vfjs-global-mixin';
 
 const VueFormJsonSchema = {
   name: 'vue-form-json-schema',
