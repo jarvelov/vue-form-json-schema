@@ -4,7 +4,7 @@ const plugin = {
   install(
     Vue,
     options = {
-      component: 'vue-form-json-schema-viewer',
+      component: 'vue-form-json-schema',
     },
   ) {
     Vue.component(options.component, vfjsGlobalComponent);
