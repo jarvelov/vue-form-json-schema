@@ -1,4 +1,4 @@
-import vfjsViewer from './vfjs-viewer';
+import vfjsGlobalComponent from './vfjs-global-component';
 
 const plugin = {
   install(
@@ -7,7 +7,7 @@ const plugin = {
       component: 'vue-form-json-schema-viewer',
     },
   ) {
-    Vue.component(options.component, vfjsViewer);
+    Vue.component(options.component, vfjsGlobalComponent);
   },
 };
 

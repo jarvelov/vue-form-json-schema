@@ -1,13 +1,13 @@
 import vfjsField from './vfjs-field-component';
 import vfjsFieldMixin from './vfjs-field-mixin';
 import vfjsGlobalMixin from './vfjs-global';
-import vfjsViewer from './vfjs-viewer';
+import vfjsGlobal from './vfjs-global-component';
 
 export {
   vfjsField,
   vfjsFieldMixin,
+  vfjsGlobal,
   vfjsGlobalMixin,
-  vfjsViewer,
 };
 
-export default vfjsViewer;
+export default vfjsGlobal;
