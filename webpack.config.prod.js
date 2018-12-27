@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.config.common');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const babelPluginTransformObjectRestSpread = require('babel-plugin-transform-object-rest-spread');
@@ -43,6 +44,7 @@ module.exports = [
         },
       }],
     },
+    externals: [nodeExternals()],
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'vue-form-json-schema.esm.js',
