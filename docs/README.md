@@ -12,8 +12,6 @@ There are *no prebuilt components* for you to puzzle your form together with. In
 
 ### Upgrading from v1? Check out the [v2 release notes](https://github.com/jarvelov/vue-form-json-schema/releases/tag/v2.0.0) to see if and how migration affects you.
 
-> For browser/UMD instructions check the [Documentation](#documentation)
-
 Install from npm
 
 `npm install vue-form-json-schema`
@@ -28,6 +26,22 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 ```
 
 Check out the demos or see a minimal example in the [usage instructions](#usage) to get started.
+
+### UMD
+
+> If you're using the UMD version you can find more examples in the `examples` folder of the [github repo](https://github.com/jarvelov/vue-form-json-schema/tree/master/examples).
+
+If you want to use `vue-form-json-schema` directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the `vue-form-json-schema` component if Vue is found on the window. The entire module is also available on `window.VueFormJsonSchema` where the named exports such as for example `vfjsFieldMixin` can be accessed.
+
+#### Hosted by unkpg
+
+`<script src="https://unpkg.com/vue-form-json-schema@latest/dist/vue-form-json-schema.umd.js"></script>`
+
+You can substite `vue-form-json-schema@latest` to a fixed version, such as `vue-form-json-schema@2.1.0`
+
+#### Installed from npm
+
+`<script src="../node_modules/dist/vue-form-json-schema.umd.js"></script>`
 
 ## Demo
 
@@ -55,6 +69,12 @@ See how to use your own or third party Vue components in `vue-form-json-schema`.
 
 Loading the form from a backend? Check out this example.
 
+### UMD demos
+
+All the examples above are replicated using the UMD version in the `examples` folder of this repo.
+
+[Online version of the first demo](https://jsfiddle.net/jarvelov/2y8pcke0/)
+
 ## Features
 
 * Supports any HTML element or Vue component
@@ -69,6 +89,8 @@ Loading the form from a backend? Check out this example.
 ## Usage
 
 ### Basic example with one field
+
+>For using the UMD version, check out the `examples` folder where all the demos above are replicated using the UMD version
 
 [See demo](https://codesandbox.io/s/py6611pr9m)
 
