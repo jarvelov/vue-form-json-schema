@@ -26,13 +26,12 @@ const computed = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
     };
 
-    if (requiredElements.indexOf(this.component) !== -1) {
+    if (requiredElements.indexOf(this.vfjsComponent) !== -1) {
       attrs.required = this.vfjsFieldRequired;
     }
 
-    if (valueElements.indexOf(this.component) !== -1) {
-      attrs.value =
-        this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
+    if (valueElements.indexOf(this.vfjsComponent) !== -1) {
+      attrs.value = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
     return attrs;
@@ -40,10 +39,9 @@ const computed = {
   vfjsComputedFieldDomProps() {
     const domProps = {};
 
-    if (innerHTMLElements.indexOf(this.component) !== -1) {
-      domProps.innerHTML =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
+    if (innerHTMLElements.indexOf(this.vfjsComponent) !== -1) {
+      domProps.innerHTML = this.vfjsFieldModel
+        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
     }
 
     return domProps;
