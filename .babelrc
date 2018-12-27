@@ -1,9 +1,5 @@
 {
   "presets": [
-    "es2015"
-  ],
-  "plugins": [
-    "lodash",
-    "transform-object-rest-spread"
+    "@babel/env"
   ]
 }
