@@ -3,6 +3,9 @@ import { merge } from 'lodash';
 // Elements which supports the 'value' attribute
 const attrsValueElements = ['input', 'option', 'textarea'];
 
+// Elements which should have its value DOM value updated
+const domPropsValueElements = ['input', 'textarea'];
+
 // Elements which has their value within the tags
 const innerHTMLElements = ['textarea'];
 
@@ -42,6 +45,11 @@ const computed = {
     if (innerHTMLElements.indexOf(this.vfjsComponent) !== -1) {
       domProps.innerHTML = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
+    }
+
+    if (domPropsValueElements.indexOf(this.vfjsComponent) !== -1) {
+      domProps.value = this.vfjsFieldModel
+        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value);
     }
 
     return domProps;
