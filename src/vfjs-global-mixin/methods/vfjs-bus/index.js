@@ -39,6 +39,7 @@ const vfjsBus = {
 
         const inactiveModels = Object.keys(allModels).reduce((models, key) => {
           if (!(key in activeModels)) {
+            // eslint-disable-next-line no-param-reassign
             models[key] = allModels[key];
           }
 
