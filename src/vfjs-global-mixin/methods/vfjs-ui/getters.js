@@ -8,6 +8,27 @@ const vfjsUiGetters = {
     );
   },
   getVfjsUiFieldVisible(field) {
+    if (field.errorHandler) {
+      if (!this.vfjsOptions.showValidationErrors) {
+        const state = this.getVfjsFieldState(field.model);
+        if (!state || (state && (!state.vfjsFieldBlur || !state.vfjsFieldDirty))) {
+          return false;
+        }
+      }
+
+      const value = this.getVfjsFieldModel(field.model);
+      const schema = this.getVfjsFieldSchema(field.model);
+
+      this.ajv.validate(schema, value);
+      const oldErrors = this.ajv.errors ? this.ajv.errors : [];
+
+      // Only continue if the errorHandlers field model has errors
+      if (oldErrors.length === 0) {
+        return false;
+      }
+    }
+
+    // If field does not have any displayOptions it should be visible
     if (!field.displayOptions) {
       return true;
     }
@@ -15,10 +36,9 @@ const vfjsUiGetters = {
     // Get model and schema
     const { model, schema = {} } = field.displayOptions;
 
-    // Get the field's model
+    // Get the field's model value
     // It will fall back to the full model if model is undefined
-    const value =
-      typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
+    const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
 
     // Validate and check if we got any errors
     // const errors = model
@@ -40,7 +60,7 @@ const vfjsUiGetters = {
       .map(this.getVfjsUiFieldsActive);
   },
   getVfjsUiField({ children = [], model, ...field }) {
-    if (this.getVfjsUiFieldVisible(field)) {
+    if (this.getVfjsUiFieldVisible({ ...field, model })) {
       const isArray = this.vfjsHelperFieldIsArray(model);
       const required = this.vfjsHelperFieldIsRequired(model);
 
