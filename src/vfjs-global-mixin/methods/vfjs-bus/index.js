@@ -16,8 +16,7 @@ import {
 
 const vfjsBus = {
   addVfjsListener(event, callback) {
-    const listener = this.vfjsBus.on(event, value => callback(event, value));
-    this.vfjsListeners.push(listener);
+    this.vfjsBus.on(event, value => callback(event, value));
   },
   addVfjsListeners(events = [], callback) {
     events.forEach(event => this.addVfjsListener(event, callback));
@@ -30,7 +29,6 @@ const vfjsBus = {
   },
   removeVfjsListenersAll() {
     this.vfjsBus.off();
-    this.vfjsListeners = [];
   },
   vfjsBusEventHandler(event, payload) {
     const eventActions = {

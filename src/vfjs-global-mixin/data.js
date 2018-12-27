@@ -26,7 +26,6 @@ const data = () => ({
   vfjsFields: [],
   vfjsFieldsActive: [],
   vfjsFieldsRequired: [],
-  vfjsListeners: [],
   vfjsModel: {},
   vfjsOptions: {
     allowInvalidModel: true,
