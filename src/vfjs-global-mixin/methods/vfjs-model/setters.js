@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_MODEL_UPDATED,
@@ -13,7 +13,7 @@ const vfjsModelSetters = {
   },
   setVfjsModel(model, silent = false) {
     if (!isEqual(model, this.vfjsModel)) {
-      this.vfjsModel = model;
+      this.vfjsModel = cloneDeep(model);
 
       if (!silent) {
         this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
