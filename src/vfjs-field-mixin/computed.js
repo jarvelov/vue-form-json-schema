@@ -3,8 +3,11 @@ import { merge } from 'lodash';
 // Elements which supports the 'value' attribute
 const attrsValueElements = ['input', 'option', 'textarea'];
 
-// Elements which should have its value DOM value updated
+// Elements which should have its DOM property 'value' updated
 const domPropsValueElements = ['input', 'textarea'];
+
+// Elements which should have its DOM property 'checked' updated
+const domPropsCheckedElements = ['checkbox', 'radio'];
 
 // Elements which has their value within the tags
 const innerHTMLElements = ['textarea'];
@@ -50,6 +53,11 @@ const computed = {
     if (domPropsValueElements.indexOf(this.vfjsComponent) !== -1) {
       domProps.value = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value);
+    }
+
+    if (domPropsCheckedElements.indexOf(this.vfjsComponent) !== -1) {
+      domProps.checked = this.vfjsFieldModel
+        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked);
     }
 
     return domProps;
