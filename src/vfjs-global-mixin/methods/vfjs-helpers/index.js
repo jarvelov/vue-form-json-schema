@@ -27,10 +27,9 @@ const vfjsHelpers = {
 
     // If this field is an errorHandler we pass the errors as the children
     // Otherwise its treated normally
-    const vfjsChildren =
-      vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
-        ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
-        : children.map(this.vfjsHelperCreateField);
+    const vfjsChildren = vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
+      ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
+      : children.map(this.vfjsHelperCreateField);
 
     const props = {
       ...vfjsFieldOptions,
@@ -62,17 +61,16 @@ const vfjsHelpers = {
     });
   },
   vfjsHelperGetErrors(errors = [], id) {
-    return errors.map((error, index) =>
-      this.vfjsHelperCreateField({
-        id: `${id}-error-${index}`,
-        component: 'div',
-        fieldOptions: {
-          class: ['vfjs-error', 'vfjs-default-error-handler'],
-          domProps: {
-            innerHTML: error.message,
-          },
+    return errors.map((error, index) => this.vfjsHelperCreateField({
+      id: `${id}-error-${index}`,
+      component: 'div',
+      fieldOptions: {
+        class: ['vfjs-error', 'vfjs-default-error-handler'],
+        domProps: {
+          innerHTML: error.message,
         },
-      }));
+      },
+    }));
   },
   vfjsHelperHashString(string, binary = 62) {
     let integer = 0;
@@ -148,8 +146,7 @@ const vfjsHelpers = {
     return {
       ...field,
       id,
-      children: children.map((child, i) =>
-        this.vfjsHelperGenerateField(child, (i + 1) * (level + 1))),
+      children: children.map((child, i) => this.vfjsHelperGenerateField(child, (i + 1) * (level + 1))),
     };
   },
   vfjsHelperChildArrayMapper({ model, children = [], ...child }, parentModel, index) {
