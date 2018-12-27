@@ -2,7 +2,6 @@ import {
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_MODEL_VALIDATE,
-  VFJS_EVENT_STATE_UPDATE,
   VFJS_EVENT_UI_FIELDS_UPDATE,
 } from '../../../constants';
 
@@ -35,11 +34,6 @@ const vfjsValidationSetters = {
         const operations = this.vfjsFieldsRequired.map(validateRequired);
         return Promise.all(operations).then(() => this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE));
       },
-    });
-
-    this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-      key: 'showValidationErrors',
-      value: this.vfjsOptions,
     });
   },
 };
