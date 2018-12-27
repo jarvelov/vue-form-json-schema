@@ -1,0 +1,25 @@
+pre {
+  outline: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+}
+
+.string {
+  color: #e91e63;
+}
+
+.number {
+  color: #00bcd4;
+}
+
+.boolean {
+  color: #ff00ff;
+}
+
+.null {
+  color: #9e9e9e;
+}
+
+.key {
+  color: #3753a9;
+}
