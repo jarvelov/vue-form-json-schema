@@ -1,3 +1,5 @@
+import { VFJS_EVENT_UI_FIELDS_UPDATE } from '../../constants';
+
 const helpers = {
   vfjsFieldHelperAddListener(el, event) {
     el.addEventListener(event, this.vfjsFieldHelperStateEventHandler);
@@ -7,9 +9,15 @@ const helpers = {
   },
   vfjsFieldHelperStateEventHandler(event) {
     if (event && event.type === 'blur') {
+      const initialBlur = this.vfjsFieldState.vfjsFieldBlur;
       this.setVfjsFieldState({
-        $touched: true,
+        ...this.vfjsFieldState,
+        vfjsFieldBlur: true,
       });
+
+      if (!initialBlur) {
+        this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
+      }
     }
   },
   vfjsFieldHelperFormatEvents(events) {
