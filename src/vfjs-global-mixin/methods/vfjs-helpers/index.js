@@ -214,6 +214,27 @@ const vfjsHelpers = {
       };
     }, {});
   },
+  vfjsHelperCastValueToSchemaType(key, value) {
+    if (typeof value !== 'undefined') {
+      const { type } = this.getVfjsSchema(key);
+
+      // Convert to a numeric value
+      if (type === 'number') {
+        return Number(value);
+      }
+
+      if (type === 'integer') {
+        return parseInt(value);
+      }
+
+      // Convert to a boolean value
+      if (type === 'boolean' && (value === 'true' || value === 'false')) {
+        return value === 'true';
+      }
+    }
+
+    return value;
+  },
   getVfjsFieldsModels(fields) {
     return fields.reduce(
       (models, { children = [], model }) => [

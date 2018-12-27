@@ -90,7 +90,15 @@ const vfjsBus = {
           },
         });
       },
-      [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value, cb }) => {
+      [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value: originalValue, cb }) => {
+        let value = originalValue;
+
+        const { castToSchemaType = false } = this.vfjsOptions;
+        if (castToSchemaType) {
+          // Cast model to the type specified in its schema
+          value = this.vfjsHelperCastValueToSchemaType(key, value);
+        }
+
         this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
           key,
           value,

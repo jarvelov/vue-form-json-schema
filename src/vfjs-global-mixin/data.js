@@ -37,6 +37,7 @@ const data = () => ({
         allErrors: true,
       },
     },
+    castToSchemaType: false,
     showValidationErrors: false,
     validate: true,
     validateOnLoad: true,
