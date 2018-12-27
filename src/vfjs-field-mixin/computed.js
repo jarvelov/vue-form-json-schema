@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 // Elements which supports the 'value' attribute
-const valueElements = ['input', 'option', 'textarea'];
+const attrsValueElements = ['input', 'option', 'textarea'];
 
 // Elements which has their value within the tags
 const innerHTMLElements = ['textarea'];
@@ -30,7 +30,7 @@ const computed = {
       attrs.required = this.vfjsFieldRequired;
     }
 
-    if (valueElements.indexOf(this.vfjsComponent) !== -1) {
+    if (attrsValueElements.indexOf(this.vfjsComponent) !== -1) {
       attrs.value = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
