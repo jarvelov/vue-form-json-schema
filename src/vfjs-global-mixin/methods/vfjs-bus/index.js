@@ -9,6 +9,7 @@ import {
   VFJS_EVENT_MODEL_VALIDATE,
   VFJS_EVENT_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,
+  VFJS_EVENT_UI_FIELDS_UPDATE,
   VFJS_EXTERNAL_EVENT_CHANGE,
   VFJS_EXTERNAL_EVENT_STATE_CHANGE,
   VFJS_EXTERNAL_EVENT_VALIDATED,
@@ -143,8 +144,12 @@ const vfjsBus = {
           },
         });
       },
-      [VFJS_EVENT_MODEL_UPDATED]: () => {
+      [VFJS_EVENT_UI_FIELDS_UPDATE]: () => {
         this.setVfjsUiFieldsActive();
+
+      },
+      [VFJS_EVENT_MODEL_UPDATED]: () => {
+        this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
 
         // Clear hidden fields
         this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN);

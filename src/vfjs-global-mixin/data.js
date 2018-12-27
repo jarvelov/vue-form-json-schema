@@ -8,6 +8,7 @@ import {
   VFJS_EVENT_MODEL_VALIDATE,
   VFJS_EVENT_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,
+  VFJS_EVENT_UI_FIELDS_UPDATE,
 } from '../constants';
 
 const data = () => ({
@@ -22,6 +23,7 @@ const data = () => ({
     VFJS_EVENT_MODEL_VALIDATE,
     VFJS_EVENT_STATE_UPDATE,
     VFJS_EVENT_STATE_UPDATED,
+    VFJS_EVENT_UI_FIELDS_UPDATE,
   ],
   vfjsFields: [],
   vfjsFieldsActive: [],
