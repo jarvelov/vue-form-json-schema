@@ -26,8 +26,15 @@ const vfjsHelpers = {
     const { vfjsFieldErrors = [] } = vfjsFieldState;
 
     // If this field is an errorHandler we pass the errors as the children
-    // Otherwise its treated normally
-    const vfjsChildren = vfjsFieldErrors.length > 0 && vfjsFieldErrorHandler
+    // but only if the error handler does not have children of its own or
+    // domProps.innerHTML is set
+    const { domProps } = vfjsFieldOptions;
+    const generateErrorsAsChildren = vfjsFieldErrorHandler
+      && vfjsFieldErrors.length > 0
+      && (!domProps || !domProps.innerHTML)
+      && children.length === 0;
+
+    const vfjsChildren = generateErrorsAsChildren
       ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
       : children.map(this.vfjsHelperCreateField);
 
