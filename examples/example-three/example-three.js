@@ -59,7 +59,7 @@ const template = `
   </div>
 `;
 
-window.Vue.component('example-five', {
+window.Vue.component('example-three', {
   name: 'example-three',
   data() {
     return {

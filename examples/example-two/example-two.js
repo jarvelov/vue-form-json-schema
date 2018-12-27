@@ -41,7 +41,7 @@ const template = `
   </div>
 `;
 
-window.Vue.component('example-five', {
+window.Vue.component('example-two', {
   name: 'example-two',
   template,
   data() {
