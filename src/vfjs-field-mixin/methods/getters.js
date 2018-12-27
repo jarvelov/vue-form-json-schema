@@ -55,7 +55,9 @@ const getters = {
     };
 
     const valueProp = {
-      [this.vfjsFieldValueProp]: this.vfjsFieldModel,
+      props: {
+        [this.vfjsFieldValueProp]: this.vfjsFieldModel,
+      },
     };
 
     const allAttributes = merge(
