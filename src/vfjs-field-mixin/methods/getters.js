@@ -50,10 +50,6 @@ const getters = {
 
     const fieldOptionsAsProps = { props: options };
 
-    const key = {
-      key: this.vfjsFieldId,
-    };
-
     const valueProp = {
       props: {
         [this.vfjsFieldValueProp]: this.vfjsFieldModel,
@@ -62,7 +58,6 @@ const getters = {
 
     const allAttributes = merge(
       {},
-      key,
       defaultProps,
       defaultOptions,
       fieldOptionsAsProps,
