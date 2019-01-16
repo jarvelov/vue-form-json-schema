@@ -6,14 +6,14 @@ A `field` is an `object` and must have a [component](field/component.md) propert
 
 ## Properties
 
-* [component](field/component.md) <span style="color: red">*</span>
+* [component](field/component.md) <span style="color: red">\*</span>
 * [children](field/children.md)
 * [displayOptions](field/display-options.md)
 * [errorHandler](field/error-handler.md)
 * [errorOptions](field/error-options.md)
 * [fieldOptions](field/field-options.md)
 
-<span style="color: red">*</span> required
+<span style="color: red">\*</span> required
 
 ## Example
 
