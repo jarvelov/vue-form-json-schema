@@ -69,6 +69,10 @@ See how to use your own or third party Vue components in `vue-form-json-schema`.
 
 Loading the form from a backend? Check out this example.
 
+### [Registration form with validation](https://4rykx7jj19.codesandbox.io)
+
+A more complete example with validation and error messages
+
 ### UMD demos
 
 All the examples above are replicated using the UMD version in the `examples` folder of this repo.
