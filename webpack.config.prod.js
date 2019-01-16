@@ -6,6 +6,7 @@ const common = require('./webpack.config.common');
 const production = {
   entry: path.resolve(__dirname, './src/index.js'),
   devtool: 'source-map',
+  mode: 'production',
   optimization: {
     minimize: true,
   },

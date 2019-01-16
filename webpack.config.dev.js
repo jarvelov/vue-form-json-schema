@@ -6,6 +6,7 @@ const webpackBase = require('./webpack.config.common');
 module.exports = merge(webpackBase, {
   entry: path.resolve(__dirname, './src/index.js'),
   devtool: 'inline-source-map',
+  mode: 'development',
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, './dist'),
