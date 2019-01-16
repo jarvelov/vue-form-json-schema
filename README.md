@@ -77,7 +77,7 @@ A more complete example with validation and error messages
 
 All the examples above are replicated using the UMD version in the `examples` folder of this repo.
 
-[Online version of the first demo](https://jsfiddle.net/jarvelov/2y8pcke0/)
+[Online version of the first demo](https://jsfiddle.net/jarvelov/ewg6dfqL/)
 
 ## Features
 
