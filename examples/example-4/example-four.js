@@ -109,7 +109,7 @@ window.Vue.component('example-four', {
             on: ['input'],
             props: {
               type: 'text',
-              placeholder: 'I am the <b-form-input> component from BootstrapVue!',
+              placeholder: 'I am the b-form-input component from BootstrapVue!',
             },
           },
         },
