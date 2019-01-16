@@ -12,7 +12,7 @@ const vfjsStateSetters = {
     });
   },
   setVfjsState(state) {
-    if (!isEqual(state, this.vfjsState)) {
+    if (!isEqual(state, this.getVfjsState())) {
       this.vfjsState = Object.assign({}, this.getVfjsState(), state);
       this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED, () => {
         this.setVfjsFields();
