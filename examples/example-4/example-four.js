@@ -64,19 +64,6 @@ const template = `
         configuration.</span
       >
     </p>
-    <p>
-      <span
-        >Vue version 2.20+ allows components using <code>v-model </code>
-        <a
-          href="https://vuejs.org/v2/guide/components-custom-events.html#Customizing-Component-v-model"
-          >to use another prop name than <code>value</code></a
-        >
-      </span>
-      <span
-        >As of <code>vue-form-json-schema</code> version 2.0 it is possible to set which prop will be
-        passed the field's model by setting the <code>valueKey</code> property on the field's root object.
-      </span>
-    </p>
 
     <hr />
 
