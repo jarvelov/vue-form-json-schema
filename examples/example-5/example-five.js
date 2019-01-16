@@ -30,6 +30,23 @@ const template = `
 
     <hr />
 
+    <p>
+      <span>
+        This demo shows how the <code>schema</code>,&nbsp;
+        <code>uiSchema</code> and the <code>model</code> can be fetched from an
+        API and rendered at a later time.
+      </span>
+    </p>
+
+    <p>
+      <span>
+        In this demo we use <code>setTimeout</code> to simulate an asynchronous
+        action so that the form can "loaded" after 5 seconds.
+      </span>
+    </p>
+
+    <hr />
+
     <h4>Model</h4>
     <pretty-print :value="model"></pretty-print>
 
