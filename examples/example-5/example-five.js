@@ -133,18 +133,26 @@ window.Vue.component('example-five', {
       });
     },
     getForm() {
+      // Reset properties
+      this.uiSchema = [];
+      this.schema = [];
+      this.model = [];
+
+      // Set form as not loaded
       this.loaded = false;
+
+      // Get the data from the API
       return Promise.all([
-        this.getUiSchemaFromAPI().then((newUiSchema) => {
-          this.uiSchema = newUiSchema;
-        }),
-        this.getSchemaFromAPI().then((newSchema) => {
-          this.schema = newSchema;
-        }),
-        this.getDataFromAPI().then((newModel) => {
-          this.model = newModel;
-        }),
-      ]).then(() => {
+        this.getUiSchemaFromAPI(),
+        this.getSchemaFromAPI(),
+        this.getDataFromAPI(),
+      ]).then(([uiSchema, schema, model]) => {
+        // Update the form properties with data from the API
+        this.uiSchema = uiSchema;
+        this.schema = schema;
+        this.model = model;
+
+        // Set form as loaded
         this.loaded = true;
       });
     },
