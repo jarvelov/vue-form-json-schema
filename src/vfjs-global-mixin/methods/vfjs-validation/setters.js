@@ -6,6 +6,21 @@ import {
 } from '../../../constants';
 
 const vfjsValidationSetters = {
+  setVfjsFieldsRequired() {
+    // This is somewhat of a hack...
+    //
+    // To find out if a property is required
+    // we get the schema and use an empty object
+    // as the data, with allErrors option in Ajv
+    // we can get all the required properties
+    // and check if the model key is found in the errors
+    this.ajv.validate(this.getVfjsSchema(), {});
+
+    if (this.ajv.errors) {
+      const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
+      this.vfjsFieldsRequired = this.getVfjsChildPropertiesRequired(propertiesRequired);
+    }
+  },
   setVfjsValidationErrors() {
     this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
       vfjsModel: this.getVfjsModel(),
