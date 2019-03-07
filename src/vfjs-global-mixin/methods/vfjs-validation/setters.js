@@ -7,14 +7,10 @@ import {
 
 const vfjsValidationSetters = {
   setVfjsFieldsRequired() {
-    // This is somewhat of a hack...
-    //
     // To find out if a property is required
-    // we get the schema and use an empty object
-    // as the data, with allErrors option in Ajv
-    // we can get all the required properties
-    // and check if the model key is found in the errors
-    this.ajv.validate(this.getVfjsSchema(), {});
+    // we test the current model and schema with ajv
+    // and then find all errors of the 'required' type
+    this.ajv.validate(this.getVfjsSchema(), this.getVfjsModel());
 
     if (this.ajv.errors) {
       const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
