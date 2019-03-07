@@ -59,9 +59,9 @@ const computed = {
   vfjsComputedFieldProps() {
     const props = {};
 
-    const { props: componentProps } = this.vfjsOptions.componentProperties.domProps;
+    const { required = [] } = this.vfjsOptions.componentProperties;
 
-    if (componentProps.indexOf(this.vfjsComponent) !== -1) {
+    if (required.indexOf(this.vfjsComponent) !== -1) {
       props.required = this.vfjsFieldRequired;
     }
 
