@@ -12,9 +12,11 @@ const vfjsValidationSetters = {
     // and then find all errors of the 'required' type
     this.ajv.validate(this.getVfjsSchema(), this.getVfjsModel());
 
-    if (this.ajv.errors) {
+    if (Array.isArray(this.ajv.errors)) {
       const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
       this.vfjsFieldsRequired = this.getVfjsChildPropertiesRequired(propertiesRequired);
+    } else {
+      this.vfjsFieldsRequired = [];
     }
   },
   setVfjsValidationErrors() {
