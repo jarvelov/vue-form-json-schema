@@ -11,3 +11,4 @@ export const VFJS_EVENT_UI_FIELDS_UPDATE = 'VFJS_EVENT_UI_FIELDS_UPDATE';
 export const VFJS_EXTERNAL_EVENT_CHANGE = 'change';
 export const VFJS_EXTERNAL_EVENT_STATE_CHANGE = 'state-change';
 export const VFJS_EXTERNAL_EVENT_VALIDATED = 'validated';
+export const VFJS_EXTERNAL_MODEL_PROP = 'model';
