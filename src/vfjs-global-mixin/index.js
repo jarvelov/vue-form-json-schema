@@ -5,6 +5,10 @@ import props from './props';
 import watch from './watch';
 
 const vfjsGlobalMixin = {
+  model: {
+    prop: 'model',
+    event: 'change',
+  },
   created() {
     this.vfjsInitialize();
   },
