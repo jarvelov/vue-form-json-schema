@@ -124,6 +124,8 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
+        this.vfjsBus.emit(VFJS_EVENT_REQUIRED_FIELDS_UPDATE);
+
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
 
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
