@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { merge } from '../helpers';
 
 // Elements which supports the 'value' attribute
 const attrsValueElements = ['input', 'option', 'textarea'];

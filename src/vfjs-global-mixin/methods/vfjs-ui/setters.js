@@ -1,4 +1,4 @@
-import { cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, isEqual } from '../../../helpers';
 import { VFJS_EVENT_STATE_UPDATED } from '../../../constants';
 
 const vfjsUiSetters = {

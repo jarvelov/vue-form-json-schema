@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get } from '../../../helpers';
 
 const vfjsModelGetters = {
   getVfjsFieldModel(key) {

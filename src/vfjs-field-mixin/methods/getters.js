@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { merge } from '../../helpers';
 
 const getters = {
   getVfjsAttributes() {

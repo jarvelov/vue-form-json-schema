@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import { isEqual } from '../../../helpers';
 import {
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,

@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { set } from '../../../helpers';
 
 const vfjsValidationGetters = {
   /** getVfjsPropertiesRequired
