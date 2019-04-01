@@ -1,5 +1,5 @@
-import Minibus from 'minibus';
-import { isEqual, set } from 'lodash';
+import Vue from 'vue';
+import { isEqual, set } from '../../../helpers';
 import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
@@ -189,7 +189,7 @@ const vfjsBus = {
     }
   },
   vfjsBusInitialize() {
-    this.vfjsBus = Minibus.create();
+    this.vfjsBus = new Vue();
   },
 };
 
