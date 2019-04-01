@@ -16,7 +16,7 @@ const helpers = {
       });
 
       if (!initialBlur) {
-        this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
+        this.vfjsBus.$emit(VFJS_EVENT_UI_FIELDS_UPDATE);
       }
     }
   },

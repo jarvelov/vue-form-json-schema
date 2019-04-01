@@ -51,7 +51,7 @@ const vfjsValidation = {
 
     // Check if validation is enabled and set to run on load
     if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
-      this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, { vfjsModel: this.getVfjsModel() });
+      this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, { vfjsModel: this.getVfjsModel() });
     }
   },
   ...getters,

@@ -6,7 +6,7 @@ import {
 
 const vfjsModelSetters = {
   setVfjsFieldModel(value, key) {
-    this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
+    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
       key: key || this.vfjsFieldModelKey,
       value,
     });
@@ -16,7 +16,7 @@ const vfjsModelSetters = {
       this.vfjsModel = cloneDeep(model);
 
       if (!silent) {
-        this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
+        this.vfjsBus.$emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
       }
     }
   },
