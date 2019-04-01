@@ -16,11 +16,8 @@ const set = (obj, path, value) => {
   const key = path[0];
   const currentValue = get(obj, key);
   if (path.length === 1) {
-    if (typeof currentValue === 'undefined') {
-      obj[key] = value;
-    }
-
-    return currentValue;
+    obj[key] = value;
+    return obj;
   }
 
   if (typeof currentValue === 'undefined') {
