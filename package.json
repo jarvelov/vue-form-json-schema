@@ -16,6 +16,9 @@
   "dependencies": {
     "ajv": "^6.6.2"
   },
+  "peerDependencies": {
+    "vue": "^2.5.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
