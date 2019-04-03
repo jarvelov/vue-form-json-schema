@@ -12,7 +12,7 @@ const props = {
     default: () => [],
   },
   vfjsComponent: {
-    type: [String, Object],
+    type: [String, Object, Function],
   },
   vfjsFieldErrorHandler: {
     type: Boolean,
