@@ -3,3 +3,5 @@ node_modules
 _book
 # Prewritten commit message
 COMMIT_MSG
+# Built files
+dist
