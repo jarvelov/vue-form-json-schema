@@ -14,7 +14,8 @@
   "author": "Tobias Järvelöv <tobias@jarvelov.se>",
   "license": "MIT",
   "dependencies": {
-    "ajv": "^6.6.2"
+    "ajv": "^6.6.2",
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "vue": "^2.5.0"
