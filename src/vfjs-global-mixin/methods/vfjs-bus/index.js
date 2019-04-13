@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { isEqual, set } from '../../../helpers';
+import { isEqual, set } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
