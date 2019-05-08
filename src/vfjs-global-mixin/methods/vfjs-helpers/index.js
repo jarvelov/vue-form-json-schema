@@ -127,7 +127,7 @@ const vfjsHelpers = {
           vfjsComponent: localComponent || component,
         },
       },
-      children,
+      () => children,
     );
   },
   vfjsHelperApplyFieldModel(key, value) {
