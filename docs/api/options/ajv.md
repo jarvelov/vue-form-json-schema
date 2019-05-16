@@ -187,20 +187,22 @@ export default {
 
 ### Extend Ajv instance
 
-Note that this is neither tested nor supported but in theory this would give extra Ajv features such as [ajv-async](https://github.com/epoberezkin/ajv-async) and [ajv-merge-patch](https://github.com/epoberezkin/ajv-merge-patch) access to the internal `Ajv` instance running inside `vue-form-json-schema`
+Note that this is neither tested nor supported but in theory this would give extra Ajv features such as [ajv-async](https://github.com/epoberezkin/ajv-async) and [ajv-merge-patch](https://github.com/epoberezkin/ajv-merge-patch) access to the internal `Ajv` instance running inside `vue-form-json-schema`.
+
+By adding the required plugin to the `plugins` section in the ajv options it is possible to load and apply the required plugin to the ajv instance that is used by `vue-form-json-schema`. This comes in handy when custom error messages must be added with [ajv-errors](https://github.com/epoberezkin/ajv-errors).
 
 ```js
 // Import swedish localization
-const sv = require('ajv-i18n/localize/sv');
+const ajvErrors = require('ajv-errors');
 
 export default {
   data() {
     return {
       options: {
         ajv: {
-          options: {
+          plugins: {
+            ajvErrors: ajvErrors
           }
-          locale: sv
         }
       },
       model: {
