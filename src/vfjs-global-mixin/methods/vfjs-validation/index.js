@@ -6,7 +6,7 @@ import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
 const vfjsValidation = {
   vfjsValidationInitialize() {
     const { ajv = {} } = this.vfjsOptions;
-    const { options = {}, keywords = {} } = ajv;
+    const { options = {}, keywords = {}, plugins = {} } = ajv;
 
     // Set up Ajv
     this.ajv = new Ajv({
@@ -17,9 +17,9 @@ const vfjsValidation = {
 
     // Allow Ajv to be extended by other functions
     // such as ajv-merge-patch, ajv-async etc.
-    Object.keys(keywords).forEach((key) => {
-      if (typeof keywords[key] === 'function') {
-        keywords[key](this.ajv);
+    Object.keys(plugins).forEach((name) => {
+      if (typeof plugins[name] === 'function') {
+        plugins[name](this.ajv);
       }
     });
 
