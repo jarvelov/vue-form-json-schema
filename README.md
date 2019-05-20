@@ -61,7 +61,7 @@ Try resizing your browser window too see it in action.
 
 Sometimes a field should only be shown if a condition is met. Uses `<transition>` to provide animation.
 
-### [Vue components demo](https://wnwk5mv5jl.codesandbox.io)
+### [Vue components demo](https://z549j1vxx.codesandbox.io)
 
 See how to use your own or third party Vue components in `vue-form-json-schema`.
 
