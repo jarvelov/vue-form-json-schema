@@ -5,7 +5,7 @@
 | Property | Value | Description  |
 | ---------|-------| -------------|
 | tag | [HTML element tag name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) | Render the `vue-form-json-schema` element with this tag name |
-| model | `Object` | The form values. It is not possible to use `v-model` with this prop. The `change` event handler must be used |
+| model | `Object` | The form values |
 | options | `Object` | See [Options](options.md) |
 | schema | `Object` | A valid [JSON Schema]( http://json-schema.org/) (validated by [Ajv](https://github.com/epoberezkin/ajv)) |
 | ui-schema | `Object` | See [uiSchema](ui-schema.md) |
