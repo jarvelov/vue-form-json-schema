@@ -29,7 +29,7 @@ Check out the demos or see a minimal example in the [usage instructions](#usage)
 
 ### UMD
 
-> If you're using the UMD version you can find more examples in the `examples` folder of the [github repo](https://github.com/jarvelov/vue-form-json-schema/tree/master/examples).
+> If you're using the UMD version you can find more examples in the `examples` folder of the [github repo](https://github.com/jarvelov/vue-form-json-schema/tree/master/examples) and the [UMD demo below](#umd-demos).
 
 If you want to use `vue-form-json-schema` directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the `vue-form-json-schema` component if Vue is found on the window. The entire module is also available on `window.VueFormJsonSchema` where the named exports such as for example `vfjsFieldMixin` can be accessed.
 
