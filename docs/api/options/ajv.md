@@ -7,6 +7,7 @@ Options to configure `Ajv`. A list of all [supported options can be found here](
 ```js
 {
   keywords: {},
+  plugins: [],
   locale: null,
   options: {
     allErrors: true;
