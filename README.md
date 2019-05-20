@@ -101,10 +101,9 @@ All the examples above are replicated using the UMD version in the `examples` fo
 ```js
 <template>
     <vue-form-json-schema
-      :model="model"
+      v-model="model"
       :schema="schema"
       :ui-schema="uiSchema"
-      :on-change="onChange"
     >
   </vue-form-json-schema>
 </template>
@@ -113,6 +112,7 @@ All the examples above are replicated using the UMD version in the `examples` fo
   export default {
     data() {
       return {
+        // An object which holds the form values
         model: {},
         // A valid JSON Schema object
         schema: {
@@ -137,12 +137,7 @@ All the examples above are replicated using the UMD version in the `examples` fo
           },
         }],
       };
-    },
-    methods: {
-      onChange(value) {
-        this.model = value;
-      }
-    },
+    }
   };
 </script>
 ```

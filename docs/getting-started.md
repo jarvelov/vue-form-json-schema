@@ -33,10 +33,9 @@ export default {
 
 <template>
     <vue-form-json-schema
-      :model="model"
+      v-model="model"
       :schema="schema"
       :ui-schema="uiSchema"
-      :on-change="onChange"
     >
   </vue-form-json-schema>
 </template>
@@ -73,11 +72,9 @@ export default {
 </script>
 <template>
     <vue-form-json-schema
-      :components="components"
-      :model="model"
+      v-model="model"
       :schema="schema"
       :ui-schema="uiSchema"
-      :on-change="onChange"
     >
   </vue-form-json-schema>
 </template>
