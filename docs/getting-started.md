@@ -1,8 +1,6 @@
 # Getting started
 
-> If you use `webpack` or `rollup` the `pkg.module` version will be used automatically.
-
-#### Option 1
+## Option 1
 
 Import everything and use globally
 
@@ -14,20 +12,32 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 
 ```html
 <script>
-// Component.js
+// MyCustomComponent.js
 export default {
   data() {
     return {
       model: {},
-      schema: {},
-      uiSchema: []
+      schema: {
+        type: 'object',
+        properties: {
+          firstName: {
+            type: 'string'
+          }
+        }
+      },
+      uiSchema: [{
+        component: 'input',
+        model: 'firstName',
+        fieldOptions: {
+          class: ['form-control'],
+          on: ['input'],
+          attrs: {
+            placeholder: 'Please enter your first name'
+          }
+        }
+      }]
     }
   },
-  methods: {
-    onChange(value) {
-      this.model = value;
-    }
-  }
 }
 </script>
 
@@ -41,32 +51,40 @@ export default {
 </template>
 ```
 
-#### Option 2
+## Option 2
 
 Import and use locally
 
 ```html
 <script>
-// custom-component.js
+// MyCustomComponent.js
 import VueFormJsonSchema from 'vue-form-json-schema';
 
 export default {
-  name: 'custom-component',
   data() {
     return {
       model: {},
-      schema: {},
-      uiSchema: []
+      schema: {
+        type: 'object',
+        properties: {
+          firstName: {
+            type: 'string'
+          }
+        }
+      },
+      uiSchema: [{
+        component: 'input',
+        model: 'firstName',
+        fieldOptions: {
+          class: ['form-control'],
+          on: ['input'],
+          attrs: {
+            placeholder: 'Please enter your first name'
+          }
+        }
+      }]
     }
   },
-  components: {
-    'vue-form-json-schema': VueFormJsonSchema
-  },
-  methods: {
-    onChange(value) {
-      this.model = value;
-    }
-  }
 }
 
 </script>
