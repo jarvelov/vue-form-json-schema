@@ -13,6 +13,7 @@
 ## Events
 
 | Event | Description  |
+| ---------|-------| -------------|
 | change | When the `model` is updated this function will be called with the new value as the first parameter |
 | state-change | When the internal state is updated this function will be called with the new value as the first parameter. The state is an `Object` which contains information such as validation errors. |
 | validated | When a validation has been performed this function will be called a `Boolean` as the first parameter describing the overall form valid state |
