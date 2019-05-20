@@ -202,7 +202,7 @@ export default {
       options: {
         ajv: {
           plugins: {
-            ajvErrors: ajvErrors
+            ajvErrors
           }
         }
       },
