@@ -1,6 +1,7 @@
 # Installation
 
-> `vue-form-json-schema` is distributed as both an UMD and ES module version. If you use CommonJS/AMD or are stuck on an older version of Webpack you should use the UMD build.
+> `vue-form-json-schema` is distributed as both an UMD and ES module version. If you use CommonJS/AMD or are stuck on an older version of Webpack you should use the UMD build. If you use `webpack`, `parcel` or `rollup` the ESM version will be used automatically.
+
 
 ## Requirements
 
