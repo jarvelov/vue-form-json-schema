@@ -193,7 +193,7 @@ Note that this is neither tested nor supported but in theory this would give ext
 By adding the required plugin to the `plugins` section in the ajv options it is possible to load and apply the required plugin to the ajv instance that is used by `vue-form-json-schema`. This comes in handy when custom error messages must be added with [ajv-errors](https://github.com/epoberezkin/ajv-errors).
 
 ```js
-// Import swedish localization
+// Import ajv-errors plugin
 const ajvErrors = require('ajv-errors');
 
 export default {
