@@ -21,7 +21,7 @@ Options to configure `Ajv`. A list of all [supported options can be found here](
 
 ### Enable $data references
 
-See [Ajv's documentation about $data references]((https://ajv.js.org/#data-reference) for more details.
+See [Ajv's documentation about $data references](https://ajv.js.org/#data-reference) for more details.
 `$data` in this example can be substituted for any other [supported Ajv option](https://ajv.js.org/#options)
 
 ```js
