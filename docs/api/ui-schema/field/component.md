@@ -39,6 +39,7 @@ data() {
 }
 ```
 
+```js
 // Option 4 - Component from components prop
 import MyCustomComponent from './my-custom-component'
 
