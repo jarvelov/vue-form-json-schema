@@ -50,8 +50,8 @@ See [Ajv's documentation about $data references](https://ajv.js.org/#data-refere
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -92,8 +92,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -178,8 +178,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -223,8 +223,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
