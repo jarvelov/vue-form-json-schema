@@ -22,7 +22,7 @@
 <template>
   <vue-form-json-schema
     tag="div"
-    :model="model"
+    v-model="model"
     :options="options"
     :schema="schema"
     :ui-schema="uiSchema"
