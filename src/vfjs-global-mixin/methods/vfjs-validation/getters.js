@@ -31,7 +31,9 @@ const vfjsValidationGetters = {
     }, []);
   },
   getVfjsChildPropertiesRequired(parentFields = [], excludeProperties = []) {
-    const uniqueProperties = parentFields.filter(property => excludeProperties.indexOf(property) === -1);
+    const uniqueProperties = parentFields.filter(
+      property => excludeProperties.indexOf(property) === -1,
+    );
 
     return uniqueProperties.reduce((properties, property) => {
       // Add current property to array

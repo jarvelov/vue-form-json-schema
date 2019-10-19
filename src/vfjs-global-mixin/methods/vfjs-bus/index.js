@@ -147,7 +147,6 @@ const vfjsBus = {
       },
       [VFJS_EVENT_UI_FIELDS_UPDATE]: () => {
         this.setVfjsUiFieldsActive();
-
       },
       [VFJS_EVENT_MODEL_UPDATED]: () => {
         this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
