@@ -74,14 +74,7 @@ const vfjsBus = {
             const model = {};
             set(model, key, value);
 
-            const schema = {
-              type: 'object',
-              required: this.vfjsHelperFieldIsRequired(key) ? [key] : [],
-              properties: {
-                [key]: this.getVfjsSchema(key) || {},
-              },
-            };
-
+            const schema = this.getVfjsValidationSchema(key, value);
             const errors = this.getVfjsValidationErrors(model, schema);
 
             if (cb && typeof cb === 'function') {
