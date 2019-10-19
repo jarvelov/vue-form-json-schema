@@ -79,6 +79,44 @@ const vfjsValidationGetters = {
     const errors = this.getVfjsValidationErrors();
     return errors.length === 0;
   },
+  getVfjsValidationSchema(key, value) {
+    const schema = {
+      type: 'object',
+      properties: {},
+    };
+
+    const isRequired = this.vfjsHelperFieldIsRequired(key);
+    const fieldSchema = this.getVfjsSchema(key) || {};
+
+    const paths = key.split('.');
+    const previousPaths = [];
+    paths.forEach((path, index) => {
+      const previousProperties = previousPaths
+        .map(previousPath => `properties.${previousPath}`)
+        .join('.');
+
+      const properties = previousPaths.length > 0
+        ? `${previousProperties}.properties.${path}`
+        : `properties.${path}`;
+
+      const required = previousPaths.length > 0 ? `${previousProperties}.required` : 'required';
+
+      if (index === paths.length - 1) {
+        set(schema, properties, fieldSchema);
+
+        if (isRequired) {
+          set(schema, required, [path]);
+        }
+      } else {
+        set(schema, properties, {});
+        set(schema, required, [path]);
+      }
+
+      previousPaths.push(path);
+    });
+
+    return schema;
+  },
   getVfjsValidationErrors(model, schema) {
     const ajvSchema = schema || this.getVfjsSchema();
     const ajvModel = model || this.getVfjsModel();
