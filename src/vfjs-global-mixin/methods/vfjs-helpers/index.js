@@ -41,8 +41,9 @@ const vfjsHelpers = {
     const props = {
       ...vfjsFieldOptions,
       vfjsBus: this.vfjsBus,
-      vfjsChildren,
       vfjsChildrenUiSchema: children,
+      vfjsOptions: this.vfjsOptions,
+      vfjsChildren,
       vfjsFieldErrorHandler,
       vfjsFieldErrorOptions,
       vfjsFieldErrors,
@@ -56,7 +57,6 @@ const vfjsHelpers = {
       vfjsFieldState,
       vfjsFieldUiSchema,
       vfjsFieldValueProp,
-      vfjsOptions: this.vfjsOptions,
       vfjsModel,
       vfjsState,
     };
