@@ -7,6 +7,7 @@ Options to configure `Ajv`. A list of all [supported options can be found here](
 ```js
 {
   keywords: {},
+  plugins: [],
   locale: null,
   options: {
     allErrors: true;
@@ -20,7 +21,7 @@ Options to configure `Ajv`. A list of all [supported options can be found here](
 
 ### Enable $data references
 
-See [Ajv's documentation about $data references]((https://ajv.js.org/#data-reference) for more details.
+See [Ajv's documentation about $data references](https://ajv.js.org/#data-reference) for more details.
 `$data` in this example can be substituted for any other [supported Ajv option](https://ajv.js.org/#options)
 
 ```js
@@ -49,8 +50,8 @@ See [Ajv's documentation about $data references]((https://ajv.js.org/#data-refer
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -91,8 +92,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -177,8 +178,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />
@@ -187,20 +188,22 @@ export default {
 
 ### Extend Ajv instance
 
-Note that this is neither tested nor supported but in theory this would give extra Ajv features such as [ajv-async](https://github.com/epoberezkin/ajv-async) and [ajv-merge-patch](https://github.com/epoberezkin/ajv-merge-patch) access to the internal `Ajv` instance running inside `vue-form-json-schema`
+Note that this is neither tested nor supported but in theory this would give extra Ajv features such as [ajv-async](https://github.com/epoberezkin/ajv-async) and [ajv-merge-patch](https://github.com/epoberezkin/ajv-merge-patch) access to the internal `Ajv` instance running inside `vue-form-json-schema`.
+
+By adding the required plugin to the `plugins` section in the ajv options it is possible to load and apply the required plugin to the ajv instance that is used by `vue-form-json-schema`. This comes in handy when custom error messages must be added with [ajv-errors](https://github.com/epoberezkin/ajv-errors).
 
 ```js
-// Import swedish localization
-const sv = require('ajv-i18n/localize/sv');
+// Import ajv-errors plugin
+const ajvErrors = require('ajv-errors');
 
 export default {
   data() {
     return {
       options: {
         ajv: {
-          options: {
+          plugins: {
+            ajvErrors
           }
-          locale: sv
         }
       },
       model: {
@@ -220,8 +223,8 @@ export default {
 ```html
 <template>
   <vue-form-json-schema
+    v-model="model"
     :options="options"
-    :model="model"
     :schema="jsonSchema"
     :ui-schema="uiSchema"
   />

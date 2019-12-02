@@ -37,7 +37,7 @@ const vfjsSchemaGetters = {
         const arrayPath = this.getVfjsSchemaPath(`${path}.items`);
         return this.getVfjsSchemaPath(`${arrayPath}.0`);
       } else if (schema.properties instanceof Object) {
-        return this.getVfjsSchemaPath(`${path}.properties`);
+        return this.getVfjsSchemaPath(`${path}.properties`, key);
       }
     }
 

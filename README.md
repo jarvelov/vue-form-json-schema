@@ -1,6 +1,6 @@
 # Vue Form JSON Schema
 
-> A [JSON schema](json-schema.org) based form generator without any fields!
+> A [JSON schema](https://json-schema.org) based form generator without any fields!
 
 ##### Use any Vue component or HTML element!
 
@@ -29,7 +29,7 @@ Check out the demos or see a minimal example in the [usage instructions](#usage)
 
 ### UMD
 
-> If you're using the UMD version you can find more examples in the `examples` folder of the [github repo](https://github.com/jarvelov/vue-form-json-schema/tree/master/examples).
+> If you're using the UMD version you can find more examples in the `examples` folder of the [github repo](https://github.com/jarvelov/vue-form-json-schema/tree/master/examples) and the [UMD demo below](#umd-demos).
 
 If you want to use `vue-form-json-schema` directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the `vue-form-json-schema` component if Vue is found on the window. The entire module is also available on `window.VueFormJsonSchema` where the named exports such as for example `vfjsFieldMixin` can be accessed.
 
@@ -37,7 +37,7 @@ If you want to use `vue-form-json-schema` directly in a browser you can do so by
 
 `<script src="https://unpkg.com/vue-form-json-schema@latest/dist/vue-form-json-schema.umd.js"></script>`
 
-You can substite `vue-form-json-schema@latest` to a fixed version, such as `vue-form-json-schema@2.1.0`
+You can substite `vue-form-json-schema@latest` to a fixed version, such as `vue-form-json-schema@2.3.0`
 
 #### Installed from npm
 
@@ -61,7 +61,7 @@ Try resizing your browser window too see it in action.
 
 Sometimes a field should only be shown if a condition is met. Uses `<transition>` to provide animation.
 
-### [Vue components demo](https://wnwk5mv5jl.codesandbox.io)
+### [Vue components demo](https://z549j1vxx.codesandbox.io)
 
 See how to use your own or third party Vue components in `vue-form-json-schema`.
 
@@ -101,10 +101,9 @@ All the examples above are replicated using the UMD version in the `examples` fo
 ```js
 <template>
     <vue-form-json-schema
-      :model="model"
+      v-model="model"
       :schema="schema"
       :ui-schema="uiSchema"
-      :on-change="onChange"
     >
   </vue-form-json-schema>
 </template>
@@ -113,6 +112,7 @@ All the examples above are replicated using the UMD version in the `examples` fo
   export default {
     data() {
       return {
+        // An object which holds the form values
         model: {},
         // A valid JSON Schema object
         schema: {
@@ -137,12 +137,7 @@ All the examples above are replicated using the UMD version in the `examples` fo
           },
         }],
       };
-    },
-    methods: {
-      onChange(value) {
-        this.model = value;
-      }
-    },
+    }
   };
 </script>
 ```
