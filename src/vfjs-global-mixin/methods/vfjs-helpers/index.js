@@ -1,5 +1,6 @@
 import { set, cloneDeep } from '../../../helpers';
 import vfjsFieldComponent from '../../../vfjs-field-component';
+import { VFJS_EVENT_FIELD_COMPONENT_RESOLVED } from '../../../constants';
 
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
@@ -106,10 +107,25 @@ const vfjsHelpers = {
     // If the component matches one of the local components
     // passed in with the `components` prop
     const localComponent = this.vfjsComponents[component];
+    const fieldComponent = localComponent || component;
+
+
+    if (typeof fieldComponent === 'function') {
+      const fieldComponentResolved = this.vfjsComponentsAsync.has(component)
+
+      if (!fieldComponentResolved) {
+        const promise = Promise.resolve(fieldComponent());
+        promise.then(() => {
+          this.vfjsBus.emit(VFJS_EVENT_FIELD_COMPONENT_RESOLVED, {
+            component
+          });
+        })
+      }
+    }
 
     if (!props.vfjsFieldModelKey) {
       return this.$createElement(
-        localComponent || component,
+        fieldComponent,
         {
           key: props.vfjsFieldId,
           ...props.vfjsFieldOptions,
@@ -124,7 +140,7 @@ const vfjsHelpers = {
         key: `${props.vfjsFieldId}-wrapper`,
         props: {
           ...props,
-          vfjsComponent: localComponent || component,
+          vfjsComponent: fieldComponent,
         },
       },
       () => children,

@@ -1,6 +1,7 @@
 import Minibus from 'minibus';
 import { isEqual, set } from '../../../helpers';
 import {
+  VFJS_EVENT_FIELD_COMPONENT_RESOLVED,
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
@@ -33,6 +34,10 @@ const vfjsBus = {
   },
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
+      [VFJS_EVENT_FIELD_COMPONENT_RESOLVED]: ({ component }) => {
+        this.vfjsComponentsAsync.set(component, 'resolved');
+        this.setVfjsUiFieldsActive();
+      },
       [VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN]: () => {
         const allModels = this.vfjsHelperGetFieldsWithClearOnHide(this.uiSchema);
         const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(this.vfjsFieldsActive);
