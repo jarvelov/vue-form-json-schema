@@ -121,7 +121,7 @@ const vfjsHelpers = {
     return this.$createElement(
       vfjsFieldComponent,
       {
-        key: `${props.vfjsFieldId}-wrapper`,
+        key: `${props.key || props.vfjsFieldId}-wrapper`,
         props: {
           ...props,
           vfjsComponent: localComponent || component,
