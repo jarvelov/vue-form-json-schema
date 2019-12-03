@@ -130,14 +130,16 @@ const vfjsHelpers = {
   vfjsHelperGetFieldAsyncComponentToRender(asyncComponent) {
     if (asyncComponent) {
       if (asyncComponent.component) {
-        if (asyncComponent['[[PromiseStatus]]'] !== 'resolved') {
-          if (asyncComponent['[[PromiseStatus]]'] === 'rejected') {
-            if (asyncComponent.error) {
-              return {
-                status: 'rejected',
-                component: asyncComponent.error,
-              };
-            }
+        // Here we naively expect that the component is being resolved
+        // when it has a .then function on it
+        const asyncComponentPromiseLike = typeof asyncComponent.component.then === 'function';
+
+        if (asyncComponentPromiseLike) {
+          if (asyncComponent.error) {
+            return {
+              status: 'rejected',
+              component: asyncComponent.error,
+            };
           }
 
           if (asyncComponent.loading) {
