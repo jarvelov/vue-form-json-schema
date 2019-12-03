@@ -52,8 +52,6 @@ const template = `
   </div>
 `;
 
-window.Vue.component('async-example', (resolve, reject) => {});
-
 window.Vue.component('example-six', {
   name: 'example-six',
   template,
