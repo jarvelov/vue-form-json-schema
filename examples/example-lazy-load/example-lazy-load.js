@@ -57,7 +57,13 @@ window.Vue.component('example-six', {
   template,
   components: {
     'async-input': () => ({
-      component: new Promise((resolve) => {
+      loading: {
+        template: '<div>Loading...</div>',
+      },
+      error: {
+        template: '<div>Something went wrong while loading...</div>',
+      },
+      component: new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({
             name: 'async-input',
@@ -74,7 +80,7 @@ window.Vue.component('example-six', {
               );
             },
           });
-        }, 1000);
+        }, 3000);
       }),
     }),
   },
