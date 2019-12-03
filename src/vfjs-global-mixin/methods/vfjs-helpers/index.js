@@ -148,6 +148,13 @@ const vfjsHelpers = {
               component: asyncComponent.loading,
             };
           }
+
+          return {
+            status: 'loading',
+            component: {
+              template: '<div />',
+            },
+          };
         }
 
         return {
