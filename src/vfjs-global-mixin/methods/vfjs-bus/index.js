@@ -34,8 +34,8 @@ const vfjsBus = {
   },
   vfjsBusEventHandler(event, payload) {
     const eventActions = {
-      [VFJS_EVENT_FIELD_COMPONENT_RESOLVED]: ({ component }) => {
-        this.vfjsComponentsAsync.set(component, 'resolved');
+      [VFJS_EVENT_FIELD_COMPONENT_RESOLVED]: ({ key, value }) => {
+        this.vfjsComponentsAsync.set(key, value);
         this.setVfjsUiFieldsActive();
       },
       [VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN]: () => {
@@ -152,7 +152,6 @@ const vfjsBus = {
       },
       [VFJS_EVENT_UI_FIELDS_UPDATE]: () => {
         this.setVfjsUiFieldsActive();
-
       },
       [VFJS_EVENT_MODEL_UPDATED]: () => {
         this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
