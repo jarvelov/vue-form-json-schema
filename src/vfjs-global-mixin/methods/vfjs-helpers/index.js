@@ -63,9 +63,8 @@ const vfjsHelpers = {
     };
 
     return this.vfjsHelperCreateComponent({
-      children: vfjsChildren,
       component,
-      props,
+      ...props,
     });
   },
   vfjsHelperGetErrors(errors = [], id) {
@@ -103,34 +102,121 @@ const vfjsHelpers = {
 
     return array.join('');
   },
-  vfjsHelperCreateComponent({ children = [], component, props }) {
+  vfjsHelperUpdateWhenComponentResolves(componentKey, asyncComponentFactoryValue) {
+    const component = (asyncComponentFactoryValue && asyncComponentFactoryValue.component)
+      || asyncComponentFactoryValue;
+    const promise = Promise.resolve(component);
+
+    return promise
+      .then((module) => {
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_COMPONENT_RESOLVED, {
+          key: componentKey,
+          value: {
+            component: (module && module.default) || module,
+          },
+        });
+      })
+      .catch(() => {
+        if (asyncComponentFactoryValue && asyncComponentFactoryValue.error) {
+          this.vfjsBus.emit(VFJS_EVENT_FIELD_COMPONENT_RESOLVED, {
+            key: componentKey,
+            value: {
+              error: asyncComponentFactoryValue.error,
+            },
+          });
+        }
+      });
+  },
+  vfjsHelperGetFieldAsyncComponentToRender(asyncComponent) {
+    if (asyncComponent) {
+      if (asyncComponent.component) {
+        if (asyncComponent['[[PromiseStatus]]'] !== 'resolved') {
+          if (asyncComponent['[[PromiseStatus]]'] === 'rejected') {
+            if (asyncComponent.error) {
+              return {
+                status: 'rejected',
+                component: asyncComponent.error,
+              };
+            }
+          }
+
+          if (asyncComponent.loading) {
+            return {
+              status: 'loading',
+              component: asyncComponent.loading,
+            };
+          }
+        }
+
+        return {
+          status: 'resolved',
+          component: asyncComponent.component,
+        };
+      }
+    }
+
+    return asyncComponent;
+  },
+  vfjsHelperGetFieldAsyncComponent(componentKey, component) {
+    const fieldComponentResolved = this.vfjsComponentsAsync.has(componentKey);
+
+    if (fieldComponentResolved) {
+      return this.vfjsComponentsAsync.get(componentKey);
+    }
+
+    const asyncComponentFactoryValue = component();
+    this.vfjsHelperUpdateWhenComponentResolves(componentKey, asyncComponentFactoryValue);
+
+    return asyncComponentFactoryValue;
+  },
+  vfjsHelperCreateAsyncComponent({ children = [], component, props }) {
+    return this.$createElement(
+      component,
+      {
+        key: props.vfjsFieldId,
+        ...props.vfjsFieldOptions,
+      },
+      children,
+    );
+  },
+  vfjsHelperCreateComponent({ component, ...props }) {
     // If the component matches one of the local components
     // passed in with the `components` prop
     const localComponent = this.vfjsComponents[component];
     const fieldComponent = localComponent || component;
 
-
     if (typeof fieldComponent === 'function') {
-      const fieldComponentResolved = this.vfjsComponentsAsync.has(component)
+      const asyncComponent = this.vfjsHelperGetFieldAsyncComponent(component, fieldComponent);
+      const asyncComponentToRender = this.vfjsHelperGetFieldAsyncComponentToRender(asyncComponent);
 
-      if (!fieldComponentResolved) {
-        const promise = Promise.resolve(fieldComponent());
-        promise.then(() => {
-          this.vfjsBus.emit(VFJS_EVENT_FIELD_COMPONENT_RESOLVED, {
-            component
+      switch (asyncComponentToRender.status) {
+        case 'loading':
+          return this.vfjsHelperCreateFieldComponent({
+            component: asyncComponentToRender.component,
+            vfjsFieldId: props.vfjsFieldId,
           });
-        })
+        default:
+          return this.vfjsHelperCreateFieldComponent({
+            component: asyncComponentToRender.component,
+            ...props,
+          });
       }
     }
 
+    return this.vfjsHelperCreateFieldComponent({
+      component: fieldComponent,
+      ...props,
+    });
+  },
+  vfjsHelperCreateFieldComponent({ component, vfjsChildren = [], ...props }) {
     if (!props.vfjsFieldModelKey) {
       return this.$createElement(
-        fieldComponent,
+        component,
         {
           key: props.vfjsFieldId,
           ...props.vfjsFieldOptions,
         },
-        children,
+        vfjsChildren,
       );
     }
 
@@ -140,10 +226,10 @@ const vfjsHelpers = {
         key: `${props.vfjsFieldId}-wrapper`,
         props: {
           ...props,
-          vfjsComponent: fieldComponent,
+          vfjsComponent: component,
         },
       },
-      () => children,
+      () => vfjsChildren,
     );
   },
   vfjsHelperApplyFieldModel(key, value) {
