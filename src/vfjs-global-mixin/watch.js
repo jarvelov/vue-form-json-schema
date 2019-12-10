@@ -4,8 +4,11 @@ const watch = {
   components(value) {
     this.vfjsComponents = Object.assign({}, value);
   },
-  model(value) {
-    this.setVfjsModel(value);
+  model: {
+    deep: true,
+    handler (value) {
+      this.setVfjsModel(value);
+    }
   },
   schema(value) {
     this.setVfjsSchema(value);
