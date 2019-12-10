@@ -1,8 +1,5 @@
 import { cloneDeep, isEqual } from 'lodash';
-import {
-  VFJS_EVENT_FIELD_MODEL_UPDATE,
-  VFJS_EVENT_MODEL_UPDATED,
-} from '../../../constants';
+import { VFJS_EVENT_FIELD_MODEL_UPDATE, VFJS_EVENT_MODEL_UPDATED } from '../../../constants';
 
 const vfjsModelSetters = {
   setVfjsFieldModel(value, key) {
