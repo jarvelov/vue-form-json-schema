@@ -75,7 +75,7 @@ const helpers = {
       }
 
       if (data instanceof Event) {
-        if (data.target && data.target.value) {
+        if (data.target && typeof data.target.value !== 'undefined') {
           return this.setVfjsFieldModel(data.target.value);
         }
 
