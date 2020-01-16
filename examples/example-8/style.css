@@ -1,0 +1,3 @@
+input:required:not(:valid) {
+  border: 1px solid red;
+}
