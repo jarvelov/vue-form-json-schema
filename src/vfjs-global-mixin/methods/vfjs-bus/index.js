@@ -124,8 +124,6 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
-        this.vfjsBus.emit(VFJS_EVENT_REQUIRED_FIELDS_UPDATE);
-
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
 
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
@@ -149,6 +147,7 @@ const vfjsBus = {
         this.setVfjsUiFieldsActive();
       },
       [VFJS_EVENT_MODEL_UPDATED]: () => {
+        this.vfjsBus.emit(VFJS_EVENT_REQUIRED_FIELDS_UPDATE);
         this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
 
         // Clear hidden fields
