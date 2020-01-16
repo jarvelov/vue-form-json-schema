@@ -223,19 +223,23 @@ const vfjsHelpers = {
   },
   vfjsHelperCastValueToSchemaType(key, value) {
     if (typeof value !== 'undefined') {
-      const { type } = this.getVfjsSchema(key);
+      const schema = this.getVfjsSchema(key);
+
+      if (!schema) {
+        return value;
+      }
 
       // Convert to a numeric value
-      if (type === 'number') {
+      if (schema && schema.type === 'number') {
         return Number(value);
       }
 
-      if (type === 'integer') {
+      if (schema && schema.type === 'integer') {
         return parseInt(value);
       }
 
       // Convert to a boolean value
-      if (type === 'boolean' && (value === 'true' || value === 'false')) {
+      if (schema && schema.type === 'boolean' && (value === 'true' || value === 'false')) {
         return value === 'true';
       }
     }
