@@ -73,6 +73,10 @@ Loading the form from a backend? Check out this example.
 
 A more complete example with validation and error messages
 
+### [Registration form example with nested properties](https://nxn8y.codesandbox.io/)
+
+The registration form above where the form model keys are nested under another key
+
 ### UMD demos
 
 All the examples above are replicated using the UMD version in the `examples` folder of this repo.
