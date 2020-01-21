@@ -18,10 +18,10 @@ import {
 
 const vfjsBus = {
   addVfjsListener(event, callback) {
-    this.vfjsBus.on(event, value => callback(event, value));
+    this.vfjsBus.on(event, (value) => callback(event, value));
   },
   addVfjsListeners(events = [], callback) {
-    events.forEach(event => this.addVfjsListener(event, callback));
+    events.forEach((event) => this.addVfjsListener(event, callback));
   },
   removeVfjsListener(event) {
     this.vfjsBus.off(event);
@@ -98,10 +98,11 @@ const vfjsBus = {
           value,
           cb: (errors) => {
             const vfjsFieldModel = this.getVfjsFieldModel(key);
-            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
+            const newFieldState = {
+              ...this.getVfjsFieldState(key),
               vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
               vfjsFieldErrors: errors,
-            });
+            };
 
             this.setVfjsFieldState(newFieldState, key);
 
@@ -156,9 +157,7 @@ const vfjsBus = {
         this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
       },
       [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
-        const newVfjsState = Object.assign({}, this.getVfjsState(), {
-          [key]: value,
-        });
+        const newVfjsState = { ...this.getVfjsState(), [key]: value };
 
         this.setVfjsState(newVfjsState);
 

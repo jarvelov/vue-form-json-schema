@@ -1,6 +1,6 @@
 const vfjsLifecycle = {
   vfjsDestroy() {
-    this.vfjsEvents.forEach(event => this.removeVfjsListener(event));
+    this.vfjsEvents.forEach((event) => this.removeVfjsListener(event));
   },
   vfjsInitialize() {
     // Set the JSON schema
