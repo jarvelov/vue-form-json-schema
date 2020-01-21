@@ -66,21 +66,16 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
-        const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
+        const model = {};
+        set(model, key, value);
 
-        this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
-          vfjsModel,
-          cb: () => {
-            const model = {};
-            set(model, key, value);
+        const schema = this.getVfjsValidationSchema(key, value);
+        const errors = this.getVfjsValidationErrors(model, schema);
 
-            const schema = this.getVfjsValidationSchema(key, value);
-            const errors = this.getVfjsValidationErrors(model, schema);
-
-            if (cb && typeof cb === 'function') {
-              cb(errors);
-            }
-          },
+        if (cb && typeof cb === 'function') {
+          cb(errors);
+        }
+      },
         });
       },
       [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value: originalValue, cb }) => {
