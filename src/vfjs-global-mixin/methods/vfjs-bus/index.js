@@ -78,6 +78,9 @@ const vfjsBus = {
         }
       },
       [VFJS_EVENT_FIELD_MODELS_VALIDATE]: () => {
+        // TODO: This could be optimized to only call VFJS_EVENT_STATE_UPDATE
+        // by builiding the new state for each field and then merge that together
+        // into the new state
         this.vfjsFieldsActiveModels.forEach((key) => {
           const vfjsFieldModel = this.getVfjsFieldModel(key);
 
