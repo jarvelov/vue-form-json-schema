@@ -85,8 +85,13 @@ const vfjsBus = {
             value: vfjsFieldModel,
             key,
             cb: (errors) => {
+              const newVfjsFieldState = {
+                ...this.getVfjsFieldState(key),
+                vfjsFieldErrors: errors,
+              };
+
               this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
-                value: vfjsFieldModel,
+                value: newVfjsFieldState,
                 key,
                 errors,
               });
