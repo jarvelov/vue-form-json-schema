@@ -107,7 +107,17 @@ const vfjsBus = {
           key,
           value,
           cb: (errors) => {
-            this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, { key, value, errors });
+            const vfjsFieldModel = this.getVfjsFieldModel(key);
+            const newVfjsFieldState = {
+              ...this.getVfjsFieldState(key),
+              vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
+              vfjsFieldErrors: errors,
+            };
+
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
+              value: newVfjsFieldState,
+              key,
+            });
 
             if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
               const newModel = this.vfjsHelperApplyFieldModel(key, value);
