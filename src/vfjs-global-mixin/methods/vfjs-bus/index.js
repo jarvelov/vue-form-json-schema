@@ -4,6 +4,7 @@ import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
+  VFJS_EVENT_FIELD_MODELS_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_MODEL_UPDATED,
   VFJS_EVENT_MODEL_VALIDATE,
@@ -76,6 +77,21 @@ const vfjsBus = {
           cb(errors);
         }
       },
+      [VFJS_EVENT_FIELD_MODELS_VALIDATE]: () => {
+        this.vfjsFieldsActiveModels.forEach((key) => {
+          const vfjsFieldModel = this.getVfjsFieldModel(key);
+
+          this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+            value: vfjsFieldModel,
+            key,
+            cb: (errors) => {
+              this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
+                value: vfjsFieldModel,
+                key,
+                errors,
+              });
+            },
+          });
         });
       },
       [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value: originalValue, cb }) => {
