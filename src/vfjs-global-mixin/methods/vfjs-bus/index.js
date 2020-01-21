@@ -91,13 +91,7 @@ const vfjsBus = {
           key,
           value,
           cb: (errors) => {
-            const vfjsFieldModel = this.getVfjsFieldModel(key);
-            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
-              vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
-              vfjsFieldErrors: errors,
-            });
-
-            this.setVfjsFieldState(newFieldState, key);
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, { key, value, errors });
 
             if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
               const newModel = this.vfjsHelperApplyFieldModel(key, value);
@@ -110,10 +104,19 @@ const vfjsBus = {
           },
         });
       },
-      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
+      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({
+        key, value, errors, cb,
+      }) => {
+        const vfjsFieldModel = this.getVfjsFieldModel(key);
+        const newFieldState = {
+          ...this.getVfjsFieldState(key),
+          vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
+          vfjsFieldErrors: errors,
+        };
+
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
+          value: newFieldState,
           key,
-          value,
           cb,
         });
       },
