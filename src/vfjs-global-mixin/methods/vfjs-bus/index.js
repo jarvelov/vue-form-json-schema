@@ -120,18 +120,10 @@ const vfjsBus = {
           },
         });
       },
-      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({
-        key, value, errors, cb,
-      }) => {
-        const vfjsFieldModel = this.getVfjsFieldModel(key);
-        const newFieldState = {
-          ...this.getVfjsFieldState(key),
-          vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
-          vfjsFieldErrors: errors,
-        };
-
+      [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
+        console.log('update state', key, value.vfjsFieldErrors.length);
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-          value: newFieldState,
+          value,
           key,
           cb,
         });
