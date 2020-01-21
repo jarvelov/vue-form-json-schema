@@ -1,7 +1,6 @@
 import Ajv from 'ajv';
 import getters from './getters';
 import setters from './setters';
-import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
 
 const vfjsValidation = {
   vfjsValidationInitialize() {
@@ -47,11 +46,6 @@ const vfjsValidation = {
     if (this.ajv.errors) {
       const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
       this.vfjsFieldsRequired = this.getVfjsChildPropertiesRequired(propertiesRequired);
-    }
-
-    // Check if validation is enabled and set to run on load
-    if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
-      this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, { vfjsModel: this.getVfjsModel() });
     }
   },
   ...getters,
