@@ -4,6 +4,7 @@ import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
   VFJS_EVENT_FIELD_MODEL_VALIDATE,
+  VFJS_EVENT_FIELD_MODELS_VALIDATE,
   VFJS_EVENT_FIELD_STATE_UPDATE,
   VFJS_EVENT_MODEL_UPDATED,
   VFJS_EVENT_MODEL_VALIDATE,
@@ -17,10 +18,10 @@ import {
 
 const vfjsBus = {
   addVfjsListener(event, callback) {
-    this.vfjsBus.on(event, value => callback(event, value));
+    this.vfjsBus.on(event, (value) => callback(event, value));
   },
   addVfjsListeners(events = [], callback) {
-    events.forEach(event => this.addVfjsListener(event, callback));
+    events.forEach((event) => this.addVfjsListener(event, callback));
   },
   removeVfjsListener(event) {
     this.vfjsBus.off(event);
@@ -66,21 +67,50 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_MODEL_VALIDATE]: ({ key, value, cb }) => {
-        const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
+        const model = {};
+        set(model, key, value);
 
-        this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
-          vfjsModel,
-          cb: () => {
-            const model = {};
-            set(model, key, value);
+        const schema = this.getVfjsValidationSchema(key, value);
+        const errors = this.getVfjsValidationErrors(model, schema);
 
-            const schema = this.getVfjsValidationSchema(key, value);
-            const errors = this.getVfjsValidationErrors(model, schema);
+        if (cb && typeof cb === 'function') {
+          cb(errors);
+        }
+      },
+      [VFJS_EVENT_FIELD_MODELS_VALIDATE]: ({ cb }) => {
+        const operations = this.vfjsFieldsActiveModels.map((key) => {
+          const vfjsFieldModel = this.getVfjsFieldModel(key);
 
-            if (cb && typeof cb === 'function') {
-              cb(errors);
-            }
-          },
+          return new Promise((resolve) => {
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+              value: vfjsFieldModel,
+              key,
+              cb: (errors) => {
+                const vfjsFieldState = this.getVfjsFieldState(key);
+
+                resolve({
+                  [key]: {
+                    ...vfjsFieldState,
+                    vfjsFieldErrors: errors,
+                  },
+                });
+              },
+            });
+          });
+        });
+
+        Promise.all(operations).then((results) => {
+          const newVfjsState = results.reduce(
+            (vfjsState, vfjsFieldState) => ({
+              ...vfjsState,
+              ...vfjsFieldState,
+            }),
+            {},
+          );
+
+          if (cb && typeof cb === 'function') {
+            cb(newVfjsState);
+          }
         });
       },
       [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value: originalValue, cb }) => {
@@ -97,12 +127,16 @@ const vfjsBus = {
           value,
           cb: (errors) => {
             const vfjsFieldModel = this.getVfjsFieldModel(key);
-            const newFieldState = Object.assign({}, this.getVfjsFieldState(key), {
+            const newVfjsFieldState = {
+              ...this.getVfjsFieldState(key),
               vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
               vfjsFieldErrors: errors,
-            });
+            };
 
-            this.setVfjsFieldState(newFieldState, key);
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
+              value: newVfjsFieldState,
+              key,
+            });
 
             if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
               const newModel = this.vfjsHelperApplyFieldModel(key, value);
@@ -116,25 +150,30 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
+        const newVfjsState = { ...this.getVfjsState(), [key]: value };
+
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-          key,
-          value,
+          value: newVfjsState,
           cb,
         });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
-        const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
+          cb: (vfjsFieldStates) => {
+            const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
+            const newVfjsState = { ...this.getVfjsState(), ...vfjsFieldStates, vfjsErrors };
 
-        this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-          key: 'vfjsErrors',
-          value: vfjsErrors,
-          cb: () => {
-            const vfjsState = this.getVfjsState();
-            this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
+            this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
+              value: newVfjsState,
+              cb: () => {
+                const vfjsState = this.getVfjsState();
+                this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
 
-            if (cb && typeof cb === 'function') {
-              cb(vfjsErrors);
-            }
+                if (cb && typeof cb === 'function') {
+                  cb();
+                }
+              },
+            });
           },
         });
       },
@@ -149,12 +188,8 @@ const vfjsBus = {
 
         this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
       },
-      [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
-        const newVfjsState = Object.assign({}, this.getVfjsState(), {
-          [key]: value,
-        });
-
-        this.setVfjsState(newVfjsState);
+      [VFJS_EVENT_STATE_UPDATE]: ({ value, cb }) => {
+        this.setVfjsState(value);
 
         if (cb && typeof cb === 'function') {
           cb();

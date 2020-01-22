@@ -1,6 +1,8 @@
+import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
+
 const vfjsLifecycle = {
   vfjsDestroy() {
-    this.vfjsEvents.forEach(event => this.removeVfjsListener(event));
+    this.vfjsEvents.forEach((event) => this.removeVfjsListener(event));
   },
   vfjsInitialize() {
     // Set the JSON schema
@@ -32,6 +34,11 @@ const vfjsLifecycle = {
 
     // Check and set active fields (visible)
     this.setVfjsUiFieldsActive();
+
+    // Check if validation is enabled and set to run on load
+    if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
+      this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, { vfjsModel: this.getVfjsModel() });
+    }
   },
 };
 
