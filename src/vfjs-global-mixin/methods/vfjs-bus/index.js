@@ -77,29 +77,40 @@ const vfjsBus = {
           cb(errors);
         }
       },
-      [VFJS_EVENT_FIELD_MODELS_VALIDATE]: () => {
-        // TODO: This could be optimized to only call VFJS_EVENT_STATE_UPDATE
-        // by builiding the new state for each field and then merge that together
-        // into the new state
-        this.vfjsFieldsActiveModels.forEach((key) => {
+      [VFJS_EVENT_FIELD_MODELS_VALIDATE]: ({ cb }) => {
+        const operations = this.vfjsFieldsActiveModels.map((key) => {
           const vfjsFieldModel = this.getVfjsFieldModel(key);
 
-          this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
-            value: vfjsFieldModel,
-            key,
-            cb: (errors) => {
-              const newVfjsFieldState = {
-                ...this.getVfjsFieldState(key),
-                vfjsFieldErrors: errors,
-              };
+          return new Promise((resolve) => {
+            this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+              value: vfjsFieldModel,
+              key,
+              cb: (errors) => {
+                const vfjsFieldState = this.getVfjsFieldState(key);
 
-              this.vfjsBus.emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
-                value: newVfjsFieldState,
-                key,
-                errors,
-              });
-            },
+                resolve({
+                  [key]: {
+                    ...vfjsFieldState,
+                    vfjsFieldErrors: errors,
+                  },
+                });
+              },
+            });
           });
+        });
+
+        Promise.all(operations).then((results) => {
+          const newVfjsState = results.reduce(
+            (vfjsState, vfjsFieldState) => ({
+              ...vfjsState,
+              ...vfjsFieldState,
+            }),
+            {},
+          );
+
+          if (cb && typeof cb === 'function') {
+            cb(newVfjsState);
+          }
         });
       },
       [VFJS_EVENT_FIELD_MODEL_UPDATE]: ({ key, value: originalValue, cb }) => {
