@@ -175,10 +175,8 @@ const vfjsBus = {
 
         this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
       },
-      [VFJS_EVENT_STATE_UPDATE]: ({ key, value, cb }) => {
-        const newVfjsState = { ...this.getVfjsState(), [key]: value };
-
-        this.setVfjsState(newVfjsState);
+      [VFJS_EVENT_STATE_UPDATE]: ({ value, cb }) => {
+        this.setVfjsState(value);
 
         if (cb && typeof cb === 'function') {
           cb();
