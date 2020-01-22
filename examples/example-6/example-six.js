@@ -94,9 +94,11 @@ window.Vue.component('example-six', {
         properties: {
           firstName: {
             type: 'string',
+            minLength: 1,
           },
           lastName: {
             type: 'string',
+            minLength: 1,
           },
           age: {
             type: 'number',
@@ -174,6 +176,7 @@ window.Vue.component('example-six', {
                 schema: {
                   not: {
                     type: 'string',
+                    minLength: 1,
                   },
                 },
               },
@@ -255,6 +258,7 @@ window.Vue.component('example-six', {
                 schema: {
                   not: {
                     type: 'string',
+                    minLength: 1,
                   },
                 },
               },
