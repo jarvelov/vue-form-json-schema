@@ -158,20 +158,22 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_MODEL_VALIDATE]: ({ vfjsModel, cb }) => {
-        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODELS_VALIDATE);
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
+          cb: (vfjsFieldStates) => {
+            const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
+            const newVfjsState = { ...this.getVfjsState(), ...vfjsFieldStates, vfjsErrors };
 
-        const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
+            this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
+              value: newVfjsState,
+              cb: () => {
+                const vfjsState = this.getVfjsState();
+                this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
 
-        this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-          key: 'vfjsErrors',
-          value: vfjsErrors,
-          cb: () => {
-            const vfjsState = this.getVfjsState();
-            this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
-
-            if (cb && typeof cb === 'function') {
-              cb(vfjsErrors);
-            }
+                if (cb && typeof cb === 'function') {
+                  cb();
+                }
+              },
+            });
           },
         });
       },
