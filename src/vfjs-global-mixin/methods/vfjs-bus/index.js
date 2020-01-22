@@ -139,9 +139,10 @@ const vfjsBus = {
         });
       },
       [VFJS_EVENT_FIELD_STATE_UPDATE]: ({ key, value, cb }) => {
+        const newVfjsState = { ...this.getVfjsState(), [key]: value };
+
         this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
-          value,
-          key,
+          value: newVfjsState,
           cb,
         });
       },
