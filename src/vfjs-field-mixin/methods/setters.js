@@ -17,10 +17,13 @@ const setters = {
     });
   },
   setVfjsFieldModel(value, key) {
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
-      key: key || this.vfjsFieldModelKey,
-      value,
-    });
+    clearTimeout(this.vfjsSetFieldTimeout)
+    this.vfjsSetFieldTimeout = setTimeout(() => {
+      this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
+        key: key || this.vfjsFieldModelKey,
+        value,
+      });
+    }, 8)
   },
 };
 
