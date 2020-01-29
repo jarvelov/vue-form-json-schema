@@ -15,6 +15,9 @@ const production = {
 module.exports = [
   merge(common, production, {
     externals: [
+      {
+        vue: 'Vue',
+      },
       nodeExternals({
         whitelist: [
           /^lodash/,
