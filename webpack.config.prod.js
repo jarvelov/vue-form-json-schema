@@ -23,9 +23,9 @@ module.exports = [
           'fast-deep-equal',
           'fast-json-stable-stringify',
           'json-schema-traverse',
-          'uri-js'
-        ]
-      })
+          'uri-js',
+        ],
+      }),
     ],
     output: {
       path: path.resolve(__dirname, './dist'),
