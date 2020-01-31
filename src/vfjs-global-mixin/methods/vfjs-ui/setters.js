@@ -17,8 +17,10 @@ const vfjsUiSetters = {
     this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
     this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
 
-    this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, () => {
-      this.setVfjsFields();
+    this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
+      cb: () => {
+        this.setVfjsFields();
+      },
     });
   },
   setVfjsFields() {
