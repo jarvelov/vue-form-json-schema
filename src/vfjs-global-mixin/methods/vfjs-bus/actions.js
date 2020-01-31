@@ -186,6 +186,7 @@ const vfjsBusEventActions = {
     };
 
     this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, vfjsState);
+    this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
 
     if (cb && typeof cb === 'function') {
       cb();
