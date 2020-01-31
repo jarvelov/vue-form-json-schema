@@ -104,30 +104,30 @@ const vfjsBusEventActions = {
       value = this.vfjsHelperCastValueToSchemaType(key, value);
     }
 
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
-      key,
-      value,
-      cb: (errors) => {
+    const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
+
+    this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+      vfjsModel,
+      cb: (newVfjsState) => {
         const vfjsFieldModel = this.getVfjsFieldModel(key);
-        const newVfjsFieldState = {
-          ...this.getVfjsFieldState(key),
-          vfjsFieldDirty: !isEqual(vfjsFieldModel, value),
-          vfjsFieldErrors: errors,
-        };
+        if (!isEqual(vfjsFieldModel, value)) {
+          set(newVfjsState, `${key}.vfjsFieldDirty`, true);
+        }
 
-        this.vfjsBus.$emit(VFJS_EVENT_FIELD_STATE_UPDATE, {
-          value: newVfjsFieldState,
-          key,
+        const vfjsFieldState = get(newVfjsState, `${key}`);
+        const { vfjsFieldErrors = [] } = vfjsFieldState;
+        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+          value: newVfjsState,
+          cb: () => {
+            if (vfjsFieldErrors.length === 0 || this.vfjsOptions.allowInvalidModel) {
+              this.setVfjsModel(vfjsModel);
+            }
+
+            if (cb && typeof cb === 'function') {
+              cb();
+            }
+          },
         });
-
-        if (!errors || (errors && errors.length === 0) || this.vfjsOptions.allowInvalidModel) {
-          const newModel = this.vfjsHelperApplyFieldModel(key, value);
-          this.setVfjsModel(newModel);
-        }
-
-        if (cb && typeof cb === 'function') {
-          cb(errors);
-        }
       },
     });
   },
