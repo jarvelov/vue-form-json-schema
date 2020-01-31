@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { isEmpty, merge } from 'lodash';
 
 const getters = {
   getVfjsAttributes() {
@@ -38,7 +38,7 @@ const getters = {
     const computedOptions = {
       class: classFormatted,
       on: onFormatted,
-      nativeOn: nativeOnFormatted,
+      nativeOn: !isEmpty(nativeOnFormatted) ? nativeOnFormatted : undefined,
     };
 
     const defaultProps = Object.assign(
