@@ -1,4 +1,4 @@
-import { isEqual, set } from 'lodash';
+import { get, isEqual, set } from 'lodash';
 import {
   VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN,
   VFJS_EVENT_FIELD_MODEL_UPDATE,
@@ -59,9 +59,9 @@ const vfjsBusEventActions = {
       cb(errors);
     }
   },
-  [VFJS_EVENT_FIELD_MODELS_VALIDATE]({ cb }) {
+  [VFJS_EVENT_FIELD_MODELS_VALIDATE]({ vfjsModel, cb }) {
     const operations = this.vfjsFieldsActiveModels.map((key) => {
-      const vfjsFieldModel = this.getVfjsFieldModel(key);
+      const vfjsFieldModel = get(vfjsModel, key);
 
       return new Promise((resolve) => {
         this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
