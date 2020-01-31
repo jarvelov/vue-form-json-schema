@@ -1,4 +1,4 @@
-import { VFJS_EVENT_MODEL_VALIDATE } from '../../../constants';
+import { VFJS_EVENT_MODEL_VALIDATE, VFJS_EVENT_STATE_UPDATE } from '../../../constants';
 
 const vfjsLifecycle = {
   vfjsDestroy() {
