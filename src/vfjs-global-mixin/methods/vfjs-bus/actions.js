@@ -177,7 +177,7 @@ const vfjsBusEventActions = {
       cb();
     }
   },
-  [VFJS_EVENT_STATE_UPDATED](cb) {
+  [VFJS_EVENT_STATE_UPDATED]({ cb }) {
     const vfjsState = {
       vfjsErrors: [],
       vfjsFieldsActive: this.vfjsFieldsActive,
