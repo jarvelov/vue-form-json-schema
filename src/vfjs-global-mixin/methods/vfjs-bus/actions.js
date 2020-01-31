@@ -141,6 +141,7 @@ const vfjsBusEventActions = {
   },
   [VFJS_EVENT_MODEL_VALIDATE]({ vfjsModel, cb }) {
     this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
+      vfjsModel,
       cb: (vfjsFieldStates) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
         const newVfjsState = { ...this.getVfjsState(), ...vfjsFieldStates, vfjsErrors };
