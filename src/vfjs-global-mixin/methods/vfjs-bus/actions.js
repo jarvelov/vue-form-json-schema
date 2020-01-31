@@ -144,19 +144,28 @@ const vfjsBusEventActions = {
       vfjsModel,
       cb: (vfjsFieldStates) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
-        const newVfjsState = { ...this.getVfjsState(), ...vfjsFieldStates, vfjsErrors };
+        const vfjsFieldErrors = Object.keys(vfjsFieldStates)
+          .map(key => vfjsFieldStates[key])
+          .reduce((errors, vfjsFieldState) => [...errors, ...vfjsFieldState.vfjsFieldErrors], []);
 
-        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
-          value: newVfjsState,
-          cb: () => {
-            const vfjsState = this.getVfjsState();
-            this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
+        const vfjsErrorsFiltered = [...vfjsErrors, ...vfjsFieldErrors].reduce((array, item) => {
+          const exists = array.some(arrayItem => isEqual(item, arrayItem));
+          if (!exists) {
+            array.push(item);
+          }
 
-            if (cb && typeof cb === 'function') {
-              cb();
-            }
-          },
-        });
+          return array;
+        }, []);
+
+        const vfjsState = {
+          ...this.getVfjsState(),
+          ...vfjsFieldStates,
+          vfjsErrors: vfjsErrorsFiltered,
+        };
+
+        if (cb && typeof cb === 'function') {
+          cb(vfjsState);
+        }
       },
     });
   },
