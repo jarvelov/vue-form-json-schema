@@ -21,10 +21,14 @@ Import to your app
 ```js
 import Vue from 'vue';
 import VueFormJsonSchema from 'vue-form-json-schema';
-> Note if you're not using Webpack / Rollup you need to import VueFormJsonSchema like this:
-> import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js';
 
 Vue.component('vue-form-json-schema', VueFormJsonSchema);
+```
+
+> Note if you're not using Webpack / Rollup you need to import VueFormJsonSchema like this:
+
+```js
+import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js';
 ```
 
 Check out the demos or see a minimal example in the [usage instructions](#usage) to get started.
