@@ -25,7 +25,7 @@ import VueFormJsonSchema from 'vue-form-json-schema';
 Vue.component('vue-form-json-schema', VueFormJsonSchema);
 ```
 
-> Note if you're not using Webpack / Rollup you need to import VueFormJsonSchema like this:
+> Note if you're not using Webpack / Rollup and want to use the ESM version you need to import VueFormJsonSchema like this:
 
 ```js
 import VueFormJsonSchema from 'vue-form-json-schema/dist/vue-form-json-schema.esm.js';
