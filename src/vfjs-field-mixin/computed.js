@@ -49,7 +49,7 @@ const computed = {
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value);
     }
 
-    if (checked.indexOf(this.vfjsComponent) !== -1) {
+    if (checked.indexOf(this.vfjsFieldOptions.attrs.type) !== -1) {
       domProps.checked = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked);
     }

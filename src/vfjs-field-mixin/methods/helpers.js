@@ -76,7 +76,11 @@ const helpers = {
 
       if (data instanceof Event) {
         if (data.target && typeof data.target.value !== 'undefined') {
-          return this.setVfjsFieldModel(data.target.value);
+          let value = data.target.value;
+          let checked = this.vfjsOptions.componentProperties.domProps.checked;
+          if (checked.indexOf(data.target.type) > -1)
+            value = data.target.checked;
+          return this.setVfjsFieldModel(value);
         }
 
         return this.setVfjsFieldModel(undefined);
