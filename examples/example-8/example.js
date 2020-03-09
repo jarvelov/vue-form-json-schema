@@ -1,5 +1,5 @@
 const template = `
-  <div id="example-one" class="container mb-3 mt-3">
+  <div id="example-eight" class="container mb-3 mt-3">
     <h1>vue-form-json-schema</h1>
     <h3>Example #8 <small class="text-muted">Checkbox example</small></h3>
     <p class="lead">
@@ -35,8 +35,8 @@ const template = `
   </div>
 `;
 
-window.Vue.component('example-one', {
-  name: 'example-one',
+window.Vue.component('example-eight', {
+  name: 'example-eight',
   template,
   data() {
     return {
@@ -54,6 +54,10 @@ window.Vue.component('example-one', {
           selection: {
             type: 'boolean',
           },
+          dropdwn: {
+            type: 'string',
+            enum: ['a','b','c']
+          }
         },
       },
       uiSchema: [
@@ -62,8 +66,6 @@ window.Vue.component('example-one', {
           model: 'firstName',
           fieldOptions: {
             on: ['input'],
-            attrs: {
-            },
           },
         },
         {
@@ -75,6 +77,37 @@ window.Vue.component('example-one', {
               type: 'checkbox',
             },
           },
+        },
+        {
+          component: 'select',
+          model: 'dropdwn',
+          fieldOptions: {
+            on: ['change'],
+          },
+          children: [
+            {
+              component: 'option',
+              fieldOptions: {
+                attrs: {
+                  value: 'a'
+                },
+                domProps: {
+                  innerHTML: 'Choose A'
+                }
+              }
+            },
+            {
+              component: 'option',
+              fieldOptions: {
+                attrs: {
+                  value: 'b'
+                },
+                domProps: {
+                  innerHTML: 'Choose B'
+                }
+              }
+            },
+          ]
         },
       ],
     };
@@ -97,5 +130,5 @@ window.Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new window.Vue({
   el: '#app',
-  template: '<example-one />',
+  template: '<example-eight />',
 });
