@@ -98,6 +98,13 @@ window.Vue.component('example-four', {
           firstName: {
             type: 'string',
           },
+          selection: {
+            type: 'string',
+            enum: ['a', 'b', 'c']
+          },
+          checkbx: {
+            type: 'boolean',
+          }
         },
       },
       uiSchema: [
@@ -113,6 +120,37 @@ window.Vue.component('example-four', {
             },
           },
         },
+        {
+          component: 'b-form-select',
+          model: 'selection',
+          fieldOptions: {
+            on: ['input'],
+            props: {
+              options: [
+                { value: 'a', text: 'Choose A' },
+                { value: 'b', text: 'Choose B' }
+              ]
+            }
+          },
+        },
+        {
+          component: 'b-form-checkbox',
+          model: 'checkbx',
+          valueProp: 'checked',
+          fieldOptions: {
+            on: ['change'],
+          },
+          children: [
+            {
+              component: 'span',
+              fieldOptions: {
+                domProps: {
+                  innerHTML: 'I am the b-form-checkbox component'
+                }
+              },
+            }
+          ]
+        }
       ],
       componentConfig: {
         component: 'vue-component-name',
