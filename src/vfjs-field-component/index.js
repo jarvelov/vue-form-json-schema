@@ -9,7 +9,7 @@ const VueFormJsonSchemaFieldComponent = {
       {
         ...this.getVfjsAttributes(),
       },
-      this.$slots.default,
+      this.getVfjsChildren(),
     );
   },
 };

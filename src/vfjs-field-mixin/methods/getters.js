@@ -4,6 +4,17 @@ const getters = {
   getVfjsAttributes() {
     return this.getVfjsFieldAttributes(this.vfjsFieldOptions, this.vfjsComputedMergedFieldOptions);
   },
+  getVfjsChildren() {
+    return Object.keys(this.$slots).map(key => [
+      this.$createElement(
+        'template',
+        {
+          slot: key,
+        },
+        this.$slots[key],
+      ),
+    ]);
+  },
   getVfjsFieldAttributes(
     {
       class: optionsClass, on: optionsOn, nativeOn: optionsNativeOn, ...options
