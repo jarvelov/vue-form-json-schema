@@ -5,15 +5,18 @@ const getters = {
     return this.getVfjsFieldAttributes(this.vfjsFieldOptions, this.vfjsComputedMergedFieldOptions);
   },
   getVfjsChildren() {
-    return Object.keys(this.$slots).map(key => [
+    const { default: defaultSlot, ...slots } = this.$slots;
+    const namedSlots = Object.keys(slots).map(key => [
       this.$createElement(
         'template',
         {
           slot: key,
         },
-        this.$slots[key],
+        slots[key],
       ),
     ]);
+
+    return [defaultSlot, ...namedSlots];
   },
   getVfjsFieldAttributes(
     {
