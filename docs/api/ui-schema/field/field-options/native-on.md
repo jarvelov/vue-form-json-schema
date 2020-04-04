@@ -9,12 +9,12 @@ Accepts a `String`, `Array` or an `Object`.
 // Option 1: String
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'input',
       fieldOptions: {
         on: 'input'
       }
-    }
+    }]
   }
 }
 ```
@@ -25,14 +25,14 @@ data() {
 // Option 2: Arrays
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'input',
       fieldOptions: {
         nativeOn: [
           'input'
         ]
       }
-    }
+    }]
   }
 }
 ```
@@ -47,14 +47,14 @@ An `Object` can be used if the value should be manipulated or used elsewhere bef
 // Option 3: Object
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'input',
       fieldOptions: {
         nativeOn: {
           'input': event => String(event.target.value).toLowerCase();
         }
       }
-    }
+    }]
   }
 }
 ```

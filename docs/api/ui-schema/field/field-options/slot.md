@@ -13,6 +13,7 @@ MyCustomComponent.vue
 ```
 
 MyForm.vue
+
 ```html
 
 ...
@@ -21,7 +22,7 @@ MyForm.vue
 export default {
   data() {
     return {
-      uiSchema: {
+      uiSchema: [{
         component: 'my-custom-component' // globally registered component
         children: [{
           component: 'div',
@@ -32,7 +33,7 @@ export default {
             slot: 'main'
           }
         }]
-      }
+      }]
     }
   }
 }

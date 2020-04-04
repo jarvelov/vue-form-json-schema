@@ -13,14 +13,14 @@ Vue.component('my-custom-component', {
 ...
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'my-custom-component',
       fieldOptions: {
         props: {
           message: 'Hello!'
         }
       }
-    }
+    }]
   }
 }
 ```

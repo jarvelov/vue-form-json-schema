@@ -6,7 +6,7 @@ Essentially any normal html attributes
 // Normal HTML attributes
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'div',
       fieldOptions: {
         attrs: {
@@ -14,7 +14,7 @@ data() {
           placeholder: 'bar'
         }
       }
-    }
+    }]
   }
 }
 ```

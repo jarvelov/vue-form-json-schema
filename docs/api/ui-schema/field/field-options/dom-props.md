@@ -6,14 +6,14 @@
 // DOM properties
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'div',
       fieldOptions: {
         domProps: {
           innerHTML: '<div style="background-color: red">Hello</div>'
         }
       }
-    }
+    }]
   }
 }
 ```

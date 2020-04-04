@@ -9,12 +9,12 @@ Accepts a `String`, `Array` or an `Object`.
 // Option 1: String
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'input',
       fieldOptions: {
         on: 'input'
       }
-    }
+    }]
   }
 }
 ```
@@ -25,14 +25,14 @@ data() {
 // Option 2: Arrays
 data() {
   return {
-    uiSchema: {
+    uiSchema: [{
       component: 'input',
       fieldOptions: {
         on: [
           'input'
         ]
       }
-    }
+    }]
   }
 }
 ```

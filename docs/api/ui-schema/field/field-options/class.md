@@ -9,7 +9,7 @@ An `Object` must have the classes as keys and the keys' value should be a `Boole
 ```js
 // Option 1: Object
 data() {
-  uiSchema: {
+  uiSchema: [{
     component: 'div',
     fieldOptions: {
       class: {
@@ -18,7 +18,7 @@ data() {
         'col-lg-4': false // Class is NOT included
       }
     }
-  }
+  }]
 }
 ```
 
@@ -29,7 +29,7 @@ An `Array` should be a an array of strings, multidimensional arrays or arrays wi
 ```js
 // Option 2: Arrays
 data() {
-  uiSchema: {
+  uiSchema: [{
     component: 'div',
     fieldOptions: {
       // All values in array is included
@@ -38,7 +38,7 @@ data() {
         'col-md-6'
       ]
     }
-  }
+  }]
 }
 ```
 
@@ -47,11 +47,11 @@ data() {
 ```js
 // Option 3: String
 data() {
-  uiSchema: {
+  uiSchema: [{
     component: 'div',
     fieldOptions: {
       class: 'col-12 col-md-6'
     }
-  }
+  }]
 }
 ```
