@@ -7,11 +7,24 @@ data() {
   return {
     uiSchema: [{
       component: 'div',
-      children: [{
-        component: 'div'
-      }, {
-        component: 'div'
-      }]
+      children: [
+        {
+          component: 'div',
+          fieldOptions: {
+            domProps: {
+              innerHTML: 'The first second div'
+            }
+          }
+        },
+        {
+          component: 'div',
+          fieldOptions: {
+            domProps: {
+              innerHTML: 'The first second div'
+            }
+          }
+        }
+      ]
     }]
   }
 }
