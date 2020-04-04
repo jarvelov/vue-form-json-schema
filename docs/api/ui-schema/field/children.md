@@ -1,6 +1,6 @@
 # children
 
-An array of [fields](../field.md). The rendered children (vnodes) will be passed in the default slot to the `component`.
+An array of [fields](../field.md). The rendered children (vnodes) will be passed in the default slot to the `component`, unless a [slot](field-options/slot.md) is set.
 
 ```js
 data() {
