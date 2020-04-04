@@ -9,6 +9,7 @@
 | options | `Object` | See [Options](options.md) |
 | schema | `Object` | A valid [JSON Schema]( http://json-schema.org/) (validated by [Ajv](https://github.com/epoberezkin/ajv)) |
 | ui-schema | `Object` | See [uiSchema](ui-schema.md) |
+| components | `Object` | See [components](components.md) |
 
 ## Events
 
@@ -26,6 +27,7 @@
     :options="options"
     :schema="schema"
     :ui-schema="uiSchema"
+    :components="components"
     v-on:change="onModelUpdate"
     v-on:state-change="onStateUpdate"
     v-on:validated="onValidatedUpdate"
