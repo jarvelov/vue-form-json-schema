@@ -118,10 +118,13 @@ const vfjsHelpers = {
       );
     }
 
+    const { slot } = props.vfjsFieldOptions;
+
     return this.$createElement(
       vfjsFieldComponent,
       {
         key: `${props.key || props.vfjsFieldId}-wrapper`,
+        slot,
         props: {
           ...props,
           vfjsComponent: localComponent || component,
