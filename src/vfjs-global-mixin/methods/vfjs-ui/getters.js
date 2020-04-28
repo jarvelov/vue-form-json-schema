@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, merge } from 'lodash';
 
 const vfjsUiGetters = {
   getVfjsFields(fields = []) {
@@ -61,23 +61,24 @@ const vfjsUiGetters = {
       .map((v, i) => this.vfjsHelperChildArrayReducerMapper(model, children, i))
       .map(this.getVfjsUiFieldsActive);
   },
-  getVfjsUiField({ children = [], model, ...field }) {
-    if (this.getVfjsUiFieldVisible({ ...field, model })) {
-      const isArray = this.vfjsHelperFieldIsArray(model);
-      const required = this.vfjsHelperFieldIsRequired(model);
+  getVfjsUiField(field) {
+    if (this.getVfjsUiFieldVisible(field)) {
+      const isArray = this.vfjsHelperFieldIsArray(field.model);
+      const required = this.vfjsHelperFieldIsRequired(field.model);
+
+      const dynamicProperties = this.vfjsHelperFieldDynamicProperties(field);
+      const { children = [], ...fieldProperties } = merge({}, field, dynamicProperties);
 
       if (isArray) {
         return {
-          ...field,
-          model,
+          ...fieldProperties,
           required,
-          children: this.getVfjsUiFieldArrayChildrenActive(model, children),
+          children: this.getVfjsUiFieldArrayChildrenActive(field.model, children),
         };
       }
 
       return {
-        ...field,
-        model,
+        ...fieldProperties,
         required,
         children: this.getVfjsUiFieldsActive(children),
       };
