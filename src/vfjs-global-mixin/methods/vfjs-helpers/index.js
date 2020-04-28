@@ -1,4 +1,4 @@
-import { set, cloneDeep } from 'lodash';
+import { set, cloneDeep, merge } from 'lodash';
 import vfjsFieldComponent from '../../../vfjs-field-component';
 
 const vfjsHelpers = {
@@ -256,6 +256,29 @@ const vfjsHelpers = {
     const oldErrors = this.ajv.errors ? this.ajv.errors : [];
 
     return oldErrors.length === 0;
+  },
+  vfjsHelperFieldDynamicProperties({ dynamicOptions, ...field }) {
+    if (!dynamicOptions) {
+      return null;
+    }
+
+    if (Array.isArray(dynamicOptions)) {
+      return dynamicOptions.reduce((properties, { schema, model, ...dynamicProperties }) => {
+        if (this.vfjsHelperSchemaHasErrors(schema, model)) {
+          return merge(properties, dynamicProperties);
+        }
+
+        return properties;
+      });
+    }
+
+    const { schema, model, ...dynamicProperties } = dynamicOptions;
+    if (this.vfjsHelperSchemaHasErrors(schema, model)) {
+      console.log('dynamicProperties', dynamicProperties);
+      return dynamicProperties;
+    }
+
+    return null;
   },
   getVfjsFieldsModels(fields, fieldModels = []) {
     return fields.reduce((models, { children = [], model }) => {
