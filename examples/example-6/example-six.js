@@ -90,6 +90,7 @@ window.Vue.component('example-six', {
       success: false,
       schema: {
         type: 'object',
+        $async: true,
         required: ['firstName', 'lastName', 'age', 'consent'],
         properties: {
           firstName: {

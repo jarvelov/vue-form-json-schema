@@ -252,33 +252,45 @@ const vfjsHelpers = {
   vfjsHelperSchemaHasErrors(schema, model) {
     const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
 
-    this.ajv.validate(schema, value);
-    const oldErrors = this.ajv.errors ? this.ajv.errors : [];
+    if (!schema.$async) {
+      schema.$async = true;
+    }
 
-    return oldErrors.length === 0;
+    return this.ajv.validate(schema, value)
+      .then(() => {
+        return false;
+      })
+      .catch(valid => {
+        const oldErrors = valid.errors ? valid.errors : [];
+        return oldErrors.length > 0;
+      });
   },
   vfjsHelperFieldDynamicProperties({ dynamicOptions, ...field }) {
     if (!dynamicOptions) {
-      return null;
+      return Promise.resolve(null);
     }
 
     if (Array.isArray(dynamicOptions)) {
-      return dynamicOptions.reduce((properties, { schema, model, ...dynamicProperties }) => {
-        if (this.vfjsHelperSchemaHasErrors(schema, model)) {
-          return merge(properties, dynamicProperties);
-        }
-
-        return properties;
-      });
+      return dynamicOptions.reduce((propertiesPromise, { schema, model, ...dynamicProperties }) => {
+        return propertiesPromise.then(properties => {
+          return this.vfjsHelperSchemaHasErrors(schema, model)
+            .then(hasErrors => {
+              return hasErrors ? merge(properties, dynamicProperties) : properties;
+            });
+        })
+      }, Promise.resolve([]));
     }
 
     const { schema, model, ...dynamicProperties } = dynamicOptions;
-    if (this.vfjsHelperSchemaHasErrors(schema, model)) {
-      console.log('dynamicProperties', dynamicProperties);
-      return dynamicProperties;
-    }
-
-    return null;
+    return this.vfjsHelperSchemaHasErrors(schema, model)
+      .then(hasErrors => {
+        if (hasErrors) {
+          console.log('dynamicProperties', dynamicProperties);
+          return dynamicProperties;
+        } else {
+          return null;
+        }
+      });
   },
   getVfjsFieldsModels(fields, fieldModels = []) {
     return fields.reduce((models, { children = [], model }) => {

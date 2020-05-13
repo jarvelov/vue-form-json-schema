@@ -41,12 +41,16 @@ const vfjsValidation = {
     // as the data, with allErrors option in Ajv
     // we can get all the required properties
     // and check if the model key is found in the errors
-    this.ajv.validate(this.getVfjsSchema(), {});
 
-    if (this.ajv.errors) {
-      const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
-      this.vfjsFieldsRequired = this.getVfjsChildPropertiesRequired(propertiesRequired);
-    }
+    this.ajv.validate(this.getVfjsSchema(), {})
+      .catch(valid => {
+        if (valid.errors) {
+          const propertiesRequired = this.getVfjsPropertiesRequired(valid.errors);
+          return this.getVfjsChildPropertiesRequired(propertiesRequired).then(requiredFields => {
+            this.vfjsFieldsRequired = requiredFields;
+          });
+        }
+      })
   },
   ...getters,
   ...setters,

@@ -94,6 +94,7 @@ window.Vue.component('example-four', {
       valid: false,
       schema: {
         type: 'object',
+        $async: true,
         properties: {
           firstName: {
             type: 'string',

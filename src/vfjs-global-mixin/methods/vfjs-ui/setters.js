@@ -14,14 +14,17 @@ const vfjsUiSetters = {
     }
   },
   setVfjsUiFieldsActive() {
-    this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
-    this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
-
-    this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
-      cb: () => {
-        this.setVfjsFields();
-      },
-    });
+    this.getVfjsUiFieldsActive(this.vfjsUiSchema)
+      .then(activeFields => {
+        this.vfjsFieldsActive = activeFields;
+        this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
+    
+        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
+          cb: () => {
+            this.setVfjsFields();
+          },
+        });
+      })
   },
   setVfjsFields() {
     this.vfjsFields = this.getVfjsFields(this.vfjsFieldsActive);
