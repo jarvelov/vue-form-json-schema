@@ -69,11 +69,27 @@ window.Vue.component('example-seven', {
       valid: false,
       options: {
         castToSchemaType: true,
+        ajv: {
+          keywords: {
+            testKeyword: {
+              errors: true,
+              async: true,
+              validate: async (schema, value) => {
+                console.log('test keyword');
+                console.log(schema);
+                console.log(value);
+
+                return value === 'Test Name';
+              }
+            }
+          }
+        }
       },
       submitted: false,
       success: false,
       schema: {
         type: 'object',
+        $async: true,
         required: ['user'],
         properties: {
           user: {
@@ -82,6 +98,7 @@ window.Vue.component('example-seven', {
             properties: {
               firstName: {
                 type: 'string',
+                testKeyword: true
               },
               lastName: {
                 type: 'string',
@@ -208,6 +225,13 @@ window.Vue.component('example-seven', {
               errorOptions: {
                 class: ['is-invalid'],
               },
+              displayOptions: {
+                model: 'user.firstName',
+                schema: {
+                  type: 'string',
+                  minLength: 2
+                }
+              },
               fieldOptions: {
                 attrs: {
                   id: 'last-name',
@@ -288,6 +312,18 @@ window.Vue.component('example-seven', {
               model: 'user.age',
               errorOptions: {
                 class: ['is-invalid'],
+              },
+              dynamicOptions: {
+                model: 'user.lastName',
+                schema: {
+                  type: 'string',
+                  minLength: 2
+                },
+                fieldOptions: {
+                  attrs: {
+                    disabled: true
+                  }
+                }
               },
               fieldOptions: {
                 attrs: {
