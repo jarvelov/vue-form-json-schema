@@ -53,11 +53,12 @@ const vfjsBusEventActions = {
     set(model, key, value);
 
     const schema = this.getVfjsValidationSchema(key, value);
-    const errors = this.getVfjsValidationErrors(model, schema);
-
-    if (cb && typeof cb === 'function') {
-      cb(errors);
-    }
+    return this.getVfjsValidationErrors(model, schema)
+      .then(errors => {
+        if (cb && typeof cb === 'function') {
+          cb(errors);
+        }
+      });
   },
   [VFJS_EVENT_FIELD_MODELS_VALIDATE]({ vfjsModel, cb }) {
     const operations = this.vfjsFieldsActiveModels.map((key) => {
@@ -143,29 +144,30 @@ const vfjsBusEventActions = {
     this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
       vfjsModel,
       cb: (vfjsFieldStates) => {
-        const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
-        const vfjsFieldErrors = Object.keys(vfjsFieldStates)
-          .map(key => vfjsFieldStates[key])
-          .reduce((errors, vfjsFieldState) => [...errors, ...vfjsFieldState.vfjsFieldErrors], []);
+        this.getVfjsValidationErrors(vfjsModel).then(vfjsErrors => {
+          const vfjsFieldErrors = Object.keys(vfjsFieldStates)
+            .map(key => vfjsFieldStates[key])
+            .reduce((errors, vfjsFieldState) => [...errors, ...vfjsFieldState.vfjsFieldErrors], []);
 
-        const vfjsErrorsFiltered = [...vfjsErrors, ...vfjsFieldErrors].reduce((array, item) => {
-          const exists = array.some(arrayItem => isEqual(item, arrayItem));
-          if (!exists) {
-            array.push(item);
+          const vfjsErrorsFiltered = [...vfjsErrors, ...vfjsFieldErrors].reduce((array, item) => {
+            const exists = array.some(arrayItem => isEqual(item, arrayItem));
+            if (!exists) {
+              array.push(item);
+            }
+
+            return array;
+          }, []);
+
+          const vfjsState = {
+            ...this.getVfjsState(),
+            ...vfjsFieldStates,
+            vfjsErrors: vfjsErrorsFiltered,
+          };
+
+          if (cb && typeof cb === 'function') {
+            cb(vfjsState);
           }
-
-          return array;
-        }, []);
-
-        const vfjsState = {
-          ...this.getVfjsState(),
-          ...vfjsFieldStates,
-          vfjsErrors: vfjsErrorsFiltered,
-        };
-
-        if (cb && typeof cb === 'function') {
-          cb(vfjsState);
-        }
+        });
       },
     });
   },

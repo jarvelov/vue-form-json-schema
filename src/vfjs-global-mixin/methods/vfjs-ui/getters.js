@@ -8,51 +8,75 @@ const vfjsUiGetters = {
     );
   },
   getVfjsUiFieldVisible(field) {
-    if (field.errorHandler) {
-      if (!this.vfjsOptions.showValidationErrors) {
-        const state = this.getVfjsFieldState(field.model);
-        if (!state || (state && (!state.vfjsFieldBlur || !state.vfjsFieldDirty))) {
-          return false;
+    return new Promise((resolve) => {
+      if (field.errorHandler) {
+        if (!this.vfjsOptions.showValidationErrors) {
+          const state = this.getVfjsFieldState(field.model);
+          if (!state || (state && (!state.vfjsFieldBlur || !state.vfjsFieldDirty))) {
+            return resolve({
+              isErrorHandler: true,
+              hasErrors: false
+            });
+          }
+        }
+
+        const value = this.getVfjsFieldModel(field.model);
+        const schema = this.getVfjsFieldSchema(field.model);
+
+        if (schema) {
+          if (!schema.$async) {
+            schema.$async = true;
+          }
+
+          return this.ajv.validate(schema, value)
+            .then(valid => {
+              const oldErrors = valid.errors ? valid.errors : [];
+              // Only continue if the errorHandlers field model has errors
+              return resolve({
+                isErrorHandler: true,
+                hasErrors: oldErrors.length > 0
+              });
+            })
+            .catch(valid => {
+              const oldErrors = valid.errors ? valid.errors : [];
+              // Only continue if the errorHandlers field model has errors
+              return resolve({
+                isErrorHandler: true,
+                hasErrors: oldErrors.length > 0
+              });
+            });
         }
       }
 
-      const value = this.getVfjsFieldModel(field.model);
-      const schema = this.getVfjsFieldSchema(field.model);
-
-      if (schema) {
-        this.ajv.validate(schema, value);
-        const oldErrors = this.ajv.errors ? this.ajv.errors : [];
-
-        // Only continue if the errorHandlers field model has errors
-        if (oldErrors.length === 0) {
-          return false;
+      return resolve({
+        isErrorHandler: false,
+        hasErrors: false
+      });
+    }).then((uiField) => {
+      if (!uiField.isErrorHandler || (uiField.isErrorHandler && uiField.hasErrors)) {
+        // If field does not have any displayOptions it should be visible
+        if (!field.displayOptions) {
+          return true;
         }
+
+        // Get model and schema
+        const { model, schema = {} } = field.displayOptions;
+
+        // Get the field's model value
+        // It will fall back to the full model if model is undefined
+        const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
+
+        if (!schema.$async) {
+          schema.$async = true;
+        }
+        return this.ajv.validate(schema, value)
+          .then(valid => {
+            return true;
+          }).catch(valid => {
+            return false;
+          });
       }
-    }
-
-    // If field does not have any displayOptions it should be visible
-    if (!field.displayOptions) {
-      return true;
-    }
-
-    // Get model and schema
-    const { model, schema = {} } = field.displayOptions;
-
-    // Get the field's model value
-    // It will fall back to the full model if model is undefined
-    const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
-
-    // Validate and check if we got any errors
-    // const errors = model
-    //   ? this.getVfjsValidationErrors(value, schema)
-    //   : this.getVfjsModelValidationErrors(model, value, schema);
-
-    // TODO: There's something wrong with the evaluation done in getVfjsValidationErrors
-    // Temporarily revert back to old behaviour with validating in this function
-    this.ajv.validate(schema, value);
-    const oldErrors = this.ajv.errors ? this.ajv.errors : [];
-
-    return oldErrors.length === 0;
+    });
   },
   getVfjsUiFieldArrayChildrenActive(model, children) {
     const vfjsFieldModel = this.getVfjsFieldModel(model) || [];
@@ -62,41 +86,55 @@ const vfjsUiGetters = {
       .map(this.getVfjsUiFieldsActive);
   },
   getVfjsUiField(field) {
-    if (this.getVfjsUiFieldVisible(field)) {
-      const isArray = this.vfjsHelperFieldIsArray(field.model);
-      const required = this.vfjsHelperFieldIsRequired(field.model);
+    return this.getVfjsUiFieldVisible(field)
+      .then(isFieldVisible => {
+        if (isFieldVisible) {
+          const isArray = this.vfjsHelperFieldIsArray(field.model);
+          const required = this.vfjsHelperFieldIsRequired(field.model);
 
-      const dynamicProperties = this.vfjsHelperFieldDynamicProperties(field);
-      const { children = [], ...fieldProperties } = merge({}, field, dynamicProperties);
+          return this.vfjsHelperFieldDynamicProperties(field)
+            .then(dynamicProperties => {
+              const { children = [], ...fieldProperties } = merge({}, field, dynamicProperties);
 
-      if (isArray) {
-        return {
-          ...fieldProperties,
-          required,
-          children: this.getVfjsUiFieldArrayChildrenActive(field.model, children),
-        };
-      }
+              if (isArray) {
+                return Promise.resolve({
+                  ...fieldProperties,
+                  required,
+                  children: this.getVfjsUiFieldArrayChildrenActive(field.model, children),
+                });
+              }
 
-      return {
-        ...fieldProperties,
-        required,
-        children: this.getVfjsUiFieldsActive(children),
-      };
-    }
+              return this.getVfjsUiFieldsActive(children)
+                .then(fieldChildren => {
+                  return {
+                    ...fieldProperties,
+                    required,
+                    children: fieldChildren,
+                  };
+                });
+            });
+        }
 
-    return false;
+        return Promise.resolve(false);
+      });
   },
   getVfjsUiFieldsActive(fields) {
-    return fields.reduce((newFields, field, index) => {
-      if (field) {
-        const newField = this.getVfjsUiField(field);
-        if (newField) {
-          newFields.push(newField);
-        }
-      }
+    return fields.reduce((newFieldsPromise, field, index) => {
+      return newFieldsPromise.then((newFields) => {
+        if (field) {
+          return this.getVfjsUiField(field)
+            .then(newField => {
+              if (newField) {
+                newFields.push(newField);
+              }
 
-      return newFields;
-    }, []);
+              return newFields;
+            })
+        }
+
+        return newFields;
+      });
+    }, Promise.resolve([]));
   },
   getVfjsFieldUiSchema(key) {
     return this.getVfjsUiSchema(key);

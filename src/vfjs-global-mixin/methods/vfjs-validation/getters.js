@@ -35,34 +35,44 @@ const vfjsValidationGetters = {
       property => excludeProperties.indexOf(property) === -1,
     );
 
-    return uniqueProperties.reduce((properties, property) => {
+    return uniqueProperties.reduce((propertiesPromise, property) => {
       // Add current property to array
-      properties.push(property);
+      return propertiesPromise.then((properties) => {
+        properties.push(property);
 
-      // Validate schema with this property being an empty object
-      const value = {};
-      set(value, property, {});
-      this.ajv.validate(this.getVfjsSchema(), value);
-      const propertiesRequired = this.getVfjsPropertiesRequired(this.ajv.errors);
+        // Validate schema with this property being an empty object
+        const value = {};
+        set(value, property, {});
+        return this.ajv.validate(this.getVfjsSchema(), value)
+          .then(() => {
+            return properties;
+          })
+          .catch(valid => {
+            const propertiesRequired = this.getVfjsPropertiesRequired(valid.errors);
 
-      // If there were required properties below this property (i.e. this property is an object)
-      if (propertiesRequired.length > 0) {
-        const excludePropertiesChildren = [...excludeProperties, ...uniqueProperties];
+            // If there were required properties below this property (i.e. this property is an object)
+            if (propertiesRequired.length > 0) {
+              const excludePropertiesChildren = [...excludeProperties, ...uniqueProperties];
 
-        const childFieldsRequired = this.getVfjsChildPropertiesRequired(
-          propertiesRequired,
-          excludePropertiesChildren,
-        );
+              return this.getVfjsChildPropertiesRequired(
+                propertiesRequired,
+                excludePropertiesChildren,
+              ).then(childFieldsRequired => {
+                properties.push(...childFieldsRequired);
+                return properties;
+              });
+            }
 
-        properties.push(...childFieldsRequired);
-      }
-
-      return properties;
-    }, []);
+            return properties;
+          });
+      })
+    }, Promise.resolve([]));
   },
   getVfjsFieldModelValid(key, value) {
-    const errors = this.getVfjsFieldModelValidationErrors(key, value);
-    return errors.length === 0;
+    return this.getVfjsFieldModelValidationErrors(key, value)
+      .then(errors => {
+        return errors.length === 0;
+      });
   },
   getVfjsFieldModelValidationErrors(key, value) {
     return this.getVfjsValidationErrors(value, this.getVfjsSchema(key));
@@ -76,12 +86,15 @@ const vfjsValidationGetters = {
     }
   },
   getVfjsValid() {
-    const errors = this.getVfjsValidationErrors();
-    return errors.length === 0;
+    return this.getVfjsValidationErrors()
+      .then(errors => {
+        return errors.length === 0;
+      });
   },
   getVfjsValidationSchema(key, value) {
     const schema = {
       type: 'object',
+      $async: true,
       properties: {},
     };
 
@@ -121,9 +134,17 @@ const vfjsValidationGetters = {
     const ajvSchema = schema || this.getVfjsSchema();
     const ajvModel = model || this.getVfjsModel();
 
-    const valid = this.ajv.validate(ajvSchema, ajvModel);
-    this.getVfjsModelValidationErrorsLocalized();
-    return !valid ? this.ajv.errors : [];
+    return this.ajv.validate(ajvSchema, ajvModel)
+      .then(valid => {
+        if (valid) {
+          this.getVfjsModelValidationErrorsLocalized();
+          return [];
+        } else {
+          return valid.errors;
+        }
+      }).catch(valid => {
+        return valid.errors;
+      });
   },
 };
 

@@ -113,6 +113,7 @@ window.Vue.component('example-five', {
         setTimeout(() => {
           resolve({
             type: 'object',
+            $async: true,
             required: ['firstName'],
             properties: {
               firstName: {
