@@ -182,10 +182,6 @@ const vfjsHelpers = {
   vfjsHelperGetRelativeModel(model, parentModel) {
     return model ? String(model).substr(parentModel.length + 1) : model;
   },
-  vfjsHelperGetParentModel(model) {
-    const parentIndex = String(model).lastIndexOf('.');
-    return String(model).substr(0, parentIndex);
-  },
   vfjsHelperFieldIsRequired(model) {
     if (model) {
       return this.vfjsFieldsRequired.indexOf(model) !== -1;
