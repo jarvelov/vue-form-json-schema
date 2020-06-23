@@ -188,11 +188,6 @@ const vfjsHelpers = {
   },
   vfjsHelperFieldIsRequired(model) {
     if (model) {
-      const parentModel = this.vfjsHelperGetParentModel(model);
-      if (parentModel) {
-        return this.vfjsFieldsRequired.indexOf(parentModel) !== -1;
-      }
-
       return this.vfjsFieldsRequired.indexOf(model) !== -1;
     }
 
