@@ -274,7 +274,6 @@ const vfjsHelpers = {
 
     const { schema, model, ...dynamicProperties } = dynamicOptions;
     if (this.vfjsHelperSchemaHasErrors(schema, model)) {
-      console.log('dynamicProperties', dynamicProperties);
       return dynamicProperties;
     }
 
