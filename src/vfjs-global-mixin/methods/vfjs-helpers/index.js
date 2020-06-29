@@ -254,18 +254,18 @@ const vfjsHelpers = {
     }
 
     if (Array.isArray(dynamicOptions)) {
-      return dynamicOptions.reduce((properties, { schema, model, ...dynamicProperties }) => {
+      return dynamicOptions.reduce((properties, { schema, model, options }) => {
         if (this.vfjsHelperSchemaHasErrors(schema, model)) {
-          return merge(properties, dynamicProperties);
+          return merge(properties, options);
         }
 
         return properties;
       });
     }
 
-    const { schema, model, ...dynamicProperties } = dynamicOptions;
+    const { schema, model, options } = dynamicOptions;
     if (this.vfjsHelperSchemaHasErrors(schema, model)) {
-      return dynamicProperties;
+      return options;
     }
 
     return null;
