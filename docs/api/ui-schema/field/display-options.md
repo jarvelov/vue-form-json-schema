@@ -12,7 +12,7 @@ There are 2 options: Full and Single.
 The full model uses the entire form model as data.
 
 ```js
-// Option 1 - full JSON schema
+// Option 1 - full model
 data() {
   return {
     uiSchema: [{
@@ -77,7 +77,7 @@ data() {
       children: [{
         component: 'div',
         displayOptions: {
-          // Here we set to use only the value of the firstName model
+          // Here we set to use the firstName model as the value to evaluate the schema against
           model: 'firstName',
           schema: {
             type: 'string',
