@@ -260,7 +260,7 @@ const vfjsHelpers = {
         }
 
         return properties;
-      });
+      }, {});
     }
 
     const { schema, model, options } = dynamicOptions;
