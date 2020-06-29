@@ -1,6 +1,6 @@
 # Error options
 
-Same API as [fieldOptions](fieldOptions.md) but is only applied when the field has errors and has been modified.
+Same API as [fieldOptions](field-options.md) but is only applied when the field has errors and has been modified.
 
 ## Example
 
