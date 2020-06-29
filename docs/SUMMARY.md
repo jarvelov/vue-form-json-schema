@@ -11,6 +11,7 @@
         * [component](api/ui-schema/field/component.md)
         * [children](api/ui-schema/field/children.md)
         * [displayOptions](api/ui-schema/field/display-options.md)
+        * [dynamicOptions](api/ui-schema/field/dynamic-options.md)
         * [errorHandler](api/ui-schema/field/error-handler.md)
         * [errorOptions](api/ui-schema/field/error-options.md)
         * [fieldOptions](api/ui-schema/field/field-options.md)
