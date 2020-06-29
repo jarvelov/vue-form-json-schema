@@ -6,9 +6,9 @@ const watch = {
   },
   model: {
     deep: true,
-    handler (value) {
+    handler(value) {
       this.setVfjsModel(value);
-    }
+    },
   },
   schema(value) {
     this.setVfjsSchema(value);
