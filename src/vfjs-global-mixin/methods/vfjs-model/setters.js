@@ -1,5 +1,10 @@
 import { cloneDeep, isEqual } from 'lodash';
-import { VFJS_EVENT_FIELD_MODEL_UPDATE, VFJS_EVENT_MODEL_UPDATED } from '../../../constants';
+import {
+  VFJS_EVENT_FIELD_MODEL_UPDATE,
+  VFJS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_STATE_UPDATE,
+  VFJS_EVENT_MODEL_UPDATED,
+} from '../../../constants';
 
 const vfjsModelSetters = {
   setVfjsFieldModel(value, key) {
@@ -13,7 +18,17 @@ const vfjsModelSetters = {
       this.vfjsModel = cloneDeep(model);
 
       if (!silent) {
-        this.vfjsBus.$emit(VFJS_EVENT_MODEL_UPDATED, this.getVfjsModel());
+        this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+          vfjsModel: this.vfjsModel,
+          cb: (newVfjsState) => {
+            this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+              value: newVfjsState,
+              cb: () => {
+                this.vfjsBus.$emit(VFJS_EVENT_MODEL_UPDATED);
+              },
+            });
+          },
+        });
       }
     }
   },
