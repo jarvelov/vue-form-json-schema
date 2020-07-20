@@ -16,6 +16,10 @@ const props = {
     type: Object,
     default: () => ({}),
   },
+  id: {
+    type: String,
+    default: () => Math.random().toString(36).substr(2, 9),
+  },
   options: {
     type: Object,
     default: () => ({}),
