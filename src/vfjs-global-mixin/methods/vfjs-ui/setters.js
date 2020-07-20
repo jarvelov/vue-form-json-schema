@@ -4,7 +4,7 @@ import { VFJS_EVENT_STATE_UPDATED } from '../../../constants';
 const vfjsUiSetters = {
   setVfjsUiSchema(uiSchema = []) {
     const newVfjsUiSchema = uiSchema.reduce(
-      (fields, field, index) => [...fields, this.vfjsHelperGenerateField(field, index)],
+      (fields, field, index) => [...fields, this.vfjsHelperGenerateField(field, `${this.id}-${index}`)],
       [],
     );
 
