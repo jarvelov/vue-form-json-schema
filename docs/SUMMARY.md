@@ -14,6 +14,7 @@
         * [dynamicOptions](api/ui-schema/field/dynamic-options.md)
         * [errorHandler](api/ui-schema/field/error-handler.md)
         * [errorOptions](api/ui-schema/field/error-options.md)
+        * [eventProp](api/ui-schema/field/event-prop.md)
         * [fieldOptions](api/ui-schema/field/field-options.md)
           * [attrs](api/ui-schema/field/field-options/attrs.md)
           * [class](api/ui-schema/field/field-options/class.md)

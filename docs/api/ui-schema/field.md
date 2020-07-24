@@ -12,6 +12,7 @@ A `field` is an `object` and must have a [component](field/component.md) propert
 * [dynamicOptions](field/dynamic-options.md)
 * [errorHandler](field/error-handler.md)
 * [errorOptions](field/error-options.md)
+* [eventProp](field/event-prop.md)
 * [fieldOptions](field/field-options.md)
 * [valueProp](field/value-prop.md)
 
