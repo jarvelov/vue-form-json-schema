@@ -45,7 +45,15 @@ const data = () => ({
     componentProperties: {
       attrs: {
         // Components which support the 'checked' attribute
-        checked: ['checkbox', 'radio'],
+        checked: [
+          {
+            component: 'input',
+            attrs: {
+              type: 'checkbox',
+            },
+          },
+          'radio',
+        ],
         // Components which support the 'required' attribute
         required: ['input', 'select', 'textarea'],
         // Components which support the 'value' attribute
@@ -53,7 +61,15 @@ const data = () => ({
       },
       domProps: {
         // Components which should have its DOM property 'checked' updated
-        checked: ['checkbox', 'radio'],
+        checked: [
+          {
+            component: 'input',
+            attrs: {
+              type: 'checkbox',
+            },
+          },
+          'radio',
+        ],
         // Components which should have its DOM property 'required' updated
         required: ['input', 'select', 'textarea'],
         // Components which should have its DOM property 'value' updated
