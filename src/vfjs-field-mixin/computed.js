@@ -30,6 +30,10 @@ const computed = {
       attrs.value = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
+      attrs.checked = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked);
+    }
+
     return attrs;
   },
   vfjsComputedFieldDomProps() {
