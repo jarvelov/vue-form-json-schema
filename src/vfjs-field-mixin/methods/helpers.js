@@ -75,8 +75,8 @@ const helpers = {
       }
 
       if (data instanceof Event) {
-        if (data.target && typeof data.target[this.vfjsFieldValueProp] !== 'undefined') {
-          return this.setVfjsFieldModel(data.target[this.vfjsFieldValueProp]);
+        if (data.target && typeof data.target[this.vfjsFieldEventProp] !== 'undefined') {
+          return this.setVfjsFieldModel(data.target[this.vfjsFieldEventProp]);
         }
 
         return this.setVfjsFieldModel(undefined);
