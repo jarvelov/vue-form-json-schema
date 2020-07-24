@@ -20,13 +20,13 @@ const computed = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
     };
 
-    const { required = [], value = [] } = this.vfjsOptions.componentProperties.attrs;
+    const { checked = [], required = [], value = [] } = this.vfjsOptions.componentProperties.attrs;
 
-    if (required.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
       attrs.required = this.vfjsFieldRequired;
     }
 
-    if (value.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
       attrs.value = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
@@ -37,19 +37,19 @@ const computed = {
 
     const { innerHTML = [] } = this.vfjsOptions.componentProperties;
 
-    if (innerHTML.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(innerHTML)) {
       domProps.innerHTML = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
     }
 
     const { checked, value } = this.vfjsOptions.componentProperties.domProps;
 
-    if (value.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
       domProps.value = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value);
     }
 
-    if (checked.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
       domProps.checked = this.vfjsFieldModel
         || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked);
     }
