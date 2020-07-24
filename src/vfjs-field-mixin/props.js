@@ -23,6 +23,9 @@ const props = {
   vfjsFieldErrors: {
     type: Array,
   },
+  vfjsFieldEventProp: {
+    type: String,
+  },
   vfjsFieldId: {
     type: String,
     required: true,

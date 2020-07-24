@@ -13,6 +13,7 @@ const vfjsHelpers = {
       model: vfjsFieldModelKey = '',
       required: vfjsFieldRequired = false,
       valueProp: vfjsFieldValueProp = this.vfjsOptions.valueProp,
+      eventProp: vfjsFieldEventProp = this.vfjsOptions.eventProp,
     } = vfjsFieldUiSchema;
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
@@ -57,6 +58,7 @@ const vfjsHelpers = {
       vfjsFieldState,
       vfjsFieldUiSchema,
       vfjsFieldValueProp,
+      vfjsFieldEventProp,
       vfjsModel,
       vfjsState,
     };
