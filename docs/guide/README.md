@@ -92,7 +92,7 @@ That's it! You're ready to start using `vue-form-json-schema`! Here is a basic e
 
 ## UMD version
 
-If you want to use `vue-form-json-schema` directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the `vue-form-json-schema` component if Vue is found on the window. The entire module is also available on window.VueFormJsonSchema where the named exports such as for example vfjsFieldMixin can be accessed.
+If you want to use `vue-form-json-schema` directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the `vue-form-json-schema` component if Vue is found on the window. The entire module is also available on `window.VueFormJsonSchema` where the named exports such as for example `vfjsFieldMixin `can be accessed.
 
 ### UNPKG CDN
 
