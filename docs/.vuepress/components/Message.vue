@@ -1,0 +1,1 @@
+../../../examples/components/Message.vue
