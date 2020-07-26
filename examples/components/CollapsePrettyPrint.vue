@@ -2,7 +2,6 @@
   <div>
     <div
       class="heading"
-      @keydown="(e) => console.log('heyo enter')"
       @click="(e) => toggle(e, 'uiSchema')"
     >
       <strong>UI Schema</strong>
