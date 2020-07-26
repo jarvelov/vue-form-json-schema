@@ -98,7 +98,7 @@ If you want to use `vue-form-json-schema` directly in a browser you can do so by
 
 `<script src="https://unpkg.com/vue-form-json-schema@latest/dist/vue-form-json-schema.umd.js"></script>`
 
-You can substite `vue-form-json-schema@latest` to a fixed version, such as `vue-form-json-schema@2.3.0`
+You can substite `vue-form-json-schema@latest` to a fixed version, such as `vue-form-json-schema@{{$themeConfig.version}}`
 
 ### Installed from npm
 
