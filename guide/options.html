@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>options | vue-form-json-schema</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="Vue package for using forms with JSON schema">
+    <meta name="theme-color" content="#e7a000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css" as="style"><link rel="preload" href="/vue-form-json-schema/assets/js/app.6235c556.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/2.ee529394.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/18.937613e8.js" as="script"><link rel="prefetch" href="/vue-form-json-schema/assets/js/10.91908391.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/11.7954d130.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/12.7534bc55.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/13.9a212180.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/14.e60ef56d.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/15.bec0afe8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/16.1deba4d3.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/17.2d2fdd4b.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/19.d0339107.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/20.bd68f1ba.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/3.e70818f1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/4.d18b64f8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/5.4c800faf.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/6.a1188af8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/7.acdeabf1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/8.fde30cfe.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/9.39af20af.js">
+    <link rel="stylesheet" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-form-json-schema/" class="home-link router-link-active"><!----> <span class="site-name">vue-form-json-schema</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-form-json-schema/guide/" class="nav-link router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-form-json-schema/guide/" class="nav-link router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Docs</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-form-json-schema/guide/" aria-current="page" class="sidebar-link">Quick start</a></li><li><a href="/vue-form-json-schema/guide/installation.html" class="sidebar-link">Installation</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>API</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-form-json-schema/guide/components.html" class="sidebar-link">components</a></li><li><a href="/vue-form-json-schema/guide/options.html" aria-current="page" class="active sidebar-link">options</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/options.html#ajv" class="sidebar-link">ajv</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/options.html#examples" class="sidebar-link">Examples</a></li></ul></li></ul></li><li><a href="/vue-form-json-schema/guide/schema.html" class="sidebar-link">schema</a></li><li><a href="/vue-form-json-schema/guide/ui-schema.html" class="sidebar-link">uiSchema</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Examples</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="options"><a href="#options" class="header-anchor">#</a> options</h1> <table><thead><tr><th>Property</th> <th>Type</th> <th>Description</th> <th>Default</th></tr></thead> <tbody><tr><td>allowInvalidModel</td> <td>Boolean</td> <td>If <code>false</code> and validation fails the model will not be updated</td> <td>true</td></tr> <tr><td>validate</td> <td>Boolean</td> <td>Enable/disable validation</td> <td>true</td></tr> <tr><td>validateOnLoad</td> <td>Boolean</td> <td>Perform a validation after the component has loaded (<code>created</code>)</td> <td>true</td></tr> <tr><td>showValidationErrors</td> <td>Boolean</td> <td>Show validation errors</td> <td>false</td></tr> <tr><td>castToSchemaType</td> <td>Boolean</td> <td>Cast values to the type specified for the model in the schema.</td> <td>false</td></tr> <tr><td>valueProp</td> <td>String</td> <td>Which prop will get passed the model</td> <td>'value'</td></tr> <tr><td>ajv</td> <td>Object</td> <td>Options for <a href="https://github.com/epoberezkin/ajv" target="_blank" rel="noopener noreferrer">Ajv<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></td> <td><a href="#ajv">See ajv</a></td></tr></tbody></table> <h2 id="ajv"><a href="#ajv" class="header-anchor">#</a> ajv</h2> <p>This object provides a way to configure <code>Ajv</code>. A list of all <a href="https://ajv.js.org/#options" target="_blank" rel="noopener noreferrer">supported options can be found here<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+The default object is as follows:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  keywords<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// Add custom keywords here</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// Add plugins such as ajv-merge-patch here</span>
+  locale<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// Provide a locale from ajv-i18n here, see example below</span>
+  options<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Ajv option `allErrors` is always set to true,</span>
+    <span class="token comment">// there is no way to override this as it is used internally for validation</span>
+    allErrors<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="examples"><a href="#examples" class="header-anchor">#</a> Examples</h3> <h4 id="enable-data-references"><a href="#enable-data-references" class="header-anchor">#</a> Enable $data references</h4> <p>See <a href="https://ajv.js.org/#data-reference" target="_blank" rel="noopener noreferrer">Ajv's documentation about $data references<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more details.
+<code>$data</code> in this example can be substituted for any other <a href="https://ajv.js.org/#options" target="_blank" rel="noopener noreferrer">supported Ajv option<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        ajv<span class="token operator">:</span> <span class="token punctuation">{</span>
+          options<span class="token operator">:</span> <span class="token punctuation">{</span>
+            $data<span class="token operator">:</span> <span class="token boolean">true</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vue-form-json-schema</span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:options</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>options<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>uiSchema<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="localize-error-messages"><a href="#localize-error-messages" class="header-anchor">#</a> Localize error messages</h4> <p>This example uses <a href="https://github.com/epoberezkin/ajv-i18n" target="_blank" rel="noopener noreferrer">ajv-i18n<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.
+Any errors will be translated using the locale function provided before the fields gets access to them.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Import swedish localization</span>
+<span class="token keyword">import</span> sv <span class="token keyword">from</span> <span class="token string">'ajv-i18n/localize/sv'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        ajv<span class="token operator">:</span> <span class="token punctuation">{</span>
+          locale<span class="token operator">:</span> sv
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vue-form-json-schema</span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:options</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>options<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>uiSchema<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="add-ajv-keywords"><a href="#add-ajv-keywords" class="header-anchor">#</a> Add Ajv keywords</h4> <p>In this example we will add a custom keyword which checks that the value of the input is not present in the <code>blacklist</code> array. For more information about how to add your own keywords check out the <a href="https://ajv.js.org/custom.html" target="_blank" rel="noopener noreferrer">Ajv keyword documentation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// These values are forbidden</span>
+<span class="token keyword">const</span> blacklist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'forbidden'</span><span class="token punctuation">,</span> <span class="token string">'values'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        ajv<span class="token operator">:</span> <span class="token punctuation">{</span>
+          keywords<span class="token operator">:</span> <span class="token punctuation">{</span>
+            notBlackListed<span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token comment">// Needs to be set to true for the validate function to be able to add custom errors</span>
+              errors<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+              <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">schema<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token comment">// There is no way to add custom error messages without</span>
+                <span class="token comment">// modifying the validate function's `errors` property.</span>
+                <span class="token comment">// This is what Ajv wants, and it's terrible, but it is what it recommends.</span>
+                <span class="token keyword">const</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>options<span class="token punctuation">.</span>ajv<span class="token punctuation">.</span>keywords<span class="token punctuation">.</span>notBlackListed<span class="token punctuation">.</span>validate<span class="token punctuation">;</span>
+
+                <span class="token comment">// Create an empty array to hold any errors</span>
+                self<span class="token punctuation">.</span>errors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>blacklist<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// This value is blacklisted</span>
+                  self<span class="token punctuation">.</span>errors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                    message<span class="token operator">:</span> <span class="token string">'Value is blacklisted!'</span><span class="token punctuation">,</span>
+                    keyword<span class="token operator">:</span> <span class="token string">'uniqueLabel'</span><span class="token punctuation">,</span>
+                    params<span class="token operator">:</span> <span class="token punctuation">{</span>
+                      keyword<span class="token operator">:</span> <span class="token string">'uniqueLabel'</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token comment">// Ajv needs a boolean value returned to determine if the validation was a success</span>
+                <span class="token comment">// If true is returned, no error is generated, even if the errors array is populated</span>
+                <span class="token keyword">return</span> self<span class="token punctuation">.</span>errors<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+        properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+          myValue<span class="token operator">:</span> <span class="token punctuation">{</span>
+            type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+            notBlackListed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+          model<span class="token operator">:</span> <span class="token string">'myValue'</span><span class="token punctuation">,</span>
+          fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'change'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// This component will output all the errors for myValue model</span>
+        <span class="token punctuation">{</span>
+          component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+          errorHandler<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          model<span class="token operator">:</span> <span class="token string">'myValue'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vue-form-json-schema</span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:options</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>options<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>uiSchema<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="extend-ajv-instance"><a href="#extend-ajv-instance" class="header-anchor">#</a> Extend Ajv instance</h4> <p>Note that this is not extensively tested and might break in upgrades. The long term goal is to support as many Ajv plugins as possible. Please <a href="">open an issue</a> if you run into an Ajv package which does not work. Plugins provides extra Ajv features such as <a href="https://github.com/ajv-validator/ajv-keywords" target="_blank" rel="noopener noreferrer">ajv-keywords<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and <a href="https://github.com/epoberezkin/ajv-merge-patch" target="_blank" rel="noopener noreferrer">ajv-merge-patch<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>. access to the internal <code>Ajv</code> instance running inside <code>vue-form-json-schema</code>.</p> <p>By adding the required plugin to the <code>plugins</code> section in the ajv options it is possible to load and apply the required plugin to the ajv instance that is used by <code>vue-form-json-schema</code>. This comes in handy, for example when you want to customize error messages with <a href="https://github.com/epoberezkin/ajv-errors" target="_blank" rel="noopener noreferrer">ajv-errors<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Import ajv-errors plugin</span>
+<span class="token keyword">import</span> ajvErrors <span class="token keyword">from</span> <span class="token string">'ajv-errors'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        ajv<span class="token operator">:</span> <span class="token punctuation">{</span>
+          plugins<span class="token operator">:</span> <span class="token punctuation">{</span>
+            ajvErrors
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+        required<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'age'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+          age<span class="token operator">:</span> <span class="token punctuation">{</span>
+            type<span class="token operator">:</span> <span class="token string">'integer'</span><span class="token punctuation">,</span>
+            minimum<span class="token operator">:</span> <span class="token number">18</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        errorMessage<span class="token operator">:</span> <span class="token punctuation">{</span>
+         properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+           age<span class="token operator">:</span> <span class="token string">'You must be at least 18 years old to submit this form'</span><span class="token punctuation">,</span>
+         <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vue-form-json-schema</span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:options</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>options<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>uiSchema<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue-form-json-schema/guide/components.html" class="prev">
+        components
+      </a></span> <span class="next"><a href="/vue-form-json-schema/guide/schema.html">
+        schema
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/vue-form-json-schema/assets/js/app.6235c556.js" defer></script><script src="/vue-form-json-schema/assets/js/2.ee529394.js" defer></script><script src="/vue-form-json-schema/assets/js/18.937613e8.js" defer></script>
+  </body>
+</html>

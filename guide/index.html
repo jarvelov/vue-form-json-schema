@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quick start | vue-form-json-schema</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="Vue package for using forms with JSON schema">
+    <meta name="theme-color" content="#e7a000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css" as="style"><link rel="preload" href="/vue-form-json-schema/assets/js/app.6235c556.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/2.ee529394.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/15.bec0afe8.js" as="script"><link rel="prefetch" href="/vue-form-json-schema/assets/js/10.91908391.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/11.7954d130.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/12.7534bc55.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/13.9a212180.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/14.e60ef56d.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/16.1deba4d3.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/17.2d2fdd4b.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/18.937613e8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/19.d0339107.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/20.bd68f1ba.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/3.e70818f1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/4.d18b64f8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/5.4c800faf.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/6.a1188af8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/7.acdeabf1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/8.fde30cfe.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/9.39af20af.js">
+    <link rel="stylesheet" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-form-json-schema/" class="home-link router-link-active"><!----> <span class="site-name">vue-form-json-schema</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-form-json-schema/guide/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-form-json-schema/guide/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Docs</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-form-json-schema/guide/" aria-current="page" class="active sidebar-link">Quick start</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#_1-installation" class="sidebar-link">1. Installation</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#_2-setup" class="sidebar-link">2. Setup</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#_2-1-global-registration" class="sidebar-link">2.1 Global registration</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#_2-2-local-registration" class="sidebar-link">2.2 Local registration</a></li></ul></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#_3-usage" class="sidebar-link">3. Usage</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#umd-version" class="sidebar-link">UMD version</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#unpkg-cdn" class="sidebar-link">UNPKG CDN</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/#installed-from-npm" class="sidebar-link">Installed from npm</a></li></ul></li></ul></li><li><a href="/vue-form-json-schema/guide/installation.html" class="sidebar-link">Installation</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>API</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Examples</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="quick-start"><a href="#quick-start" class="header-anchor">#</a> Quick start</h1> <p><code>vue-form-json-schema</code> is distributed as both an ESM and UMD version.</p> <p>If you use a bundler such as <code>webpack</code> you want the ESM version. If you want to use it in the browser, use CommonJS/AMD or if you are stuck on an older version of Webpack you should use the <a href="#umdversion">UMD version</a>.</p> <p>If you use a bundler the ESM version will be used automatically.</p> <h2 id="_1-installation"><a href="#_1-installation" class="header-anchor">#</a> 1. Installation</h2> <p>Install using npm</p> <p><code>npm install vue-form-json-schema</code></p> <p>or, install using yarn</p> <p><code>yarn add vue-form-json-schema</code></p> <h2 id="_2-setup"><a href="#_2-setup" class="header-anchor">#</a> 2. Setup</h2> <p>You can choose to either register the component globally or locally.</p> <h3 id="_2-1-global-registration"><a href="#_2-1-global-registration" class="header-anchor">#</a> 2.1 Global registration</h3> <p>Import the component and register it.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> VueFormJsonSchema <span class="token keyword">from</span> <span class="token string">'vue-form-json-schema'</span><span class="token punctuation">;</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'vue-form-json-schema'</span><span class="token punctuation">,</span> VueFormJsonSchema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_2-2-local-registration"><a href="#_2-2-local-registration" class="header-anchor">#</a> 2.2 Local registration</h3> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> VueFormJsonSchema <span class="token keyword">from</span> <span class="token string">'vue-form-json-schema'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'vue-form-json-schema'</span><span class="token operator">:</span> VueFormJsonSchema<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="_3-usage"><a href="#_3-usage" class="header-anchor">#</a> 3. Usage</h2> <p>That's it! You're ready to start using <code>vue-form-json-schema</code>! Here is a basic example with a single input field to get you</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        model<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+          required<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'firstName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+            firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+              type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+            model<span class="token operator">:</span> <span class="token string">'firstName'</span><span class="token punctuation">,</span>
+            fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'form-control'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              attrs<span class="token operator">:</span> <span class="token punctuation">{</span>
+                placeholder<span class="token operator">:</span> <span class="token string">'Please enter your first name'</span><span class="token punctuation">,</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vue-form-json-schema</span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>uiSchema<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="umd-version"><a href="#umd-version" class="header-anchor">#</a> UMD version</h2> <p>If you want to use <code>vue-form-json-schema</code> directly in a browser you can do so by using the UMD version. The UMD version autoinstalls the <code>vue-form-json-schema</code> component if Vue is found on the window. The entire module is also available on window.VueFormJsonSchema where the named exports such as for example vfjsFieldMixin can be accessed.</p> <h3 id="unpkg-cdn"><a href="#unpkg-cdn" class="header-anchor">#</a> UNPKG CDN</h3> <p><code>&lt;script src=&quot;https://unpkg.com/vue-form-json-schema@latest/dist/vue-form-json-schema.umd.js&quot;&gt;&lt;/script&gt;</code></p> <p>You can substite <code>vue-form-json-schema@latest</code> to a fixed version, such as <code>vue-form-json-schema@2.3.0</code></p> <h3 id="installed-from-npm"><a href="#installed-from-npm" class="header-anchor">#</a> Installed from npm</h3> <p><code>&lt;script src=&quot;../node_modules/dist/vue-form-json-schema.umd.js&quot;&gt;&lt;/script&gt;</code></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/vue-form-json-schema/guide/installation.html">
+        Installation
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/vue-form-json-schema/assets/js/app.6235c556.js" defer></script><script src="/vue-form-json-schema/assets/js/2.ee529394.js" defer></script><script src="/vue-form-json-schema/assets/js/15.bec0afe8.js" defer></script>
+  </body>
+</html>

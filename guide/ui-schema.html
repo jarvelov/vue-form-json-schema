@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>uiSchema | vue-form-json-schema</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="Vue package for using forms with JSON schema">
+    <meta name="theme-color" content="#e7a000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css" as="style"><link rel="preload" href="/vue-form-json-schema/assets/js/app.6235c556.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/2.ee529394.js" as="script"><link rel="preload" href="/vue-form-json-schema/assets/js/20.bd68f1ba.js" as="script"><link rel="prefetch" href="/vue-form-json-schema/assets/js/10.91908391.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/11.7954d130.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/12.7534bc55.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/13.9a212180.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/14.e60ef56d.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/15.bec0afe8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/16.1deba4d3.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/17.2d2fdd4b.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/18.937613e8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/19.d0339107.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/3.e70818f1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/4.d18b64f8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/5.4c800faf.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/6.a1188af8.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/7.acdeabf1.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/8.fde30cfe.js"><link rel="prefetch" href="/vue-form-json-schema/assets/js/9.39af20af.js">
+    <link rel="stylesheet" href="/vue-form-json-schema/assets/css/0.styles.f7623fc6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-form-json-schema/" class="home-link router-link-active"><!----> <span class="site-name">vue-form-json-schema</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-form-json-schema/guide/" class="nav-link router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-form-json-schema/guide/" class="nav-link router-link-active">
+  Docs
+</a></div><div class="nav-item"><a href="/vue-form-json-schema/examples/" class="nav-link">
+  Examples
+</a></div> <a href="https://github.com/jarvelov/vue-form-json-schema" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Docs</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-form-json-schema/guide/" aria-current="page" class="sidebar-link">Quick start</a></li><li><a href="/vue-form-json-schema/guide/installation.html" class="sidebar-link">Installation</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>API</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-form-json-schema/guide/components.html" class="sidebar-link">components</a></li><li><a href="/vue-form-json-schema/guide/options.html" class="sidebar-link">options</a></li><li><a href="/vue-form-json-schema/guide/schema.html" class="sidebar-link">schema</a></li><li><a href="/vue-form-json-schema/guide/ui-schema.html" aria-current="page" class="active sidebar-link">uiSchema</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#component" class="sidebar-link">component</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#children" class="sidebar-link">children</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#displayoptions" class="sidebar-link">displayOptions</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#full-form-model" class="sidebar-link">Full form model</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#single-field-model" class="sidebar-link">Single field model</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#usage-with-transitions" class="sidebar-link">Usage with transitions</a></li></ul></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#dynamicoptions" class="sidebar-link">dynamicOptions</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#full-form-model-2" class="sidebar-link">Full form model</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#single-field-model-2" class="sidebar-link">Single field model</a></li></ul></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#eventprop" class="sidebar-link">eventProp</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#erroroptions" class="sidebar-link">errorOptions</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#errorhandler" class="sidebar-link">errorHandler</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#fieldoptions" class="sidebar-link">fieldOptions</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#attrs" class="sidebar-link">attrs</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#class" class="sidebar-link">class</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#domprops" class="sidebar-link">domProps</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#key" class="sidebar-link">key</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#nativeon" class="sidebar-link">nativeOn</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#on" class="sidebar-link">on</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#props" class="sidebar-link">props</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#slot" class="sidebar-link">slot</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#style" class="sidebar-link">style</a></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#ref" class="sidebar-link">ref</a></li></ul></li><li class="sidebar-sub-header"><a href="/vue-form-json-schema/guide/ui-schema.html#valueprop" class="sidebar-link">valueProp</a></li></ul></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Examples</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="uischema"><a href="#uischema" class="header-anchor">#</a> uiSchema</h1> <p>The <code>uiSchema</code> is the schema for what components will be rendered and how they are configured. An item in the <code>uiSchema</code> array is called a <code>field</code>.</p> <p>A <code>field</code> can have the following properties:</p> <ul><li><a href="#component">component</a> <span style="color:red;">*</span> - The component/HTML tag to render</li> <li><a href="#children">children</a> - Fields to render inside this field</li> <li><a href="#dynamicoptions">dynamicOptions</a> - Dynamically add/remove options based on a JSON schema</li> <li><a href="#eventhandler">eventHandler</a></li> <li><a href="#errorhandler">errorHandler</a></li> <li><a href="#erroroptions">errorOptions</a></li> <li><a href="#fieldoptions">fieldOptions</a></li> <li><a href="#valueprop">valueProp</a></li></ul> <p><span style="color:red;">*</span> required</p> <p>Here is a basic example of how to transform the following Vue template into <code>fields</code> which can be used in a <code>uiSchema</code>.</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>form-group<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>model.firstName<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>The above would be translated into the following schema:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+  fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'form-group'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token string">'firstName'</span><span class="token punctuation">,</span>
+      fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+        on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Check out the <a href="/vue-form-json-schema/guide/examples.html">examples</a> for more complex demos and see how to integrate popular 3rd party UI libraries such as Bootstrap, Material UI, Element UI and more.</p> <h2 id="component"><a href="#component" class="header-anchor">#</a> component</h2> <p>The <code>component</code> property can refer to any <a href="https://vuejs.org/v2/guide/components.html" target="_blank" rel="noopener noreferrer">Vue component<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener noreferrer">HTML element tag name<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Option 1 - HTML element tag</span>
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      component<span class="token operator">:</span> <span class="token string">'div'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Option 2 - Globally registered component</span>
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      component<span class="token operator">:</span> <span class="token string">'my-custom-component'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Option 3 - component object</span>
+<span class="token keyword">import</span> MyCustomComponent <span class="token keyword">from</span> <span class="token string">'./my-custom-component'</span>
+
+<span class="token operator">...</span>
+
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      component<span class="token operator">:</span> MyCustomComponent
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Option 4 - Component from components prop</span>
+<span class="token keyword">import</span> MyCustomComponent <span class="token keyword">from</span> <span class="token string">'./my-custom-component'</span>
+
+<span class="token operator">...</span>
+
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'my-custom-component'</span><span class="token operator">:</span> MyCustomComponent
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      component<span class="token operator">:</span> <span class="token string">'my-custom-component'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">...</span><span class="token punctuation">.</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>vue<span class="token operator">-</span>form<span class="token operator">-</span>json<span class="token operator">-</span>schema
+    <span class="token operator">...</span>
+    <span class="token operator">:</span>components<span class="token operator">=</span><span class="token string">&quot;components&quot;</span>
+    <span class="token operator">:</span>ui<span class="token operator">-</span>schema<span class="token operator">=</span><span class="token string">&quot;uiSchema&quot;</span>
+  <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="children"><a href="#children" class="header-anchor">#</a> children</h2> <p>An array of fields. The rendered children (vnodes) will be passed in the default slot to the <code>component</code>, unless a <a href="#slot">slot</a> is set.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+        fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+          domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+            innerHTML<span class="token operator">:</span> <span class="token string">'The first second div'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+        fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+          domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+            innerHTML<span class="token operator">:</span> <span class="token string">'The first second div'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="displayoptions"><a href="#displayoptions" class="header-anchor">#</a> displayOptions</h2> <blockquote><p>Tip! This option plays nicely with <code>transition</code> and <code>transition-group</code>! See example at the bottom.</p></blockquote> <p>Sometimes a field is only relevant if some condition is met. The <code>displayOptions</code> property uses JSON Schema to evaluate if a field should be visible or not. If there are no errors then the field is shown.</p> <p>There are 2 options: Full and Single.</p> <h3 id="full-form-model"><a href="#full-form-model" class="header-anchor">#</a> Full form model</h3> <p>The full model uses the entire form model as data.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+        displayOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+          schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+            type<span class="token operator">:</span> object<span class="token punctuation">,</span>
+            properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+              firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+                type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+                minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            required<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'firstName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="single-field-model"><a href="#single-field-model" class="header-anchor">#</a> Single field model</h3> <p>The Full option can be a bit verbose when you only rely on a single field's model. By setting the <code>model</code> property on the <code>displayOptions</code> object we can apply the <code>schema</code> to the value of that field's model.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+        displayOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// Here we set to use the firstName model as the value to evaluate the schema against</span>
+          model<span class="token operator">:</span> <span class="token string">'firstName'</span><span class="token punctuation">,</span>
+          schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+            type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+            minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="usage-with-transitions"><a href="#usage-with-transitions" class="header-anchor">#</a> Usage with transitions</h3> <p>To get some nice transitions all that is needed is to nest the component in a <code>transition</code> or <code>transition-group</code> field.
+Check out the <a href="https://vuejs.org/v2/guide/transitions.html" target="_blank" rel="noopener noreferrer">Vue.js guide on transitions<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more info.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+  component<span class="token operator">:</span> <span class="token string">'transition'</span><span class="token punctuation">,</span>
+  fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Set the name prop to `fade`</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'fade'</span><span class="token punctuation">,</span>
+      <span class="token comment">// Any transition props such as `enter-class` can be set here</span>
+      <span class="token comment">// enterClass: ''</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    on<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Even javascript hooks are available</span>
+      <span class="token function-variable function">enter</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello!'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">leave</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'goodbye!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    displayOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      model<span class="token operator">:</span> <span class="token string">'firstName'</span>
+      schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+        minLength<span class="token operator">:</span> <span class="token number">3</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre></div><h2 id="dynamicoptions"><a href="#dynamicoptions" class="header-anchor">#</a> dynamicOptions</h2> <p>Sometimes a field needs to have properties added/removed when a field has a certain value. This is where <code>dynamicOptions</code> comes into play.
+<code>dynamicOptions</code> can alter any of a <a href="#field">field's top level properties</a>, like <code>children</code>, <code>component</code>, <code>fieldOptions</code> etc. when the given <code>schema</code> is <code>true</code> or <code>false</code>. The behavior is the same as <a href="#displayOptions">displayOptions</a>, however in contrast to <code>displayOptions</code> you can pass in an array of options by using an array.</p> <p>There are 2 options: Full and Single.</p> <h3 id="full-form-model-2"><a href="#full-form-model-2" class="header-anchor">#</a> Full form model</h3> <p>The full model uses the entire form model as data.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    dynamicOptions<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> object<span class="token punctuation">,</span>
+          required<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'firstName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+            firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+              type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+              minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// any of a field's top level properties are valid here</span>
+          fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// This class is added when the schema is evaluated to true</span>
+            <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'text-success'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="single-field-model-2"><a href="#single-field-model-2" class="header-anchor">#</a> Single field model</h3> <p>The Full option can be a bit verbose when you only rely on a single field's model. By setting the <code>model</code> property on the <code>displayOptions</code> object we can apply the <code>schema</code> to the value of that field's model.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    dynamicOptions<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment">// Here we set to use the firstName model as the value to evaluate the schema against</span>
+        model<span class="token operator">:</span> <span class="token string">'firstName'</span><span class="token punctuation">,</span>
+        schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+          minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// any of a field's top level properties are valid here</span>
+          fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// These properties are when the schema is evaluated to true</span>
+            <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'text-success'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+              innerHTML<span class="token operator">:</span>
+                <span class="token string">'Looking good, person with a first name with more than 3 characters!'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        model<span class="token operator">:</span> <span class="token string">'firstName'</span><span class="token punctuation">,</span>
+        schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+          maxLength<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// any of a field's top level properties are valid here</span>
+          fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// These properties are when the schema is evaluated to true</span>
+            <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'text-warning'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+              innerHTML<span class="token operator">:</span>
+                <span class="token string">'Hey, that is cool! Your first name is less than or equal to 2 characters!'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="eventprop"><a href="#eventprop" class="header-anchor">#</a> eventProp</h2> <p>Sets which property should be emitted as the field's value when the component emits an event which is based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" rel="noopener noreferrer">Event<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> interface. The property specified by <code>eventProp</code> is read from the event's <code>target</code> property, i.e. <code>event.target[eventProp]</code>. Default value is <code>value</code>, i.e. <code>event.target['value']</code>.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    model<span class="token operator">:</span> <span class="token string">'isChecked'</span><span class="token punctuation">,</span>
+    eventProp<span class="token operator">:</span> <span class="token string">'checked'</span><span class="token punctuation">,</span>
+    valueProp<span class="token operator">:</span> <span class="token string">'checked'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token string">'checkbox'</span><span class="token punctuation">,</span>
+      on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="erroroptions"><a href="#erroroptions" class="header-anchor">#</a> errorOptions</h2> <p>Same API as <a href="/vue-form-json-schema/guide/field-options.html">fieldOptions</a> but is only applied when the field has errors and has been modified.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    model<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    errorOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'is-invalid'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'form-control'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="errorhandler"><a href="#errorhandler" class="header-anchor">#</a> errorHandler</h2> <p><code>errorHandler</code> is a Boolean, which is set to true for fields which should handle the error messages for a model.
+The component will get the the same props as any other component but it cannot receive any <a href="/vue-form-json-schema/guide/children.html">children</a> as the default slot is populated by the rendered <code>errors</code>.</p> <p>The errors are passed as the default slot are rendered individually as a <code>&lt;div&gt;</code>.
+If you want to render them differently you can handle the errors in the <code>vfjsFieldErrors</code> prop yourself. This is an array of the <a href="https://github.com/epoberezkin/ajv#validation-errors" target="_blank" rel="noopener noreferrer">Ajv validation errors<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    schema<span class="token operator">:</span> <span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+      required<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+        input<span class="token operator">:</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+          minLength<span class="token operator">:</span> <span class="token number">1</span> <span class="token comment">// The value's length has to be at least 1 character</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Optionally set the attributes on the dom element as well</span>
+        <span class="token comment">// This can be used to let the browser validate the form</span>
+        <span class="token comment">//</span>
+        <span class="token comment">// If you don't want the browser to validate the form</span>
+        <span class="token comment">// use the `novalidate` attribute on &lt;vue-form-json-schema/&gt;</span>
+        attrs<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// Set required attribute on the dom element</span>
+          required<span class="token operator">:</span> <span class="token boolean">true</span>
+          <span class="token comment">// Set minlength attribute</span>
+          minlength<span class="token operator">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'change'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token comment">// This component takes care of the errors from 'input'</span>
+      <span class="token comment">// If the form is submitted with the input being empty the error handler</span>
+      <span class="token comment">// will render the errors inside it</span>
+      component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+      model<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      errorHandler<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'bg-danger'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="fieldoptions"><a href="#fieldoptions" class="header-anchor">#</a> fieldOptions</h2> <p>Under the hood <code>vue-form-json-schema</code> is using Vue's <a href="https://vuejs.org/v2/guide/render-function.html" target="_blank" rel="noopener noreferrer">render functions<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> to create the form elements. This means basically any property that is supported in a render function can be used in the <code>fieldOptions</code> object.
+See Vue's guide on render function's <a href="https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth" target="_blank" rel="noopener noreferrer">Data Object In-Depth<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more details on all available properties</p> <p>The following properties are tested and supported with <code>vue-form-json-schema</code></p> <ul><li><a href="#attrs">attrs</a></li> <li><a href="#class">class</a></li> <li><a href="#domprops">domProps</a></li> <li><a href="#key">key</a></li> <li><a href="#nativeon">nativeOn</a></li> <li><a href="#on">on</a></li> <li><a href="#props">props</a></li> <li><a href="#slot">slot</a></li> <li><a href="#style">style</a></li></ul> <h3 id="attrs"><a href="#attrs" class="header-anchor">#</a> attrs</h3> <p>Essentially any normal html attributes</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Normal HTML attributes</span>
+uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      attrs<span class="token operator">:</span> <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span>
+        placeholder<span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="class"><a href="#class" class="header-anchor">#</a> class</h3> <p>The <code>class</code> property can be configured in 3 ways. Either as an <code>Object</code>, <code>Array</code> or simply a <code>String</code>. This is basically the same syntax as <a href="https://vuejs.org/v2/guide/class-and-style.html" target="_blank" rel="noopener noreferrer"><code>v-bind:class</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> uses.</p> <h4 id="object"><a href="#object" class="header-anchor">#</a> Object</h4> <p>An <code>Object</code> must have the classes as keys and the keys' value should be a <code>Boolean</code>.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'col-12'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// class is included</span>
+        <span class="token string">'col-md-6'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// class is included</span>
+        <span class="token string">'col-lg-4'</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// class is NOT included</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="array"><a href="#array" class="header-anchor">#</a> Array</h4> <p>An <code>Array</code> should be a an array of strings, multidimensional arrays or arrays with any other values other than strings are not supported.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// All values in array are included</span>
+      <span class="token keyword">class</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'col-12'</span><span class="token punctuation">,</span> <span class="token string">'col-md-6'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="string"><a href="#string" class="header-anchor">#</a> String</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Option 3: String</span>
+uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">'col-12 col-md-6'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="domprops"><a href="#domprops" class="header-anchor">#</a> domProps</h3> <p><code>vue-form-json-schema</code> follows <a href="https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth" target="_blank" rel="noopener noreferrer">Vue's render functions syntax<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>. This property seems to really only exist in order to set <code>innerHTML</code>.
+Be careful about setting <code>innerHTML</code> as that effectively disables a field's ability to render children</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// DOM properties</span>
+uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+        innerHTML<span class="token operator">:</span> <span class="token string">'&lt;div style=&quot;background-color: red&quot;&gt;Hello&lt;/div&gt;'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="key"><a href="#key" class="header-anchor">#</a> key</h3> <p>This property is set to each field's unique internal id by default. You can optionally override it should you wish to specifiy it.</p> <blockquote><p>The key special attribute is primarily used as a hint for Vue’s virtual DOM algorithm to identify VNodes when diffing the new list of nodes against the old list. - <a href="https://vuejs.org/v2/api/#key" target="_blank" rel="noopener noreferrer">Vue.js guide<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <h3 id="nativeon"><a href="#nativeon" class="header-anchor">#</a> nativeOn</h3> <p>Register events listeners for native <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener noreferrer">Events<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.
+Accepts a <code>String</code>, <code>Array</code> or an <code>Object</code>.</p> <h4 id="string-2"><a href="#string-2" class="header-anchor">#</a> String</h4> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      nativeOn<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="array-2"><a href="#array-2" class="header-anchor">#</a> Array</h4> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      nativeOn<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="object-2"><a href="#object-2" class="header-anchor">#</a> Object</h4> <p>An <code>Object</code> can be used if the value should be manipulated or used elsewhere before set in to the model.</p> <blockquote><p>Note that the callback must be synchronous</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+  component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+  fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    nativeOn<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'input'</span><span class="token operator">:</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token function">String</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="on"><a href="#on" class="header-anchor">#</a> on</h3> <p>Register events listeners for <a href="https://vuejs.org/v2/guide/components.html#Custom-Events" target="_blank" rel="noopener noreferrer">Custom Events<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> emitted using <a href="https://vuejs.org/v2/api/#vm-emit" target="_blank" rel="noopener noreferrer"><code>$emit</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.
+Accepts a <code>String</code>, <code>Array</code> or an <code>Object</code>.</p> <h4 id="string-3"><a href="#string-3" class="header-anchor">#</a> String</h4> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      on<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="array-3"><a href="#array-3" class="header-anchor">#</a> Array</h4> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'input'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="object-3"><a href="#object-3" class="header-anchor">#</a> Object</h4> <p>An <code>Object</code> can be used if the value should be manipulated or used elsewhere before set in the model.</p> <blockquote><p>Note that the callback must be synchronous</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+  component<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+  fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    on<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">input</span><span class="token operator">:</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token function">String</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="props"><a href="#props" class="header-anchor">#</a> props</h3> <p>Plain <a href="https://vuejs.org/v2/guide/components.html#Props" target="_blank" rel="noopener noreferrer">Vue props<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'my-custom-component'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      props<span class="token operator">:</span> <span class="token punctuation">{</span>
+        message<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="slot"><a href="#slot" class="header-anchor">#</a> slot</h3> <blockquote><p>Used on content inserted into child components to indicate which named slot the content belongs to. - <a href="https://vuejs.org/v2/api/#slot" target="_blank" rel="noopener noreferrer">Vue.js guide<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <p><code>MyCustomComponent.vue</code></p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>This is the default main slot text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><code>MyForm.vue</code></p> <div class="language-html extra-class"><pre class="language-html"><code>...
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+          component<span class="token operator">:</span> <span class="token string">'my-custom-component'</span> <span class="token comment">// globally registered component</span>
+          children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+            fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+              domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+                innerHTML<span class="token operator">:</span> <span class="token string">'This child component will occupy the main slot of the parent'</span>
+              <span class="token punctuation">}</span>
+              slot<span class="token operator">:</span> <span class="token string">'main'</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="style"><a href="#style" class="header-anchor">#</a> style</h3> <p>The style property is simply an object where the key is the style property and the value is the property value. See Vue's guide on <a href="https://vuejs.org/v2/guide/class-and-style.html#Binding-Inline-Styles" target="_blank" rel="noopener noreferrer"><code>v-bind:style</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more information.</p> <blockquote><p>Note that the <a href="https://vuejs.org/v2/guide/class-and-style.html#Array-Syntax-1" target="_blank" rel="noopener noreferrer">Array syntax<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> is NOT tested yet as of 2017-12-17</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      domProps<span class="token operator">:</span> <span class="token punctuation">{</span>
+        innerHTML<span class="token operator">:</span> <span class="token string">'This is some red text'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        color<span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+        fontSize<span class="token operator">:</span> <span class="token string">'13px'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="ref"><a href="#ref" class="header-anchor">#</a> ref</h3> <p>Not supported yet</p> <h2 id="valueprop"><a href="#valueprop" class="header-anchor">#</a> valueProp</h2> <p>Sets the property to which the field's <code>model</code> value is passed. Default is <code>value</code>.</p> <div class="language-js extra-class"><pre class="language-js"><code>uiSchema<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    component<span class="token operator">:</span> <span class="token string">'list'</span><span class="token punctuation">,</span>
+    model<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    valueProp<span class="token operator">:</span> <span class="token string">'items'</span><span class="token punctuation">,</span>
+    fieldOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      on<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'change'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue-form-json-schema/guide/schema.html" class="prev">
+        schema
+      </a></span> <span class="next"><a href="/vue-form-json-schema/examples/basic-input.html">
+        Basic input
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/vue-form-json-schema/assets/js/app.6235c556.js" defer></script><script src="/vue-form-json-schema/assets/js/2.ee529394.js" defer></script><script src="/vue-form-json-schema/assets/js/20.bd68f1ba.js" defer></script>
+  </body>
+</html>
