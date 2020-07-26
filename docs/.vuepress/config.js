@@ -1,4 +1,4 @@
-const { description } = require('../../package');
+const { description, version } = require('../../package');
 
 module.exports = {
   base: '/vue-form-json-schema/',
@@ -31,6 +31,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
+    version,
     repo: 'https://github.com/jarvelov/vue-form-json-schema',
     sidebarDepth: 2,
     editLinks: false,
