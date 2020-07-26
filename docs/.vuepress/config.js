@@ -55,6 +55,7 @@ module.exports = {
           'guide/',
           {
             title: 'API',
+            collapsable: false,
             children: [
               'guide/components',
               'guide/options',
