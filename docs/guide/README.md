@@ -46,7 +46,7 @@ Vue.component('vue-form-json-schema', VueFormJsonSchema);
 
 ## 3. Usage
 
-That's it! You're ready to start using `vue-form-json-schema`! Here is a basic example with a single input field to get you
+That's it! You're ready to start using `vue-form-json-schema`! Here is a basic example with a single input field to get you going.
 
 ```html
 <script>
