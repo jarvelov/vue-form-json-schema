@@ -52,7 +52,7 @@ module.exports = {
         title: 'Docs',
         collapsable: false,
         children: [
-          'guide/quick-start',
+          'guide/',
           'guide/installation',
           {
             title: 'API',
