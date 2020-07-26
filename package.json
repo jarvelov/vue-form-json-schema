@@ -11,7 +11,7 @@
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "vuepress dev docs",
-    "build::docs": "vuepress build docs"
+    "build:docs": "vuepress build docs"
   },
   "author": "Tobias Järvelöv <tobias@jarvelov.se>",
   "license": "MIT",
