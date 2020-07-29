@@ -106,6 +106,19 @@ const vfjsValidationGetters = {
 
         if (isRequired) {
           set(schema, required, [path]);
+
+          // IF   ajv-errors plugin is present (errorMessage keyword is added)
+          // AND  fieldSchema has a custom errorMessage definition:
+          // THEN add that errorMessage one level up in the schema's hierarchy
+          //      (right next to where the required fields are defined)
+          //      so that ajv can handle this properly with the ajv-errors plugin
+          if (this.ajv.RULES.keywords.errorMessage && fieldSchema.errorMessage) {
+            const errorMessagePath = previousPaths.length > 0
+              ? `${previousProperties}.errorMessage`
+              : 'errorMessage';
+
+            set(schema, errorMessagePath, fieldSchema.errorMessage);
+          }
         }
       } else {
         set(schema, properties, {});
