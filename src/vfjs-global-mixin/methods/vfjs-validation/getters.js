@@ -18,7 +18,7 @@ const vfjsValidationGetters = {
       if (error.keyword === 'required') {
         if (error.params && error.params.missingProperty) {
           const key = error.params.missingProperty;
-          const parent = String(error.dataPath).substr(1);
+          const parent = String(error.dataPath).substr(1).replace(/\//g, '.');
           const propertyPath = parent ? `${parent}.${key}` : key;
 
           if (required.indexOf(propertyPath) === -1) {
