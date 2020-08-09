@@ -1,1 +1,0 @@
-../../../../examples/components/Examples/BasicValueProp.vue

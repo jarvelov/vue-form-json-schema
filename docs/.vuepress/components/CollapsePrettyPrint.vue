@@ -1,1 +1,0 @@
-../../../examples/components/CollapsePrettyPrint.vue

@@ -1,1 +1,0 @@
-../../../../examples/components/Examples/BasicInput.vue
