@@ -14,8 +14,8 @@
   "author": "Tobias Järvelöv <tobias@jarvelov.se>",
   "license": "MIT",
   "dependencies": {
-    "ajv": "^6.11.0",
-    "lodash": "^4.17.15"
+    "ajv": "^6.12.3",
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
