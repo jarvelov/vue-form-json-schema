@@ -5,6 +5,7 @@
  */
 
 import VueFormJsonSchema from '../../dist/vue-form-json-schema.esm.js';
+import registerComponents from '../../examples/components/register';
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -12,6 +13,7 @@ export default ({
   router, // the router instance for the app
   siteData, // site metadata
 }) => {
-  // ...apply enhancements for the site.
   Vue.component('vue-form-json-schema', VueFormJsonSchema);
+
+  registerComponents(Vue);
 };
