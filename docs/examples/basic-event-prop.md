@@ -17,6 +17,6 @@ When a [field's](../guide/ui-schema.md) component emits an [Event](https://devel
 }
 ```
 
-<Examples-BasicValueProp />
+<basic-event-prop />
 
 <a href="">Edit on CodeSandbox</a>

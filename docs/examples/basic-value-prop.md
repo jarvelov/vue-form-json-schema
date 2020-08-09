@@ -13,4 +13,4 @@ We specify what prop we want to send the value in the `model` to with the [value
 }
 ```
 
-<Examples-BasicValueProp />
+<basic-value-prop />
