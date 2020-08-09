@@ -28,6 +28,7 @@
 <script>
 export default {
   name: 'example-basic-input-checkbox',
+  label: 'Specify event property to use as value',
   data() {
     return {
       model: {},

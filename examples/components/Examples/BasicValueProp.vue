@@ -28,6 +28,7 @@
 <script>
 export default {
   name: 'example-basic-value-prop',
+  label: 'Pass field value to specific prop',
   data() {
     return {
       model: {},

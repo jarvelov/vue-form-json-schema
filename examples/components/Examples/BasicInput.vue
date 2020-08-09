@@ -40,6 +40,7 @@
 <script>
 export default {
   name: 'example-basic-input-checkbox',
+  label: 'Basic input',
   data() {
     return {
       model: {},
