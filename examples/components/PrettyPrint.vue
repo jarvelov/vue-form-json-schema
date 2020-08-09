@@ -32,7 +32,7 @@ export default {
               return match.substring(1, match.length - 2) + ':';
             } else {
               className = 'token string';
-              match = match.replace(/\"/g, "'");
+              match = match.replace(/"/g, "'");
             }
           } else if (/true|false/.test(match)) {
             className = 'token boolean';
