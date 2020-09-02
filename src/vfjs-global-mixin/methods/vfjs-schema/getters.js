@@ -12,7 +12,9 @@ const vfjsSchemaGetters = {
   },
   getVfjsSchema(key) {
     if (key) {
-      return get(this.vfjsSchema.properties, key) || this.getVfjsSchemaFallback(key);
+      return (
+        get(this.vfjsSchema.properties, key) || this.getVfjsSchemaFallback(key)
+      );
     }
 
     return this.vfjsSchema;
@@ -38,10 +40,10 @@ const vfjsSchemaGetters = {
         return this.getVfjsSchemaPath(`${arrayPath}.0`);
       } else if (schema.oneOf instanceof Array) {
         const index = schema.oneOf.findIndex(
-          optionSchema => (
-            optionSchema.properties instanceof Object && Object.keys(optionSchema.properties).includes(key)
-          ),
+          optionSchema => optionSchema.properties instanceof Object
+            && Object.keys(optionSchema.properties).includes(key),
         );
+
         return this.getVfjsSchemaPath(`${path}.oneOf.${index}`, key);
       } else if (schema.properties instanceof Object) {
         return this.getVfjsSchemaPath(`${path}.properties`, key);
