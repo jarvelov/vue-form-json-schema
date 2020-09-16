@@ -4,16 +4,16 @@ import vfjsFieldComponent from '../../../vfjs-field-component';
 const vfjsHelpers = {
   vfjsHelperCreateField(vfjsFieldUiSchema) {
     const {
-      id: vfjsFieldId,
-      children = [],
       component,
+      children = [],
+      id: vfjsFieldId,
       errorHandler: vfjsFieldErrorHandler,
       errorOptions: vfjsFieldErrorOptions = {},
+      eventProp: vfjsFieldEventProp = this.vfjsOptions.eventProp,
       fieldOptions: vfjsFieldOptions = {},
       model: vfjsFieldModelKey = '',
       required: vfjsFieldRequired = false,
       valueProp: vfjsFieldValueProp = this.vfjsOptions.valueProp,
-      eventProp: vfjsFieldEventProp = this.vfjsOptions.eventProp,
     } = vfjsFieldUiSchema;
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
