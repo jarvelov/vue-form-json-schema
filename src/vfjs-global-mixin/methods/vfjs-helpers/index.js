@@ -14,6 +14,7 @@ const vfjsHelpers = {
       model: vfjsFieldModelKey = '',
       required: vfjsFieldRequired = false,
       valueProp: vfjsFieldValueProp = this.vfjsOptions.valueProp,
+      valueModel: vfjsFieldValueModelKey,
     } = vfjsFieldUiSchema;
 
     const vfjsFieldSchema = this.getVfjsFieldSchema(vfjsFieldModelKey) || {};
@@ -22,6 +23,9 @@ const vfjsHelpers = {
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsModel = this.getVfjsModel();
     const vfjsState = this.getVfjsState();
+    const vfjsFieldValueModel = vfjsFieldValueModelKey
+      ? this.getVfjsFieldModel(vfjsFieldValueModelKey)
+      : undefined;
 
     // Get field errors
     const { vfjsFieldErrors = [] } = vfjsFieldState;
@@ -58,6 +62,8 @@ const vfjsHelpers = {
       vfjsFieldState,
       vfjsFieldUiSchema,
       vfjsFieldValueProp,
+      vfjsFieldValueModel,
+      vfjsFieldValueModelKey,
       vfjsFieldEventProp,
       vfjsModel,
       vfjsState,

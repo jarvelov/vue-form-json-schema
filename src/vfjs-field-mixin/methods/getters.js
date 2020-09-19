@@ -66,7 +66,7 @@ const getters = {
 
     const valueProp = {
       props: {
-        [this.vfjsFieldValueProp]: this.vfjsFieldModel,
+        [this.vfjsFieldValueProp]: this.vfjsFieldValueModel || this.vfjsFieldModel,
       },
     };
 
