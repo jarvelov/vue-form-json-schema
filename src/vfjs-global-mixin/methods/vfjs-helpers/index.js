@@ -23,9 +23,7 @@ const vfjsHelpers = {
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsModel = this.getVfjsModel();
     const vfjsState = this.getVfjsState();
-    const vfjsFieldValueModel = vfjsFieldValueModelKey
-      ? this.getVfjsFieldModel(vfjsFieldValueModelKey)
-      : undefined;
+    const vfjsFieldValueModel = this.getVfjsFieldValueModel(vfjsFieldValueModelKey);
 
     // Get field errors
     const { vfjsFieldErrors = [] } = vfjsFieldState;
