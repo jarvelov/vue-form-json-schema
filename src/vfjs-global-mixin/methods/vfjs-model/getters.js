@@ -1,6 +1,13 @@
 import { get } from 'lodash';
 
 const vfjsModelGetters = {
+  getVfjsFieldValueModel(key) {
+    if (typeof key === 'string') {
+      return this.getVfjsFieldModel(key);
+    }
+
+    return undefined;
+  },
   getVfjsFieldModel(key) {
     if (key) {
       return this.getVfjsModel(key);
