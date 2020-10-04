@@ -6,6 +6,10 @@ const vfjsModelGetters = {
       return this.getVfjsFieldModel(key);
     }
 
+    if (key === true) {
+      return this.getVfjsModel();
+    }
+
     return undefined;
   },
   getVfjsFieldModel(key) {
