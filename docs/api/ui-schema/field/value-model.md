@@ -3,6 +3,8 @@
 Sets which field's model value is passed down as the `value` prop. Default is the same as the field set in the `model` property.
 This is useful if you want to use another field's `model` as the value for another field. Note that the [valueProp](./value-prop.md) can set the `valueModel` to be passed to another prop than `value`.
 
+You can also use `valueModel: true` to pass the entire form model to the field.
+
 ## Example
 
 This example
