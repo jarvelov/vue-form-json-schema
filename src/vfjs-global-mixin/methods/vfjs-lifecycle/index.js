@@ -47,7 +47,7 @@ const vfjsLifecycle = {
                 cb: () => {
                   // Set up ui schema
                   this.setVfjsUiSchema(this.uiSchema);
-                }
+                },
               });
             },
           });
