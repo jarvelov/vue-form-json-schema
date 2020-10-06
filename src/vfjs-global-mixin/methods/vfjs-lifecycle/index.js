@@ -33,9 +33,6 @@ const vfjsLifecycle = {
     // Set up validation
     this.vfjsValidationInitialize();
 
-    // Set up ui schema
-    this.setVfjsUiSchema(this.uiSchema);
-
     // Check if validation is enabled and set to run on load
     if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
       const vfjsModel = this.getVfjsModel();
@@ -48,13 +45,17 @@ const vfjsLifecycle = {
             cb: () => {
               this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
                 cb: () => {
-                  this.setVfjsFields();
+                  // Set up ui schema
+                  this.setVfjsUiSchema(this.uiSchema);
                 }
               });
             },
           });
         },
       });
+    } else {
+      // Set up ui schema
+      this.setVfjsUiSchema(this.uiSchema);
     }
   },
 };
