@@ -36,9 +36,6 @@ const vfjsLifecycle = {
     // Set up ui schema
     this.setVfjsUiSchema(this.uiSchema);
 
-    // Check and set active fields (visible)
-    this.setVfjsUiFieldsActive();
-
     // Check if validation is enabled and set to run on load
     if (this.vfjsOptions.validate && this.vfjsOptions.validateOnLoad) {
       const vfjsModel = this.getVfjsModel();
