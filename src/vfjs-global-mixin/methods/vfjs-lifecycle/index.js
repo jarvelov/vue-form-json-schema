@@ -6,7 +6,7 @@ const vfjsLifecycle = {
   },
   vfjsInitialize() {
     // Set the JSON schema
-    this.setVfjsSchema(this.schema);
+    this.setVfjsSchema(this.schema, true);
 
     // Set up options
     this.vfjsOptions = {
