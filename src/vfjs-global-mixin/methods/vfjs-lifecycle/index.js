@@ -1,4 +1,8 @@
-import { VFJS_EVENT_MODEL_VALIDATE, VFJS_EVENT_STATE_UPDATE } from '../../../constants';
+import {
+  VFJS_EVENT_MODEL_VALIDATE,
+  VFJS_EVENT_STATE_UPDATE,
+  VFJS_EVENT_STATE_UPDATED,
+} from '../../../constants';
 
 const vfjsLifecycle = {
   vfjsDestroy() {
@@ -42,7 +46,16 @@ const vfjsLifecycle = {
       this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
         vfjsModel,
         cb: (vfjsState) => {
-          this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, { value: vfjsState });
+          this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+            value: vfjsState,
+            cb: () => {
+              this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
+                cb: () => {
+                  this.setVfjsFields();
+                }
+              });
+            },
+          });
         },
       });
     }
