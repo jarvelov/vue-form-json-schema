@@ -61,6 +61,7 @@ const template = `
 
 window.Vue.component('example-three', {
   name: 'example-three',
+  template,
   data() {
     return {
       model: {},
