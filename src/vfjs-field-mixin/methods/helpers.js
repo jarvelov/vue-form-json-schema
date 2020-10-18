@@ -28,7 +28,10 @@ const helpers = {
     let eventsObj = events;
 
     if (Array.isArray(events)) {
-      eventsObj = events.reduce((obj, event) => ({ ...obj, [event]: true }), {});
+      eventsObj = events.reduce(
+        (obj, event) => ({ ...obj, [event]: true }),
+        {},
+      );
     } else if (typeof events === 'string') {
       eventsObj = { [events]: true };
     }
@@ -109,7 +112,7 @@ const helpers = {
               const keys = properties[property];
 
               return Object.keys(keys).every(
-                key => this.vfjsFieldOptions[property][key] === keys[key],
+                (key) => this.vfjsFieldOptions[property][key] === keys[key],
               );
             }
 
