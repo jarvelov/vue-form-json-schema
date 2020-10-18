@@ -13,6 +13,7 @@
     }],
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
-    }]
+    }],
+    "operator-linebreak": ["error", "after"]
   }
 }
