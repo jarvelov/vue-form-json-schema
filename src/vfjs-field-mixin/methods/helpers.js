@@ -72,20 +72,25 @@ const helpers = {
     return classes;
   },
   vfjsFieldHelperEventHandler(key, cb) {
-    return (data) => {
+    return (...args) => {
       if (typeof cb === 'function') {
-        return this.setVfjsFieldModel(cb(data));
+        return this.setVfjsFieldModel(cb(...args));
       }
 
-      if (data instanceof Event) {
-        if (data.target && typeof data.target[this.vfjsFieldEventProp] !== 'undefined') {
-          return this.setVfjsFieldModel(data.target[this.vfjsFieldEventProp]);
+      if (args[0] instanceof Event) {
+        if (
+          args[0].target &&
+          typeof args[0].target[this.vfjsFieldEventProp] !== 'undefined'
+        ) {
+          return this.setVfjsFieldModel(
+            args[0].target[this.vfjsFieldEventProp],
+          );
         }
 
         return this.setVfjsFieldModel(undefined);
       }
 
-      return this.setVfjsFieldModel(data);
+      return this.setVfjsFieldModel(args[0]);
     };
   },
   vfjsFieldHelperFormatEventsReducer(events = {}) {
