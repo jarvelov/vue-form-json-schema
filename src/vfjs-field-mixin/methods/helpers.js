@@ -132,7 +132,7 @@ const helpers = {
   vfjsFieldHelperAttrsChecked() {
     const { checked = [] } = this.vfjsOptions.componentProperties.attrs;
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
+      if (this.vfjsFieldModel === this.vfjsFieldOptions.attrs.value) {
         return true;
       }
 
