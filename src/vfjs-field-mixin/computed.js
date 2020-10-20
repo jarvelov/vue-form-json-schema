@@ -20,61 +20,29 @@ const computed = {
       : {};
   },
   vfjsComputedFieldAttrs() {
+    const required = this.vfjsFieldHelperAttrsRequired();
+    const value = this.vfjsFieldHelperAttrsValue();
+    const checked = this.vfjsFieldHelperAttrsChecked();
+
     const attrs = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
+      required,
+      value,
+      checked,
     };
-
-    const {
-      checked = [],
-      required = [],
-      value = [],
-    } = this.vfjsOptions.componentProperties.attrs;
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
-      attrs.required = this.vfjsFieldRequired;
-    }
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
-      attrs.value =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
-    }
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      attrs.checked =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked);
-    }
 
     return attrs;
   },
   vfjsComputedFieldDomProps() {
-    const domProps = {};
+    const innerHTML = this.vfjsFieldHelperDomPropsInnerHTML();
+    const value = this.vfjsFieldHelperDomPropsValue();
+    const checked = this.vfjsFieldHelperDomPropsChecked();
 
-    const { innerHTML = [] } = this.vfjsOptions.componentProperties;
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(innerHTML)) {
-      domProps.innerHTML =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.domProps &&
-          this.vfjsFieldOptions.domProps.innerHTML);
-    }
-
-    const { checked, value } = this.vfjsOptions.componentProperties.domProps;
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
-      domProps.value =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.domProps &&
-          this.vfjsFieldOptions.domProps.value);
-    }
-
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      domProps.checked =
-        this.vfjsFieldModel ||
-        (this.vfjsFieldOptions.domProps &&
-          this.vfjsFieldOptions.domProps.checked);
-    }
+    const domProps = {
+      innerHTML,
+      value,
+      checked,
+    };
 
     return domProps;
   },

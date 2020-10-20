@@ -129,6 +129,83 @@ const helpers = {
       return false;
     });
   },
+  vfjsFieldHelperAttrsChecked() {
+    const { checked = [] } = this.vfjsOptions.componentProperties.attrs;
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
+      if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
+        return true;
+      }
+
+      return this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked;
+    }
+
+    return undefined;
+  },
+  vfjsFieldHelperAttrsRequired() {
+    const { required = [] } = this.vfjsOptions.componentProperties.attrs;
+
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
+      return this.vfjsFieldRequired;
+    }
+
+    return undefined;
+  },
+  vfjsFieldHelperAttrsValue() {
+    const { value = [] } = this.vfjsOptions.componentProperties.attrs;
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
+      if (this.vfjsFieldModel) {
+        return this.vfjsFieldModel;
+      }
+
+      return this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value;
+    }
+
+    return undefined;
+  },
+  vfjsFieldHelperDomPropsInnerHTML() {
+    const { innerHTML = [] } = this.vfjsOptions.componentProperties;
+
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(innerHTML)) {
+      if (this.vfjsFieldModel) {
+        return this.vfjsFieldModel;
+      }
+
+      return (
+        this.vfjsFieldOptions.domProps &&
+        this.vfjsFieldOptions.domProps.innerHTML
+      );
+    }
+
+    return undefined;
+  },
+  vfjsFieldHelperDomPropsValue() {
+    const { value = [] } = this.vfjsOptions.componentProperties;
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
+      if (this.vfjsFieldModel) {
+        return this.vfjsFieldModel;
+      }
+
+      return (
+        this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value
+      );
+    }
+
+    return undefined;
+  },
+  vfjsFieldHelperDomPropsChecked() {
+    const { checked = [] } = this.vfjsOptions.componentProperties;
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
+      if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
+        return true;
+      }
+
+      return (
+        this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked
+      );
+    }
+
+    return undefined;
+  },
 };
 
 export default helpers;
