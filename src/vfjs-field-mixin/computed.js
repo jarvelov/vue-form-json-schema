@@ -2,12 +2,16 @@ import { merge } from 'lodash';
 
 const computed = {
   vfjsComputedFieldHasErrors() {
-    return this.vfjsFieldState.vfjsFieldErrors && this.vfjsFieldState.vfjsFieldErrors.length > 0;
+    return (
+      this.vfjsFieldState.vfjsFieldErrors &&
+      this.vfjsFieldState.vfjsFieldErrors.length > 0
+    );
   },
   vfjsComputedShowFieldErrors() {
     return (
-      (this.vfjsFieldState.vfjsFieldDirty && this.vfjsFieldState.vfjsFieldBlur)
-      || this.vfjsOptions.showValidationErrors
+      (this.vfjsFieldState.vfjsFieldDirty &&
+        this.vfjsFieldState.vfjsFieldBlur) ||
+      this.vfjsOptions.showValidationErrors
     );
   },
   vfjsComputedFieldErrorOptions() {
@@ -20,18 +24,26 @@ const computed = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
     };
 
-    const { checked = [], required = [], value = [] } = this.vfjsOptions.componentProperties.attrs;
+    const {
+      checked = [],
+      required = [],
+      value = [],
+    } = this.vfjsOptions.componentProperties.attrs;
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
       attrs.required = this.vfjsFieldRequired;
     }
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
-      attrs.value = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
+      attrs.value =
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.value);
     }
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      attrs.checked = this.vfjsFieldModel || (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked);
+      attrs.checked =
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked);
     }
 
     return attrs;
@@ -42,20 +54,26 @@ const computed = {
     const { innerHTML = [] } = this.vfjsOptions.componentProperties;
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(innerHTML)) {
-      domProps.innerHTML = this.vfjsFieldModel
-        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.innerHTML);
+      domProps.innerHTML =
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.domProps &&
+          this.vfjsFieldOptions.domProps.innerHTML);
     }
 
     const { checked, value } = this.vfjsOptions.componentProperties.domProps;
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
-      domProps.value = this.vfjsFieldModel
-        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.value);
+      domProps.value =
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.domProps &&
+          this.vfjsFieldOptions.domProps.value);
     }
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      domProps.checked = this.vfjsFieldModel
-        || (this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked);
+      domProps.checked =
+        this.vfjsFieldModel ||
+        (this.vfjsFieldOptions.domProps &&
+          this.vfjsFieldOptions.domProps.checked);
     }
 
     return domProps;
