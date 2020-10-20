@@ -2,11 +2,14 @@ import { isEmpty, merge } from 'lodash';
 
 const getters = {
   getVfjsAttributes() {
-    return this.getVfjsFieldAttributes(this.vfjsFieldOptions, this.vfjsComputedMergedFieldOptions);
+    return this.getVfjsFieldAttributes(
+      this.vfjsFieldOptions,
+      this.vfjsComputedMergedFieldOptions,
+    );
   },
   getVfjsChildren() {
     const { default: defaultSlot, ...slots } = this.$slots;
-    const namedSlots = Object.keys(slots).map(key => [
+    const namedSlots = Object.keys(slots).map((key) => [
       this.$createElement(
         'template',
         {
@@ -20,7 +23,10 @@ const getters = {
   },
   getVfjsFieldAttributes(
     {
-      class: optionsClass, on: optionsOn, nativeOn: optionsNativeOn, ...options
+      class: optionsClass,
+      on: optionsOn,
+      nativeOn: optionsNativeOn,
+      ...options
     } = {},
     {
       class: defaultOptionsClass,
@@ -66,7 +72,8 @@ const getters = {
 
     const valueProp = {
       props: {
-        [this.vfjsFieldValueProp]: this.vfjsFieldValueModel || this.vfjsFieldModel,
+        [this.vfjsFieldValueProp]:
+          this.vfjsFieldValueModel || this.vfjsFieldModel,
       },
     };
 
