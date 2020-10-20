@@ -52,7 +52,12 @@ const data = () => ({
               type: 'checkbox',
             },
           },
-          'radio',
+          {
+            component: 'input',
+            attrs: {
+              type: 'radio',
+            },
+          },
         ],
         // Components which support the 'required' attribute
         required: ['input', 'select', 'textarea'],
@@ -68,7 +73,12 @@ const data = () => ({
               type: 'checkbox',
             },
           },
-          'radio',
+          {
+            component: 'input',
+            attrs: {
+              type: 'radio',
+            },
+          },
         ],
         // Components which should have its DOM property 'required' updated
         required: ['input', 'select', 'textarea'],
