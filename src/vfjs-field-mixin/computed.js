@@ -2,22 +2,22 @@ import { merge } from 'lodash';
 
 const computed = {
   vfjsComputedFieldHasErrors() {
-    return (
-      this.vfjsFieldState.vfjsFieldErrors &&
-      this.vfjsFieldState.vfjsFieldErrors.length > 0
-    );
+    const { vfjsFieldErrors } = this.vfjsFieldState;
+
+    return vfjsFieldErrors && vfjsFieldErrors.length > 0;
   },
   vfjsComputedShowFieldErrors() {
-    return (
-      (this.vfjsFieldState.vfjsFieldDirty &&
-        this.vfjsFieldState.vfjsFieldBlur) ||
-      this.vfjsOptions.showValidationErrors
-    );
+    const { vfjsFieldDirty, vfjsFieldBlur } = this.vfjsFieldState;
+    const { showValidationErrors } = this.vfjsOptions;
+
+    return (vfjsFieldDirty && vfjsFieldBlur) || showValidationErrors;
   },
   vfjsComputedFieldErrorOptions() {
-    return this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors
-      ? this.vfjsFieldErrorOptions
-      : {};
+    if (this.vfjsComputedShowFieldErrors && this.vfjsComputedFieldHasErrors) {
+      return this.vfjsFieldErrorOptions;
+    }
+
+    return {};
   },
   vfjsComputedFieldAttrs() {
     const required = this.vfjsFieldHelperAttrsRequired();
