@@ -7,13 +7,19 @@
   },
   "rules": {
     "arrow-parens": ["error", "always"],
-    "no-unused-vars": ["error", {
-      "vars": "all",
-      "args": "none"
-    }],
-    "no-plusplus": ["error", {
-      "allowForLoopAfterthoughts": true
-    }],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
     "operator-linebreak": ["error", "after"]
   }
 }
