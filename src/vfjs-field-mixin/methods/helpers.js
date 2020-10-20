@@ -163,7 +163,7 @@ const helpers = {
     return undefined;
   },
   vfjsFieldHelperDomPropsInnerHTML() {
-    const { innerHTML = [] } = this.vfjsOptions.componentProperties;
+    const { innerHTML = [] } = this.vfjsOptions.componentProperties.domProps;
 
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(innerHTML)) {
       if (this.vfjsFieldModel) {
@@ -179,7 +179,7 @@ const helpers = {
     return undefined;
   },
   vfjsFieldHelperDomPropsValue() {
-    const { value = [] } = this.vfjsOptions.componentProperties;
+    const { value = [] } = this.vfjsOptions.componentProperties.domProps;
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(value)) {
       if (this.vfjsFieldModel) {
         return this.vfjsFieldModel;
@@ -193,7 +193,7 @@ const helpers = {
     return undefined;
   },
   vfjsFieldHelperDomPropsChecked() {
-    const { checked = [] } = this.vfjsOptions.componentProperties;
+    const { checked = [] } = this.vfjsOptions.componentProperties.domProps;
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
       if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
         return true;
