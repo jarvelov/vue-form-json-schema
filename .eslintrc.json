@@ -20,6 +20,10 @@
         "allowForLoopAfterthoughts": true
       }
     ],
-    "operator-linebreak": ["error", "after"]
+    "operator-linebreak": [
+      "error",
+      "after",
+      { "overrides": { "?": "before", ":": "before" } }
+    ]
   }
 }
