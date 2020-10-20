@@ -47,12 +47,11 @@ const computed = {
     return domProps;
   },
   vfjsComputedFieldProps() {
-    const props = {};
+    const required = this.vfjsFieldHelperPropsRequired();
 
-    const { required = [] } = this.vfjsOptions.componentProperties;
-    if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
-      props.required = this.vfjsFieldRequired;
-    }
+    const props = {
+      required,
+    };
 
     return props;
   },
