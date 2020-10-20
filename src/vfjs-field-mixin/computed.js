@@ -50,8 +50,7 @@ const computed = {
     const props = {};
 
     const { required = [] } = this.vfjsOptions.componentProperties;
-
-    if (required.indexOf(this.vfjsComponent) !== -1) {
+    if (this.vfjsFieldHelperComponentMatchesComponentProperties(required)) {
       props.required = this.vfjsFieldRequired;
     }
 
