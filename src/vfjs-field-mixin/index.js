@@ -6,7 +6,7 @@ const vfjsFieldMixin = {
   data() {
     return {
       vfjsSetFieldTimeout: null,
-    }
+    };
   },
   computed,
   props,
