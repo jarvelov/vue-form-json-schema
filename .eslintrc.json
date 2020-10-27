@@ -30,7 +30,12 @@
     "operator-linebreak": [
       "error",
       "after",
-      { "overrides": { "?": "before", ":": "before" } }
+      {
+        "overrides": {
+          "?": "before",
+          ":": "before"
+        }
+      }
     ]
   }
 }
