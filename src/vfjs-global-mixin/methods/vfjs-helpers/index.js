@@ -23,7 +23,9 @@ const vfjsHelpers = {
     const vfjsFieldState = this.getVfjsFieldState(vfjsFieldModelKey) || {};
     const vfjsModel = this.getVfjsModel();
     const vfjsState = this.getVfjsState();
-    const vfjsFieldValueModel = this.getVfjsFieldValueModel(vfjsFieldValueModelKey);
+    const vfjsFieldValueModel = this.getVfjsFieldValueModel(
+      vfjsFieldValueModelKey,
+    );
 
     // Get field errors
     const { vfjsFieldErrors = [] } = vfjsFieldState;
@@ -32,10 +34,11 @@ const vfjsHelpers = {
     // but only if the error handler does not have children of its own or
     // domProps.innerHTML is set
     const { domProps } = vfjsFieldOptions;
-    const generateErrorsAsChildren = vfjsFieldErrorHandler
-      && vfjsFieldErrors.length > 0
-      && (!domProps || !domProps.innerHTML)
-      && children.length === 0;
+    const generateErrorsAsChildren =
+      vfjsFieldErrorHandler &&
+      vfjsFieldErrors.length > 0 &&
+      (!domProps || !domProps.innerHTML) &&
+      children.length === 0;
 
     const vfjsChildren = generateErrorsAsChildren
       ? this.vfjsHelperGetErrors(vfjsFieldErrors, vfjsFieldId)
@@ -74,16 +77,18 @@ const vfjsHelpers = {
     });
   },
   vfjsHelperGetErrors(errors = [], id) {
-    return errors.map((error, index) => this.vfjsHelperCreateField({
-      id: `${id}-error-${index}`,
-      component: 'div',
-      fieldOptions: {
-        class: ['vfjs-error', 'vfjs-default-error-handler'],
-        domProps: {
-          innerHTML: error.message,
+    return errors.map((error, index) =>
+      this.vfjsHelperCreateField({
+        id: `${id}-error-${index}`,
+        component: 'div',
+        fieldOptions: {
+          class: ['vfjs-error', 'vfjs-default-error-handler'],
+          domProps: {
+            innerHTML: error.message,
+          },
         },
-      },
-    }));
+      }),
+    );
   },
   vfjsHelperCreateComponent({ children = [], component, props }) {
     // If the component matches one of the local components
@@ -137,14 +142,28 @@ const vfjsHelpers = {
     return {
       ...field,
       id: parentId,
-      children: children.map((child, i) => this.vfjsHelperGenerateField(child, `${parentId}-${i}`)),
+      children: children.map((child, i) =>
+        this.vfjsHelperGenerateField(child, `${parentId}-${i}`),
+      ),
     };
   },
-  vfjsHelperChildArrayMapper({ model, children = [], ...child }, parentModel, index) {
+  vfjsHelperChildArrayMapper(
+    { model, children = [], ...child },
+    parentModel,
+    index,
+  ) {
     return {
       ...child,
-      model: this.vfjsHelperGetChildArrayModelAtIndex(model, parentModel, index),
-      children: this.vfjsHelperChildArrayReducerMapper(parentModel, children, index),
+      model: this.vfjsHelperGetChildArrayModelAtIndex(
+        model,
+        parentModel,
+        index,
+      ),
+      children: this.vfjsHelperChildArrayReducerMapper(
+        parentModel,
+        children,
+        index,
+      ),
     };
   },
   vfjsHelperChildArrayReducerMapper(model, children = [], index) {
@@ -179,22 +198,25 @@ const vfjsHelpers = {
     return schema ? Array.isArray(schema.items) : false;
   },
   vfjsHelperGetFieldsWithClearOnHide(fields = []) {
-    return fields.reduce((models, { children = [], displayOptions = {}, model }) => {
-      if (displayOptions.clearOnHide) {
-        if (model) {
-          // eslint-disable-next-line no-param-reassign
-          models[model] = displayOptions.clearOnHide;
-        } else if (!model && typeof displayOptions.clearOnHide === 'string') {
-          // eslint-disable-next-line no-param-reassign
-          models[displayOptions.clearOnHide] = displayOptions.clearOnHide;
+    return fields.reduce(
+      (models, { children = [], displayOptions = {}, model }) => {
+        if (displayOptions.clearOnHide) {
+          if (model) {
+            // eslint-disable-next-line no-param-reassign
+            models[model] = displayOptions.clearOnHide;
+          } else if (!model && typeof displayOptions.clearOnHide === 'string') {
+            // eslint-disable-next-line no-param-reassign
+            models[displayOptions.clearOnHide] = displayOptions.clearOnHide;
+          }
         }
-      }
 
-      return {
-        ...models,
-        ...this.vfjsHelperGetFieldsWithClearOnHide(children),
-      };
-    }, {});
+        return {
+          ...models,
+          ...this.vfjsHelperGetFieldsWithClearOnHide(children),
+        };
+      },
+      {},
+    );
   },
   vfjsHelperCastValueToSchemaType(key, value) {
     if (typeof value !== 'undefined') {
@@ -214,7 +236,11 @@ const vfjsHelpers = {
       }
 
       // Convert to a boolean value
-      if (schema && schema.type === 'boolean' && (value === 'true' || value === 'false')) {
+      if (
+        schema &&
+        schema.type === 'boolean' &&
+        (value === 'true' || value === 'false')
+      ) {
         return value === 'true';
       }
     }
@@ -222,7 +248,10 @@ const vfjsHelpers = {
     return value;
   },
   vfjsHelperSchemaHasErrors(schema, model) {
-    const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
+    const value =
+      typeof model === 'undefined'
+        ? this.getVfjsModel()
+        : this.getVfjsFieldModel(model);
 
     this.ajv.validate(schema, value);
     const oldErrors = this.ajv.errors ? this.ajv.errors : [];
