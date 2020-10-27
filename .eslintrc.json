@@ -6,6 +6,13 @@
     "browser": true
   },
   "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true
+      }
+    ],
     "arrow-parens": ["error", "always"],
     "no-unused-vars": [
       "error",
