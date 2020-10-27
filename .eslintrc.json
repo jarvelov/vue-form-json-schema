@@ -36,6 +36,8 @@
           ":": "before"
         }
       }
-    ]
+    ],
+    "implicit-arrow-linebreak": 0,
+    "function-paren-newline": 0
   }
 }
