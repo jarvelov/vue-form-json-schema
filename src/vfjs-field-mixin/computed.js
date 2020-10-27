@@ -61,6 +61,7 @@ const computed = {
       domProps: this.vfjsComputedFieldDomProps,
       key: this.vfjsFieldOptions.key || this.vfjsFieldId,
       props: this.vfjsComputedFieldProps,
+      directives: this.vfjsFieldOptions.directives,
     };
   },
   vfjsComputedMergedFieldOptions() {
