@@ -3,11 +3,6 @@ import methods from './methods';
 import props from './props';
 
 const vfjsFieldMixin = {
-  data() {
-    return {
-      vfjsSetFieldTimeout: null,
-    };
-  },
   computed,
   props,
   methods,
