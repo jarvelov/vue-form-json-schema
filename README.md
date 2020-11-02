@@ -1,6 +1,6 @@
 # Vue Form JSON Schema
 
-> A [JSON schema](https://json-schema.org) based form generator without any fields!
+> A [JSON schema](https://json-schema.org) based form generator, bring your components!
 
 ##### Use any Vue component or HTML element!
 
