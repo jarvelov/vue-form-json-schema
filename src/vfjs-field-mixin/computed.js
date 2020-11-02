@@ -47,11 +47,19 @@ const computed = {
     const value = this.vfjsFieldHelperDomPropsValue();
     const checked = this.vfjsFieldHelperDomPropsChecked();
 
-    const domProps = {
-      innerHTML,
-      value,
-      checked,
-    };
+    const domProps = {};
+
+    if (typeof innerHTML !== 'undefined') {
+      domProps.innerHTML = innerHTML;
+    }
+
+    if (typeof value !== 'undefined') {
+      domProps.value = value;
+    }
+
+    if (typeof checked !== 'undefined') {
+      domProps.checked = checked;
+    }
 
     return domProps;
   },
