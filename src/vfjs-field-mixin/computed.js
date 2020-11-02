@@ -26,10 +26,19 @@ const computed = {
 
     const attrs = {
       // id: this.vfjsFieldId, // This is very useful when debugging to see when nodes are updated
-      required,
-      value,
-      checked,
     };
+
+    if (typeof required !== 'undefined') {
+      attrs.required = required;
+    }
+
+    if (typeof value !== 'undefined') {
+      attrs.value = value;
+    }
+
+    if (typeof checked !== 'undefined') {
+      attrs.checked = checked;
+    }
 
     return attrs;
   },
