@@ -66,9 +66,11 @@ const computed = {
   vfjsComputedFieldProps() {
     const required = this.vfjsFieldHelperPropsRequired();
 
-    const props = {
-      required,
-    };
+    const props = {};
+
+    if (typeof required !== 'undefined') {
+      props.required = required;
+    }
 
     return props;
   },
