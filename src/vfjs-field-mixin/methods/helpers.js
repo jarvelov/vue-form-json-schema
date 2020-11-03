@@ -87,6 +87,11 @@ const helpers = {
         }
       }
 
+      if (this.vfjsFieldHelperInternalModelEnabledForEvent(key)) {
+        // Set internal value so that on next re-render the new value will be updated
+        this.vfjsInternalModel = value;
+      }
+
       return this.setVfjsFieldModel(value);
     };
   },
@@ -210,6 +215,17 @@ const helpers = {
     }
 
     return undefined;
+  },
+  vfjsFieldHelperInternalModelEnabledForEvent(key) {
+    if (this.vfjsFieldInternalModel) {
+      if (Array.isArray(this.vfjsFieldInternalModel)) {
+        return this.vfjsFieldInternalModel.indexOf(key) >= 0;
+      }
+
+      return this.vfjsFieldInternalModel === true;
+    }
+
+    return false;
   },
 };
 
