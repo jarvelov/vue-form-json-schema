@@ -30,6 +30,10 @@ const props = {
     type: String,
     required: true,
   },
+  vfjsFieldInternalModel: {
+    type: Boolean,
+    required: true,
+  },
   vfjsFieldModel: {
     type: null,
   },
