@@ -3,6 +3,11 @@ import methods from './methods';
 import props from './props';
 
 const vfjsFieldMixin = {
+  data() {
+    return {
+      vfjsInternalModel: undefined,
+    };
+  },
   computed,
   props,
   methods,
