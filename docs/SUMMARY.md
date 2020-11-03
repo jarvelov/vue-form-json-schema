@@ -25,5 +25,6 @@
           * [props](api/ui-schema/field/field-options/props.md)
           * [slot](api/ui-schema/field/field-options/slot.md)
           * [style](api/ui-schema/field/field-options/style.md)
+        * [internalModel](api/ui-schema/field/internal-model.md)
         * [valueModel](api/ui-schema/field/value-model.md)
         * [valueProp](api/ui-schema/field/value-prop.md)
