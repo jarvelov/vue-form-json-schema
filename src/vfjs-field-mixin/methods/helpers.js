@@ -73,24 +73,23 @@ const helpers = {
   },
   vfjsFieldHelperEventHandler(key, cb) {
     return (...args) => {
+      const [event] = args;
+      let value = event;
+
       if (typeof cb === 'function') {
-        return this.setVfjsFieldModel(cb(...args));
+        value = cb(...args);
       }
 
-      if (args[0] instanceof Event) {
+      if (event instanceof Event) {
         if (
-          args[0].target &&
-          typeof args[0].target[this.vfjsFieldEventProp] !== 'undefined'
+          event.target &&
+          typeof event.target[this.vfjsFieldEventProp] !== 'undefined'
         ) {
-          return this.setVfjsFieldModel(
-            args[0].target[this.vfjsFieldEventProp],
-          );
+          value = event.target[this.vfjsFieldEventProp];
         }
-
-        return this.setVfjsFieldModel(undefined);
       }
 
-      return this.setVfjsFieldModel(args[0]);
+      return this.setVfjsFieldModel(value);
     };
   },
   vfjsFieldHelperFormatEventsReducer(events = {}) {
