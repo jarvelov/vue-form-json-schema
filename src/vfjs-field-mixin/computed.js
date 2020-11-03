@@ -68,6 +68,10 @@ const computed = {
 
     const props = {};
 
+    if (this.vfjsFieldInternalModel) {
+      props.value = this.vfjsInternalModel;
+    }
+
     if (typeof required !== 'undefined') {
       props.required = required;
     }
