@@ -78,9 +78,7 @@ const helpers = {
 
       if (typeof cb === 'function') {
         value = cb(...args);
-      }
-
-      if (event instanceof Event) {
+      } else if (event instanceof Event) {
         if (
           event.target &&
           typeof event.target[this.vfjsFieldEventProp] !== 'undefined'
