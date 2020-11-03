@@ -11,6 +11,12 @@ const vfjsFieldMixin = {
   computed,
   props,
   methods,
+  beforeUpdate() {
+    // Unset the internal value before update to fall back to the 'value' prop
+    if (this.vfjsFieldInternalModel) {
+      this.vfjsInternalModel = undefined;
+    }
+  },
   mounted() {
     this.vfjsFieldHelperAddListener(this.$el, 'blur');
   },
