@@ -31,7 +31,7 @@ const props = {
     required: true,
   },
   vfjsFieldInternalModel: {
-    type: Boolean,
+    type: [Boolean, Array],
     required: true,
   },
   vfjsFieldModel: {
