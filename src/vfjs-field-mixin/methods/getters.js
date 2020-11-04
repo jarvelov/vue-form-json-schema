@@ -70,10 +70,11 @@ const getters = {
 
     const fieldOptionsAsProps = { props: options };
 
+    const value =
+      this.vfjsInternalModel || this.vfjsFieldValueModel || this.vfjsFieldModel;
     const valueProp = {
       props: {
-        [this.vfjsFieldValueProp]:
-          this.vfjsFieldValueModel || this.vfjsFieldModel,
+        [this.vfjsFieldValueProp]: value,
       },
     };
 
