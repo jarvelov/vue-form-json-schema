@@ -229,21 +229,19 @@ const vfjsHelpers = {
       }
 
       // Convert to a numeric value
-      if (schema && schema.type === 'number') {
+      if (schema.type === 'number') {
         return Number(value);
       }
 
-      if (schema && schema.type === 'integer') {
+      if (schema.type === 'integer') {
         return parseInt(value, 10);
       }
 
       // Convert to a boolean value
-      if (
-        schema &&
-        schema.type === 'boolean' &&
-        (value === 'true' || value === 'false')
-      ) {
-        return value === 'true';
+      if (schema.type === 'boolean') {
+        if (value === 'true' || value === 'false' || value === 'on') {
+          return value === 'true' || value === 'on';
+        }
       }
     }
 
