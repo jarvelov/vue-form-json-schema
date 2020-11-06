@@ -11,7 +11,10 @@ const vfjsUiGetters = {
     if (field.errorHandler) {
       if (!this.vfjsOptions.showValidationErrors) {
         const state = this.getVfjsFieldState(field.model);
-        if (!state || (state && (!state.vfjsFieldBlur || !state.vfjsFieldDirty))) {
+        if (
+          !state ||
+          (state && (!state.vfjsFieldBlur || !state.vfjsFieldDirty))
+        ) {
           return false;
         }
       }
@@ -40,7 +43,10 @@ const vfjsUiGetters = {
 
     // Get the field's model value
     // It will fall back to the full model if model is undefined
-    const value = typeof model === 'undefined' ? this.getVfjsModel() : this.getVfjsFieldModel(model);
+    const value =
+      typeof model === 'undefined'
+        ? this.getVfjsModel()
+        : this.getVfjsFieldModel(model);
 
     // Validate and check if we got any errors
     // const errors = model
@@ -67,13 +73,20 @@ const vfjsUiGetters = {
       const required = this.vfjsHelperFieldIsRequired(field.model);
 
       const dynamicProperties = this.vfjsHelperFieldDynamicProperties(field);
-      const { children = [], ...fieldProperties } = merge({}, field, dynamicProperties);
+      const { children = [], ...fieldProperties } = merge(
+        {},
+        field,
+        dynamicProperties,
+      );
 
       if (isArray) {
         return {
           ...fieldProperties,
           required,
-          children: this.getVfjsUiFieldArrayChildrenActive(field.model, children),
+          children: this.getVfjsUiFieldArrayChildrenActive(
+            field.model,
+            children,
+          ),
         };
       }
 
