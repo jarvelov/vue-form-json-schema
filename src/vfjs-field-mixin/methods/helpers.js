@@ -134,11 +134,16 @@ const helpers = {
   vfjsFieldHelperAttrsChecked() {
     const { checked = [] } = this.vfjsOptions.componentProperties.attrs;
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      if (this.vfjsFieldModel === this.vfjsFieldOptions.attrs.value) {
-        return true;
-      }
+      if (this.vfjsFieldOptions.attrs) {
+        if (
+          typeof this.vfjsFieldModel !== 'undefined' &&
+          this.vfjsFieldModel === this.vfjsFieldOptions.attrs.value
+        ) {
+          return true;
+        }
 
-      return this.vfjsFieldOptions.attrs && this.vfjsFieldOptions.attrs.checked;
+        return this.vfjsFieldOptions.attrs.checked;
+      }
     }
 
     return undefined;
