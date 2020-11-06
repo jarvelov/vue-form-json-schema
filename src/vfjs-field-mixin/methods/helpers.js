@@ -197,13 +197,13 @@ const helpers = {
   vfjsFieldHelperDomPropsChecked() {
     const { checked = [] } = this.vfjsOptions.componentProperties.domProps;
     if (this.vfjsFieldHelperComponentMatchesComponentProperties(checked)) {
-      if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
-        return true;
-      }
+      if (this.vfjsFieldOptions.domProps) {
+        if (this.vfjsFieldModel === this.vfjsFieldOptions.domProps.value) {
+          return true;
+        }
 
-      return (
-        this.vfjsFieldOptions.domProps && this.vfjsFieldOptions.domProps.checked
-      );
+        return this.vfjsFieldOptions.domProps.checked;
+      }
     }
 
     return undefined;
