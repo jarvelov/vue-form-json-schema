@@ -18,7 +18,9 @@ import {
 const vfjsBusEventActions = {
   [VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN]() {
     const allModels = this.vfjsHelperGetFieldsWithClearOnHide(this.uiSchema);
-    const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(this.vfjsFieldsActive);
+    const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(
+      this.vfjsFieldsActive,
+    );
 
     const inactiveModels = Object.keys(allModels).reduce((models, key) => {
       if (!(key in activeModels)) {
@@ -119,7 +121,10 @@ const vfjsBusEventActions = {
         this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
           value: newVfjsState,
           cb: () => {
-            if (vfjsFieldErrors.length === 0 || this.vfjsOptions.allowInvalidModel) {
+            if (
+              vfjsFieldErrors.length === 0 ||
+              this.vfjsOptions.allowInvalidModel
+            ) {
               this.setVfjsModel(vfjsModel);
             }
 
@@ -145,17 +150,26 @@ const vfjsBusEventActions = {
       cb: (vfjsFieldStates) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
         const vfjsFieldErrors = Object.keys(vfjsFieldStates)
-          .map(key => vfjsFieldStates[key])
-          .reduce((errors, vfjsFieldState) => [...errors, ...vfjsFieldState.vfjsFieldErrors], []);
+          .map((key) => vfjsFieldStates[key])
+          .reduce(
+            (errors, vfjsFieldState) => [
+              ...errors,
+              ...vfjsFieldState.vfjsFieldErrors,
+            ],
+            [],
+          );
 
-        const vfjsErrorsFiltered = [...vfjsErrors, ...vfjsFieldErrors].reduce((array, item) => {
-          const exists = array.some(arrayItem => isEqual(item, arrayItem));
-          if (!exists) {
-            array.push(item);
-          }
+        const vfjsErrorsFiltered = [...vfjsErrors, ...vfjsFieldErrors].reduce(
+          (array, item) => {
+            const exists = array.some((arrayItem) => isEqual(item, arrayItem));
+            if (!exists) {
+              array.push(item);
+            }
 
-          return array;
-        }, []);
+            return array;
+          },
+          [],
+        );
 
         const vfjsState = {
           ...this.getVfjsState(),
@@ -196,7 +210,10 @@ const vfjsBusEventActions = {
     };
 
     this.$emit(VFJS_EXTERNAL_EVENT_STATE_CHANGE, vfjsState);
-    this.$emit(VFJS_EXTERNAL_EVENT_VALIDATED, vfjsState.vfjsErrors.length === 0);
+    this.$emit(
+      VFJS_EXTERNAL_EVENT_VALIDATED,
+      vfjsState.vfjsErrors.length === 0,
+    );
 
     if (cb && typeof cb === 'function') {
       cb();
