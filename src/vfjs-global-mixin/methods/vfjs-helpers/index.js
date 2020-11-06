@@ -234,7 +234,7 @@ const vfjsHelpers = {
       }
 
       if (schema && schema.type === 'integer') {
-        return parseInt(value);
+        return parseInt(value, 10);
       }
 
       // Convert to a boolean value
