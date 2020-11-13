@@ -1,6 +1,6 @@
-import getters from './getters';
-import helpers from './helpers';
-import setters from './setters';
+import * as getters from './getters';
+import * as helpers from './helpers';
+import * as setters from './setters';
 
 const methods = {
   ...getters,
