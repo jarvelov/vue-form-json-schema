@@ -42,8 +42,9 @@ const vfjsSchemaGetters = {
 
       if (schema.oneOf instanceof Array) {
         const index = schema.oneOf.findIndex(
-          optionSchema => optionSchema.properties instanceof Object
-            && Object.keys(optionSchema.properties).includes(key),
+          (optionSchema) =>
+            optionSchema.properties instanceof Object &&
+            Object.keys(optionSchema.properties).includes(key),
         );
 
         return this.getVfjsSchemaPath(`${path}.oneOf.${index}`, key);
