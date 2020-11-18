@@ -1,5 +1,5 @@
-import getters from './getters';
-import setters from './setters';
+import * as getters from './getters';
+import * as setters from './setters';
 
 const vfjsSchema = {
   ...getters,
