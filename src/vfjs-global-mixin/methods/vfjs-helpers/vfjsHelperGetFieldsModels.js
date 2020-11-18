@@ -1,4 +1,4 @@
-function getVfjsFieldsModels(fields, fieldModels = []) {
+function vfjsHelperGetFieldsModels(fields, fieldModels = []) {
   return fields.reduce((models, { children = [], model }) => {
     if (model) {
       if (models.indexOf(model) === -1) {
@@ -6,8 +6,8 @@ function getVfjsFieldsModels(fields, fieldModels = []) {
       }
     }
 
-    return this.getVfjsFieldsModels(children, models);
+    return this.vfjsHelperGetFieldsModels(children, models);
   }, fieldModels);
 }
 
-export default getVfjsFieldsModels;
+export default vfjsHelperGetFieldsModels;
