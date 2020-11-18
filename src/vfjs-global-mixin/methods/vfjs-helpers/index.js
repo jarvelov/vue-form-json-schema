@@ -1,35 +1,35 @@
-import vfjsHelperCreateField from './vfjsHelperCreateField';
-import vfjsHelperGetErrors from './vfjsHelperGetErrors';
-import vfjsHelperCreateComponent from './vfjsHelperCreateComponent';
 import vfjsHelperApplyFieldModel from './vfjsHelperApplyFieldModel';
-import vfjsHelperGenerateField from './vfjsHelperGenerateField';
+import vfjsHelperCastValueToSchemaType from './vfjsHelperCastValueToSchemaType';
 import vfjsHelperChildArrayMapper from './vfjsHelperChildArrayMapper';
 import vfjsHelperChildArrayReducerMapper from './vfjsHelperChildArrayReducerMapper';
-import vfjsHelperGetChildArrayModelAtIndex from './vfjsHelperGetChildArrayModelAtIndex';
-import vfjsHelperGetRelativeModel from './vfjsHelperGetRelativeModel';
-import vfjsHelperFieldIsRequired from './vfjsHelperFieldIsRequired';
-import vfjsHelperFieldIsArray from './vfjsHelperFieldIsArray';
-import vfjsHelperGetFieldsWithClearOnHide from './vfjsHelperGetFieldsWithClearOnHide';
-import vfjsHelperCastValueToSchemaType from './vfjsHelperCastValueToSchemaType';
-import vfjsHelperSchemaHasErrors from './vfjsHelperSchemaHasErrors';
+import vfjsHelperCreateComponent from './vfjsHelperCreateComponent';
+import vfjsHelperCreateField from './vfjsHelperCreateField';
 import vfjsHelperFieldDynamicProperties from './vfjsHelperFieldDynamicProperties';
+import vfjsHelperFieldIsArray from './vfjsHelperFieldIsArray';
+import vfjsHelperFieldIsRequired from './vfjsHelperFieldIsRequired';
+import vfjsHelperGenerateField from './vfjsHelperGenerateField';
+import vfjsHelperGetChildArrayModelAtIndex from './vfjsHelperGetChildArrayModelAtIndex';
+import vfjsHelperGetErrors from './vfjsHelperGetErrors';
+import vfjsHelperGetFieldsWithClearOnHide from './vfjsHelperGetFieldsWithClearOnHide';
+import vfjsHelperGetRelativeModel from './vfjsHelperGetRelativeModel';
+import vfjsHelperSchemaHasErrors from './vfjsHelperSchemaHasErrors';
 
 const vfjsHelpers = {
-  vfjsHelperCreateField,
-  vfjsHelperGetErrors,
-  vfjsHelperCreateComponent,
   vfjsHelperApplyFieldModel,
-  vfjsHelperGenerateField,
+  vfjsHelperCastValueToSchemaType,
   vfjsHelperChildArrayMapper,
   vfjsHelperChildArrayReducerMapper,
-  vfjsHelperGetChildArrayModelAtIndex,
-  vfjsHelperGetRelativeModel,
-  vfjsHelperFieldIsRequired,
-  vfjsHelperFieldIsArray,
-  vfjsHelperGetFieldsWithClearOnHide,
-  vfjsHelperCastValueToSchemaType,
-  vfjsHelperSchemaHasErrors,
+  vfjsHelperCreateComponent,
+  vfjsHelperCreateField,
   vfjsHelperFieldDynamicProperties,
+  vfjsHelperFieldIsArray,
+  vfjsHelperFieldIsRequired,
+  vfjsHelperGenerateField,
+  vfjsHelperGetChildArrayModelAtIndex,
+  vfjsHelperGetErrors,
+  vfjsHelperGetFieldsWithClearOnHide,
+  vfjsHelperGetRelativeModel,
+  vfjsHelperSchemaHasErrors,
 };
 
 export default vfjsHelpers;
