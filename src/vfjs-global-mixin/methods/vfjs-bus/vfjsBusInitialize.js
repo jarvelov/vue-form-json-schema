@@ -1,7 +1,7 @@
-import Vue from 'vue';
+import VfjsBus from './vfjsBus';
 
 function vfjsBusInitialize() {
-  this.vfjsBus = new Vue();
+  this.vfjsBus = new VfjsBus();
 }
 
 export default vfjsBusInitialize;
