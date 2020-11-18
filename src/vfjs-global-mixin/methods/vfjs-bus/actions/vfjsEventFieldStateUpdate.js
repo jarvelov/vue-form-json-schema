@@ -1,4 +1,4 @@
-import { VFJS_EVENT_STATE_UPDATE } from '../../../constants';
+import { VFJS_EVENT_STATE_UPDATE } from '../../../../constants';
 
 function vfjsEventFieldStateUpdate({ key, value, cb }) {
   const newVfjsState = { ...this.getVfjsState(), [key]: value };
