@@ -6,7 +6,7 @@ import {
 
 function setVfjsUiFieldsActive() {
   this.vfjsFieldsActive = this.getVfjsUiFieldsActive(this.vfjsUiSchema);
-  this.vfjsFieldsActiveModels = this.getVfjsFieldsModels(this.vfjsFieldsActive);
+  this.vfjsFieldsActiveModels = this.vfjsHelperGetFieldsModels(this.vfjsFieldsActive);
 
   if (this.vfjsOptions.validate) {
     const vfjsModel = this.getVfjsModel();
