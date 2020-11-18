@@ -1,30 +1,19 @@
-import Vue from 'vue';
-import vfjsBusEventActions from './actions';
+import addVfjsListener from './addVfjsListener';
+import addVfjsListeners from './addVfjsListeners';
+import removeVfjsListener from './removeVfjsListener';
+import removeVfjsListeners from './removeVfjsListeners';
+import removeVfjsListenersAll from './removeVfjsListenersAll';
+import vfjsBusInitialize from './vfjsBusInitialize';
+import vfjsBusEventHandler from './vfjsBusEventHandler';
 
 const vfjsBus = {
-  addVfjsListener(event, callback) {
-    this.vfjsBus.$on(event, (value) => callback(event, value));
-  },
-  addVfjsListeners(events = [], callback) {
-    events.forEach((event) => this.addVfjsListener(event, callback));
-  },
-  removeVfjsListener(event) {
-    this.vfjsBus.$off(event);
-  },
-  removeVfjsListeners(events = []) {
-    events.forEach(this.removeVfjsListener);
-  },
-  removeVfjsListenersAll() {
-    this.vfjsBus.$off();
-  },
-  vfjsBusInitialize() {
-    this.vfjsBus = new Vue();
-  },
-  vfjsBusEventHandler(event, payload) {
-    if (event && event in vfjsBusEventActions) {
-      vfjsBusEventActions[event].call(this, payload);
-    }
-  },
+  addVfjsListener,
+  addVfjsListeners,
+  removeVfjsListener,
+  removeVfjsListeners,
+  removeVfjsListenersAll,
+  vfjsBusInitialize,
+  vfjsBusEventHandler,
 };
 
 export default vfjsBus;
