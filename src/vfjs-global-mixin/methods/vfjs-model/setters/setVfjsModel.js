@@ -4,7 +4,7 @@ import {
   VFJS_EVENT_STATE_UPDATE,
   VFJS_EVENT_STATE_UPDATED,
   VFJS_EVENT_MODEL_UPDATED,
-} from '../../../constants';
+} from '../../../../constants';
 
 function setVfjsModel(model, silent = false) {
   if (!isEqual(model, this.vfjsModel)) {
