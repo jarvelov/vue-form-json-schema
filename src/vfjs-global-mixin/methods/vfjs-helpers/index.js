@@ -10,6 +10,7 @@ import vfjsHelperFieldIsRequired from './vfjsHelperFieldIsRequired';
 import vfjsHelperGenerateField from './vfjsHelperGenerateField';
 import vfjsHelperGetChildArrayModelAtIndex from './vfjsHelperGetChildArrayModelAtIndex';
 import vfjsHelperGetErrors from './vfjsHelperGetErrors';
+import vfjsHelperGetFieldsModels from './vfjsHelperGetFieldsModels';
 import vfjsHelperGetFieldsWithClearOnHide from './vfjsHelperGetFieldsWithClearOnHide';
 import vfjsHelperGetRelativeModel from './vfjsHelperGetRelativeModel';
 import vfjsHelperSchemaHasErrors from './vfjsHelperSchemaHasErrors';
@@ -27,6 +28,7 @@ const vfjsHelpers = {
   vfjsHelperGenerateField,
   vfjsHelperGetChildArrayModelAtIndex,
   vfjsHelperGetErrors,
+  vfjsHelperGetFieldsModels,
   vfjsHelperGetFieldsWithClearOnHide,
   vfjsHelperGetRelativeModel,
   vfjsHelperSchemaHasErrors,
