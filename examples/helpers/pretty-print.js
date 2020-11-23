@@ -10,7 +10,11 @@ window.Vue.component('pretty-print', {
     prettyPrint(json) {
       if (json) {
         const stringified = JSON.stringify(json, null, 2);
-        const stringifiedReplaced = stringified.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
+        const stringifiedReplaced = stringified
+          .replace(/&/g, '&')
+          .replace(/</g, '<')
+          .replace(/>/g, '>');
+
         const regex = /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g;
 
         return stringifiedReplaced.replace(regex, (match) => {
