@@ -26,7 +26,7 @@ if (typeof window !== 'undefined') {
   GlobalVue = global.Vue;
 }
 
-if (GlobalVue) {
+if (GlobalVue && typeof GlobalVue.use === 'function') {
   GlobalVue.use(plugin);
 }
 
