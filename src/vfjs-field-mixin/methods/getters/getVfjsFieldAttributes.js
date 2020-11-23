@@ -36,8 +36,8 @@ function getVfjsFieldAttributes(
 
   const computedOptions = {
     class: classFormatted,
-    on: onFormatted,
-    nativeOn: !isEmpty(nativeOnFormatted) ? nativeOnFormatted : undefined,
+    ...onFormatted,
+    ...nativeOnFormatted,
   };
 
   const defaultProps = Object.assign(
@@ -52,9 +52,7 @@ function getVfjsFieldAttributes(
   const value =
     this.vfjsInternalModel || this.vfjsFieldValueModel || this.vfjsFieldModel;
   const valueProp = {
-    props: {
-      [this.vfjsFieldValueProp]: value,
-    },
+    [this.vfjsFieldValueProp]: value,
   };
 
   const allAttributes = merge(
