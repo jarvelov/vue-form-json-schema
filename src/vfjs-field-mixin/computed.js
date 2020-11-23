@@ -76,17 +76,16 @@ const computed = {
   },
   vfjsComputedFieldOptions() {
     return {
-      attrs: this.vfjsComputedFieldAttrs,
-      domProps: this.vfjsComputedFieldDomProps,
+      ...this.vfjsComputedFieldAttrs,
+      ...this.vfjsComputedFieldDomProps,
+      ...this.vfjsComputedFieldProps,
       key: this.vfjsFieldOptions.key || this.vfjsFieldId,
-      props: this.vfjsComputedFieldProps,
       directives: this.vfjsFieldOptions.directives,
     };
   },
   vfjsComputedMergedFieldOptions() {
     return merge(
       {},
-      this.vfjsDefaultOptions,
       this.vfjsComputedFieldErrorOptions,
       this.vfjsComputedFieldOptions,
     );
