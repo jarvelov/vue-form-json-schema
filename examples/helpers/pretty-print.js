@@ -1,4 +1,4 @@
-window.Vue.component('pretty-print', {
+window.PrettyPrint = {
   name: 'JsonPrettyPrint',
   template: '<pre v-html="this.prettyPrint(this.value)"></pre>',
   props: {
@@ -39,4 +39,4 @@ window.Vue.component('pretty-print', {
       return '';
     },
   },
-});
+};
