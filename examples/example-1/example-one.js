@@ -35,7 +35,7 @@ const template = `
   </div>
 `;
 
-window.Vue.component('example-one', {
+window.ExampleOne = {
   name: 'example-one',
   template,
   data() {
@@ -77,12 +77,19 @@ window.Vue.component('example-one', {
       this.valid = value;
     },
   },
-});
+};
 
-window.Vue.config.productionTip = false;
-
-/* eslint-disable no-new */
-new window.Vue({
+const app = window.Vue.createApp({
   el: '#app',
   template: '<example-one />',
+  components: {
+    'example-one': window.ExampleOne,
+  },
 });
+
+app.component('pretty-print', window.PrettyPrint);
+app.use(window.VueFormJsonSchema.vfjsPlugin);
+
+app.config.productionTip = false;
+
+app.mount('#app');
