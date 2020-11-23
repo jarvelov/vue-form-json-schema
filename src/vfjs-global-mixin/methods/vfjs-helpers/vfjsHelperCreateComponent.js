@@ -13,7 +13,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
         key: props.vfjsFieldId,
         ...props.vfjsFieldOptions,
       },
-      children,
+      () => children,
     );
   }
 
@@ -27,7 +27,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
       vfjsComponent: localComponent || component,
       ...props,
     },
-    children,
+    () => children,
   );
 }
 
