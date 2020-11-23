@@ -3,7 +3,7 @@ import vfjsHelperCreateElement from '../vfjs-global-mixin/methods/vfjs-helpers/v
 
 const VueFormJsonSchema = {
   name: 'vue-form-json-schema',
-  mixins: [vfjsGlobalMixin],
+  ...vfjsGlobalMixin,
   render() {
     return vfjsHelperCreateElement(this.tag, this.vfjsFields);
   },
