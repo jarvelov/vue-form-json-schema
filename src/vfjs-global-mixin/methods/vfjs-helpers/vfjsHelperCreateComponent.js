@@ -1,4 +1,5 @@
 import vfjsFieldComponent from '../../../vfjs-field-component';
+import vfjsHelperCreateElement from './vfjsHelperCreateElement';
 
 function vfjsHelperCreateComponent({ children = [], component, props }) {
   // If the component matches one of the local components
@@ -6,7 +7,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
   const localComponent = this.vfjsComponents[component];
 
   if (!props.vfjsFieldModelKey) {
-    return this.$createElement(
+    return vfjsHelperCreateElement(
       localComponent || component,
       {
         key: props.vfjsFieldId,
@@ -18,7 +19,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
 
   const { slot } = props.vfjsFieldOptions;
 
-  return this.$createElement(
+  return vfjsHelperCreateElement(
     vfjsFieldComponent,
     {
       key: `${props.key || props.vfjsFieldId}-wrapper`,

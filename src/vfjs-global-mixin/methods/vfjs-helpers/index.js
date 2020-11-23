@@ -3,6 +3,7 @@ import vfjsHelperCastValueToSchemaType from './vfjsHelperCastValueToSchemaType';
 import vfjsHelperChildArrayMapper from './vfjsHelperChildArrayMapper';
 import vfjsHelperChildArrayReducerMapper from './vfjsHelperChildArrayReducerMapper';
 import vfjsHelperCreateComponent from './vfjsHelperCreateComponent';
+import vfjsHelperCreateElement from './vfjsHelperCreateElement';
 import vfjsHelperCreateField from './vfjsHelperCreateField';
 import vfjsHelperFieldDynamicProperties from './vfjsHelperFieldDynamicProperties';
 import vfjsHelperFieldIsArray from './vfjsHelperFieldIsArray';
@@ -21,6 +22,7 @@ const vfjsHelpers = {
   vfjsHelperChildArrayMapper,
   vfjsHelperChildArrayReducerMapper,
   vfjsHelperCreateComponent,
+  vfjsHelperCreateElement,
   vfjsHelperCreateField,
   vfjsHelperFieldDynamicProperties,
   vfjsHelperFieldIsArray,
