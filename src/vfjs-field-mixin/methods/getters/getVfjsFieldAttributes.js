@@ -40,15 +40,6 @@ function getVfjsFieldAttributes(
     ...nativeOnFormatted,
   };
 
-  const defaultProps = Object.assign(
-    {},
-    {
-      props: this.$options.propsData,
-    },
-  );
-
-  const fieldOptionsAsProps = { props: options };
-
   const value =
     this.vfjsInternalModel || this.vfjsFieldValueModel || this.vfjsFieldModel;
   const valueProp = {
@@ -57,9 +48,7 @@ function getVfjsFieldAttributes(
 
   const allAttributes = merge(
     {},
-    defaultProps,
     defaultOptions,
-    fieldOptionsAsProps,
     options,
     computedOptions,
     valueProp,
