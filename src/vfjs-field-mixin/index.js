@@ -1,4 +1,5 @@
 import computed from './computed';
+import emits from './emits';
 import methods from './methods';
 import props from './props';
 
@@ -10,6 +11,7 @@ const vfjsFieldMixin = {
   },
   computed,
   props,
+  emits,
   methods,
   beforeUpdate() {
     // Unset the internal value before update to fall back to the 'value' prop
