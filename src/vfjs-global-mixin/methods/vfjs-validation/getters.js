@@ -18,7 +18,27 @@ const vfjsValidationGetters = {
       if (error.keyword === 'required') {
         if (error.params && error.params.missingProperty) {
           const key = error.params.missingProperty;
-          const parent = String(error.dataPath).substr(1).replace(/\//g, '.');
+          
+          const errorDataPathPrefix = String(error.dataPath).substr(0, 1);
+          let parent;
+          
+          switch (errorDataPathPrefix) {
+            // JSONpath dot notation
+            case '.':
+              parent = error.dataPath.substr(1);
+              break;
+              
+            // JSONpath bracket notation
+            case '[':
+              parent = error.dataPath.substr(2, error.dataPath.length - 4).replace('\'][\'', '.');
+              break;
+              
+            // JSONpointer notation with forward slashes
+            case '/':
+              parent = error.dataPath.substr(1).replace(/\//g, '.');
+              break;
+          }
+          
           const propertyPath = parent ? `${parent}.${key}` : key;
 
           if (required.indexOf(propertyPath) === -1) {
