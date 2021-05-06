@@ -18,7 +18,7 @@ const vfjsBus = {
     this.vfjsBus.$off();
   },
   vfjsBusInitialize() {
-    this.vfjsBus = new Vue();
+    this.vfjsBus = new Vue({ name: 'vfjsBus' });
   },
   vfjsBusEventHandler(event, payload) {
     if (event && event in vfjsBusEventActions) {
