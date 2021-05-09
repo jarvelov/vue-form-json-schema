@@ -33,7 +33,7 @@ function getVfjsPropertiesRequired(errors) {
             break;
 
           // JSONpointer notation with forward slashes
-          case '/':
+          default:
             parent = error.dataPath.substr(1).replace(/\//g, '.');
             break;
         }
