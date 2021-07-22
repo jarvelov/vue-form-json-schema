@@ -61,6 +61,9 @@ Import and use locally
 import VueFormJsonSchema from 'vue-form-json-schema';
 
 export default {
+  components: {
+    VueFormJsonSchema,
+  },
   data() {
     return {
       model: {},
