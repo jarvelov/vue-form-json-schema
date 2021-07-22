@@ -1,6 +1,6 @@
 # ajv
 
-Options to configure `Ajv`. A list of all [supported options can be found here](https://ajv.js.org/#options)
+Options to configure `Ajv`. A list of all [supported options can be found here](https://ajv.js.org/options.html)
 
 ## Default value
 
@@ -21,8 +21,8 @@ Options to configure `Ajv`. A list of all [supported options can be found here](
 
 ### Enable $data references
 
-See [Ajv's documentation about $data references](https://ajv.js.org/#data-reference) for more details.
-`$data` in this example can be substituted for any other [supported Ajv option](https://ajv.js.org/#options)
+See [Ajv's documentation about $data references](https://ajv.js.org/guide/combining-schemas.html#data-reference) for more details.
+`$data` in this example can be substituted for any other [supported Ajv option](https://ajv.js.org/options.html)
 
 ```js
   data() {
