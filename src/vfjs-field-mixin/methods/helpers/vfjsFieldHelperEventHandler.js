@@ -1,5 +1,5 @@
 function vfjsFieldHelperEventHandler(key, cb) {
-  return (...args) => {
+  const vfjsFieldEventHandler = (...args) => {
     const [event] = args;
     let value = event;
 
@@ -21,6 +21,8 @@ function vfjsFieldHelperEventHandler(key, cb) {
 
     return this.setVfjsFieldModel(value);
   };
+
+  return vfjsFieldEventHandler;
 }
 
 export default vfjsFieldHelperEventHandler;
