@@ -9,19 +9,6 @@ function getVfjsUiFieldVisible(field) {
         return false;
       }
     }
-
-    const value = this.getVfjsFieldModel(field.model);
-    const schema = this.getVfjsFieldSchema(field.model);
-
-    if (schema) {
-      this.ajv.validate(schema, value);
-      const oldErrors = this.ajv.errors ? this.ajv.errors : [];
-
-      // Only continue if the errorHandlers field model has errors
-      if (oldErrors.length === 0) {
-        return false;
-      }
-    }
   }
 
   // If field does not have any displayOptions it should be visible
