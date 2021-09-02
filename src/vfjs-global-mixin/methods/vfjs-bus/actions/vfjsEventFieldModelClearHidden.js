@@ -1,5 +1,9 @@
+import { VFJS_EXTERNAL_UI_SCHEMA_PROP } from '../../../../constants';
+
 function vfjsEventFieldModelClearHidden() {
-  const allModels = this.vfjsHelperGetFieldsWithClearOnHide(this.uiSchema);
+  const allModels = this.vfjsHelperGetFieldsWithClearOnHide(
+    this[VFJS_EXTERNAL_UI_SCHEMA_PROP],
+  );
   const activeModels = this.vfjsHelperGetFieldsWithClearOnHide(
     this.vfjsFieldsActive,
   );
