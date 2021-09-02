@@ -42,7 +42,6 @@ function vfjsHelperCreateField(vfjsFieldUiSchema) {
     : children.map(this.vfjsHelperCreateField);
 
   const props = {
-    ...vfjsFieldOptions,
     vfjsBus: this.vfjsBus,
     vfjsChildrenUiSchema: children,
     vfjsOptions: this.vfjsOptions,
