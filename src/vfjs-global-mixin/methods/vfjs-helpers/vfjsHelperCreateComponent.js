@@ -11,7 +11,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
       vfjsComponent,
       {
         key: props.vfjsFieldId,
-        ...props.vfjsFieldOptions,
+        ...this.vfjsHelperFlattenVue2Properties(props.vfjsFieldOptions),
       },
       {
         default: () => children,
