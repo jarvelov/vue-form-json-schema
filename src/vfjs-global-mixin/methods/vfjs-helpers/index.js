@@ -8,6 +8,7 @@ import vfjsHelperCreateField from './vfjsHelperCreateField';
 import vfjsHelperFieldDynamicProperties from './vfjsHelperFieldDynamicProperties';
 import vfjsHelperFieldIsArray from './vfjsHelperFieldIsArray';
 import vfjsHelperFieldIsRequired from './vfjsHelperFieldIsRequired';
+import vfjsHelperFlattenVue2Properties from './vfjsHelperFlattenVue2Properties';
 import vfjsHelperGenerateField from './vfjsHelperGenerateField';
 import vfjsHelperGetChildArrayModelAtIndex from './vfjsHelperGetChildArrayModelAtIndex';
 import vfjsHelperGetErrors from './vfjsHelperGetErrors';
@@ -27,6 +28,7 @@ const vfjsHelpers = {
   vfjsHelperFieldDynamicProperties,
   vfjsHelperFieldIsArray,
   vfjsHelperFieldIsRequired,
+  vfjsHelperFlattenVue2Properties,
   vfjsHelperGenerateField,
   vfjsHelperGetChildArrayModelAtIndex,
   vfjsHelperGetErrors,
