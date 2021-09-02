@@ -1,8 +1,10 @@
+import vfjsHelperCreateElement from '../../../vfjs-global-mixin/methods/vfjs-helpers/vfjsHelperCreateElement';
+
 function getVfjsChildren() {
   const { default: defaultSlot, ...slots } = this.$slots;
 
   const namedSlots = Object.keys(slots).map((key) => [
-    this.$createElement(
+    vfjsHelperCreateElement(
       'template',
       {
         slot: key,
