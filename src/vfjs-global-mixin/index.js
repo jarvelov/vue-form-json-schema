@@ -6,6 +6,8 @@ import watch from './watch';
 import {
   VFJS_EXTERNAL_MODEL_PROP,
   VFJS_EXTERNAL_EVENT_CHANGE,
+  VFJS_EXTERNAL_EVENT_STATE_CHANGE,
+  VFJS_EXTERNAL_EVENT_VALIDATED,
 } from '../constants';
 
 const vfjsGlobalMixin = {
@@ -19,6 +21,11 @@ const vfjsGlobalMixin = {
   beforeUnmount() {
     this.vfjsDestroy();
   },
+  emits: [
+    VFJS_EXTERNAL_EVENT_CHANGE,
+    VFJS_EXTERNAL_EVENT_STATE_CHANGE,
+    VFJS_EXTERNAL_EVENT_VALIDATED,
+  ],
   computed,
   data,
   props,
