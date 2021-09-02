@@ -5,7 +5,7 @@ const VueFormJsonSchema = {
   name: 'vue-form-json-schema',
   ...vfjsGlobalMixin,
   render() {
-    return vfjsHelperCreateElement(this.tag, this.vfjsFields);
+    return vfjsHelperCreateElement(this.tag, [...this.vfjsFields]);
   },
 };
 
