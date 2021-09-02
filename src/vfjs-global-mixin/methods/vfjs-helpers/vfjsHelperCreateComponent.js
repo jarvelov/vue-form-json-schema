@@ -4,11 +4,11 @@ import vfjsHelperCreateElement from './vfjsHelperCreateElement';
 function vfjsHelperCreateComponent({ children = [], component, props }) {
   // If the component matches one of the local components
   // passed in with the `components` prop
-  const localComponent = this.vfjsComponents[component];
+  const vfjsComponent = this.vfjsComponents[component] || component;
 
   if (!props.vfjsFieldModelKey) {
     return vfjsHelperCreateElement(
-      localComponent || component,
+      vfjsComponent,
       {
         key: props.vfjsFieldId,
         ...props.vfjsFieldOptions,
@@ -24,7 +24,7 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
     {
       key: `${props.key || props.vfjsFieldId}-wrapper`,
       slot,
-      vfjsComponent: localComponent || component,
+      vfjsComponent,
       ...props,
     },
     () => children,
