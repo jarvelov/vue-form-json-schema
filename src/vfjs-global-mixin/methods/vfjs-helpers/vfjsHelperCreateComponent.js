@@ -13,7 +13,9 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
         key: props.vfjsFieldId,
         ...props.vfjsFieldOptions,
       },
-      () => children,
+      {
+        default: () => children,
+      },
     );
   }
 
@@ -27,7 +29,9 @@ function vfjsHelperCreateComponent({ children = [], component, props }) {
       vfjsComponent,
       ...props,
     },
-    () => children,
+    {
+      default: () => children,
+    },
   );
 }
 
