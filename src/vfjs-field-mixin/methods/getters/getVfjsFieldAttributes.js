@@ -1,4 +1,5 @@
 import { isEmpty, merge } from 'lodash';
+import vfjsHelperFlattenVue2Properties from '../../../vfjs-global-mixin/methods/vfjs-helpers/vfjsHelperFlattenVue2Properties';
 
 function getVfjsFieldAttributes(
   {
@@ -54,7 +55,9 @@ function getVfjsFieldAttributes(
     valueProp,
   );
 
-  return allAttributes;
+  const flattenedAttributes = vfjsHelperFlattenVue2Properties(allAttributes);
+
+  return flattenedAttributes;
 }
 
 export default getVfjsFieldAttributes;
