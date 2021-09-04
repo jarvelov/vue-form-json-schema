@@ -141,11 +141,17 @@ const vfjsValidationGetters = {
           }
         }
       } else {
-        set(schema, properties, {});
-        set(schema, required, [path]);
-      }
+        const pathWithoutBrackets = path.replace(/\[/, '').replace(/\]/, '');
+        const isNumber = !Number.isNaN(Number(pathWithoutBrackets));
 
-      previousPaths.push(path);
+        if (!isNumber) {
+          // Only add non-numeric path
+          set(schema, properties, {});
+          set(schema, required, [path]);
+
+          previousPaths.push(path);
+        }
+      }
     });
 
     return schema;
