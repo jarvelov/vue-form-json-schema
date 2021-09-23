@@ -66,7 +66,7 @@ const vfjsBusEventActions = {
       const vfjsFieldModel = get(vfjsModel, key);
 
       return new Promise((resolve) => {
-        this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_VALIDATE, {
           value: vfjsFieldModel,
           key,
           cb: (errors) => {
@@ -108,7 +108,7 @@ const vfjsBusEventActions = {
 
     const vfjsModel = this.vfjsHelperApplyFieldModel(key, value);
 
-    this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+    this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
       vfjsModel,
       cb: (newVfjsState) => {
         const vfjsFieldModel = this.getVfjsFieldModel(key);
@@ -118,7 +118,7 @@ const vfjsBusEventActions = {
 
         const vfjsFieldState = get(newVfjsState, `${key}`);
         const { vfjsFieldErrors = [] } = vfjsFieldState;
-        this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
           value: newVfjsState,
           cb: () => {
             if (
@@ -139,13 +139,13 @@ const vfjsBusEventActions = {
   [VFJS_EVENT_FIELD_STATE_UPDATE]({ key, value, cb }) {
     const newVfjsState = { ...this.getVfjsState(), [key]: value };
 
-    this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+    this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
       value: newVfjsState,
       cb,
     });
   },
   [VFJS_EVENT_MODEL_VALIDATE]({ vfjsModel, cb }) {
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
+    this.vfjsBus.emit(VFJS_EVENT_FIELD_MODELS_VALIDATE, {
       vfjsModel,
       cb: (vfjsFieldStates) => {
         const vfjsErrors = this.getVfjsValidationErrors(vfjsModel);
@@ -187,10 +187,10 @@ const vfjsBusEventActions = {
     this.setVfjsUiFieldsActive();
   },
   [VFJS_EVENT_MODEL_UPDATED]() {
-    this.vfjsBus.$emit(VFJS_EVENT_UI_FIELDS_UPDATE);
+    this.vfjsBus.emit(VFJS_EVENT_UI_FIELDS_UPDATE);
 
     // Clear hidden fields
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN);
+    this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_CLEAR_HIDDEN);
 
     this.$emit(VFJS_EXTERNAL_EVENT_CHANGE, this.getVfjsModel());
   },

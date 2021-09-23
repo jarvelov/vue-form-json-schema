@@ -9,7 +9,7 @@ import {
 
 const vfjsModelSetters = {
   setVfjsFieldModel(value, key) {
-    this.vfjsBus.$emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
+    this.vfjsBus.emit(VFJS_EVENT_FIELD_MODEL_UPDATE, {
       key: key || this.vfjsFieldModelKey,
       value,
     });
@@ -19,15 +19,15 @@ const vfjsModelSetters = {
       this.vfjsModel = cloneDeep(model);
 
       if (!silent) {
-        this.vfjsBus.$emit(VFJS_EVENT_MODEL_VALIDATE, {
+        this.vfjsBus.emit(VFJS_EVENT_MODEL_VALIDATE, {
           vfjsModel: this.vfjsModel,
           cb: (newVfjsState) => {
-            this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATE, {
+            this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATE, {
               value: newVfjsState,
               cb: () => {
-                this.vfjsBus.$emit(VFJS_EVENT_STATE_UPDATED, {
+                this.vfjsBus.emit(VFJS_EVENT_STATE_UPDATED, {
                   cb: () => {
-                    this.vfjsBus.$emit(VFJS_EVENT_MODEL_UPDATED);
+                    this.vfjsBus.emit(VFJS_EVENT_MODEL_UPDATED);
                   },
                 });
               },
