@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "ajv": "^6.12.6",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
