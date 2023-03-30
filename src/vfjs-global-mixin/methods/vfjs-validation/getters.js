@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { set, setWith } from 'lodash';
 
 const vfjsValidationGetters = {
   /** getVfjsPropertiesRequired
@@ -122,7 +122,7 @@ const vfjsValidationGetters = {
       const required = previousPaths.length > 0 ? `${previousProperties}.required` : 'required';
 
       if (index === paths.length - 1) {
-        set(schema, properties, fieldSchema);
+        setWith(schema, properties, fieldSchema, Object);
 
         if (isRequired) {
           set(schema, required, [path]);
